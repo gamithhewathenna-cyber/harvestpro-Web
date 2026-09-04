@@ -45,7 +45,7 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  // Hero slider: cross-fades between slides, with dots + arrows + autoplay
+  // Hero slider: slides horizontally between slides, with dots + arrows + autoplay
   var heroSlider = document.getElementById('heroSlider');
   if (heroSlider) {
     var slides = heroSlider.querySelectorAll('.hero-slide');
@@ -55,10 +55,16 @@
     var current = 0;
     var timer   = null;
 
+    var render = function () {
+      slides.forEach(function (s, i) {
+        s.style.transform = 'translateX(' + ((i - current) * 100) + '%)';
+        s.classList.toggle('active', i === current);
+      });
+      dots.forEach(function (d, i) { d.classList.toggle('active', i === current); });
+    };
     var goTo = function (index) {
       current = (index + slides.length) % slides.length;
-      slides.forEach(function (s, i) { s.classList.toggle('active', i === current); });
-      dots.forEach(function (d, i) { d.classList.toggle('active', i === current); });
+      render();
     };
     var next = function () { goTo(current + 1); };
     var prev = function () { goTo(current - 1); };
@@ -73,6 +79,7 @@
     if (nextBtn) nextBtn.addEventListener('click', function () { next(); restart(); });
     if (prevBtn) prevBtn.addEventListener('click', function () { prev(); restart(); });
 
+    render();
     restart();
   }
 })();
