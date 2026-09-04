@@ -55,7 +55,7 @@ require __DIR__ . '/homepage-tabs.php';
     <div class="a-field"><label>Title</label><input type="text" name="title" required></div>
     <div class="a-field"><label>Description</label><textarea name="description" rows="2" required></textarea></div>
     <div class="a-field"><label>Sort Order</label><input type="number" name="sort_order" value="<?= count($features)+1 ?>" style="max-width:120px"></div>
-    <button class="a-btn a-btn-primary">Add Feature</button>
+    <button class="a-btn a-btn-primary"><?= admin_icon('plus', 16) ?> Add Feature</button>
   </form>
 </div>
 
@@ -79,7 +79,7 @@ require __DIR__ . '/homepage-tabs.php';
       <input type="hidden" name="csrf" value="<?= e(csrf_token()) ?>">
       <input type="hidden" name="action" value="delete">
       <input type="hidden" name="id" value="<?= (int)$f['id'] ?>">
-      <button class="a-btn a-btn-danger" type="submit">Delete</button>
+      <button class="a-btn a-btn-danger" type="submit"><?= admin_icon('trash', 16) ?> Delete</button>
     </form>
   </div>
 <?php endforeach; ?>

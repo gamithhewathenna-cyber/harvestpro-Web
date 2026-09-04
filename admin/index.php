@@ -11,21 +11,21 @@ $page = 'dashboard';
 require __DIR__ . '/header.php';
 ?>
 <div class="a-stats">
-  <div class="a-stat">
+  <a href="features.php" class="a-stat">
+    <span class="a-stat-icon"><?= admin_icon('layers', 20) ?></span>
     <span class="a-stat-num"><?= $featureCount ?></span>
     <span class="a-stat-label">Feature Cards</span>
-    <a href="features.php">Manage &rarr;</a>
-  </div>
-  <div class="a-stat">
+  </a>
+  <a href="requests.php" class="a-stat">
+    <span class="a-stat-icon"><?= admin_icon('inbox', 20) ?></span>
     <span class="a-stat-num"><?= $reqCount ?></span>
     <span class="a-stat-label">Demo Requests</span>
-    <a href="requests.php">View &rarr;</a>
-  </div>
-  <div class="a-stat">
+  </a>
+  <a href="section.php?g=hero" class="a-stat">
+    <span class="a-stat-icon"><?= admin_icon('file', 20) ?></span>
     <span class="a-stat-num">9</span>
     <span class="a-stat-label">Editable Sections</span>
-    <a href="section.php?g=hero">Edit &rarr;</a>
-  </div>
+  </a>
 </div>
 
 <div class="a-card">
@@ -47,6 +47,7 @@ require __DIR__ . '/header.php';
   <?php if (!$recent): ?>
     <p>No requests yet.</p>
   <?php else: ?>
+    <div class="a-table-wrap">
     <table class="a-table">
       <thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Date</th></tr></thead>
       <tbody>
@@ -60,6 +61,7 @@ require __DIR__ . '/header.php';
         <?php endforeach; ?>
       </tbody>
     </table>
+    </div>
   <?php endif; ?>
 </div>
 
