@@ -74,9 +74,11 @@ Admin panel → **My Account** → set a new username and password.
 
 ## Managing content
 
-Everything on the Home Page is editable from the admin panel sidebar:
+Everything on the Home Page is editable from a single **Home Page** tab in the admin
+sidebar. Inside it, a horizontal section menu at the top switches between each part
+of the page:
 
-| Menu item          | Controls |
+| Section tab        | Controls |
 |--------------------|----------|
 | **Branding**       | Brand name, tagline, logo image |
 | **Hero Section**   | Main headline, sub-text, buttons, background + dashboard images |
@@ -87,8 +89,14 @@ Everything on the Home Page is editable from the admin panel sidebar:
 | **How It Helps**   | Heading, paragraphs, and the grey tags |
 | **Call To Action** | Kicker, heading, paragraph, buttons, background image |
 | **Footer**         | About text, address, phone, email, social links, credits |
-| **Demo Requests**  | View & export every form submission (CSV) |
-| **My Account**     | Change your login username / password |
+
+Separately in the sidebar:
+
+| Menu item           | Controls |
+|----------------------|----------|
+| **Maintenance Mode** | Toggle a maintenance page for visitors (admins can still browse the live site) |
+| **Demo Requests**    | View & export every form submission (CSV) |
+| **My Account**       | Change your login username / password |
 
 Changes go live on the website immediately after you click **Save**.
 

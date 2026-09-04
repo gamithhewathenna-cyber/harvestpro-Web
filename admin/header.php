@@ -18,16 +18,8 @@ $page  = $page ?? '';
     <div class="a-logo">Harvest<span>Pro</span></div>
     <nav class="a-nav">
       <a href="index.php"          class="<?= $page==='dashboard'?'active':'' ?>">Dashboard</a>
-      <p class="a-nav-label">Home Page Content</p>
-      <a href="section.php?g=branding" class="<?= $page==='branding'?'active':'' ?>">Branding</a>
-      <a href="section.php?g=hero"     class="<?= $page==='hero'?'active':'' ?>">Hero Section</a>
-      <a href="section.php?g=ticker"   class="<?= $page==='ticker'?'active':'' ?>">Ticker Strip</a>
-      <a href="section.php?g=why"      class="<?= $page==='why'?'active':'' ?>">Why Section</a>
-      <a href="section.php?g=features" class="<?= $page==='features_head'?'active':'' ?>">Features Heading</a>
-      <a href="features.php"           class="<?= $page==='features'?'active':'' ?>">Feature Cards</a>
-      <a href="section.php?g=how"      class="<?= $page==='how'?'active':'' ?>">How It Helps</a>
-      <a href="section.php?g=cta"      class="<?= $page==='cta'?'active':'' ?>">Call To Action</a>
-      <a href="section.php?g=footer"   class="<?= $page==='footer'?'active':'' ?>">Footer</a>
+      <p class="a-nav-label">Content</p>
+      <a href="section.php?g=branding" class="<?= in_array($page, HOMEPAGE_TABS, true)?'active':'' ?>">Home Page</a>
       <p class="a-nav-label">Manage</p>
       <a href="section.php?g=maintenance" class="<?= $page==='maintenance'?'active':'' ?>">Maintenance Mode</a>
       <a href="requests.php"           class="<?= $page==='requests'?'active':'' ?>">Demo Requests</a>

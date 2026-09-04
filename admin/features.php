@@ -42,6 +42,7 @@ $features = $pdo->query("SELECT * FROM features ORDER BY sort_order ASC, id ASC"
 $pageTitle = 'Feature Cards';
 $page = 'features';
 require __DIR__ . '/header.php';
+require __DIR__ . '/homepage-tabs.php';
 ?>
 <?php if ($msg): ?><div class="a-alert a-alert-ok"><?= e($msg) ?></div><?php endif; ?>
 <?php if ($err): ?><div class="a-alert a-alert-error"><?= e($err) ?></div><?php endif; ?>

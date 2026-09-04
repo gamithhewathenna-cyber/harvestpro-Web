@@ -22,7 +22,7 @@ require __DIR__ . '/header.php';
     <a href="requests.php">View &rarr;</a>
   </div>
   <div class="a-stat">
-    <span class="a-stat-num">8</span>
+    <span class="a-stat-num">9</span>
     <span class="a-stat-label">Editable Sections</span>
     <a href="section.php?g=hero">Edit &rarr;</a>
   </div>
@@ -30,7 +30,8 @@ require __DIR__ . '/header.php';
 
 <div class="a-card">
   <h2 class="a-card-title">Welcome</h2>
-  <p>Use the sidebar to edit each part of the home page. Every piece of text and every image
+  <p>Open <strong>Home Page</strong> in the sidebar to edit every part of the home page — use the
+     section tabs at the top to jump between them. Every piece of text and every image
      on the public site can be changed here — your changes go live immediately.</p>
   <p style="margin-top:12px;">Quick links:
     <a href="section.php?g=hero">Hero</a> ·

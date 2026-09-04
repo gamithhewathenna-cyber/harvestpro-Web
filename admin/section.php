@@ -56,6 +56,9 @@ $rows = $pdo->query("SELECT setting_key, setting_value FROM settings")->fetchAll
 foreach ($rows as $r) { $fresh[$r['setting_key']] = $r['setting_value']; }
 
 require __DIR__ . '/header.php';
+if (in_array($page, HOMEPAGE_TABS, true)) {
+    require __DIR__ . '/homepage-tabs.php';
+}
 ?>
 
 <?php if ($saved): ?><div class="a-alert a-alert-ok">Changes saved successfully.</div><?php endif; ?>
