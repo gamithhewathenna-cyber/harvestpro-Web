@@ -51,19 +51,26 @@ function nl2br_e(?string $value): string
 }
 
 /**
+ * Resolve a stored image value (uploaded filename or full URL) to a usable URL.
+ */
+function resolve_image_url(string $value, string $fallback = ''): string
+{
+    if ($value === '') {
+        return $fallback;
+    }
+    // Already a full URL?
+    if (preg_match('#^https?://#i', $value)) {
+        return $value;
+    }
+    return UPLOAD_URL . ltrim($value, '/');
+}
+
+/**
  * Return the URL for an uploaded image setting, or a placeholder path.
  */
 function image_url(string $key, string $fallback = ''): string
 {
-    $val = setting($key, '');
-    if ($val === '') {
-        return $fallback;
-    }
-    // Already a full URL?
-    if (preg_match('#^https?://#i', $val)) {
-        return $val;
-    }
-    return UPLOAD_URL . ltrim($val, '/');
+    return resolve_image_url(setting($key, ''), $fallback);
 }
 
 /**
@@ -74,5 +81,16 @@ function get_features(): array
     global $pdo;
     return $pdo->query(
         "SELECT * FROM features WHERE is_active = 1 ORDER BY sort_order ASC, id ASC"
+    )->fetchAll();
+}
+
+/**
+ * Fetch active hero slides, ordered.
+ */
+function get_hero_slides(): array
+{
+    global $pdo;
+    return $pdo->query(
+        "SELECT * FROM hero_slides WHERE is_active = 1 ORDER BY sort_order ASC, id ASC"
     )->fetchAll();
 }

@@ -5,7 +5,7 @@
  */
 $homepageTabs = [
     ['key' => 'branding',      'label' => 'Branding',         'href' => 'section.php?g=branding'],
-    ['key' => 'hero',          'label' => 'Hero Section',     'href' => 'section.php?g=hero'],
+    ['key' => 'hero_slides',   'label' => 'Hero Slider',      'href' => 'hero-slides.php'],
     ['key' => 'ticker',        'label' => 'Ticker Strip',     'href' => 'section.php?g=ticker'],
     ['key' => 'why',           'label' => 'Why Section',      'href' => 'section.php?g=why'],
     ['key' => 'features_head', 'label' => 'Features Heading', 'href' => 'section.php?g=features'],

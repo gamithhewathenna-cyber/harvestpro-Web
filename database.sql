@@ -44,16 +44,6 @@ INSERT INTO `settings` (`setting_key`, `setting_value`, `setting_group`) VALUES
 ('brand_tagline', 'Managing Every Leaf, Every Day', 'branding'),
 ('brand_logo', '', 'branding'),
 
--- Hero section
-('hero_title', 'Smarter Plantation Management. Better Productivity.', 'hero'),
-('hero_subtitle', 'A modern platform built for the unique demands of tea estates and plantations — from worker management to real-time production tracking, all from one unified system.', 'hero'),
-('hero_btn1_text', 'Request a Demo', 'hero'),
-('hero_btn1_link', '#contact', 'hero'),
-('hero_btn2_text', 'Explore Features', 'hero'),
-('hero_btn2_link', '#features', 'hero'),
-('hero_bg_image', '', 'hero'),
-('hero_dashboard_image', '', 'hero'),
-
 -- Ticker strip
 ('ticker_items', 'Worker Management|Tea Production Tracking|Automated Payroll|Field Activity Monitoring|Multi-Estate Support|Real-Time Analytics', 'ticker'),
 
@@ -123,6 +113,26 @@ INSERT INTO `settings` (`setting_key`, `setting_value`, `setting_group`) VALUES
 ('footer_linkedin', '#', 'footer'),
 ('footer_copyright', '© 2025 Harvest Pro. Grow Smarter. Manage Better.', 'footer'),
 ('footer_credit', 'Creative Elements (Pvt) Ltd\nKode Tech (Pvt) Ltd', 'footer');
+
+-- -------------------------------------------------------------
+-- Table: hero_slides  (repeatable full-width hero slider slides)
+-- -------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `hero_slides` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `headline` VARCHAR(255) NOT NULL DEFAULT '',
+  `subtext` TEXT DEFAULT NULL,
+  `btn1_text` VARCHAR(100) DEFAULT NULL,
+  `btn1_link` VARCHAR(255) DEFAULT NULL,
+  `btn2_text` VARCHAR(100) DEFAULT NULL,
+  `btn2_link` VARCHAR(255) DEFAULT NULL,
+  `image` VARCHAR(255) DEFAULT NULL,
+  `sort_order` INT(11) NOT NULL DEFAULT 0,
+  `is_active` TINYINT(1) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `hero_slides` (`headline`, `subtext`, `btn1_text`, `btn1_link`, `btn2_text`, `btn2_link`, `image`, `sort_order`) VALUES
+('Smarter Plantation Management. Better Productivity.', 'A modern platform built for the unique demands of tea estates and plantations — from worker management to real-time production tracking, all from one unified system.', 'Request a Demo', '#contact', 'Explore Features', '#features', '', 1);
 
 -- -------------------------------------------------------------
 -- Table: features  (repeatable Key-Feature cards)

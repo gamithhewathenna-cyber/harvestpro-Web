@@ -21,7 +21,7 @@ require __DIR__ . '/header.php';
     <span class="a-stat-num"><?= $reqCount ?></span>
     <span class="a-stat-label">Demo Requests</span>
   </a>
-  <a href="section.php?g=hero" class="a-stat">
+  <a href="section.php?g=branding" class="a-stat">
     <span class="a-stat-icon"><?= admin_icon('file', 20) ?></span>
     <span class="a-stat-num">9</span>
     <span class="a-stat-label">Editable Sections</span>
@@ -34,7 +34,7 @@ require __DIR__ . '/header.php';
      section tabs at the top to jump between them. Every piece of text and every image
      on the public site can be changed here — your changes go live immediately.</p>
   <p style="margin-top:12px;">Quick links:
-    <a href="section.php?g=hero">Hero</a> ·
+    <a href="hero-slides.php">Hero Slider</a> ·
     <a href="section.php?g=why">Why Section</a> ·
     <a href="features.php">Feature Cards</a> ·
     <a href="section.php?g=cta">Call To Action</a> ·

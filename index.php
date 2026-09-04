@@ -70,8 +70,18 @@ $howTags = array_filter(array_map('trim', explode('|', setting('how_tags'))));
 // Footer credit lines
 $footerCredits = array_filter(array_map('trim', explode("\n", setting('footer_credit'))));
 
-$heroBg        = image_url('hero_bg_image', 'assets/images/hero-bg.jpg');
-$heroDashboard = image_url('hero_dashboard_image', 'assets/images/dashboard.png');
+// Hero slider
+$heroSlides = get_hero_slides();
+if (!$heroSlides) {
+    $heroSlides = [[
+        'headline'  => 'Smarter Plantation Management. Better Productivity.',
+        'subtext'   => 'A modern platform built for the unique demands of tea estates and plantations — from worker management to real-time production tracking, all from one unified system.',
+        'btn1_text' => 'Request a Demo', 'btn1_link' => '#contact',
+        'btn2_text' => 'Explore Features', 'btn2_link' => '#features',
+        'image'     => '',
+    ]];
+}
+
 $whyImg1       = image_url('why_image_1', 'assets/images/why-1.jpg');
 $whyImg2       = image_url('why_image_2', 'assets/images/why-2.jpg');
 $ctaBg         = image_url('cta_bg_image', 'assets/images/cta-bg.jpg');
@@ -82,7 +92,7 @@ $ctaBg         = image_url('cta_bg_image', 'assets/images/cta-bg.jpg');
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title><?= e($seoTitle !== '' ? $seoTitle : $brandName . ' Pro — Smarter Plantation Management') ?></title>
-<meta name="description" content="<?= e($seoDescription !== '' ? $seoDescription : setting('hero_subtitle')) ?>">
+<meta name="description" content="<?= e($seoDescription !== '' ? $seoDescription : ($heroSlides[0]['subtext'] ?? '')) ?>">
 <?php if ($seoKeywords !== ''): ?>
 <meta name="keywords" content="<?= e($seoKeywords) ?>">
 <?php endif; ?>
@@ -113,7 +123,7 @@ $ctaBg         = image_url('cta_bg_image', 'assets/images/cta-bg.jpg');
 <body>
 
 <!-- ============================= HEADER / HERO ============================= -->
-<header class="hero" id="home" style="background-image:linear-gradient(rgba(10,30,15,.35),rgba(10,30,15,.55)),url('<?= e($heroBg) ?>');">
+<header class="hero" id="home">
   <div class="nav-fixed" id="navFixed">
     <nav class="navbar">
       <a href="#home" class="brand">
@@ -151,19 +161,42 @@ $ctaBg         = image_url('cta_bg_image', 'assets/images/cta-bg.jpg');
     </nav>
   </div>
 
-  <div class="hero-inner">
-    <div class="hero-content">
-      <h1 class="hero-title"><?= e(setting('hero_title')) ?></h1>
-      <p class="hero-sub"><?= e(setting('hero_subtitle')) ?></p>
-      <div class="hero-btns">
-        <a href="<?= e(setting('hero_btn1_link')) ?>" class="btn btn-primary"><?= e(setting('hero_btn1_text')) ?></a>
-        <a href="<?= e(setting('hero_btn2_link')) ?>" class="btn btn-text"><?= e(setting('hero_btn2_text')) ?> <span>&rarr;</span></a>
+  <div class="hero-slider" id="heroSlider">
+    <?php foreach ($heroSlides as $i => $slide):
+        $slideBg = resolve_image_url($slide['image'] ?? '', 'assets/images/hero-bg.jpg');
+    ?>
+      <div class="hero-slide<?= $i === 0 ? ' active' : '' ?>" style="background-image:linear-gradient(rgba(10,30,15,.4),rgba(10,30,15,.55)),url('<?= e($slideBg) ?>');">
+        <div class="hero-inner">
+          <div class="hero-content">
+            <h1 class="hero-title"><?= e($slide['headline'] ?? '') ?></h1>
+            <?php if (!empty($slide['subtext'])): ?><p class="hero-sub"><?= e($slide['subtext']) ?></p><?php endif; ?>
+            <div class="hero-btns">
+              <?php if (!empty($slide['btn1_text'])): ?>
+                <a href="<?= e($slide['btn1_link'] ?: '#') ?>" class="btn btn-primary"><?= e($slide['btn1_text']) ?></a>
+              <?php endif; ?>
+              <?php if (!empty($slide['btn2_text'])): ?>
+                <a href="<?= e($slide['btn2_link'] ?: '#') ?>" class="btn btn-text"><?= e($slide['btn2_text']) ?> <span>&rarr;</span></a>
+              <?php endif; ?>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="hero-visual">
-      <img src="<?= e($heroDashboard) ?>" alt="<?= e($brandName) ?> Pro dashboard" loading="lazy">
-    </div>
+    <?php endforeach; ?>
   </div>
+
+  <?php if (count($heroSlides) > 1): ?>
+    <button class="hero-arrow prev" id="heroPrev" aria-label="Previous slide">
+      <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="12,4 6,10 12,16"/></svg>
+    </button>
+    <button class="hero-arrow next" id="heroNext" aria-label="Next slide">
+      <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="8,4 14,10 8,16"/></svg>
+    </button>
+    <div class="hero-dots">
+      <?php foreach ($heroSlides as $i => $slide): ?>
+        <button class="hero-dot<?= $i === 0 ? ' active' : '' ?>" data-slide="<?= $i ?>" aria-label="Go to slide <?= $i + 1 ?>"></button>
+      <?php endforeach; ?>
+    </div>
+  <?php endif; ?>
 </header>
 
 <!-- ============================= TICKER STRIP ============================= -->

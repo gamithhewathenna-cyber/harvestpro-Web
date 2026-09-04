@@ -44,4 +44,35 @@
 
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+
+  // Hero slider: cross-fades between slides, with dots + arrows + autoplay
+  var heroSlider = document.getElementById('heroSlider');
+  if (heroSlider) {
+    var slides = heroSlider.querySelectorAll('.hero-slide');
+    var dots   = document.querySelectorAll('.hero-dot');
+    var prevBtn = document.getElementById('heroPrev');
+    var nextBtn = document.getElementById('heroNext');
+    var current = 0;
+    var timer   = null;
+
+    var goTo = function (index) {
+      current = (index + slides.length) % slides.length;
+      slides.forEach(function (s, i) { s.classList.toggle('active', i === current); });
+      dots.forEach(function (d, i) { d.classList.toggle('active', i === current); });
+    };
+    var next = function () { goTo(current + 1); };
+    var prev = function () { goTo(current - 1); };
+    var restart = function () {
+      if (timer) clearInterval(timer);
+      if (slides.length > 1) timer = setInterval(next, 6000);
+    };
+
+    dots.forEach(function (d, i) {
+      d.addEventListener('click', function () { goTo(i); restart(); });
+    });
+    if (nextBtn) nextBtn.addEventListener('click', function () { next(); restart(); });
+    if (prevBtn) prevBtn.addEventListener('click', function () { prev(); restart(); });
+
+    restart();
+  }
 })();

@@ -8,7 +8,7 @@ $groups = field_groups();
 /* Only the Home Page content groups route through this page (with its tab bar).
    Settings (Logo / Colour Theme / SEO / Maintenance) live on settings.php. */
 $pageMap = [
-  'branding' => 'branding', 'hero' => 'hero', 'ticker' => 'ticker',
+  'branding' => 'branding', 'ticker' => 'ticker',
   'why' => 'why', 'features' => 'features_head', 'how' => 'how',
   'cta' => 'cta', 'footer' => 'footer',
 ];

@@ -15,19 +15,6 @@ function field_groups(): array
                 'brand_tagline' => ['Tagline', 'text'],
             ],
         ],
-        'hero' => [
-            'title'  => 'Hero Section',
-            'fields' => [
-                'hero_title'           => ['Headline', 'textarea'],
-                'hero_subtitle'        => ['Sub-text', 'textarea'],
-                'hero_btn1_text'       => ['Primary Button Text', 'text'],
-                'hero_btn1_link'       => ['Primary Button Link', 'text'],
-                'hero_btn2_text'       => ['Secondary Button Text', 'text'],
-                'hero_btn2_link'       => ['Secondary Button Link', 'text'],
-                'hero_bg_image'        => ['Background Image', 'image'],
-                'hero_dashboard_image' => ['Dashboard Screenshot', 'image'],
-            ],
-        ],
         'ticker' => [
             'title'  => 'Ticker Strip',
             'fields' => [

@@ -81,7 +81,7 @@ of the page:
 | Section tab        | Controls |
 |--------------------|----------|
 | **Branding**       | Brand name, tagline |
-| **Hero Section**   | Main headline, sub-text, buttons, background + dashboard images |
+| **Hero Slider**    | Add / edit / reorder / remove full-width hero slides (headline, sub-text, two buttons, full-background image) |
 | **Ticker Strip**   | The scrolling green strip of keywords |
 | **Why Section**    | Checklist, heading, paragraphs, stat badge, the two photos, button |
 | **Features Heading**| The badge + heading text on the green features card |
