@@ -90,11 +90,20 @@ of the page:
 | **Call To Action** | Kicker, heading, paragraph, buttons, background image |
 | **Footer**         | About text, address, phone, email, social links, credits |
 
-Separately in the sidebar:
+Separately in the sidebar, a single **Settings** page (one scrolling page, no tabs)
+covers everything that isn't page content:
+
+| Settings section              | Controls |
+|--------------------------------|----------|
+| **Logo**                       | White logo variant, used on dark backgrounds (the hero navbar) |
+| **Colour Theme**                | Primary + accent colour override for the whole site |
+| **Search Engine Visibility**    | Meta title, description, keywords, and a noindex toggle |
+| **Maintenance Mode**            | Toggle a maintenance page for visitors (admins can still browse the live site) |
+
+And separately:
 
 | Menu item           | Controls |
 |----------------------|----------|
-| **Maintenance Mode** | Toggle a maintenance page for visitors (admins can still browse the live site) |
 | **Demo Requests**    | View & export every form submission (CSV) |
 | **My Account**       | Change your login username / password |
 

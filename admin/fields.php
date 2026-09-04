@@ -170,3 +170,91 @@ function save_setting(PDO $pdo, string $key, string $value): void
     );
     $stmt->execute([$key, $value]);
 }
+
+/**
+ * Save one posted field, handling its type's upload/remove/validation rules.
+ */
+function save_field(PDO $pdo, string $key, string $type): void
+{
+    if ($type === 'image') {
+        $uploaded = handle_upload($key);
+        if ($uploaded !== null) {
+            save_setting($pdo, $key, $uploaded);
+        } elseif (!empty($_POST['remove_' . $key])) {
+            save_setting($pdo, $key, '');
+        }
+        // else: keep existing value
+    } elseif ($type === 'color') {
+        if (!empty($_POST['remove_' . $key])) {
+            save_setting($pdo, $key, '');
+        } else {
+            $val = $_POST[$key] ?? '';
+            if (preg_match('/^#[0-9a-fA-F]{6}$/', $val)) {
+                save_setting($pdo, $key, $val);
+            }
+        }
+    } else {
+        $val = $_POST[$key] ?? '';
+        // Normalise CR/LF for textareas/lists
+        $val = str_replace("\r\n", "\n", $val);
+        save_setting($pdo, $key, trim($val));
+    }
+}
+
+/**
+ * Render one field's input markup for a given current value.
+ */
+function render_field(string $key, string $label, string $type, string $value): void
+{
+    ?>
+    <div class="a-field">
+      <label><?= e($label) ?></label>
+
+      <?php if ($type === 'text'): ?>
+        <input type="text" name="<?= e($key) ?>" value="<?= e($value) ?>">
+
+      <?php elseif ($type === 'textarea' || $type === 'credit' || $type === 'checklist'): ?>
+        <textarea name="<?= e($key) ?>" rows="<?= $type==='textarea'?5:4 ?>"><?= e($value) ?></textarea>
+        <?php if ($type === 'checklist'): ?>
+          <small class="a-help">One item per line. Text before the <code>|</code> shows in bold. Example: <code>Centralized|plantation management</code></small>
+        <?php elseif ($type === 'credit'): ?>
+          <small class="a-help">One credit line per line.</small>
+        <?php endif; ?>
+
+      <?php elseif ($type === 'list'): ?>
+        <input type="text" name="<?= e($key) ?>" value="<?= e($value) ?>">
+        <small class="a-help">Separate each item with a vertical bar <code>|</code></small>
+
+      <?php elseif ($type === 'checkbox'): ?>
+        <label class="a-check">
+          <input type="checkbox" name="<?= e($key) ?>" value="1" <?= $value === '1' ? 'checked' : '' ?>>
+          Enabled
+        </label>
+
+      <?php elseif ($type === 'color'): ?>
+        <div class="a-color-field">
+          <input type="color" name="<?= e($key) ?>" value="<?= e($value !== '' ? $value : '#1c6b34') ?>">
+          <?php if ($value !== ''): ?>
+            <label class="a-remove"><input type="checkbox" name="remove_<?= e($key) ?>" value="1"> Reset to default</label>
+          <?php endif; ?>
+        </div>
+
+      <?php elseif ($type === 'image'): ?>
+        <div class="a-image-field">
+          <?php if ($value !== ''):
+              $thumbUrl = preg_match('#^https?://#i', $value) ? $value : (UPLOAD_URL . ltrim($value, '/'));
+          ?>
+            <div class="a-thumb">
+              <img src="<?= e($thumbUrl) ?>" alt="">
+              <label class="a-remove"><input type="checkbox" name="remove_<?= e($key) ?>" value="1"> Remove</label>
+            </div>
+          <?php else: ?>
+            <span class="a-noimg">No image uploaded yet.</span>
+          <?php endif; ?>
+          <input type="file" name="<?= e($key) ?>" accept="image/*">
+          <small class="a-help">JPG, PNG, WEBP, GIF or SVG. Max 8 MB. Leave empty to keep the current image.</small>
+        </div>
+      <?php endif; ?>
+    </div>
+    <?php
+}
