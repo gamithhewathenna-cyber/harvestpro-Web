@@ -5,12 +5,14 @@ require_once __DIR__ . '/fields.php';
 
 $groups = field_groups();
 
-/* Only the Home Page content groups route through this page (with its tab bar).
-   Settings (Logo / Colour Theme / SEO / Maintenance) live on settings.php. */
+/* Home Page and About Page content groups route through this page (each with
+   its own tab bar). Settings / Contact Page live on their own single scrolling pages. */
 $pageMap = [
   'branding' => 'branding', 'ticker' => 'ticker',
   'why' => 'why', 'features' => 'features_head', 'how' => 'how',
   'cta' => 'cta', 'footer' => 'footer',
+  'about_banner' => 'about_banner', 'about_story' => 'about_story',
+  'about_partners' => 'about_partners', 'about_why' => 'about_why', 'about_cta' => 'about_cta',
 ];
 
 $g = $_GET['g'] ?? 'hero';
@@ -46,6 +48,8 @@ foreach ($rows as $r) { $fresh[$r['setting_key']] = $r['setting_value']; }
 require __DIR__ . '/header.php';
 if (in_array($page, HOMEPAGE_TABS, true)) {
     require __DIR__ . '/homepage-tabs.php';
+} elseif (in_array($page, ABOUT_TABS, true)) {
+    require __DIR__ . '/about-tabs.php';
 }
 ?>
 
