@@ -14,6 +14,9 @@ const HOMEPAGE_TABS = ['branding', 'hero_slides', 'ticker', 'why', 'features_hea
 /* Page keys that belong to the single "About Page" tab (sidebar highlight + tab bar) */
 const ABOUT_TABS = ['about_banner', 'about_story', 'about_partners', 'about_why', 'about_cta'];
 
+/* Page keys that belong to the single "Contact Page" tab (sidebar highlight + tab bar) */
+const CONTACT_TABS = ['contact_banner', 'contact_form', 'contact_map'];
+
 function require_login(): void
 {
     if (empty($_SESSION['admin_id'])) {

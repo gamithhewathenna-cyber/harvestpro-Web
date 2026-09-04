@@ -105,16 +105,8 @@ covers everything that isn't page content:
 | **Search Engine Visibility**    | Meta title, description, keywords, and a noindex toggle |
 | **Maintenance Mode**            | Toggle a maintenance page for visitors (admins can still browse the live site) |
 
-Also its own single scrolling page, **Contact Page**, controls the public
-`contact.php` page:
-
-| Contact Page section | Controls |
-|-----------------------|----------|
-| **Page Banner**       | Heading (with a gold accent line), sub-text, background image |
-| **Request Form**      | Form heading, sub-text, and the footnote under the Send button |
-| **Map**                | A plain address (auto-geocoded) or a full Google Maps "Embed a map" URL |
-
-And its own single scrolling page, **About Page**, controls the public `about.php` page:
+**About Page** and **Contact Page** work the same way as Home Page — their own
+sidebar tab, with a horizontal section menu at the top:
 
 | About Page section        | Controls |
 |-----------------------------|----------|
@@ -123,6 +115,12 @@ And its own single scrolling page, **About Page**, controls the public `about.ph
 | **Development Partners**    | Badge, heading, and two partner cards (logo, name, description, tags) |
 | **Why Choose**               | Badge, heading, and the row of cards (one per line as `title\|description`) |
 | **Call To Action**           | Kicker, heading, paragraph, buttons, background image |
+
+| Contact Page section | Controls |
+|-----------------------|----------|
+| **Page Banner**       | Heading (with a gold accent line), sub-text, background image |
+| **Request Form**      | Form heading, sub-text, and the footnote under the Send button |
+| **Map**                | A plain address (auto-geocoded) or a full Google Maps "Embed a map" URL |
 
 Every image field on these pages ships with a placeholder image so the page looks
 complete out of the box — upload your own from the same field to replace it any time.
