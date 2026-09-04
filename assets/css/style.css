@@ -106,10 +106,10 @@ ul { list-style: none; }
 .nav-fixed.scrolled .brand-img-scrolled { display: block; }
 
 .nav-links { display: flex; gap: 34px; margin-left: auto; }
-.nav-links a { font-size: 17px; font-weight: 400; opacity: .92; transition: color .2s; }
-.nav-links a:hover, .nav-links a.active { color: var(--gold); opacity: 1; }
+.nav-links a { color: #fff; font-size: 17px; font-weight: 400; opacity: .92; transition: color .2s; }
+.nav-links a:hover, .nav-links a.active { color: #FFC517; opacity: 1; }
 .nav-fixed.scrolled .nav-links a { color: var(--ink); opacity: 1; }
-.nav-fixed.scrolled .nav-links a:hover, .nav-fixed.scrolled .nav-links a.active { color: var(--green-700); }
+.nav-fixed.scrolled .nav-links a:hover, .nav-fixed.scrolled .nav-links a.active { color: #FFC517; }
 
 .nav-actions { display: flex; gap: 12px; margin-left: 32px; }
 .nav-icon {
