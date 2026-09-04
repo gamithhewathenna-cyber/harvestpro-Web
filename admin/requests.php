@@ -8,9 +8,9 @@ if (isset($_GET['export'])) {
     header('Content-Type: text/csv');
     header('Content-Disposition: attachment; filename="demo_requests.csv"');
     $out = fopen('php://output', 'w');
-    fputcsv($out, ['ID', 'Name', 'Email', 'Phone', 'Message', 'Date']);
+    fputcsv($out, ['ID', 'Name', 'Company', 'Email', 'Phone', 'Estates', 'Message', 'Date']);
     foreach ($rows as $r) {
-        fputcsv($out, [$r['id'], $r['name'], $r['email'], $r['phone'], $r['message'], $r['created_at']]);
+        fputcsv($out, [$r['id'], $r['name'], $r['company'], $r['email'], $r['phone'], $r['estates'], $r['message'], $r['created_at']]);
     }
     fclose($out);
     exit;
@@ -42,13 +42,15 @@ require __DIR__ . '/header.php';
   <?php else: ?>
     <div class="a-table-wrap">
     <table class="a-table">
-      <thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Message</th><th>Date</th><th></th></tr></thead>
+      <thead><tr><th>Name</th><th>Company</th><th>Email</th><th>Phone</th><th>Estates</th><th>Message</th><th>Date</th><th></th></tr></thead>
       <tbody>
         <?php foreach ($rows as $r): ?>
           <tr>
             <td><?= e($r['name']) ?></td>
+            <td><?= e($r['company'] ?? '') ?></td>
             <td><a href="mailto:<?= e($r['email']) ?>"><?= e($r['email']) ?></a></td>
             <td><?= e($r['phone']) ?></td>
+            <td><?= e($r['estates'] ?? '') ?></td>
             <td class="a-msg"><?= e($r['message']) ?></td>
             <td><?= e(date('d M Y, H:i', strtotime($r['created_at']))) ?></td>
             <td>

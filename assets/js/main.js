@@ -18,9 +18,11 @@
     });
   }
 
-  // Simple active-link state on scroll (Home/About/Features/Contact)
+  // Simple active-link state on scroll (Home/About/Features/Contact) — only
+  // meaningful on the homepage, which is the only page with these section ids.
   var sections = ['home', 'about', 'features', 'contact'];
   var navAnchors = links ? links.querySelectorAll('a') : [];
+  var isHomePage = !!document.getElementById('home');
 
   // Sticky navbar: switch to a solid bar (and swap the logo) once scrolled
   var navFixed = document.getElementById('navFixed');
@@ -30,6 +32,8 @@
       navFixed.classList.toggle('scrolled', window.scrollY > 30);
     }
 
+    if (!isHomePage) return;
+
     var pos = window.scrollY + 120;
     var current = 'home';
     sections.forEach(function (id) {
@@ -37,8 +41,8 @@
       if (el && el.offsetTop <= pos) current = id;
     });
     navAnchors.forEach(function (a) {
-      var href = a.getAttribute('href') || '';
-      a.classList.toggle('active', href === '#' + current);
+      var hash = (a.getAttribute('href') || '').split('#')[1] || '';
+      a.classList.toggle('active', hash === current);
     });
   }
 

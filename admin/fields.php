@@ -100,6 +100,29 @@ function field_groups(): array
                 'seo_noindex'     => ['Discourage search engines from indexing this site', 'checkbox'],
             ],
         ],
+        'contact_banner' => [
+            'title'  => 'Page Banner',
+            'fields' => [
+                'contact_title_1'      => ['Heading (line 1)', 'text'],
+                'contact_title_2'      => ['Heading Accent (gold, line 2)', 'text'],
+                'contact_subtitle'     => ['Sub-text', 'textarea'],
+                'contact_banner_image' => ['Background Image', 'image'],
+            ],
+        ],
+        'contact_form' => [
+            'title'  => 'Request Form',
+            'fields' => [
+                'contact_form_title'    => ['Form Heading', 'text'],
+                'contact_form_subtitle' => ['Form Sub-text', 'text'],
+                'contact_form_note'     => ['Footnote below the button', 'text'],
+            ],
+        ],
+        'contact_map' => [
+            'title'  => 'Map',
+            'fields' => [
+                'contact_map' => ['Address or Google Maps Embed URL', 'text'],
+            ],
+        ],
         'footer' => [
             'title'  => 'Footer',
             'fields' => [

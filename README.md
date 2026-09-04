@@ -10,11 +10,15 @@ Built to run on standard **cPanel** shared hosting (PHP 7.4+ / 8.x, MySQL/MariaD
 ```
 harvestpro/
 ├── index.php            ← the public Home Page
+├── contact.php          ← the public Contact Us page
 ├── submit.php           ← handles the demo-request / newsletter form
 ├── database.sql         ← import this into your MySQL database
 ├── includes/
 │   ├── config.php       ← EDIT THIS: your database credentials
-│   └── functions.php
+│   ├── functions.php
+│   ├── maintenance-gate.php  ← shared maintenance-mode check
+│   ├── site-nav.php          ← shared sticky navbar
+│   └── site-footer.php       ← shared footer
 ├── admin/               ← the admin panel  (yoursite.com/admin)
 ├── assets/              ← css, js, and placeholder images
 └── uploads/             ← images you upload from the admin panel land here
@@ -100,11 +104,23 @@ covers everything that isn't page content:
 | **Search Engine Visibility**    | Meta title, description, keywords, and a noindex toggle |
 | **Maintenance Mode**            | Toggle a maintenance page for visitors (admins can still browse the live site) |
 
+Also its own single scrolling page, **Contact Page**, controls the public
+`contact.php` page:
+
+| Contact Page section | Controls |
+|-----------------------|----------|
+| **Page Banner**       | Heading (with a gold accent line), sub-text, background image |
+| **Request Form**      | Form heading, sub-text, and the footnote under the Send button |
+| **Map**                | A plain address (auto-geocoded) or a full Google Maps "Embed a map" URL |
+
+The phone / email / address / social links shown on the Contact page are the
+same ones set in Footer, so you only maintain them in one place.
+
 And separately:
 
 | Menu item           | Controls |
 |----------------------|----------|
-| **Demo Requests**    | View & export every form submission (CSV) |
+| **Demo Requests**    | View & export every form submission (CSV) — includes both the homepage demo form and the Contact page's richer form (company, number of estates) |
 | **My Account**       | Change your login username / password |
 
 Changes go live on the website immediately after you click **Save**.

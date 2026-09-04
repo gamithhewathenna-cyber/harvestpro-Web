@@ -38,6 +38,7 @@ require __DIR__ . '/header.php';
     <a href="section.php?g=why">Why Section</a> ·
     <a href="features.php">Feature Cards</a> ·
     <a href="section.php?g=cta">Call To Action</a> ·
+    <a href="contact-page.php">Contact Page</a> ·
     <a href="section.php?g=footer">Footer</a>
   </p>
 </div>
