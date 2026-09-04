@@ -29,6 +29,7 @@ $page  = $page ?? '';
       <a href="section.php?g=cta"      class="<?= $page==='cta'?'active':'' ?>">Call To Action</a>
       <a href="section.php?g=footer"   class="<?= $page==='footer'?'active':'' ?>">Footer</a>
       <p class="a-nav-label">Manage</p>
+      <a href="section.php?g=maintenance" class="<?= $page==='maintenance'?'active':'' ?>">Maintenance Mode</a>
       <a href="requests.php"           class="<?= $page==='requests'?'active':'' ?>">Demo Requests</a>
       <a href="account.php"            class="<?= $page==='account'?'active':'' ?>">My Account</a>
     </nav>

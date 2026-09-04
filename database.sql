@@ -93,6 +93,11 @@ INSERT INTO `settings` (`setting_key`, `setting_value`, `setting_group`) VALUES
 ('cta_btn2_link', '#contact', 'cta'),
 ('cta_bg_image', '', 'cta'),
 
+-- Maintenance mode
+('maintenance_mode', '0', 'maintenance'),
+('maintenance_title', 'We''ll be right back', 'maintenance'),
+('maintenance_message', 'We''re currently performing scheduled maintenance. Please check back shortly.', 'maintenance'),
+
 -- Footer
 ('footer_about', 'Harvest Pro is a smart plantation management platform that simplifies workforce management, production tracking, payroll, field operations, and reporting – all in one place.', 'footer'),
 ('footer_company', 'Harvest Pro (Pvt) Ltd,', 'footer'),

@@ -83,6 +83,14 @@ function field_groups(): array
                 'cta_bg_image'  => ['Background Image', 'image'],
             ],
         ],
+        'maintenance' => [
+            'title'  => 'Maintenance Mode',
+            'fields' => [
+                'maintenance_mode'    => ['Enable Maintenance Mode', 'checkbox'],
+                'maintenance_title'   => ['Page Title', 'text'],
+                'maintenance_message' => ['Message shown to visitors', 'textarea'],
+            ],
+        ],
         'footer' => [
             'title'  => 'Footer',
             'fields' => [

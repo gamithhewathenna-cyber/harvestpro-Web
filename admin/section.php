@@ -18,7 +18,7 @@ $errors = [];
 $pageMap = [
   'branding' => 'branding', 'hero' => 'hero', 'ticker' => 'ticker',
   'why' => 'why', 'features' => 'features_head', 'how' => 'how',
-  'cta' => 'cta', 'footer' => 'footer',
+  'cta' => 'cta', 'maintenance' => 'maintenance', 'footer' => 'footer',
 ];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -84,6 +84,12 @@ require __DIR__ . '/header.php';
       <?php elseif ($type === 'list'): ?>
         <input type="text" name="<?= e($key) ?>" value="<?= e($value) ?>">
         <small class="a-help">Separate each item with a vertical bar <code>|</code></small>
+
+      <?php elseif ($type === 'checkbox'): ?>
+        <label class="a-check">
+          <input type="checkbox" name="<?= e($key) ?>" value="1" <?= $value === '1' ? 'checked' : '' ?>>
+          Enabled
+        </label>
 
       <?php elseif ($type === 'image'): ?>
         <div class="a-image-field">
