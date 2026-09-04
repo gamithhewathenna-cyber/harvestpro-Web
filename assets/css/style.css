@@ -44,7 +44,7 @@ ul { list-style: none; }
 .section { padding: 90px 0; }
 
 /* ---------- Serif display helper ---------- */
-.hero-title, .why-heading, .features-title, .how-title, .cta-title, .demo-box h2 {
+.hero-title, .why-heading, .features-title, .how-title, .cta-title, .demo-box h2, .page-banner h1 {
   font-family: 'Fraunces', Georgia, serif;
   font-weight: 500;
   line-height: 1.08;
