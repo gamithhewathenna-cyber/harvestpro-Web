@@ -77,7 +77,7 @@ if (in_array($page, HOMEPAGE_TABS, true)) {
         <input type="text" name="<?= e($key) ?>" value="<?= e($value) ?>">
 
       <?php elseif ($type === 'textarea' || $type === 'credit' || $type === 'checklist'): ?>
-        <textarea name="<?= e($key) ?>" rows="<?= $type==='textarea'?3:4 ?>"><?= e($value) ?></textarea>
+        <textarea name="<?= e($key) ?>" rows="<?= $type==='textarea'?5:4 ?>"><?= e($value) ?></textarea>
         <?php if ($type === 'checklist'): ?>
           <small class="a-help">One item per line. Text before the <code>|</code> shows in bold. Example: <code>Centralized|plantation management</code></small>
         <?php elseif ($type === 'credit'): ?>
