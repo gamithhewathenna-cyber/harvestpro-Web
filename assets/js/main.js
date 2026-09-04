@@ -22,7 +22,14 @@
   var sections = ['home', 'about', 'features', 'contact'];
   var navAnchors = links ? links.querySelectorAll('a') : [];
 
-  window.addEventListener('scroll', function () {
+  // Sticky navbar: switch to a solid bar (and swap the logo) once scrolled
+  var navFixed = document.getElementById('navFixed');
+
+  function onScroll() {
+    if (navFixed) {
+      navFixed.classList.toggle('scrolled', window.scrollY > 30);
+    }
+
     var pos = window.scrollY + 120;
     var current = 'home';
     sections.forEach(function (id) {
@@ -33,5 +40,8 @@
       var href = a.getAttribute('href') || '';
       a.classList.toggle('active', href === '#' + current);
     });
-  }, { passive: true });
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 })();
