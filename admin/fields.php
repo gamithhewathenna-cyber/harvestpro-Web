@@ -13,7 +13,6 @@ function field_groups(): array
             'fields' => [
                 'brand_name'    => ['Brand Name', 'text'],
                 'brand_tagline' => ['Tagline', 'text'],
-                'brand_logo'    => ['Logo Image', 'image'],
             ],
         ],
         'hero' => [
@@ -94,6 +93,7 @@ function field_groups(): array
         'settings_logo' => [
             'title'  => 'Logo',
             'fields' => [
+                'brand_logo'       => ['Colour Logo', 'image'],
                 'brand_logo_white' => ['White Logo (used on dark backgrounds, e.g. the hero navbar)', 'image'],
             ],
         ],

@@ -80,7 +80,7 @@ of the page:
 
 | Section tab        | Controls |
 |--------------------|----------|
-| **Branding**       | Brand name, tagline, logo image |
+| **Branding**       | Brand name, tagline |
 | **Hero Section**   | Main headline, sub-text, buttons, background + dashboard images |
 | **Ticker Strip**   | The scrolling green strip of keywords |
 | **Why Section**    | Checklist, heading, paragraphs, stat badge, the two photos, button |
@@ -95,7 +95,7 @@ covers everything that isn't page content:
 
 | Settings section              | Controls |
 |--------------------------------|----------|
-| **Logo**                       | White logo variant, used on dark backgrounds (the hero navbar) |
+| **Logo**                       | Colour logo, plus a white logo variant used on dark backgrounds (the hero navbar) |
 | **Colour Theme**                | Primary + accent colour override for the whole site |
 | **Search Engine Visibility**    | Meta title, description, keywords, and a noindex toggle |
 | **Maintenance Mode**            | Toggle a maintenance page for visitors (admins can still browse the live site) |
