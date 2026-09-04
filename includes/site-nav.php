@@ -2,7 +2,7 @@
 /**
  * Shared sticky navbar, included on every public page.
  * Expects $brandName, $brandLogoUrl, $brandLogoNavUrl and $activeNav
- * ('home' | 'features' | 'contact' | '') to already be set by the caller.
+ * ('home' | 'about' | 'features' | 'contact' | '') to already be set by the caller.
  */
 $activeNav = $activeNav ?? '';
 ?>
@@ -27,7 +27,7 @@ $activeNav = $activeNav ?? '';
 
     <ul class="nav-links" id="navLinks">
       <li><a href="index.php#home" class="<?= $activeNav === 'home' ? 'active' : '' ?>">Home</a></li>
-      <li><a href="#">About Us</a></li>
+      <li><a href="about.php" class="<?= $activeNav === 'about' ? 'active' : '' ?>">About Us</a></li>
       <li><a href="index.php#features" class="<?= $activeNav === 'features' ? 'active' : '' ?>">Features</a></li>
       <li><a href="contact.php" class="<?= $activeNav === 'contact' ? 'active' : '' ?>">Contact Us</a></li>
     </ul>

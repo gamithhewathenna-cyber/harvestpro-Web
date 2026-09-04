@@ -367,6 +367,53 @@ ul { list-style: none; }
 .map-embed { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow); }
 .map-embed iframe { width: 100%; height: 420px; border: 0; display: block; }
 
+/* =========================== ABOUT PAGE =========================== */
+.about-story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: stretch; }
+.about-story-panel {
+  background: linear-gradient(160deg, var(--green-800), var(--green-600));
+  color: #fff; border-radius: var(--radius-lg); padding: 46px 44px;
+}
+.about-story-panel .pill { margin-bottom: 26px; }
+.about-story-panel h2 { font-size: 30px; margin-bottom: 18px; }
+.about-story-panel p { opacity: .92; font-size: 14.5px; line-height: 1.7; margin-bottom: 14px; }
+.about-story-boxes { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
+.about-story-box { background: rgba(255,255,255,.12); border-radius: 14px; padding: 20px; }
+.about-story-box h4 { font-size: 15px; margin-bottom: 8px; }
+.about-story-box p { font-size: 13px; opacity: .9; margin-bottom: 0; }
+.about-story-photo {
+  border-radius: var(--radius-lg); background-size: cover; background-position: center;
+  min-height: 380px; box-shadow: var(--shadow);
+}
+
+.partners-head { text-align: center; margin-bottom: 44px; }
+.partners-head .pill { margin: 0 auto 20px; }
+.partners-head h2 { font-size: 34px; line-height: 1.35; }
+.partners-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+.partner-card { background: #f0f1ef; border-radius: var(--radius); padding: 40px 36px; }
+.partner-logo { height: 34px; margin-bottom: 22px; display: block; }
+.partner-logo-fallback {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 44px; height: 44px; border-radius: 10px; margin-bottom: 22px;
+  background: var(--green-700); color: #fff; font-weight: 700; font-size: 15px;
+}
+.partner-card h3 { font-size: 21px; margin-bottom: 14px; }
+.partner-card p { color: var(--muted); font-size: 14px; line-height: 1.7; margin-bottom: 20px; }
+.partner-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+.partner-tag { background: var(--green-050); color: var(--green-800); font-size: 12.5px; font-weight: 500; padding: 8px 16px; border-radius: 40px; }
+.partners-footer { text-align: center; color: var(--muted); font-size: 14.5px; max-width: 780px; margin: 40px auto 0; line-height: 1.7; }
+
+.why-choose { background: linear-gradient(160deg, var(--green-800), var(--green-600)); color: #fff; }
+.why-choose .pill { margin-bottom: 26px; }
+.why-choose-title {
+  font-size: 32px; font-weight: 500;
+  display: flex; align-items: center; gap: 20px; margin-bottom: 36px;
+}
+.why-choose-title::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,.25); }
+.why-choose-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; }
+.why-choose-card { border: 1px solid rgba(255,255,255,.22); border-radius: 14px; padding: 22px 18px; }
+.why-choose-card h4 { font-size: 15px; margin-bottom: 10px; line-height: 1.35; }
+.why-choose-card p { font-size: 12.5px; opacity: .85; line-height: 1.6; }
+
 /* =========================== FOOTER =========================== */
 .footer { background: #fff; padding-top: 70px; }
 .footer-grid {
@@ -415,6 +462,10 @@ ul { list-style: none; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
   .contact-form-col { padding: 46px 36px; }
+  .about-story-grid { grid-template-columns: 1fr; }
+  .about-story-photo { min-height: 280px; }
+  .partners-grid { grid-template-columns: 1fr; }
+  .why-choose-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (max-width: 768px) {
@@ -445,6 +496,12 @@ ul { list-style: none; }
   .demo-form .form-row { grid-template-columns: 1fr; }
   .page-banner h1 { font-size: 32px; }
   .contact-form-inner h2 { font-size: 28px; }
+  .about-story-panel { padding: 34px 28px; }
+  .about-story-boxes { grid-template-columns: 1fr; }
+  .partners-head h2 { font-size: 26px; }
+  .partner-card { padding: 30px 26px; }
+  .why-choose-title { font-size: 26px; }
+  .why-choose-grid { grid-template-columns: 1fr 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
   .footer-bottom-inner { flex-direction: column; gap: 8px; text-align: center; }
   .footer-credit { text-align: center; }
@@ -456,6 +513,7 @@ ul { list-style: none; }
   .btn-primary { padding: 12px 24px; }
   .why-media { grid-template-columns: 1fr; }
   .cta { padding: 70px 0; }
+  .why-choose-grid { grid-template-columns: 1fr; }
 }
 
 /* Reduced motion */

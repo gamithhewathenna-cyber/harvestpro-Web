@@ -123,6 +123,66 @@ function field_groups(): array
                 'contact_map' => ['Address or Google Maps Embed URL', 'text'],
             ],
         ],
+        'about_banner' => [
+            'title'  => 'Page Banner',
+            'fields' => [
+                'about_title'        => ['Heading (one line per row; wrap a word in **word** for the gold accent)', 'textarea'],
+                'about_subtitle'     => ['Sub-text', 'textarea'],
+                'about_banner_image' => ['Background Image', 'image'],
+            ],
+        ],
+        'about_story' => [
+            'title'  => 'About Story',
+            'fields' => [
+                'about_story_badge'   => ['Badge Text', 'text'],
+                'about_story_title'   => ['Heading', 'text'],
+                'about_story_para_1'  => ['Paragraph 1', 'textarea'],
+                'about_story_para_2'  => ['Paragraph 2', 'textarea'],
+                'about_story_para_3'  => ['Paragraph 3', 'textarea'],
+                'about_vision_title'  => ['Vision Box Title', 'text'],
+                'about_vision_text'   => ['Vision Box Text', 'textarea'],
+                'about_mission_title' => ['Mission Box Title', 'text'],
+                'about_mission_text'  => ['Mission Box Text', 'textarea'],
+                'about_story_image'   => ['Photo', 'image'],
+            ],
+        ],
+        'about_partners' => [
+            'title'  => 'Development Partners',
+            'fields' => [
+                'about_partners_badge'  => ['Badge Text', 'text'],
+                'about_partners_title'  => ['Heading (one line per row)', 'textarea'],
+                'about_partner1_logo'   => ['Partner 1 Logo', 'image'],
+                'about_partner1_name'   => ['Partner 1 Name', 'text'],
+                'about_partner1_desc'   => ['Partner 1 Description', 'textarea'],
+                'about_partner1_tags'   => ['Partner 1 Tags (separate each with a | )', 'list'],
+                'about_partner2_logo'   => ['Partner 2 Logo', 'image'],
+                'about_partner2_name'   => ['Partner 2 Name', 'text'],
+                'about_partner2_desc'   => ['Partner 2 Description', 'textarea'],
+                'about_partner2_tags'   => ['Partner 2 Tags (separate each with a | )', 'list'],
+                'about_partners_footer' => ['Closing Line', 'textarea'],
+            ],
+        ],
+        'about_why' => [
+            'title'  => 'Why Choose',
+            'fields' => [
+                'about_why_badge' => ['Badge Text', 'text'],
+                'about_why_title' => ['Heading', 'text'],
+                'about_why_items' => ['Cards (one per line, use title|description )', 'checklist'],
+            ],
+        ],
+        'about_cta' => [
+            'title'  => 'Call To Action',
+            'fields' => [
+                'about_cta_kicker'    => ['Kicker Text', 'text'],
+                'about_cta_title'     => ['Heading', 'textarea'],
+                'about_cta_para'      => ['Paragraph', 'textarea'],
+                'about_cta_btn1_text' => ['Primary Button Text', 'text'],
+                'about_cta_btn1_link' => ['Primary Button Link', 'text'],
+                'about_cta_btn2_text' => ['Secondary Button Text', 'text'],
+                'about_cta_btn2_link' => ['Secondary Button Link', 'text'],
+                'about_cta_bg_image'  => ['Background Image', 'image'],
+            ],
+        ],
         'footer' => [
             'title'  => 'Footer',
             'fields' => [

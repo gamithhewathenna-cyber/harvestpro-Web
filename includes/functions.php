@@ -110,3 +110,40 @@ function map_embed_url(string $value): string
     }
     return 'https://maps.google.com/maps?q=' . rawurlencode($value) . '&output=embed';
 }
+
+/**
+ * Escape a heading and turn any **word** markers into a gold <span class="accent">,
+ * so admins can highlight a word or phrase from a plain-text field.
+ */
+function accent_markup(?string $value): string
+{
+    return preg_replace('/\*\*(.+?)\*\*/s', '<span class="accent">$1</span>', e($value));
+}
+
+/**
+ * accent_markup() plus <br>-joined line breaks — for a heading field where the
+ * admin also separates visual lines with newlines.
+ */
+function styled_heading(?string $value): string
+{
+    return nl2br(accent_markup($value));
+}
+
+/**
+ * Uppercase initials from a name's first words (e.g. "Creative Elements" -> "CE"),
+ * for a text-monogram fallback when no logo image has been uploaded.
+ */
+function initials(string $name, int $max = 2): string
+{
+    $out = '';
+    foreach (preg_split('/\s+/', trim($name)) as $word) {
+        if ($word === '') {
+            continue;
+        }
+        $out .= mb_strtoupper(mb_substr($word, 0, 1));
+        if (mb_strlen($out) >= $max) {
+            break;
+        }
+    }
+    return $out;
+}

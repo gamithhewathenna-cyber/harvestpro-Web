@@ -10,6 +10,7 @@ Built to run on standard **cPanel** shared hosting (PHP 7.4+ / 8.x, MySQL/MariaD
 ```
 harvestpro/
 ├── index.php            ← the public Home Page
+├── about.php             ← the public About Us page
 ├── contact.php          ← the public Contact Us page
 ├── submit.php           ← handles the demo-request / newsletter form
 ├── database.sql         ← import this into your MySQL database
@@ -45,7 +46,7 @@ harvestpro/
 - cPanel → **phpMyAdmin**.
 - Select the database you just created (left sidebar).
 - Click the **Import** tab → choose **`database.sql`** → **Go**.
-- You should see the tables `admins`, `settings`, `features`, `demo_requests` created.
+- You should see the tables `admins`, `settings`, `hero_slides`, `features`, `demo_requests` created.
 
 ### 4. Enter your credentials
 - Open **`includes/config.php`** (File Manager → right-click → Edit).
@@ -112,6 +113,19 @@ Also its own single scrolling page, **Contact Page**, controls the public
 | **Page Banner**       | Heading (with a gold accent line), sub-text, background image |
 | **Request Form**      | Form heading, sub-text, and the footnote under the Send button |
 | **Map**                | A plain address (auto-geocoded) or a full Google Maps "Embed a map" URL |
+
+And its own single scrolling page, **About Page**, controls the public `about.php` page:
+
+| About Page section        | Controls |
+|-----------------------------|----------|
+| **Page Banner**             | Heading (wrap any word in `**word**` for a gold accent), sub-text, background image |
+| **About Story**             | Badge, heading, 3 paragraphs, the Vision/Mission mini-boxes, and a photo |
+| **Development Partners**    | Badge, heading, and two partner cards (logo, name, description, tags) |
+| **Why Choose**               | Badge, heading, and the row of cards (one per line as `title\|description`) |
+| **Call To Action**           | Kicker, heading, paragraph, buttons, background image |
+
+Every image field on these pages ships with a placeholder image so the page looks
+complete out of the box — upload your own from the same field to replace it any time.
 
 The phone / email / address / social links shown on the Contact page are the
 same ones set in Footer, so you only maintain them in one place.

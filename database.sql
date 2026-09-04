@@ -115,6 +115,51 @@ INSERT INTO `settings` (`setting_key`, `setting_value`, `setting_group`) VALUES
 -- Contact page: map
 ('contact_map', '27/1, 1St Lane, Boralesgamuwa, Sri Lanka', 'contact'),
 
+-- About page: banner
+('about_title', 'Built for Plantations,\nby **Industry** & Technology Experts.', 'about'),
+('about_subtitle', 'Lorem ipsum dolor sit amet consectetur. Velit nulla leo in massa tincidunt nulla elementum nunc. In gravida dictumst in magnis elit morbi.', 'about'),
+('about_banner_image', '', 'about'),
+
+-- About page: story
+('about_story_badge', 'Our Story', 'about'),
+('about_story_title', 'About Harvest Pro', 'about'),
+('about_story_para_1', 'Harvest Pro was developed to address the growing operational challenges faced by plantation and tea estate managers.', 'about'),
+('about_story_para_2', 'Traditional estate management often relies on manual records, spreadsheets, and disconnected processes. Harvest Pro brings these activities together into a centralized digital platform that improves visibility, accuracy, and efficiency.', 'about'),
+('about_story_para_3', 'Our mission is to help plantations modernize their operations through technology, enabling managers to make better decisions while reducing administrative complexity.', 'about'),
+('about_vision_title', 'Our Vision', 'about'),
+('about_vision_text', 'To become the leading plantation management platform that empowers estates through digital transformation and data-driven decision-making.', 'about'),
+('about_mission_title', 'Our Mission', 'about'),
+('about_mission_text', 'To simplify plantation operations by providing innovative tools that improve productivity, workforce management, and operational performance.', 'about'),
+('about_story_image', '', 'about'),
+
+-- About page: development partners
+('about_partners_badge', 'Platform Features', 'about'),
+('about_partners_title', 'Developed by Two Experts,\nUnited by One Goal', 'about'),
+('about_partner1_logo', '', 'about'),
+('about_partner1_name', 'Creative Elements (Pvt) Ltd', 'about'),
+('about_partner1_desc', 'Bringing expertise in user experience, business strategy, branding, and digital solutions. Creative Elements ensures Harvest Pro is intuitive, impactful, and truly aligned to user needs.', 'about'),
+('about_partner1_tags', 'Digital Transformation|UX & Product Strategy|Branding & Innovation', 'about'),
+('about_partner2_logo', '', 'about'),
+('about_partner2_name', 'Kode Tech (Pvt) Ltd', 'about'),
+('about_partner2_desc', 'Specializing in software engineering, system architecture, and technology innovation. Kode Tech builds the scalable, reliable backbone that powers everything Harvest Pro does.', 'about'),
+('about_partner2_tags', 'Software Development|System Architecture|Cloud & Technology Solutions', 'about'),
+('about_partners_footer', 'Together, we are committed to building smarter solutions that help plantations grow, operate efficiently, and embrace the future of digital estate management', 'about'),
+
+-- About page: why choose
+('about_why_badge', 'Why Choose', 'about'),
+('about_why_title', 'Why Choose Harvest Pro', 'about'),
+('about_why_items', 'Plantation-focused solution|Lorem ipsum dolor sit amet consectetur. Amet diam sapien duis tellus nisl eu.\nEasy-to-use interface|Lorem ipsum dolor sit amet consectetur. Amet diam sapien duis tellus nisl eu.\nReal-time operational insights|Lorem ipsum dolor sit amet consectetur. Amet diam sapien duis tellus nisl eu.\nScalable for small and large estates|Lorem ipsum dolor sit amet consectetur. Amet diam sapien duis tellus nisl eu.\nContinuous innovation and support|Lorem ipsum dolor sit amet consectetur. Amet diam sapien duis tellus nisl eu.', 'about'),
+
+-- About page: CTA
+('about_cta_kicker', 'Harvest Pro — Grow Smarter. Manage Better.', 'about'),
+('about_cta_title', 'Ready to Transform Your Plantation Operations?', 'about'),
+('about_cta_para', 'Take control of your plantation with a smarter management solution built for modern estates. Harvest Pro provides the tools, insights, and automation needed to improve productivity and streamline daily operations.', 'about'),
+('about_cta_btn1_text', 'Request a Demo', 'about'),
+('about_cta_btn1_link', 'contact.php', 'about'),
+('about_cta_btn2_text', 'Contact Us', 'about'),
+('about_cta_btn2_link', 'contact.php', 'about'),
+('about_cta_bg_image', '', 'about'),
+
 -- Footer
 ('footer_about', 'Harvest Pro is a smart plantation management platform that simplifies workforce management, production tracking, payroll, field operations, and reporting – all in one place.', 'footer'),
 ('footer_company', 'Harvest Pro (Pvt) Ltd,', 'footer'),
