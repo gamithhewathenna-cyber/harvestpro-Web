@@ -25,6 +25,7 @@ $page  = $page ?? '';
       <p class="a-nav-label">Content</p>
       <a href="section.php?g=branding" class="<?= in_array($page, HOMEPAGE_TABS, true)?'active':'' ?>"><?= admin_icon('home') ?> Home Page</a>
       <p class="a-nav-label">Manage</p>
+      <a href="section.php?g=settings_logo" class="<?= in_array($page, SETTINGS_TABS, true)?'active':'' ?>"><?= admin_icon('settings') ?> Settings</a>
       <a href="section.php?g=maintenance" class="<?= $page==='maintenance'?'active':'' ?>"><?= admin_icon('wrench') ?> Maintenance Mode</a>
       <a href="requests.php" class="<?= $page==='requests'?'active':'' ?>"><?= admin_icon('inbox') ?> Demo Requests</a>
       <a href="account.php" class="<?= $page==='account'?'active':'' ?>"><?= admin_icon('user') ?> My Account</a>

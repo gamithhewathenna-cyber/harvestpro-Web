@@ -46,6 +46,17 @@ $features    = get_features();
 $brandName   = setting('brand_name', 'Harvest');
 $brandLogo   = setting('brand_logo', '');
 $brandLogoUrl= $brandLogo ? image_url('brand_logo') : '';
+$brandLogoWhite   = setting('brand_logo_white', '');
+// Navbar sits on the dark hero background — prefer the white logo there, falling back to the regular logo.
+$brandLogoNavUrl  = $brandLogoWhite ? image_url('brand_logo_white') : $brandLogoUrl;
+
+$themePrimary = setting('theme_primary_color', '');
+$themeAccent  = setting('theme_accent_color', '');
+
+$seoTitle       = setting('seo_title', '');
+$seoDescription = setting('seo_description', '');
+$seoKeywords    = setting('seo_keywords', '');
+$seoNoindex     = setting('seo_noindex') === '1';
 
 // Ticker items
 $tickerItems = array_filter(array_map('trim', explode('|', setting('ticker_items'))));
@@ -70,12 +81,34 @@ $ctaBg         = image_url('cta_bg_image', 'assets/images/cta-bg.jpg');
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title><?= e($brandName) ?> Pro — Smarter Plantation Management</title>
-<meta name="description" content="<?= e(setting('hero_subtitle')) ?>">
+<title><?= e($seoTitle !== '' ? $seoTitle : $brandName . ' Pro — Smarter Plantation Management') ?></title>
+<meta name="description" content="<?= e($seoDescription !== '' ? $seoDescription : setting('hero_subtitle')) ?>">
+<?php if ($seoKeywords !== ''): ?>
+<meta name="keywords" content="<?= e($seoKeywords) ?>">
+<?php endif; ?>
+<meta name="robots" content="<?= $seoNoindex ? 'noindex, nofollow' : 'index, follow' ?>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css?v=1.0">
+<?php if ($themePrimary !== '' || $themeAccent !== ''): ?>
+<style>
+:root {
+<?php if ($themePrimary !== ''): ?>
+  --green-900: color-mix(in srgb, <?= e($themePrimary) ?> 65%, black);
+  --green-800: color-mix(in srgb, <?= e($themePrimary) ?> 80%, black);
+  --green-700: color-mix(in srgb, <?= e($themePrimary) ?> 92%, black);
+  --green-600: <?= e($themePrimary) ?>;
+  --green-500: color-mix(in srgb, <?= e($themePrimary) ?> 82%, white);
+  --green-050: color-mix(in srgb, <?= e($themePrimary) ?> 8%, white);
+<?php endif; ?>
+<?php if ($themeAccent !== ''): ?>
+  --gold: <?= e($themeAccent) ?>;
+  --gold-soft: color-mix(in srgb, <?= e($themeAccent) ?> 85%, white);
+<?php endif; ?>
+}
+</style>
+<?php endif; ?>
 </head>
 <body>
 
@@ -83,8 +116,8 @@ $ctaBg         = image_url('cta_bg_image', 'assets/images/cta-bg.jpg');
 <header class="hero" id="home" style="background-image:linear-gradient(rgba(10,30,15,.35),rgba(10,30,15,.55)),url('<?= e($heroBg) ?>');">
   <nav class="navbar">
     <a href="#home" class="brand">
-      <?php if ($brandLogoUrl): ?>
-        <img src="<?= e($brandLogoUrl) ?>" alt="<?= e($brandName) ?>">
+      <?php if ($brandLogoNavUrl): ?>
+        <img src="<?= e($brandLogoNavUrl) ?>" alt="<?= e($brandName) ?>">
       <?php else: ?>
         <span class="brand-mark"><?= e($brandName) ?></span>
       <?php endif; ?>

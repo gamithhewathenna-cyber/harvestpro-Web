@@ -11,6 +11,9 @@ require_once dirname(__DIR__) . '/includes/functions.php';
 /* Page keys that belong to the single "Home Page" tab (sidebar highlight + tab bar) */
 const HOMEPAGE_TABS = ['branding', 'hero', 'ticker', 'why', 'features_head', 'features', 'how', 'cta', 'footer'];
 
+/* Page keys that belong to the single "Settings" tab (sidebar highlight + tab bar) */
+const SETTINGS_TABS = ['settings_logo', 'theme', 'seo'];
+
 function require_login(): void
 {
     if (empty($_SESSION['admin_id'])) {

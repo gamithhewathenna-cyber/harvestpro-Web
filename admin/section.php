@@ -19,6 +19,7 @@ $pageMap = [
   'branding' => 'branding', 'hero' => 'hero', 'ticker' => 'ticker',
   'why' => 'why', 'features' => 'features_head', 'how' => 'how',
   'cta' => 'cta', 'maintenance' => 'maintenance', 'footer' => 'footer',
+  'settings_logo' => 'settings_logo', 'theme' => 'theme', 'seo' => 'seo',
 ];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -35,6 +36,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     save_setting($pdo, $key, '');
                 }
                 // else: keep existing value
+            } elseif ($type === 'color') {
+                if (!empty($_POST['remove_' . $key])) {
+                    save_setting($pdo, $key, '');
+                } else {
+                    $val = $_POST[$key] ?? '';
+                    if (preg_match('/^#[0-9a-fA-F]{6}$/', $val)) {
+                        save_setting($pdo, $key, $val);
+                    }
+                }
             } else {
                 $val = $_POST[$key] ?? '';
                 // Normalise CR/LF for textareas/lists
@@ -58,6 +68,8 @@ foreach ($rows as $r) { $fresh[$r['setting_key']] = $r['setting_value']; }
 require __DIR__ . '/header.php';
 if (in_array($page, HOMEPAGE_TABS, true)) {
     require __DIR__ . '/homepage-tabs.php';
+} elseif (in_array($page, SETTINGS_TABS, true)) {
+    require __DIR__ . '/settings-tabs.php';
 }
 ?>
 
@@ -93,6 +105,14 @@ if (in_array($page, HOMEPAGE_TABS, true)) {
           <input type="checkbox" name="<?= e($key) ?>" value="1" <?= $value === '1' ? 'checked' : '' ?>>
           Enabled
         </label>
+
+      <?php elseif ($type === 'color'): ?>
+        <div class="a-color-field">
+          <input type="color" name="<?= e($key) ?>" value="<?= e($value !== '' ? $value : '#1c6b34') ?>">
+          <?php if ($value !== ''): ?>
+            <label class="a-remove"><input type="checkbox" name="remove_<?= e($key) ?>" value="1"> Reset to default</label>
+          <?php endif; ?>
+        </div>
 
       <?php elseif ($type === 'image'): ?>
         <div class="a-image-field">

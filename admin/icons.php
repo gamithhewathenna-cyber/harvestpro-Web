@@ -18,6 +18,7 @@ function admin_icon(string $name, int $size = 18): string
         'file'      => '<rect x="4" y="2" width="12" height="16" rx="1.5"/><line x1="7" y1="6.5" x2="13" y2="6.5"/><line x1="7" y1="10" x2="13" y2="10"/><line x1="7" y1="13.5" x2="10.5" y2="13.5"/>',
         'plus'      => '<line x1="10" y1="3.5" x2="10" y2="16.5"/><line x1="3.5" y1="10" x2="16.5" y2="10"/>',
         'trash'     => '<polyline points="3,5.5 17,5.5"/><path d="M7 5.5V4a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 13 4v1.5"/><path d="M5.5 5.5 6.2 17a1.2 1.2 0 0 0 1.2 1h5.2a1.2 1.2 0 0 0 1.2-1l0.7-11.5"/>',
+        'settings'  => '<circle cx="10" cy="10" r="2.6"/><path d="M10 2.5v2.3M10 15.2v2.3M17.5 10h-2.3M4.8 10H2.5M15.1 4.9l-1.6 1.6M6.5 13.5l-1.6 1.6M15.1 15.1l-1.6-1.6M6.5 6.5 4.9 4.9"/>',
     ];
     if (!isset($shapes[$name])) {
         return '';

@@ -98,6 +98,19 @@ INSERT INTO `settings` (`setting_key`, `setting_value`, `setting_group`) VALUES
 ('maintenance_title', 'We''ll be right back', 'maintenance'),
 ('maintenance_message', 'We''re currently performing scheduled maintenance. Please check back shortly.', 'maintenance'),
 
+-- Settings: Logo
+('brand_logo_white', '', 'settings'),
+
+-- Settings: Colour Theme
+('theme_primary_color', '', 'settings'),
+('theme_accent_color', '', 'settings'),
+
+-- Settings: Search Engine Visibility
+('seo_title', '', 'settings'),
+('seo_description', '', 'settings'),
+('seo_keywords', '', 'settings'),
+('seo_noindex', '0', 'settings'),
+
 -- Footer
 ('footer_about', 'Harvest Pro is a smart plantation management platform that simplifies workforce management, production tracking, payroll, field operations, and reporting – all in one place.', 'footer'),
 ('footer_company', 'Harvest Pro (Pvt) Ltd,', 'footer'),

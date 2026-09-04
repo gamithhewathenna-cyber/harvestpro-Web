@@ -110,6 +110,13 @@ a { color: var(--green); text-decoration: none; }
 .a-check { display: flex; align-items: center; gap: 8px; font-size: 14px; margin-bottom: 18px; }
 .a-actions { margin-top: 8px; }
 
+/* color field */
+.a-color-field { display: flex; align-items: center; gap: 12px; }
+.a-color-field input[type=color] {
+  width: 52px; height: 42px; padding: 3px; border: 1px solid var(--line); border-radius: var(--radius-sm); cursor: pointer; background: #fff;
+}
+.a-color-field .a-remove { margin-top: 0; }
+
 /* image field */
 .a-image-field { border: 1px dashed var(--line); border-radius: var(--radius-sm); padding: 16px; }
 .a-thumb { margin-bottom: 12px; }

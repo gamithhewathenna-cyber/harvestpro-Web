@@ -91,6 +91,28 @@ function field_groups(): array
                 'maintenance_message' => ['Message shown to visitors', 'textarea'],
             ],
         ],
+        'settings_logo' => [
+            'title'  => 'Logo',
+            'fields' => [
+                'brand_logo_white' => ['White Logo (used on dark backgrounds, e.g. the hero navbar)', 'image'],
+            ],
+        ],
+        'theme' => [
+            'title'  => 'Colour Theme',
+            'fields' => [
+                'theme_primary_color' => ['Primary Colour', 'color'],
+                'theme_accent_color'  => ['Accent Colour', 'color'],
+            ],
+        ],
+        'seo' => [
+            'title'  => 'Search Engine Visibility',
+            'fields' => [
+                'seo_title'       => ['Meta Title', 'text'],
+                'seo_description' => ['Meta Description', 'textarea'],
+                'seo_keywords'    => ['Meta Keywords (comma separated)', 'text'],
+                'seo_noindex'     => ['Discourage search engines from indexing this site', 'checkbox'],
+            ],
+        ],
         'footer' => [
             'title'  => 'Footer',
             'fields' => [
