@@ -63,8 +63,10 @@ $mapEmbed = map_embed_url(setting('contact_map', ''));
 <!-- ============================= PAGE BANNER ============================= -->
 <header class="page-banner" style="background-image:linear-gradient(rgba(10,20,12,.55),rgba(10,20,12,.7)),url('<?= e($cBannerBg) ?>');">
   <div class="container">
-    <h1><?= e($cTitle1) ?><br><span class="accent"><?= e($cTitle2) ?></span></h1>
-    <p><?= e($cSubtitle) ?></p>
+    <div class="page-banner-inner">
+      <h1><?= e($cTitle1) ?><br><span class="accent"><?= e($cTitle2) ?></span></h1>
+      <p><?= e($cSubtitle) ?></p>
+    </div>
   </div>
 </header>
 

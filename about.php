@@ -67,8 +67,10 @@ $aCtaBg = image_url('about_cta_bg_image', 'assets/images/cta-bg.jpg');
 <!-- ============================= PAGE BANNER ============================= -->
 <header class="page-banner" style="background-image:linear-gradient(rgba(10,20,12,.45),rgba(10,20,12,.65)),url('<?= e($aBannerBg) ?>');">
   <div class="container">
-    <h1><?= styled_heading($aTitle) ?></h1>
-    <p><?= e($aSubtitle) ?></p>
+    <div class="page-banner-inner">
+      <h1><?= styled_heading($aTitle) ?></h1>
+      <p><?= e($aSubtitle) ?></p>
+    </div>
   </div>
 </header>
 
