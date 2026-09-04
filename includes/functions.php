@@ -94,3 +94,19 @@ function get_hero_slides(): array
         "SELECT * FROM hero_slides WHERE is_active = 1 ORDER BY sort_order ASC, id ASC"
     )->fetchAll();
 }
+
+/**
+ * Turn a stored map value into an embeddable Google Maps iframe URL.
+ * Accepts either a plain address (geocoded via the no-API-key query embed)
+ * or a full Maps embed URL pasted from Google Maps' own "Embed a map" tool.
+ */
+function map_embed_url(string $value): string
+{
+    if ($value === '') {
+        return '';
+    }
+    if (preg_match('#^https?://#i', $value)) {
+        return $value;
+    }
+    return 'https://maps.google.com/maps?q=' . rawurlencode($value) . '&output=embed';
+}

@@ -101,6 +101,20 @@ INSERT INTO `settings` (`setting_key`, `setting_value`, `setting_group`) VALUES
 ('seo_keywords', '', 'settings'),
 ('seo_noindex', '0', 'settings'),
 
+-- Contact page: banner
+('contact_title_1', 'Ready to Modernize', 'contact'),
+('contact_title_2', 'your plantation operations?', 'contact'),
+('contact_subtitle', 'Contact our team to schedule a demonstration and learn how Harvest Pro can help improve productivity, workforce management, and operational efficiency.', 'contact'),
+('contact_banner_image', '', 'contact'),
+
+-- Contact page: form
+('contact_form_title', 'Request A Demo Today', 'contact'),
+('contact_form_subtitle', 'Discover how Harvest Pro can help you grow smarter and manage better.', 'contact'),
+('contact_form_note', '*We typically respond within one business day.', 'contact'),
+
+-- Contact page: map
+('contact_map', '27/1, 1St Lane, Boralesgamuwa, Sri Lanka', 'contact'),
+
 -- Footer
 ('footer_about', 'Harvest Pro is a smart plantation management platform that simplifies workforce management, production tracking, payroll, field operations, and reporting – all in one place.', 'footer'),
 ('footer_company', 'Harvest Pro (Pvt) Ltd,', 'footer'),
@@ -160,8 +174,10 @@ INSERT INTO `features` (`title`, `description`, `sort_order`) VALUES
 CREATE TABLE IF NOT EXISTS `demo_requests` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(150) NOT NULL,
+  `company` VARCHAR(150) DEFAULT NULL,
   `email` VARCHAR(150) NOT NULL,
   `phone` VARCHAR(50) DEFAULT NULL,
+  `estates` VARCHAR(50) DEFAULT NULL,
   `message` TEXT DEFAULT NULL,
   `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
