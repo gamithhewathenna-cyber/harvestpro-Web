@@ -77,7 +77,6 @@ ul { list-style: none; }
   position: relative;
   color: #fff; min-height: 640px;
   display: flex; flex-direction: column;
-  padding-top: 92px; /* reserves the space the now-fixed navbar used to occupy in-flow */
 }
 
 /* Sticky navbar: fixed to the viewport, transparent over the hero,
@@ -139,7 +138,9 @@ ul { list-style: none; }
 
 .hero-inner {
   width: 100%; max-width: 1320px; margin: 0 auto;
-  padding: 20px 40px 70px;
+  /* top padding clears the transparent overlay navbar so text never sits under it,
+     while the slide's own background image still runs full-bleed behind the nav */
+  padding: 112px 40px 70px;
 }
 .hero-content { max-width: 560px; }
 .hero-title { font-size: 58px; margin-bottom: 22px; }
@@ -366,7 +367,7 @@ ul { list-style: none; }
 @media (max-width: 768px) {
   .section { padding: 60px 0; }
   .navbar { padding: 18px 24px; }
-  .hero { padding-top: 84px; }
+  .hero-inner { padding-top: 104px; }
   .nav-toggle { display: flex; }
   .nav-links {
     position: absolute; top: 100%; left: 0; right: 0; margin-left: 0;
