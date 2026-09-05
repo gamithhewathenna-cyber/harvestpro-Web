@@ -94,10 +94,11 @@ function field_groups(): array
         'seo' => [
             'title'  => 'Search Engine Visibility',
             'fields' => [
-                'seo_title'       => ['Meta Title', 'text'],
-                'seo_description' => ['Meta Description', 'textarea'],
-                'seo_keywords'    => ['Meta Keywords (comma separated)', 'text'],
-                'seo_noindex'     => ['Discourage search engines from indexing this site', 'checkbox'],
+                'seo_title'                 => ['Meta Title', 'text'],
+                'seo_description'           => ['Meta Description', 'textarea'],
+                'seo_keywords'              => ['Meta Keywords (comma separated)', 'text'],
+                'google_site_verification'  => ['Google Search Console Verification Code', 'text'],
+                'seo_noindex'               => ['Discourage search engines from indexing this site', 'checkbox'],
             ],
         ],
         'contact_banner' => [

@@ -178,7 +178,11 @@ function absolute_url(string $path): string
 function seo_meta_tags(string $path, string $title, string $description, string $image, string $siteName): void
 {
     $url = rtrim(BASE_URL, '/') . $path;
+    $googleVerify = setting('google_site_verification', '');
     ?>
+<?php if ($googleVerify !== ''): ?>
+<meta name="google-site-verification" content="<?= e($googleVerify) ?>">
+<?php endif; ?>
 <link rel="canonical" href="<?= e($url) ?>">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="<?= e($siteName) ?>">
