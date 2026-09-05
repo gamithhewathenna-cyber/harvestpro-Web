@@ -28,7 +28,7 @@ $activeNav = $activeNav ?? '';
     <ul class="nav-links" id="navLinks">
       <li><a href="index.php#home" class="<?= $activeNav === 'home' ? 'active' : '' ?>">Home</a></li>
       <li><a href="about.php" class="<?= $activeNav === 'about' ? 'active' : '' ?>">About Us</a></li>
-      <li><a href="index.php#features" class="<?= $activeNav === 'features' ? 'active' : '' ?>">Features</a></li>
+      <li><a href="features.php" class="<?= $activeNav === 'features' ? 'active' : '' ?>">Features</a></li>
       <li><a href="contact.php" class="<?= $activeNav === 'contact' ? 'active' : '' ?>">Contact Us</a></li>
     </ul>
 

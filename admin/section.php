@@ -5,8 +5,9 @@ require_once __DIR__ . '/fields.php';
 
 $groups = field_groups();
 
-/* Home Page, About Page and Contact Page content groups all route through this
-   page (each with its own tab bar). Settings lives on its own scrolling page. */
+/* Home Page, About Page, Contact Page and Features Page content groups all
+   route through this page (each with its own tab bar). Settings lives on its
+   own scrolling page. */
 $pageMap = [
   'branding' => 'branding', 'ticker' => 'ticker',
   'why' => 'why', 'features' => 'features_head', 'how' => 'how',
@@ -14,6 +15,7 @@ $pageMap = [
   'about_banner' => 'about_banner', 'about_story' => 'about_story',
   'about_partners' => 'about_partners', 'about_why' => 'about_why', 'about_cta' => 'about_cta',
   'contact_banner' => 'contact_banner', 'contact_form' => 'contact_form', 'contact_map' => 'contact_map',
+  'features_banner' => 'features_banner',
 ];
 
 $g = $_GET['g'] ?? 'hero';
@@ -53,6 +55,8 @@ if (in_array($page, HOMEPAGE_TABS, true)) {
     require __DIR__ . '/about-tabs.php';
 } elseif (in_array($page, CONTACT_TABS, true)) {
     require __DIR__ . '/contact-tabs.php';
+} elseif (in_array($page, FEATURES_PAGE_TABS, true)) {
+    require __DIR__ . '/features-tabs.php';
 }
 ?>
 

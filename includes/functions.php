@@ -96,6 +96,17 @@ function get_hero_slides(): array
 }
 
 /**
+ * Fetch active feature page sections, ordered.
+ */
+function get_feature_sections(): array
+{
+    global $pdo;
+    return $pdo->query(
+        "SELECT * FROM feature_sections WHERE is_active = 1 ORDER BY sort_order ASC, id ASC"
+    )->fetchAll();
+}
+
+/**
  * Turn a stored map value into an embeddable Google Maps iframe URL.
  * Accepts either a plain address (geocoded via the no-API-key query embed)
  * or a full Maps embed URL pasted from Google Maps' own "Embed a map" tool.

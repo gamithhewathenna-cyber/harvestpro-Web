@@ -17,6 +17,9 @@ const ABOUT_TABS = ['about_banner', 'about_story', 'about_partners', 'about_why'
 /* Page keys that belong to the single "Contact Page" tab (sidebar highlight + tab bar) */
 const CONTACT_TABS = ['contact_banner', 'contact_form', 'contact_map'];
 
+/* Page keys that belong to the single "Features Page" tab (sidebar highlight + tab bar) */
+const FEATURES_PAGE_TABS = ['features_banner', 'feature_sections'];
+
 function require_login(): void
 {
     if (empty($_SESSION['admin_id'])) {

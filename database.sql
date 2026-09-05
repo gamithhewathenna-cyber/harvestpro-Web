@@ -61,10 +61,16 @@ INSERT INTO `settings` (`setting_key`, `setting_value`, `setting_group`) VALUES
 ('why_image_1', '', 'why'),
 ('why_image_2', '', 'why'),
 
--- Features section
+-- Features section (homepage teaser)
 ('features_badge', 'Key Features', 'features'),
 ('features_title_1', 'Powerful Tools for', 'features'),
 ('features_title_2', 'Modern Plantation Management', 'features'),
+
+-- Features page: banner
+('features_page_title', 'Everything You Need to Manage Your Tea Estate', 'features_page'),
+('features_page_para_1', 'From workforce management and daily field operations to harvesting, payments, expenses, and reporting, the platform brings your essential tea estate operations together in one simple system.', 'features_page'),
+('features_page_para_2', 'Manage multiple estates and sections, track daily activities, monitor costs, and get a clearer view of your estate''s performance from anywhere.', 'features_page'),
+('features_page_bg_image', '', 'features_page'),
 
 -- How It Helps section
 ('how_badge', 'How It Helps', 'how'),
@@ -212,6 +218,118 @@ INSERT INTO `features` (`title`, `description`, `sort_order`) VALUES
 ('Field Activity Monitoring', 'Track fertilizer applications, spraying schedules, maintenance work, and other estate activities.', 4),
 ('Performance Reporting', 'Generate detailed reports for management and operational analysis.', 5),
 ('Multi-Estate Management', 'Manage multiple estates from a single dashboard.', 6);
+
+-- -------------------------------------------------------------
+-- Table: feature_sections  (repeatable alternating text/image sections
+-- on the dedicated Features page)
+-- -------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `feature_sections` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `kicker` VARCHAR(150) DEFAULT NULL,
+  `title` VARCHAR(255) NOT NULL,
+  `intro` TEXT DEFAULT NULL,
+  `body` TEXT DEFAULT NULL,
+  `list1_heading` VARCHAR(150) DEFAULT NULL,
+  `list1_items` TEXT DEFAULT NULL,
+  `list2_heading` VARCHAR(150) DEFAULT NULL,
+  `list2_items` TEXT DEFAULT NULL,
+  `note` TEXT DEFAULT NULL,
+  `image` VARCHAR(255) DEFAULT NULL,
+  `sort_order` INT(11) NOT NULL DEFAULT 0,
+  `is_active` TINYINT(1) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `feature_sections`
+  (`kicker`, `title`, `intro`, `body`, `list1_heading`, `list1_items`, `list2_heading`, `list2_items`, `note`, `image`, `sort_order`)
+VALUES
+('Workforce Management', 'Manage Your Workforce with Ease',
+ 'Keep your permanent and casual workforce organised with centralised worker profiles and simple daily work allocation.',
+ 'Register workers with their essential information, assign them to estates and sections, and record their daily work and output in one place.',
+ 'Key Features', 'Worker registration and profiles\nPermanent and casual worker support\nAssign workers by estate and section\nDaily task assignments\nAssign work by work type\nRecord output in KG, hours, or units\nActive and inactive worker management',
+ '', '',
+ 'The system supports worker details including name, ID, NIC, phone number, gender, assigned estates, and work categories.',
+ '', 1),
+
+('Daily Task & Output Management', 'Know What Work Is Happening Every Day',
+ 'Create daily assignments for workers and maintain a clear record of work completed across your estate.',
+ 'Supervisors can select the estate, section, work type, worker, and quantity completed, helping management maintain accurate operational records.',
+ 'Track work such as:', 'Tea plucking\nWeeding\nClearing\nOther configurable estate activities',
+ '', 'KG-based work\nHourly work\nUnit-based work',
+ 'Work types and rates can be configured according to the estate''s requirements.',
+ '', 2),
+
+('Payroll & Payments', 'Turn Daily Work into Accurate Payments',
+ 'Reduce manual calculations by connecting recorded fieldwork directly with worker payments.',
+ 'The system automatically calculates pay using the configured rate and completed quantity, making it easier to manage both output-based and other types of fieldwork.',
+ 'Key Features', 'Automatic pay calculation\nRate x quantity calculation\nKG/output-based payments\nHourly and fixed-unit work support\nPending payment tracking\nPartial payment tracking\nPaid status tracking\nWorker payment reports\nPay-slip reports\nPDF and Excel exports',
+ '', '',
+ 'Full Payroll Dashboard — Coming Soon|While payment calculations and reports are already available, the dedicated full payroll dashboard is an upcoming feature.',
+ '', 3),
+
+('Harvest Tracking', 'Track Every Kilogram of Green Leaf',
+ 'Maintain accurate daily harvesting records and understand how different sections and estates are performing.',
+ 'Harvest information is recorded through daily worker assignments and can be viewed through dashboards and reports.',
+ 'Key Features', 'Daily green leaf KG recording\nWorker-level harvest output\nSection-wise harvest monitoring\nEstate-wise harvest monitoring\nHistorical harvest summaries\nHarvest performance reporting\nTop-worker visibility',
+ '', '',
+ 'This feature focuses specifically on field harvesting and green leaf KG, rather than factory tea-production processes.',
+ '', 4),
+
+('Estate & Section Management', 'Manage Multiple Estates from One System',
+ 'Organise your operations around the way your tea business actually works.',
+ 'Create and manage multiple estates and divide them into sections so that workforce activities, harvesting, expenses, and other operational information can be recorded against the correct location.',
+ 'Key Features', 'Multi-estate management\nSection management\nAssign workers to estates\nSection-based work assignments\nEstate and section performance tracking\nCentralised operational visibility',
+ '', '',
+ 'Estate and section management forms a core part of the platform rather than functioning as a simple secondary setting.',
+ '', 5),
+
+('Fertilizer & Field Activity Tracking', 'Stay Ahead of Important Field Activities',
+ 'Keep important fertilizer applications and recurring estate activities organised.',
+ 'Record fertilizer applications and use next-cycle reminders to help ensure important field activities aren''t overlooked.',
+ 'Key Features', 'Fertilizer application tracking\nSection-based records\nNext-cycle reminders\nCalendar reminders\nField activity planning',
+ '', '',
+ 'This gives estate managers visibility beyond harvesting and helps organise recurring field operations.',
+ '', 6),
+
+('Expenses & Cost Control', 'Understand Where Your Estate Is Spending',
+ 'Record operational expenses against estates and sections to maintain a clearer picture of costs across the business.',
+ 'Create your own expense categories and distinguish between company-paid and worker-paid costs.',
+ 'Key Features', 'Estate expense logging\nSection expense logging\nCustom expense categories\nCompany-paid costs\nWorker-paid costs\nExpense reports\nCost breakdowns',
+ '', '',
+ 'This allows management to review operational spending alongside workforce and harvest information.',
+ '', 7),
+
+('Reports & Insights', 'Turn Daily Estate Data into Useful Information',
+ 'Get a clearer understanding of your operations through dashboards and downloadable reports.',
+ 'Instead of relying on scattered records, management can access information covering assignments, payments, expenses, and harvesting from one system.',
+ 'Available Reporting Areas', 'Daily assignments\nWorker payments\nExpenses\nHarvest\nEstate and section performance',
+ 'Reporting Features', 'English reports\nSinhala reports\nPDF export\nExcel export',
+ 'The platform currently supports four key reporting areas: assignments, payments, expenses, and harvest.',
+ '', 8),
+
+('Operations Dashboard', 'Your Estate at a Glance',
+ 'See the important areas of your estate operations from one central dashboard.',
+ 'Monitor workforce activity, harvesting, payments, expenses, and operational performance without having to go through individual records.',
+ 'Dashboard Insights', 'Worker information\nHarvest information\nPayroll/payment information\nExpense information\nEstate performance\nSection performance',
+ '', '',
+ 'The dashboard is designed to give management a quick operational overview of the estate.',
+ '', 9),
+
+('Live TV Dashboard', 'Keep Your Team Informed in Real Time',
+ 'Display important estate information on a dedicated TV screen in your office or operational area.',
+ 'The Live TV Dashboard provides an easy way for management and teams to view key estate information on a larger screen without navigating through the main system.',
+ 'Ideal for', 'Estate offices\nManagement areas\nOperational displays\nDaily performance visibility',
+ '', '',
+ 'Live TV display is already included among the platform''s current reporting and insight capabilities.',
+ '', 10),
+
+('User Roles & Access', 'Give the Right Access to the Right People',
+ 'Different members of an estate team have different responsibilities. Role-based access helps organise system access according to each person''s operational role.',
+ '',
+ 'Available Roles', 'Administrator\nPlanter\nSupervisor',
+ '', '',
+ 'This helps make the platform suitable for structured estate operations rather than functioning as a generic workforce application.',
+ '', 11);
 
 -- -------------------------------------------------------------
 -- Table: demo_requests  (form submissions / leads)

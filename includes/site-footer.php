@@ -22,7 +22,7 @@ $footerCredits = array_filter(array_map('trim', explode("\n", setting('footer_cr
       <ul>
         <li><a href="index.php#home">Home</a></li>
         <li><a href="about.php">About Us</a></li>
-        <li><a href="index.php#features">Features</a></li>
+        <li><a href="features.php">Features</a></li>
         <li><a href="contact.php">Contact Us</a></li>
       </ul>
     </div>

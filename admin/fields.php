@@ -123,6 +123,15 @@ function field_groups(): array
                 'contact_map' => ['Address or Google Maps Embed URL', 'text'],
             ],
         ],
+        'features_banner' => [
+            'title'  => 'Page Banner',
+            'fields' => [
+                'features_page_title'    => ['Heading', 'text'],
+                'features_page_para_1'   => ['Paragraph 1', 'textarea'],
+                'features_page_para_2'   => ['Paragraph 2', 'textarea'],
+                'features_page_bg_image' => ['Background Image', 'image'],
+            ],
+        ],
         'about_banner' => [
             'title'  => 'Page Banner',
             'fields' => [

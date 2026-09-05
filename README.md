@@ -11,6 +11,7 @@ Built to run on standard **cPanel** shared hosting (PHP 7.4+ / 8.x, MySQL/MariaD
 harvestpro/
 ├── index.php            ← the public Home Page
 ├── about.php             ← the public About Us page
+├── features.php          ← the public Features page
 ├── contact.php          ← the public Contact Us page
 ├── submit.php           ← handles the demo-request / newsletter form
 ├── database.sql         ← import this into your MySQL database
@@ -46,7 +47,7 @@ harvestpro/
 - cPanel → **phpMyAdmin**.
 - Select the database you just created (left sidebar).
 - Click the **Import** tab → choose **`database.sql`** → **Go**.
-- You should see the tables `admins`, `settings`, `hero_slides`, `features`, `demo_requests` created.
+- You should see the tables `admins`, `settings`, `hero_slides`, `features`, `feature_sections`, `demo_requests` created.
 
 ### 4. Enter your credentials
 - Open **`includes/config.php`** (File Manager → right-click → Edit).
@@ -105,8 +106,13 @@ covers everything that isn't page content:
 | **Search Engine Visibility**    | Meta title, description, keywords, and a noindex toggle |
 | **Maintenance Mode**            | Toggle a maintenance page for visitors (admins can still browse the live site) |
 
-**About Page** and **Contact Page** work the same way as Home Page — their own
-sidebar tab, with a horizontal section menu at the top:
+**About Page**, **Features Page** and **Contact Page** all work the same way as
+Home Page — their own sidebar tab, with a horizontal section menu at the top:
+
+| Features Page section  | Controls |
+|--------------------------|----------|
+| **Page Banner**          | Heading, two intro paragraphs, background image |
+| **Feature Sections**     | Add / edit / reorder / remove the alternating text-and-image sections (kicker, heading, two paragraphs, up to two bulleted lists, a closing note, and an image) |
 
 | About Page section        | Controls |
 |-----------------------------|----------|

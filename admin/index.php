@@ -39,6 +39,7 @@ require __DIR__ . '/header.php';
     <a href="features.php">Feature Cards</a> ·
     <a href="section.php?g=cta">Call To Action</a> ·
     <a href="section.php?g=about_banner">About Page</a> ·
+    <a href="feature-sections.php">Feature Sections</a> ·
     <a href="section.php?g=contact_banner">Contact Page</a> ·
     <a href="section.php?g=footer">Footer</a>
   </p>
