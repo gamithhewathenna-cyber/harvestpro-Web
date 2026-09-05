@@ -11,8 +11,10 @@ $brandLogoNavUrl = $brandLogoWhite ? image_url('brand_logo_white') : $brandLogoU
 $themePrimary = setting('theme_primary_color', '');
 $themeAccent  = setting('theme_accent_color', '');
 
-$seoTitle   = setting('seo_title', '');
-$seoNoindex = setting('seo_noindex') === '1';
+$seoTitle       = setting('about_seo_title', '');
+$seoDescription = setting('about_seo_description', '');
+$seoKeywords    = setting('about_seo_keywords', '');
+$seoNoindex     = setting('about_seo_noindex') === '1';
 
 $aTitle      = setting('about_title', "Built for Plantations,\nby **Industry** & Technology Experts.");
 $aSubtitle   = setting('about_subtitle', '');
@@ -29,7 +31,8 @@ $whyItems = array_filter(array_map('trim', explode("\n", setting('about_why_item
 
 $aCtaBg = image_url('about_cta_bg_image', 'assets/images/cta-bg.jpg');
 
-$pageTitle = 'About Us — ' . ($seoTitle !== '' ? $seoTitle : $brandName . ' Pro');
+$pageTitle = $seoTitle !== '' ? $seoTitle : 'About Us — ' . $brandName . ' Pro';
+$pageDesc  = $seoDescription !== '' ? $seoDescription : $aSubtitle;
 $pageImg   = absolute_url($aBannerBg);
 ?>
 <!DOCTYPE html>
@@ -38,9 +41,12 @@ $pageImg   = absolute_url($aBannerBg);
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title><?= e($pageTitle) ?></title>
-<meta name="description" content="<?= e($aSubtitle) ?>">
+<meta name="description" content="<?= e($pageDesc) ?>">
+<?php if ($seoKeywords !== ''): ?>
+<meta name="keywords" content="<?= e($seoKeywords) ?>">
+<?php endif; ?>
 <meta name="robots" content="<?= $seoNoindex ? 'noindex, nofollow' : 'index, follow' ?>">
-<?php seo_meta_tags('/about.php', $pageTitle, $aSubtitle, $pageImg, $brandName . ' Pro'); ?>
+<?php seo_meta_tags('/about.php', $pageTitle, $pageDesc, $pageImg, $brandName . ' Pro'); ?>
 <link rel="stylesheet" href="assets/css/style.css?v=1.0">
 <?php if ($themePrimary !== '' || $themeAccent !== ''): ?>
 <style>

@@ -11,8 +11,10 @@ $brandLogoNavUrl = $brandLogoWhite ? image_url('brand_logo_white') : $brandLogoU
 $themePrimary = setting('theme_primary_color', '');
 $themeAccent  = setting('theme_accent_color', '');
 
-$seoTitle       = setting('seo_title', '');
-$seoNoindex     = setting('seo_noindex') === '1';
+$seoTitle       = setting('contact_seo_title', '');
+$seoDescription = setting('contact_seo_description', '');
+$seoKeywords    = setting('contact_seo_keywords', '');
+$seoNoindex     = setting('contact_seo_noindex') === '1';
 
 $cTitle1    = setting('contact_title_1', 'Ready to Modernize');
 $cTitle2    = setting('contact_title_2', 'your plantation operations?');
@@ -25,7 +27,8 @@ $cFormNote     = setting('contact_form_note', '*We typically respond within one 
 
 $mapEmbed = map_embed_url(setting('contact_map', ''));
 
-$pageTitle = 'Contact Us — ' . ($seoTitle !== '' ? $seoTitle : $brandName . ' Pro');
+$pageTitle = $seoTitle !== '' ? $seoTitle : 'Contact Us — ' . $brandName . ' Pro';
+$pageDesc  = $seoDescription !== '' ? $seoDescription : $cSubtitle;
 $pageImg   = absolute_url($cBannerBg);
 ?>
 <!DOCTYPE html>
@@ -34,9 +37,12 @@ $pageImg   = absolute_url($cBannerBg);
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title><?= e($pageTitle) ?></title>
-<meta name="description" content="<?= e($cSubtitle) ?>">
+<meta name="description" content="<?= e($pageDesc) ?>">
+<?php if ($seoKeywords !== ''): ?>
+<meta name="keywords" content="<?= e($seoKeywords) ?>">
+<?php endif; ?>
 <meta name="robots" content="<?= $seoNoindex ? 'noindex, nofollow' : 'index, follow' ?>">
-<?php seo_meta_tags('/contact.php', $pageTitle, $cSubtitle, $pageImg, $brandName . ' Pro'); ?>
+<?php seo_meta_tags('/contact.php', $pageTitle, $pageDesc, $pageImg, $brandName . ' Pro'); ?>
 <link rel="stylesheet" href="assets/css/style.css?v=1.0">
 <?php if ($themePrimary !== '' || $themeAccent !== ''): ?>
 <style>

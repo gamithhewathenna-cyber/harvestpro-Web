@@ -95,6 +95,7 @@ of the page:
 | **How It Helps**   | Heading, paragraphs, and the grey tags |
 | **Call To Action** | Kicker, heading, paragraph, buttons, background image |
 | **Footer**         | About text, address, phone, email, social links, credits |
+| **SEO**            | This page's meta title, description, keywords, noindex |
 
 Separately in the sidebar, a single **Settings** page (one scrolling page, no tabs)
 covers everything that isn't page content:
@@ -103,16 +104,21 @@ covers everything that isn't page content:
 |--------------------------------|----------|
 | **Logo**                       | Colour logo, plus a white logo variant used on dark backgrounds (the hero navbar) |
 | **Colour Theme**                | Primary + accent colour override for the whole site |
-| **Search Engine Visibility**    | Meta title, description, keywords, and a noindex toggle |
+| **Search Engine Visibility**    | Just the Google Search Console verification code — site-wide, one value |
 | **Maintenance Mode**            | Toggle a maintenance page for visitors (admins can still browse the live site) |
 
 **About Page**, **Features Page** and **Contact Page** all work the same way as
-Home Page — their own sidebar tab, with a horizontal section menu at the top:
+Home Page — their own sidebar tab, with a horizontal section menu at the top.
+Every one of the four pages (Home included) ends with its own **SEO** tab —
+meta title, meta description, meta keywords, and a per-page noindex toggle —
+so each page can be tuned individually instead of sharing one set of tags.
+A noindexed page is also automatically left out of `/sitemap.xml`.
 
 | Features Page section  | Controls |
 |--------------------------|----------|
 | **Page Banner**          | Heading, two intro paragraphs, background image |
 | **Feature Sections**     | Add / edit / reorder / remove the alternating text-and-image sections (kicker, heading, two paragraphs, up to two bulleted lists, a closing note, and an image) |
+| **SEO**                  | This page's meta title, description, keywords, noindex |
 
 | About Page section        | Controls |
 |-----------------------------|----------|
@@ -121,12 +127,14 @@ Home Page — their own sidebar tab, with a horizontal section menu at the top:
 | **Development Partners**    | Badge, heading, and two partner cards (logo, name, description, tags) |
 | **Why Choose**               | Badge, heading, and the row of cards (one per line as `title\|description`) |
 | **Call To Action**           | Kicker, heading, paragraph, buttons, background image |
+| **SEO**                      | This page's meta title, description, keywords, noindex |
 
 | Contact Page section | Controls |
 |-----------------------|----------|
 | **Page Banner**       | Heading (with a gold accent line), sub-text, background image |
 | **Request Form**      | Form heading, sub-text, and the footnote under the Send button |
 | **Map**                | A plain address (auto-geocoded) or a full Google Maps "Embed a map" URL |
+| **SEO**                | This page's meta title, description, keywords, noindex |
 
 Every image field on these pages ships with a placeholder image so the page looks
 complete out of the box — upload your own from the same field to replace it any time.

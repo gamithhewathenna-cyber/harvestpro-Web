@@ -11,11 +11,13 @@ $groups = field_groups();
 $pageMap = [
   'branding' => 'branding', 'ticker' => 'ticker',
   'why' => 'why', 'features' => 'features_head', 'how' => 'how',
-  'cta' => 'cta', 'footer' => 'footer',
+  'cta' => 'cta', 'footer' => 'footer', 'home_seo' => 'home_seo',
   'about_banner' => 'about_banner', 'about_story' => 'about_story',
   'about_partners' => 'about_partners', 'about_why' => 'about_why', 'about_cta' => 'about_cta',
+  'about_seo' => 'about_seo',
   'contact_banner' => 'contact_banner', 'contact_form' => 'contact_form', 'contact_map' => 'contact_map',
-  'features_banner' => 'features_banner',
+  'contact_seo' => 'contact_seo',
+  'features_banner' => 'features_banner', 'features_seo' => 'features_seo',
 ];
 
 $g = $_GET['g'] ?? 'hero';

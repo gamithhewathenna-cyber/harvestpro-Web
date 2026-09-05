@@ -13,10 +13,10 @@ $brandLogoNavUrl  = $brandLogoWhite ? image_url('brand_logo_white') : $brandLogo
 $themePrimary = setting('theme_primary_color', '');
 $themeAccent  = setting('theme_accent_color', '');
 
-$seoTitle       = setting('seo_title', '');
-$seoDescription = setting('seo_description', '');
-$seoKeywords    = setting('seo_keywords', '');
-$seoNoindex     = setting('seo_noindex') === '1';
+$seoTitle       = setting('home_seo_title', '');
+$seoDescription = setting('home_seo_description', '');
+$seoKeywords    = setting('home_seo_keywords', '');
+$seoNoindex     = setting('home_seo_noindex') === '1';
 
 // Ticker items
 $tickerItems = array_filter(array_map('trim', explode('|', setting('ticker_items'))));

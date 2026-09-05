@@ -6,6 +6,7 @@
 $featuresPageTabs = [
     ['key' => 'features_banner',  'label' => 'Page Banner',       'href' => 'section.php?g=features_banner'],
     ['key' => 'feature_sections', 'label' => 'Feature Sections',  'href' => 'feature-sections.php'],
+    ['key' => 'features_seo',     'label' => 'SEO',               'href' => 'section.php?g=features_seo'],
 ];
 ?>
 <nav class="a-hometabs">

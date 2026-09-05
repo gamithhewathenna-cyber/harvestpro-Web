@@ -9,6 +9,7 @@ $aboutTabs = [
     ['key' => 'about_partners', 'label' => 'Development Partners', 'href' => 'section.php?g=about_partners'],
     ['key' => 'about_why',      'label' => 'Why Choose',           'href' => 'section.php?g=about_why'],
     ['key' => 'about_cta',      'label' => 'Call To Action',       'href' => 'section.php?g=about_cta'],
+    ['key' => 'about_seo',      'label' => 'SEO',                  'href' => 'section.php?g=about_seo'],
 ];
 ?>
 <nav class="a-hometabs">

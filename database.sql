@@ -101,12 +101,26 @@ INSERT INTO `settings` (`setting_key`, `setting_value`, `setting_group`) VALUES
 ('theme_primary_color', '', 'settings'),
 ('theme_accent_color', '', 'settings'),
 
--- Settings: Search Engine Visibility
-('seo_title', '', 'settings'),
-('seo_description', '', 'settings'),
-('seo_keywords', '', 'settings'),
+-- Settings: Search Engine Visibility (site-wide)
 ('google_site_verification', 'vaXiRQKZpTwzak12Ic9yvE5Gjfj3in1QjWKJyAqmtOg', 'settings'),
-('seo_noindex', '0', 'settings'),
+
+-- Per-page SEO
+('home_seo_title', '', 'seo'),
+('home_seo_description', '', 'seo'),
+('home_seo_keywords', '', 'seo'),
+('home_seo_noindex', '0', 'seo'),
+('about_seo_title', '', 'seo'),
+('about_seo_description', '', 'seo'),
+('about_seo_keywords', '', 'seo'),
+('about_seo_noindex', '0', 'seo'),
+('features_seo_title', '', 'seo'),
+('features_seo_description', '', 'seo'),
+('features_seo_keywords', '', 'seo'),
+('features_seo_noindex', '0', 'seo'),
+('contact_seo_title', '', 'seo'),
+('contact_seo_description', '', 'seo'),
+('contact_seo_keywords', '', 'seo'),
+('contact_seo_noindex', '0', 'seo'),
 
 -- Contact page: banner
 ('contact_title_1', 'Ready to Modernize', 'contact'),

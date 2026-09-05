@@ -94,11 +94,7 @@ function field_groups(): array
         'seo' => [
             'title'  => 'Search Engine Visibility',
             'fields' => [
-                'seo_title'                 => ['Meta Title', 'text'],
-                'seo_description'           => ['Meta Description', 'textarea'],
-                'seo_keywords'              => ['Meta Keywords (comma separated)', 'text'],
-                'google_site_verification'  => ['Google Search Console Verification Code', 'text'],
-                'seo_noindex'               => ['Discourage search engines from indexing this site', 'checkbox'],
+                'google_site_verification' => ['Google Search Console Verification Code', 'text'],
             ],
         ],
         'contact_banner' => [
@@ -207,6 +203,42 @@ function field_groups(): array
                 'footer_linkedin'  => ['LinkedIn URL', 'text'],
                 'footer_copyright' => ['Copyright Line', 'text'],
                 'footer_credit'    => ['Credit Lines (one per line)', 'credit'],
+            ],
+        ],
+        'home_seo' => [
+            'title'  => 'SEO',
+            'fields' => [
+                'home_seo_title'       => ['Meta Title', 'text'],
+                'home_seo_description' => ['Meta Description', 'textarea'],
+                'home_seo_keywords'    => ['Meta Keywords (comma separated)', 'text'],
+                'home_seo_noindex'     => ['Discourage search engines from indexing this page', 'checkbox'],
+            ],
+        ],
+        'about_seo' => [
+            'title'  => 'SEO',
+            'fields' => [
+                'about_seo_title'       => ['Meta Title', 'text'],
+                'about_seo_description' => ['Meta Description', 'textarea'],
+                'about_seo_keywords'    => ['Meta Keywords (comma separated)', 'text'],
+                'about_seo_noindex'     => ['Discourage search engines from indexing this page', 'checkbox'],
+            ],
+        ],
+        'features_seo' => [
+            'title'  => 'SEO',
+            'fields' => [
+                'features_seo_title'       => ['Meta Title', 'text'],
+                'features_seo_description' => ['Meta Description', 'textarea'],
+                'features_seo_keywords'    => ['Meta Keywords (comma separated)', 'text'],
+                'features_seo_noindex'     => ['Discourage search engines from indexing this page', 'checkbox'],
+            ],
+        ],
+        'contact_seo' => [
+            'title'  => 'SEO',
+            'fields' => [
+                'contact_seo_title'       => ['Meta Title', 'text'],
+                'contact_seo_description' => ['Meta Description', 'textarea'],
+                'contact_seo_keywords'    => ['Meta Keywords (comma separated)', 'text'],
+                'contact_seo_noindex'     => ['Discourage search engines from indexing this page', 'checkbox'],
             ],
         ],
     ];

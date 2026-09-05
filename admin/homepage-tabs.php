@@ -13,6 +13,7 @@ $homepageTabs = [
     ['key' => 'how',           'label' => 'How It Helps',     'href' => 'section.php?g=how'],
     ['key' => 'cta',           'label' => 'Call To Action',   'href' => 'section.php?g=cta'],
     ['key' => 'footer',        'label' => 'Footer',           'href' => 'section.php?g=footer'],
+    ['key' => 'home_seo',      'label' => 'SEO',              'href' => 'section.php?g=home_seo'],
 ];
 ?>
 <nav class="a-hometabs">

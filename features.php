@@ -11,8 +11,10 @@ $brandLogoNavUrl = $brandLogoWhite ? image_url('brand_logo_white') : $brandLogoU
 $themePrimary = setting('theme_primary_color', '');
 $themeAccent  = setting('theme_accent_color', '');
 
-$seoTitle   = setting('seo_title', '');
-$seoNoindex = setting('seo_noindex') === '1';
+$seoTitle       = setting('features_seo_title', '');
+$seoDescription = setting('features_seo_description', '');
+$seoKeywords    = setting('features_seo_keywords', '');
+$seoNoindex     = setting('features_seo_noindex') === '1';
 
 $fpTitle  = setting('features_page_title', 'Everything You Need to Manage Your Tea Estate');
 $fpPara1  = setting('features_page_para_1', '');
@@ -21,7 +23,8 @@ $fpBanner = image_url('features_page_bg_image', 'assets/images/hero-bg.jpg');
 
 $sections = get_feature_sections();
 
-$pageTitle = 'Features — ' . ($seoTitle !== '' ? $seoTitle : $brandName . ' Pro');
+$pageTitle = $seoTitle !== '' ? $seoTitle : 'Features — ' . $brandName . ' Pro';
+$pageDesc  = $seoDescription !== '' ? $seoDescription : $fpPara1;
 $pageImg   = absolute_url($fpBanner);
 ?>
 <!DOCTYPE html>
@@ -30,9 +33,12 @@ $pageImg   = absolute_url($fpBanner);
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title><?= e($pageTitle) ?></title>
-<meta name="description" content="<?= e($fpPara1) ?>">
+<meta name="description" content="<?= e($pageDesc) ?>">
+<?php if ($seoKeywords !== ''): ?>
+<meta name="keywords" content="<?= e($seoKeywords) ?>">
+<?php endif; ?>
 <meta name="robots" content="<?= $seoNoindex ? 'noindex, nofollow' : 'index, follow' ?>">
-<?php seo_meta_tags('/features.php', $pageTitle, $fpPara1, $pageImg, $brandName . ' Pro'); ?>
+<?php seo_meta_tags('/features.php', $pageTitle, $pageDesc, $pageImg, $brandName . ' Pro'); ?>
 <link rel="stylesheet" href="assets/css/style.css?v=1.0">
 <?php if ($themePrimary !== '' || $themeAccent !== ''): ?>
 <style>

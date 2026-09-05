@@ -9,16 +9,16 @@ if (session_status() === PHP_SESSION_NONE) {
 require_once dirname(__DIR__) . '/includes/functions.php';
 
 /* Page keys that belong to the single "Home Page" tab (sidebar highlight + tab bar) */
-const HOMEPAGE_TABS = ['branding', 'hero_slides', 'ticker', 'why', 'features_head', 'features', 'how', 'cta', 'footer'];
+const HOMEPAGE_TABS = ['branding', 'hero_slides', 'ticker', 'why', 'features_head', 'features', 'how', 'cta', 'footer', 'home_seo'];
 
 /* Page keys that belong to the single "About Page" tab (sidebar highlight + tab bar) */
-const ABOUT_TABS = ['about_banner', 'about_story', 'about_partners', 'about_why', 'about_cta'];
+const ABOUT_TABS = ['about_banner', 'about_story', 'about_partners', 'about_why', 'about_cta', 'about_seo'];
 
 /* Page keys that belong to the single "Contact Page" tab (sidebar highlight + tab bar) */
-const CONTACT_TABS = ['contact_banner', 'contact_form', 'contact_map'];
+const CONTACT_TABS = ['contact_banner', 'contact_form', 'contact_map', 'contact_seo'];
 
 /* Page keys that belong to the single "Features Page" tab (sidebar highlight + tab bar) */
-const FEATURES_PAGE_TABS = ['features_banner', 'feature_sections'];
+const FEATURES_PAGE_TABS = ['features_banner', 'feature_sections', 'features_seo'];
 
 function require_login(): void
 {

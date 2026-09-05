@@ -23,7 +23,7 @@ require __DIR__ . '/header.php';
   </a>
   <a href="section.php?g=branding" class="a-stat">
     <span class="a-stat-icon"><?= admin_icon('file', 20) ?></span>
-    <span class="a-stat-num">9</span>
+    <span class="a-stat-num">10</span>
     <span class="a-stat-label">Editable Sections</span>
   </a>
 </div>
