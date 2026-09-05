@@ -8,12 +8,12 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 // Only these pages may be the redirect target + anchor after submitting.
 $redirects = [
-    'index.php'   => '#demoForm',
+    'index.php'   => '',
     'contact.php' => '#contactForm',
 ];
 $redirect = $redirects[$_POST['redirect'] ?? ''] ?? null;
 $redirectPage = $redirect !== null ? $_POST['redirect'] : 'index.php';
-$redirectAnchor = $redirect ?? '#demoForm';
+$redirectAnchor = $redirect ?? '';
 
 // Newsletter subscription reuses the demo_requests table with a note
 $isNewsletter = isset($_POST['newsletter']);

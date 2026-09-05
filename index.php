@@ -222,48 +222,9 @@ $ctaBg         = image_url('cta_bg_image', 'assets/images/cta-bg.jpg');
       <h2 class="cta-title"><?= e(setting('cta_title')) ?></h2>
       <p class="cta-para"><?= e(setting('cta_para')) ?></p>
       <div class="cta-btns">
-        <a href="#demoForm" class="btn btn-primary"><?= e(setting('cta_btn1_text')) ?></a>
-        <a href="#demoForm" class="btn btn-text light"><?= e(setting('cta_btn2_text')) ?> <span>&rarr;</span></a>
+        <a href="contact.php" class="btn btn-primary"><?= e(setting('cta_btn1_text')) ?></a>
+        <a href="contact.php" class="btn btn-text light"><?= e(setting('cta_btn2_text')) ?> <span>&rarr;</span></a>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================= DEMO / CONTACT FORM ============================= -->
-<section class="demo section" id="demoForm">
-  <div class="container">
-    <div class="demo-box">
-      <h2>Request a Demo</h2>
-      <p class="demo-lead">Leave your details and our team will reach out to schedule a personalised walkthrough.</p>
-
-      <?php if (isset($_GET['sent']) && $_GET['sent'] == '1'): ?>
-        <div class="alert alert-success">Thank you! Your request has been received. We'll be in touch soon.</div>
-      <?php elseif (isset($_GET['sent']) && $_GET['sent'] == '0'): ?>
-        <div class="alert alert-error">Something went wrong. Please try again or email us directly.</div>
-      <?php endif; ?>
-
-      <form action="submit.php" method="post" class="demo-form">
-        <input type="hidden" name="redirect" value="index.php">
-        <div class="form-row">
-          <div class="form-group">
-            <label>Full Name *</label>
-            <input type="text" name="name" required>
-          </div>
-          <div class="form-group">
-            <label>Email *</label>
-            <input type="email" name="email" required>
-          </div>
-        </div>
-        <div class="form-group">
-          <label>Phone</label>
-          <input type="text" name="phone">
-        </div>
-        <div class="form-group">
-          <label>Message</label>
-          <textarea name="message" rows="4"></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Send Request</button>
-      </form>
     </div>
   </div>
 </section>
