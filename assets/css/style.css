@@ -274,7 +274,7 @@ ul { list-style: none; }
   transition: background .25s ease, transform .25s ease;
 }
 .feature-item:hover { background: rgba(255,255,255,.14); transform: translateY(-3px); }
-.feature-item h3 { font-size: 16px; margin-bottom: 10px; color: var(--gold-soft); }
+.feature-item h3 { font-size: 16px; margin-bottom: 10px; color: #fff; }
 .feature-item p { font-size: 13.5px; opacity: .9; line-height: 1.55; }
 
 /* =========================== HOW IT HELPS =========================== */
