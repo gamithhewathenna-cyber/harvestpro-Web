@@ -105,6 +105,7 @@ INSERT INTO `settings` (`setting_key`, `setting_value`, `setting_group`) VALUES
 ('seo_title', '', 'settings'),
 ('seo_description', '', 'settings'),
 ('seo_keywords', '', 'settings'),
+('google_site_verification', 'vaXiRQKZpTwzak12Ic9yvE5Gjfj3in1QjWKJyAqmtOg', 'settings'),
 ('seo_noindex', '0', 'settings'),
 
 -- Contact page: banner

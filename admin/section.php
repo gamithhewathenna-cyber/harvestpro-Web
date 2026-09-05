@@ -71,6 +71,9 @@ if (in_array($page, HOMEPAGE_TABS, true)) {
     <?php if ($key === 'contact_map'): ?>
       <p class="a-help" style="margin-top:-10px;margin-bottom:18px;">Paste a plain address (it will be geocoded automatically) or a full embed URL from Google Maps' own "Share &rarr; Embed a map" tool.</p>
     <?php endif; ?>
+    <?php if ($key === 'google_site_verification'): ?>
+      <p class="a-help" style="margin-top:-10px;margin-bottom:18px;">From Google Search Console's HTML tag verification method, paste only the code — the value of the <code>content="..."</code> attribute, not the whole <code>&lt;meta&gt;</code> tag.</p>
+    <?php endif; ?>
   <?php endforeach; ?>
 
   <button type="submit" class="a-btn a-btn-primary">Save Changes</button>
