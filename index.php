@@ -148,7 +148,10 @@ $pageImg   = absolute_url(resolve_image_url($heroSlides[0]['image'] ?? '', 'asse
               $bold  = trim($parts[0] ?? '');
               $rest  = trim($parts[1] ?? '');
             ?>
-              <li><span class="tick">&#10003;</span> <strong><?= e($bold) ?></strong> <?= e($rest) ?></li>
+              <li>
+                <span class="tick"><svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor"><ellipse cx="8" cy="8" rx="5" ry="3" transform="rotate(-30 8 8)"/><ellipse cx="13" cy="12" rx="5" ry="3" transform="rotate(-30 13 12)"/></svg></span>
+                <span><strong><?= e($bold) ?></strong> <?= e($rest) ?></span>
+              </li>
             <?php endforeach; ?>
           </ul>
         </div>
