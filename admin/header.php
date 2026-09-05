@@ -39,7 +39,7 @@ $page  = $page ?? '';
       <button class="a-burger" id="aBurger" aria-label="Menu"><?= admin_icon('menu', 20) ?></button>
       <h1><?= e($pageTitle ?? 'Dashboard') ?></h1>
       <div class="a-top-right">
-        <a href="../index.php" target="_blank" class="a-view-site"><?= admin_icon('external', 16) ?> View Site</a>
+        <a href="../" target="_blank" class="a-view-site"><?= admin_icon('external', 16) ?> View Site</a>
         <span class="a-user-chip">
           <span class="a-user-avatar"><?= e(strtoupper(substr($admin['full_name'] ?: $admin['username'], 0, 1))) ?></span>
           <span class="a-user"><?= e($admin['full_name'] ?: $admin['username']) ?></span>

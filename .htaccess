@@ -1,6 +1,21 @@
-# Harvest Pro — serve the dynamic sitemap/robots at their conventional URLs
+# Harvest Pro — clean URLs (no .php extension) + sitemap/robots at their conventional URLs
 <IfModule mod_rewrite.c>
   RewriteEngine On
+
+  # 1) Canonicalize: a direct request that still shows .php gets a permanent
+  #    redirect to the clean URL, so search engines only ever see one version.
+  RewriteCond %{THE_REQUEST} \s/+index\.php[\s?] [NC]
+  RewriteRule ^ /? [R=301,L]
+
+  RewriteCond %{THE_REQUEST} \s/+(about|features|contact)\.php[\s?] [NC]
+  RewriteRule ^ /%1 [R=301,L]
+
+  # 2) Internally serve the clean URL from its .php file (the address bar stays clean).
+  RewriteRule ^about/?$ about.php [L]
+  RewriteRule ^features/?$ features.php [L]
+  RewriteRule ^contact/?$ contact.php [L]
+
+  # sitemap.xml / robots.txt
   RewriteRule ^sitemap\.xml$ sitemap.php [L]
   RewriteRule ^robots\.txt$ robots.php [L]
 </IfModule>

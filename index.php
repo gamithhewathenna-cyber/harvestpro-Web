@@ -227,8 +227,8 @@ $pageImg   = absolute_url(resolve_image_url($heroSlides[0]['image'] ?? '', 'asse
       <h2 class="cta-title"><?= e(setting('cta_title')) ?></h2>
       <p class="cta-para"><?= e(setting('cta_para')) ?></p>
       <div class="cta-btns">
-        <a href="contact.php" class="btn btn-primary"><?= e(setting('cta_btn1_text')) ?></a>
-        <a href="contact.php" class="btn btn-text light"><?= e(setting('cta_btn2_text')) ?> <span>&rarr;</span></a>
+        <a href="/contact" class="btn btn-primary"><?= e(setting('cta_btn1_text')) ?></a>
+        <a href="/contact" class="btn btn-text light"><?= e(setting('cta_btn2_text')) ?> <span>&rarr;</span></a>
       </div>
     </div>
   </div>

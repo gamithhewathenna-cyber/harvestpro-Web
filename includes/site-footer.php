@@ -20,10 +20,10 @@ $footerCredits = array_filter(array_map('trim', explode("\n", setting('footer_cr
     <div class="footer-col">
       <h4>Link</h4>
       <ul>
-        <li><a href="index.php#home">Home</a></li>
-        <li><a href="about.php">About Us</a></li>
-        <li><a href="features.php">Features</a></li>
-        <li><a href="contact.php">Contact Us</a></li>
+        <li><a href="/#home">Home</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/features">Features</a></li>
+        <li><a href="/contact">Contact Us</a></li>
       </ul>
     </div>
 

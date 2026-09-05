@@ -9,10 +9,10 @@ header('Content-Type: application/xml; charset=utf-8');
 // Each page has its own noindex toggle — a noindexed page is left out of the
 // sitemap entirely rather than sending mixed signals.
 $pages = [
-    ['path' => '/',             'file' => 'index.php',    'noindex_key' => 'home_seo_noindex',     'priority' => '1.0', 'changefreq' => 'weekly'],
-    ['path' => '/features.php', 'file' => 'features.php', 'noindex_key' => 'features_seo_noindex', 'priority' => '0.9', 'changefreq' => 'monthly'],
-    ['path' => '/about.php',    'file' => 'about.php',    'noindex_key' => 'about_seo_noindex',    'priority' => '0.7', 'changefreq' => 'monthly'],
-    ['path' => '/contact.php',  'file' => 'contact.php',  'noindex_key' => 'contact_seo_noindex',  'priority' => '0.8', 'changefreq' => 'monthly'],
+    ['path' => '/',         'file' => 'index.php',    'noindex_key' => 'home_seo_noindex',     'priority' => '1.0', 'changefreq' => 'weekly'],
+    ['path' => '/features', 'file' => 'features.php', 'noindex_key' => 'features_seo_noindex', 'priority' => '0.9', 'changefreq' => 'monthly'],
+    ['path' => '/about',    'file' => 'about.php',    'noindex_key' => 'about_seo_noindex',    'priority' => '0.7', 'changefreq' => 'monthly'],
+    ['path' => '/contact',  'file' => 'contact.php',  'noindex_key' => 'contact_seo_noindex',  'priority' => '0.8', 'changefreq' => 'monthly'],
 ];
 
 echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";

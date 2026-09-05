@@ -2,17 +2,17 @@
 require_once __DIR__ . '/includes/functions.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: index.php');
+    header('Location: /');
     exit;
 }
 
 // Only these pages may be the redirect target + anchor after submitting.
 $redirects = [
-    'index.php'   => '',
-    'contact.php' => '#contactForm',
+    '/'        => '',
+    '/contact' => '#contactForm',
 ];
 $redirect = $redirects[$_POST['redirect'] ?? ''] ?? null;
-$redirectPage = $redirect !== null ? $_POST['redirect'] : 'index.php';
+$redirectPage = $redirect !== null ? $_POST['redirect'] : '/';
 $redirectAnchor = $redirect ?? '';
 
 // Newsletter subscription reuses the demo_requests table with a note

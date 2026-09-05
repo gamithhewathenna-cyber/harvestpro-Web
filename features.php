@@ -38,7 +38,7 @@ $pageImg   = absolute_url($fpBanner);
 <meta name="keywords" content="<?= e($seoKeywords) ?>">
 <?php endif; ?>
 <meta name="robots" content="<?= $seoNoindex ? 'noindex, nofollow' : 'index, follow' ?>">
-<?php seo_meta_tags('/features.php', $pageTitle, $pageDesc, $pageImg, $brandName . ' Pro'); ?>
+<?php seo_meta_tags('/features', $pageTitle, $pageDesc, $pageImg, $brandName . ' Pro'); ?>
 <link rel="stylesheet" href="assets/css/style.css?v=1.0">
 <?php if ($themePrimary !== '' || $themeAccent !== ''): ?>
 <style>

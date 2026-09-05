@@ -42,7 +42,7 @@ $pageImg   = absolute_url($cBannerBg);
 <meta name="keywords" content="<?= e($seoKeywords) ?>">
 <?php endif; ?>
 <meta name="robots" content="<?= $seoNoindex ? 'noindex, nofollow' : 'index, follow' ?>">
-<?php seo_meta_tags('/contact.php', $pageTitle, $pageDesc, $pageImg, $brandName . ' Pro'); ?>
+<?php seo_meta_tags('/contact', $pageTitle, $pageDesc, $pageImg, $brandName . ' Pro'); ?>
 <link rel="stylesheet" href="assets/css/style.css?v=1.0">
 <?php if ($themePrimary !== '' || $themeAccent !== ''): ?>
 <style>
@@ -125,7 +125,7 @@ $pageImg   = absolute_url($cBannerBg);
           <?php endif; ?>
 
           <form action="submit.php" method="post" class="demo-form">
-            <input type="hidden" name="redirect" value="contact.php">
+            <input type="hidden" name="redirect" value="/contact">
             <div class="form-row">
               <div class="form-group">
                 <label>Full Name</label>
