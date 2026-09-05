@@ -42,18 +42,23 @@ if (!$heroSlides) {
 $whyImg1       = image_url('why_image_1', 'assets/images/why-1.jpg');
 $whyImg2       = image_url('why_image_2', 'assets/images/why-2.jpg');
 $ctaBg         = image_url('cta_bg_image', 'assets/images/cta-bg.jpg');
+
+$pageTitle = $seoTitle !== '' ? $seoTitle : $brandName . ' Pro — Smarter Plantation Management';
+$pageDesc  = $seoDescription !== '' ? $seoDescription : ($heroSlides[0]['subtext'] ?? '');
+$pageImg   = absolute_url(resolve_image_url($heroSlides[0]['image'] ?? '', 'assets/images/hero-bg.jpg'));
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title><?= e($seoTitle !== '' ? $seoTitle : $brandName . ' Pro — Smarter Plantation Management') ?></title>
-<meta name="description" content="<?= e($seoDescription !== '' ? $seoDescription : ($heroSlides[0]['subtext'] ?? '')) ?>">
+<title><?= e($pageTitle) ?></title>
+<meta name="description" content="<?= e($pageDesc) ?>">
 <?php if ($seoKeywords !== ''): ?>
 <meta name="keywords" content="<?= e($seoKeywords) ?>">
 <?php endif; ?>
 <meta name="robots" content="<?= $seoNoindex ? 'noindex, nofollow' : 'index, follow' ?>">
+<?php seo_meta_tags('/', $pageTitle, $pageDesc, $pageImg, $brandName . ' Pro'); ?>
 <link rel="stylesheet" href="assets/css/style.css?v=1.0">
 <?php if ($themePrimary !== '' || $themeAccent !== ''): ?>
 <style>

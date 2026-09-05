@@ -1,0 +1,10 @@
+# Block all direct access to this folder — it holds database credentials
+# (config.php) and PHP includes that should only ever be require()'d,
+# never requested directly over HTTP.
+<IfModule mod_authz_core.c>
+    Require all denied
+</IfModule>
+<IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+</IfModule>

@@ -1,0 +1,6 @@
+# Harvest Pro — serve the dynamic sitemap/robots at their conventional URLs
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^sitemap\.xml$ sitemap.php [L]
+  RewriteRule ^robots\.txt$ robots.php [L]
+</IfModule>

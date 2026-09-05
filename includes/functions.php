@@ -158,3 +158,41 @@ function initials(string $name, int $max = 2): string
     }
     return $out;
 }
+
+/**
+ * Ensure a site-relative path (as returned by image_url()'s fallback) is an
+ * absolute URL — required for og:image / twitter:image, unlike a plain <img src>.
+ */
+function absolute_url(string $path): string
+{
+    if ($path === '' || preg_match('#^https?://#i', $path)) {
+        return $path;
+    }
+    return rtrim(BASE_URL, '/') . '/' . ltrim($path, '/');
+}
+
+/**
+ * Print the canonical link + Open Graph / Twitter Card meta tags shared by
+ * every public page. $path is the site-root-relative URL (e.g. '/', '/about.php').
+ */
+function seo_meta_tags(string $path, string $title, string $description, string $image, string $siteName): void
+{
+    $url = rtrim(BASE_URL, '/') . $path;
+    ?>
+<link rel="canonical" href="<?= e($url) ?>">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="<?= e($siteName) ?>">
+<meta property="og:title" content="<?= e($title) ?>">
+<meta property="og:description" content="<?= e($description) ?>">
+<meta property="og:url" content="<?= e($url) ?>">
+<?php if ($image !== ''): ?>
+<meta property="og:image" content="<?= e($image) ?>">
+<?php endif; ?>
+<meta name="twitter:card" content="<?= $image !== '' ? 'summary_large_image' : 'summary' ?>">
+<meta name="twitter:title" content="<?= e($title) ?>">
+<meta name="twitter:description" content="<?= e($description) ?>">
+<?php if ($image !== ''): ?>
+<meta name="twitter:image" content="<?= e($image) ?>">
+<?php endif; ?>
+    <?php
+}

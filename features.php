@@ -20,15 +20,19 @@ $fpPara2  = setting('features_page_para_2', '');
 $fpBanner = image_url('features_page_bg_image', 'assets/images/hero-bg.jpg');
 
 $sections = get_feature_sections();
+
+$pageTitle = 'Features — ' . ($seoTitle !== '' ? $seoTitle : $brandName . ' Pro');
+$pageImg   = absolute_url($fpBanner);
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title><?= e('Features — ' . ($seoTitle !== '' ? $seoTitle : $brandName . ' Pro')) ?></title>
+<title><?= e($pageTitle) ?></title>
 <meta name="description" content="<?= e($fpPara1) ?>">
 <meta name="robots" content="<?= $seoNoindex ? 'noindex, nofollow' : 'index, follow' ?>">
+<?php seo_meta_tags('/features.php', $pageTitle, $fpPara1, $pageImg, $brandName . ' Pro'); ?>
 <link rel="stylesheet" href="assets/css/style.css?v=1.0">
 <?php if ($themePrimary !== '' || $themeAccent !== ''): ?>
 <style>

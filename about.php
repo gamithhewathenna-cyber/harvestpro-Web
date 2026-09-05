@@ -28,15 +28,19 @@ $partner2Logo = image_url('about_partner2_logo', '');
 $whyItems = array_filter(array_map('trim', explode("\n", setting('about_why_items'))));
 
 $aCtaBg = image_url('about_cta_bg_image', 'assets/images/cta-bg.jpg');
+
+$pageTitle = 'About Us — ' . ($seoTitle !== '' ? $seoTitle : $brandName . ' Pro');
+$pageImg   = absolute_url($aBannerBg);
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title><?= e('About Us — ' . ($seoTitle !== '' ? $seoTitle : $brandName . ' Pro')) ?></title>
+<title><?= e($pageTitle) ?></title>
 <meta name="description" content="<?= e($aSubtitle) ?>">
 <meta name="robots" content="<?= $seoNoindex ? 'noindex, nofollow' : 'index, follow' ?>">
+<?php seo_meta_tags('/about.php', $pageTitle, $aSubtitle, $pageImg, $brandName . ' Pro'); ?>
 <link rel="stylesheet" href="assets/css/style.css?v=1.0">
 <?php if ($themePrimary !== '' || $themeAccent !== ''): ?>
 <style>

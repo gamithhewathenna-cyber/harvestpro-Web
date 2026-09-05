@@ -24,15 +24,19 @@ $cFormSubtitle = setting('contact_form_subtitle', 'Discover how Harvest Pro can 
 $cFormNote     = setting('contact_form_note', '*We typically respond within one business day.');
 
 $mapEmbed = map_embed_url(setting('contact_map', ''));
+
+$pageTitle = 'Contact Us — ' . ($seoTitle !== '' ? $seoTitle : $brandName . ' Pro');
+$pageImg   = absolute_url($cBannerBg);
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title><?= e('Contact Us — ' . ($seoTitle !== '' ? $seoTitle : $brandName . ' Pro')) ?></title>
+<title><?= e($pageTitle) ?></title>
 <meta name="description" content="<?= e($cSubtitle) ?>">
 <meta name="robots" content="<?= $seoNoindex ? 'noindex, nofollow' : 'index, follow' ?>">
+<?php seo_meta_tags('/contact.php', $pageTitle, $cSubtitle, $pageImg, $brandName . ' Pro'); ?>
 <link rel="stylesheet" href="assets/css/style.css?v=1.0">
 <?php if ($themePrimary !== '' || $themeAccent !== ''): ?>
 <style>
