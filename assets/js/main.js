@@ -18,32 +18,15 @@
     });
   }
 
-  // Simple active-link state on scroll (Home/About/Features/Contact) — only
-  // meaningful on the homepage, which is the only page with these section ids.
-  var sections = ['home', 'about', 'features', 'contact'];
-  var navAnchors = links ? links.querySelectorAll('a') : [];
-  var isHomePage = !!document.getElementById('home');
-
-  // Sticky navbar: switch to a solid bar (and swap the logo) once scrolled
+  // Sticky navbar: switch to a solid bar (and swap the logo) once scrolled.
+  // (Which nav link is "active" is decided server-side per page — Home/About/
+  // Features/Contact are separate pages now, not same-page anchors.)
   var navFixed = document.getElementById('navFixed');
 
   function onScroll() {
     if (navFixed) {
       navFixed.classList.toggle('scrolled', window.scrollY > 30);
     }
-
-    if (!isHomePage) return;
-
-    var pos = window.scrollY + 120;
-    var current = 'home';
-    sections.forEach(function (id) {
-      var el = document.getElementById(id);
-      if (el && el.offsetTop <= pos) current = id;
-    });
-    navAnchors.forEach(function (a) {
-      var hash = (a.getAttribute('href') || '').split('#')[1] || '';
-      a.classList.toggle('active', hash === current);
-    });
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });

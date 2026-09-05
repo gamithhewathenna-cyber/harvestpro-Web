@@ -8,7 +8,7 @@ $activeNav = $activeNav ?? '';
 ?>
 <div class="nav-fixed" id="navFixed">
   <nav class="navbar">
-    <a href="/#home" class="brand">
+    <a href="/" class="brand">
       <?php if ($brandLogoNavUrl): ?>
         <img src="<?= e($brandLogoNavUrl) ?>" alt="<?= e($brandName) ?>" class="brand-img brand-img-top">
       <?php else: ?>
@@ -26,7 +26,7 @@ $activeNav = $activeNav ?? '';
     </button>
 
     <ul class="nav-links" id="navLinks">
-      <li><a href="/#home" class="<?= $activeNav === 'home' ? 'active' : '' ?>">Home</a></li>
+      <li><a href="/" class="<?= $activeNav === 'home' ? 'active' : '' ?>">Home</a></li>
       <li><a href="/about" class="<?= $activeNav === 'about' ? 'active' : '' ?>">About Us</a></li>
       <li><a href="/features" class="<?= $activeNav === 'features' ? 'active' : '' ?>">Features</a></li>
       <li><a href="/contact" class="<?= $activeNav === 'contact' ? 'active' : '' ?>">Contact Us</a></li>
