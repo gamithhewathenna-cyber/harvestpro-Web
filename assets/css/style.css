@@ -138,6 +138,7 @@ ul { list-style: none; }
   transition: transform .2s;
 }
 .nav-icon:hover { transform: scale(1.08); }
+.nav-lang { width: auto; padding: 0 14px; border-radius: 20px; font-size: 13px; font-weight: 700; letter-spacing: .02em; }
 
 .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; z-index: 40; }
 .nav-toggle span { width: 26px; height: 2px; background: #fff; transition: .3s; }
@@ -539,7 +540,13 @@ ul { list-style: none; }
   .nav-links.open { display: flex; }
   .nav-links li { border-bottom: 1px solid rgba(255,255,255,.1); }
   .nav-links a { display: block; padding: 14px 0; }
-  .nav-actions { display: none; }
+  /* Search/Call drop off on mobile, but the language pill stays reachable
+     next to the hamburger — swap to flex-start + auto-margin so it can
+     sit adjacent to nav-toggle instead of being spaced apart by space-between. */
+  .navbar { justify-content: flex-start; }
+  .nav-toggle { margin-left: auto; }
+  .nav-actions { display: flex; margin-left: 10px; }
+  .nav-actions .nav-icon:not(.nav-lang) { display: none; }
 
   .hero-title { font-size: 38px; }
   .hero-arrow { display: none; }

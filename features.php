@@ -38,7 +38,7 @@ $pageDesc  = $seoDescription !== '' ? $seoDescription : $fpPara1;
 $pageImg   = absolute_url($fpBanner);
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?= e(current_lang()) ?>">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,7 +49,7 @@ $pageImg   = absolute_url($fpBanner);
 <?php endif; ?>
 <meta name="robots" content="<?= $seoNoindex ? 'noindex, nofollow' : 'index, follow' ?>">
 <?php seo_meta_tags('/features', $pageTitle, $pageDesc, $pageImg, $brandName . ' Pro'); ?>
-<link rel="stylesheet" href="assets/css/style.css?v=1.2">
+<link rel="stylesheet" href="assets/css/style.css?v=1.3">
 <?php if ($themePrimary !== '' || $themeAccent !== ''): ?>
 <style>
 :root {
@@ -133,7 +133,7 @@ $pageImg   = absolute_url($fpBanner);
   <?php endforeach; ?>
 
   <?php if (!$sections): ?>
-    <section class="section"><div class="container"><p>Feature sections will appear here once added from the admin panel.</p></div></section>
+    <section class="section"><div class="container"><p><?= e(t('Feature sections will appear here once added from the admin panel.')) ?></p></div></section>
   <?php endif; ?>
 </div>
 

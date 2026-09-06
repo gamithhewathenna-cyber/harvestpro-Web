@@ -18,17 +18,17 @@ $footerCredits = array_filter(array_map('trim', explode("\n", setting('footer_cr
     </div>
 
     <div class="footer-col">
-      <h4>Link</h4>
+      <h4><?= e(t('Link')) ?></h4>
       <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/about">About Us</a></li>
-        <li><a href="/features">Features</a></li>
-        <li><a href="/contact">Contact Us</a></li>
+        <li><a href="/"><?= e(t('Home')) ?></a></li>
+        <li><a href="/about"><?= e(t('About Us')) ?></a></li>
+        <li><a href="/features"><?= e(t('Features')) ?></a></li>
+        <li><a href="/contact"><?= e(t('Contact Us')) ?></a></li>
       </ul>
     </div>
 
     <div class="footer-col">
-      <h4>Contact</h4>
+      <h4><?= e(t('Contact')) ?></h4>
       <p><?= e(setting('footer_company')) ?><br><?= nl2br_e(setting('footer_address')) ?></p>
       <p class="footer-phone"><?= e(setting('footer_phone')) ?></p>
       <p><a href="mailto:<?= e(setting('footer_email')) ?>"><?= e(setting('footer_email')) ?></a></p>
@@ -43,8 +43,8 @@ $footerCredits = array_filter(array_map('trim', explode("\n", setting('footer_cr
       </div>
       <form class="newsletter" action="submit.php" method="post">
         <input type="hidden" name="newsletter" value="1">
-        <input type="email" name="email" placeholder="Email Address" required>
-        <button type="submit" aria-label="Subscribe">&rarr;</button>
+        <input type="email" name="email" placeholder="<?= e(t('Email Address')) ?>" required>
+        <button type="submit" aria-label="<?= e(t('Subscribe')) ?>">&rarr;</button>
       </form>
     </div>
   </div>

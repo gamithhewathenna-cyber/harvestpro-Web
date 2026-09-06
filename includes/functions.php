@@ -8,6 +8,55 @@
 require_once __DIR__ . '/config.php';
 
 /**
+ * =====================================================================
+ *  Language switching (English / Sinhala)
+ * ---------------------------------------------------------------------
+ *  ?lang=si|en sets the choice for this session; it then sticks until
+ *  changed again. translate()/t() do an exact-string dictionary lookup
+ *  and fall back to the original English when a string isn't in the
+ *  dictionary (e.g. content an admin edited after it was written), so
+ *  nothing ever renders blank.
+ * =====================================================================
+ */
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+if (isset($_GET['lang']) && in_array($_GET['lang'], ['en', 'si'], true)) {
+    $_SESSION['lang'] = $_GET['lang'];
+}
+define('CURRENT_LANG', $_SESSION['lang'] ?? 'en');
+
+$GLOBALS['TRANSLATIONS_SI'] = require __DIR__ . '/translations-si.php';
+
+function current_lang(): string
+{
+    return CURRENT_LANG;
+}
+
+/**
+ * Translate a piece of admin-authored English content to Sinhala when the
+ * visitor has chosen Sinhala. Exact-match dictionary lookup only — values
+ * that aren't prose (colors, filenames, URLs, phone numbers…) simply never
+ * match a dictionary key and pass through untouched.
+ */
+function translate(?string $text): string
+{
+    $text = (string)$text;
+    if ($text === '' || current_lang() !== 'si') {
+        return $text;
+    }
+    return $GLOBALS['TRANSLATIONS_SI'][$text] ?? $text;
+}
+
+/**
+ * Short alias for translate(), for literal strings written in templates.
+ */
+function t(?string $text): string
+{
+    return translate($text);
+}
+
+/**
  * Load every row from `settings` into an associative array (cached).
  */
 function get_settings(): array
@@ -31,7 +80,8 @@ function get_settings(): array
 function setting(string $key, string $default = ''): string
 {
     $settings = get_settings();
-    return isset($settings[$key]) && $settings[$key] !== '' ? $settings[$key] : $default;
+    $value = isset($settings[$key]) && $settings[$key] !== '' ? $settings[$key] : $default;
+    return translate($value);
 }
 
 /**
@@ -79,9 +129,15 @@ function image_url(string $key, string $fallback = ''): string
 function get_features(): array
 {
     global $pdo;
-    return $pdo->query(
+    $rows = $pdo->query(
         "SELECT * FROM features WHERE is_active = 1 ORDER BY sort_order ASC, id ASC"
     )->fetchAll();
+    foreach ($rows as &$row) {
+        $row['title']       = translate($row['title'] ?? '');
+        $row['description'] = translate($row['description'] ?? '');
+    }
+    unset($row);
+    return $rows;
 }
 
 /**
@@ -90,9 +146,17 @@ function get_features(): array
 function get_hero_slides(): array
 {
     global $pdo;
-    return $pdo->query(
+    $rows = $pdo->query(
         "SELECT * FROM hero_slides WHERE is_active = 1 ORDER BY sort_order ASC, id ASC"
     )->fetchAll();
+    foreach ($rows as &$row) {
+        $row['headline']  = translate($row['headline'] ?? '');
+        $row['subtext']   = translate($row['subtext'] ?? '');
+        $row['btn1_text'] = translate($row['btn1_text'] ?? '');
+        $row['btn2_text'] = translate($row['btn2_text'] ?? '');
+    }
+    unset($row);
+    return $rows;
 }
 
 /**
@@ -101,9 +165,19 @@ function get_hero_slides(): array
 function get_feature_sections(): array
 {
     global $pdo;
-    return $pdo->query(
+    $rows = $pdo->query(
         "SELECT * FROM feature_sections WHERE is_active = 1 ORDER BY sort_order ASC, id ASC"
     )->fetchAll();
+    $translatable = ['kicker', 'title', 'intro', 'body', 'list1_heading', 'list1_items', 'list2_heading', 'list2_items', 'note'];
+    foreach ($rows as &$row) {
+        foreach ($translatable as $field) {
+            if (isset($row[$field])) {
+                $row[$field] = translate($row[$field]);
+            }
+        }
+    }
+    unset($row);
+    return $rows;
 }
 
 /**

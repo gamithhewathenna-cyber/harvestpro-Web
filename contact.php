@@ -32,7 +32,7 @@ $pageDesc  = $seoDescription !== '' ? $seoDescription : $cSubtitle;
 $pageImg   = absolute_url($cBannerBg);
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?= e(current_lang()) ?>">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -43,7 +43,7 @@ $pageImg   = absolute_url($cBannerBg);
 <?php endif; ?>
 <meta name="robots" content="<?= $seoNoindex ? 'noindex, nofollow' : 'index, follow' ?>">
 <?php seo_meta_tags('/contact', $pageTitle, $pageDesc, $pageImg, $brandName . ' Pro'); ?>
-<link rel="stylesheet" href="assets/css/style.css?v=1.2">
+<link rel="stylesheet" href="assets/css/style.css?v=1.3">
 <?php if ($themePrimary !== '' || $themeAccent !== ''): ?>
 <style>
 :root {
@@ -82,10 +82,10 @@ $pageImg   = absolute_url($cBannerBg);
   <div class="container">
     <div class="contact-grid">
       <div class="contact-info">
-        <span class="pill pill-dark"><span class="pill-arrow">&rarr;</span> Get In Touch</span>
+        <span class="pill pill-dark"><span class="pill-arrow">&rarr;</span> <?= e(t('Get In Touch')) ?></span>
 
         <div>
-          <h3>Contact Information</h3>
+          <h3><?= e(t('Contact Information')) ?></h3>
           <ul class="contact-list" style="margin-top:20px;">
             <li>
               <span class="contact-icon"><svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="8" height="16" rx="2"/><line x1="8.5" y1="15" x2="11.5" y2="15"/></svg></span>
@@ -103,7 +103,7 @@ $pageImg   = absolute_url($cBannerBg);
         </div>
 
         <div class="contact-follow">
-          <h4>Follow Our Journey</h4>
+          <h4><?= e(t('Follow Our Journey')) ?></h4>
           <div class="contact-socials">
             <a href="<?= e(setting('footer_facebook')) ?>" class="social" aria-label="Facebook"><svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M13 22v-9h3l.5-3.5H13V7.5c0-1 .3-1.7 1.8-1.7H16.6V2.6C16.3 2.6 15.2 2.5 14 2.5c-2.6 0-4.3 1.6-4.3 4.5v2.5H7v3.5h2.7V22H13Z"/></svg></a>
             <a href="<?= e(setting('footer_youtube')) ?>" class="social" aria-label="YouTube"><svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M23 12s0-3.3-.4-4.9a2.5 2.5 0 0 0-1.8-1.8C19.2 5 12 5 12 5s-7.2 0-8.8.4A2.5 2.5 0 0 0 1.4 7.2C1 8.7 1 12 1 12s0 3.3.4 4.9a2.5 2.5 0 0 0 1.8 1.8C4.8 19 12 19 12 19s7.2 0 8.8-.4a2.5 2.5 0 0 0 1.8-1.8C23 15.3 23 12 23 12ZM9.8 15.3V8.7l5.7 3.3-5.7 3.3Z"/></svg></a>
@@ -119,48 +119,48 @@ $pageImg   = absolute_url($cBannerBg);
           <p class="demo-lead"><?= e($cFormSubtitle) ?></p>
 
           <?php if (isset($_GET['sent']) && $_GET['sent'] == '1'): ?>
-            <div class="alert alert-success">Thank you! Your request has been received. We'll be in touch soon.</div>
+            <div class="alert alert-success"><?= e(t("Thank you! Your request has been received. We'll be in touch soon.")) ?></div>
           <?php elseif (isset($_GET['sent']) && $_GET['sent'] == '0'): ?>
-            <div class="alert alert-error">Something went wrong. Please try again or email us directly.</div>
+            <div class="alert alert-error"><?= e(t('Something went wrong. Please try again or email us directly.')) ?></div>
           <?php endif; ?>
 
           <form action="submit.php" method="post" class="demo-form">
             <input type="hidden" name="redirect" value="/contact">
             <div class="form-row">
               <div class="form-group">
-                <label>Full Name</label>
+                <label><?= e(t('Full Name')) ?></label>
                 <input type="text" name="name" required>
               </div>
               <div class="form-group">
-                <label>Company / Estate Name</label>
+                <label><?= e(t('Company / Estate Name')) ?></label>
                 <input type="text" name="company">
               </div>
             </div>
             <div class="form-row">
               <div class="form-group">
-                <label>Email Address</label>
+                <label><?= e(t('Email Address')) ?></label>
                 <input type="email" name="email" required>
               </div>
               <div class="form-group">
-                <label>Phone Number</label>
+                <label><?= e(t('Phone Number')) ?></label>
                 <input type="text" name="phone">
               </div>
             </div>
             <div class="form-group">
-              <label>Number of Estates</label>
+              <label><?= e(t('Number of Estates')) ?></label>
               <select name="estates">
-                <option value="">Select</option>
-                <option>1 Estate</option>
-                <option>2 - 5 Estates</option>
-                <option>6 - 10 Estates</option>
-                <option>10+ Estates</option>
+                <option value=""><?= e(t('Select')) ?></option>
+                <option value="1 Estate"><?= e(t('1 Estate')) ?></option>
+                <option value="2 - 5 Estates"><?= e(t('2 - 5 Estates')) ?></option>
+                <option value="6 - 10 Estates"><?= e(t('6 - 10 Estates')) ?></option>
+                <option value="10+ Estates"><?= e(t('10+ Estates')) ?></option>
               </select>
             </div>
             <div class="form-group">
-              <label>Message</label>
-              <textarea name="message" rows="6" placeholder="Tell us about your plantation and what you're hoping to achieve with Harvest Pro..."></textarea>
+              <label><?= e(t('Message')) ?></label>
+              <textarea name="message" rows="6" placeholder="<?= e(t("Tell us about your plantation and what you're hoping to achieve with Harvest Pro...")) ?>"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Send Request <span>&rarr;</span></button>
+            <button type="submit" class="btn btn-primary"><?= e(t('Send Request')) ?> <span>&rarr;</span></button>
             <p class="contact-form-note"><?= e($cFormNote) ?></p>
           </form>
         </div>

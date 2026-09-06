@@ -67,7 +67,7 @@ $pageDesc  = $seoDescription !== '' ? $seoDescription : $aSubtitle;
 $pageImg   = absolute_url($aBannerBg);
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?= e(current_lang()) ?>">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -78,7 +78,7 @@ $pageImg   = absolute_url($aBannerBg);
 <?php endif; ?>
 <meta name="robots" content="<?= $seoNoindex ? 'noindex, nofollow' : 'index, follow' ?>">
 <?php seo_meta_tags('/about', $pageTitle, $pageDesc, $pageImg, $brandName . ' Pro'); ?>
-<link rel="stylesheet" href="assets/css/style.css?v=1.2">
+<link rel="stylesheet" href="assets/css/style.css?v=1.3">
 <?php if ($themePrimary !== '' || $themeAccent !== ''): ?>
 <style>
 :root {

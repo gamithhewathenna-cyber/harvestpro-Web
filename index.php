@@ -31,10 +31,10 @@ $howTags = array_filter(array_map('trim', explode('|', setting('how_tags'))));
 $heroSlides = get_hero_slides();
 if (!$heroSlides) {
     $heroSlides = [[
-        'headline'  => 'Smarter Plantation Management. Better Productivity.',
-        'subtext'   => 'A modern platform built for the unique demands of tea estates and plantations — from worker management to real-time production tracking, all from one unified system.',
-        'btn1_text' => 'Request a Demo', 'btn1_link' => '#contact',
-        'btn2_text' => 'Explore Features', 'btn2_link' => '#features',
+        'headline'  => t('Smarter Plantation Management. Better Productivity.'),
+        'subtext'   => t('A modern platform built for the unique demands of tea estates and plantations — from worker management to real-time production tracking, all from one unified system.'),
+        'btn1_text' => t('Request a Demo'), 'btn1_link' => '#contact',
+        'btn2_text' => t('Explore Features'), 'btn2_link' => '#features',
         'image'     => '',
     ]];
 }
@@ -48,7 +48,7 @@ $pageDesc  = $seoDescription !== '' ? $seoDescription : ($heroSlides[0]['subtext
 $pageImg   = absolute_url(resolve_image_url($heroSlides[0]['image'] ?? '', 'assets/images/hero-bg.jpg'));
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?= e(current_lang()) ?>">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -59,7 +59,7 @@ $pageImg   = absolute_url(resolve_image_url($heroSlides[0]['image'] ?? '', 'asse
 <?php endif; ?>
 <meta name="robots" content="<?= $seoNoindex ? 'noindex, nofollow' : 'index, follow' ?>">
 <?php seo_meta_tags('/', $pageTitle, $pageDesc, $pageImg, $brandName . ' Pro'); ?>
-<link rel="stylesheet" href="assets/css/style.css?v=1.2">
+<link rel="stylesheet" href="assets/css/style.css?v=1.3">
 <?php if ($themePrimary !== '' || $themeAccent !== ''): ?>
 <style>
 :root {

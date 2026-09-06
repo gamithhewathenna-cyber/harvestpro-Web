@@ -15,7 +15,7 @@ if (setting('maintenance_mode') === '1' && empty($_SESSION['admin_id'])) {
     $mBrand = setting('brand_name', 'Harvest');
     ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?= e(current_lang()) ?>">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
