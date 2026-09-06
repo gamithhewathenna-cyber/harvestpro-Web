@@ -70,40 +70,40 @@
     restart();
   }
 
-  // Key Features card slider: slides by one card width at a time, disabling
+  // Highlights card slider: slides by one card width at a time, disabling
   // the arrows at either end. Card-width and how many fit per view are
   // measured live, so it adapts automatically at every breakpoint.
-  var featuresTrack = document.getElementById('featuresTrack');
-  if (featuresTrack) {
-    var fPrev = document.getElementById('featuresPrev');
-    var fNext = document.getElementById('featuresNext');
-    var fCards = featuresTrack.children;
-    var fIndex = 0;
+  var highlightsTrack = document.getElementById('highlightsTrack');
+  if (highlightsTrack) {
+    var hPrev = document.getElementById('highlightsPrev');
+    var hNext = document.getElementById('highlightsNext');
+    var hCards = highlightsTrack.children;
+    var hIndex = 0;
 
-    var fCardStep = function () {
-      if (!fCards.length) return 0;
-      var style = window.getComputedStyle(featuresTrack);
+    var hCardStep = function () {
+      if (!hCards.length) return 0;
+      var style = window.getComputedStyle(highlightsTrack);
       var gap = parseFloat(style.columnGap || style.gap || '0') || 0;
-      return fCards[0].getBoundingClientRect().width + gap;
+      return hCards[0].getBoundingClientRect().width + gap;
     };
-    var fMaxIndex = function () {
-      var step = fCardStep();
+    var hMaxIndex = function () {
+      var step = hCardStep();
       if (!step) return 0;
-      var visible = Math.max(1, Math.round(featuresTrack.parentElement.getBoundingClientRect().width / step));
-      return Math.max(0, fCards.length - visible);
+      var visible = Math.max(1, Math.round(highlightsTrack.parentElement.getBoundingClientRect().width / step));
+      return Math.max(0, hCards.length - visible);
     };
-    var fRender = function () {
-      var max = fMaxIndex();
-      fIndex = Math.min(fIndex, max);
-      featuresTrack.style.transform = 'translateX(-' + (fIndex * fCardStep()) + 'px)';
-      if (fPrev) fPrev.disabled = fIndex <= 0;
-      if (fNext) fNext.disabled = fIndex >= max;
+    var hRender = function () {
+      var max = hMaxIndex();
+      hIndex = Math.min(hIndex, max);
+      highlightsTrack.style.transform = 'translateX(-' + (hIndex * hCardStep()) + 'px)';
+      if (hPrev) hPrev.disabled = hIndex <= 0;
+      if (hNext) hNext.disabled = hIndex >= max;
     };
 
-    if (fPrev) fPrev.addEventListener('click', function () { fIndex = Math.max(0, fIndex - 1); fRender(); });
-    if (fNext) fNext.addEventListener('click', function () { fIndex = Math.min(fMaxIndex(), fIndex + 1); fRender(); });
-    window.addEventListener('resize', fRender);
-    fRender();
+    if (hPrev) hPrev.addEventListener('click', function () { hIndex = Math.max(0, hIndex - 1); hRender(); });
+    if (hNext) hNext.addEventListener('click', function () { hIndex = Math.min(hMaxIndex(), hIndex + 1); hRender(); });
+    window.addEventListener('resize', hRender);
+    hRender();
   }
 
   // Lazy-load below-the-fold CSS background images (why photos, feature media,

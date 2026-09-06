@@ -23,7 +23,7 @@ require __DIR__ . '/header.php';
   </a>
   <a href="section.php?g=branding" class="a-stat">
     <span class="a-stat-icon"><?= admin_icon('file', 20) ?></span>
-    <span class="a-stat-num">10</span>
+    <span class="a-stat-num">12</span>
     <span class="a-stat-label">Editable Sections</span>
   </a>
 </div>
@@ -36,6 +36,7 @@ require __DIR__ . '/header.php';
   <p style="margin-top:12px;">Quick links:
     <a href="hero-slides.php">Hero Slider</a> ·
     <a href="section.php?g=why">Why Section</a> ·
+    <a href="feature-highlights.php">Highlight Cards</a> ·
     <a href="features.php">Feature Cards</a> ·
     <a href="section.php?g=cta">Call To Action</a> ·
     <a href="section.php?g=about_banner">About Page</a> ·

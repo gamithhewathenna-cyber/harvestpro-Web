@@ -3,6 +3,7 @@ require_once __DIR__ . '/includes/functions.php';
 require_once __DIR__ . '/includes/maintenance-gate.php';
 
 $features    = get_features();
+$highlights  = get_feature_highlights();
 $brandName   = setting('brand_name', 'Harvest');
 $brandLogo   = setting('brand_logo', '');
 $brandLogoUrl= $brandLogo ? image_url('brand_logo') : '';
@@ -178,6 +179,43 @@ $pageImg   = absolute_url(resolve_image_url($heroSlides[0]['image'] ?? '', 'asse
   </div>
 </section>
 
+<!-- ============================= HIGHLIGHTS ============================= -->
+<?php if ($highlights): ?>
+<section class="highlights section">
+  <div class="container">
+    <div class="highlights-head">
+      <span class="pill"><span class="pill-arrow">&rarr;</span> <?= e(setting('highlights_badge')) ?></span>
+      <h2><?= e(setting('highlights_title_1')) ?> <?= e(setting('highlights_title_2')) ?></h2>
+    </div>
+
+    <div class="highlights-slider-wrap">
+      <div class="highlights-track" id="highlightsTrack">
+        <?php foreach ($highlights as $h):
+            $hIconUrl = !empty($h['icon']) ? resolve_image_url($h['icon']) : '';
+        ?>
+          <div class="highlight-item">
+            <?php if ($hIconUrl): ?><img src="<?= e($hIconUrl) ?>" alt="" class="highlight-icon" loading="lazy"><?php endif; ?>
+            <h3><?= e($h['title']) ?></h3>
+            <p><?= e($h['description']) ?></p>
+          </div>
+        <?php endforeach; ?>
+      </div>
+    </div>
+
+    <?php if (count($highlights) > 1): ?>
+      <div class="highlights-nav">
+        <button class="highlights-arrow prev" id="highlightsPrev" aria-label="Previous highlights">
+          <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="12,4 6,10 12,16"/></svg>
+        </button>
+        <button class="highlights-arrow next" id="highlightsNext" aria-label="Next highlights">
+          <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="8,4 14,10 8,16"/></svg>
+        </button>
+      </div>
+    <?php endif; ?>
+  </div>
+</section>
+<?php endif; ?>
+
 <!-- ============================= KEY FEATURES ============================= -->
 <section class="features section" id="features">
   <div class="container">
@@ -190,29 +228,12 @@ $pageImg   = absolute_url(resolve_image_url($heroSlides[0]['image'] ?? '', 'asse
       </div>
 
       <div class="features-right">
-        <div class="features-slider-wrap">
-          <div class="features-track" id="featuresTrack">
-            <?php foreach ($features as $f):
-                $iconUrl = !empty($f['icon']) ? resolve_image_url($f['icon']) : '';
-            ?>
-              <div class="feature-item">
-                <?php if ($iconUrl): ?><img src="<?= e($iconUrl) ?>" alt="" class="feature-icon" loading="lazy"><?php endif; ?>
-                <h3><?= e($f['title']) ?></h3>
-                <p><?= e($f['description']) ?></p>
-              </div>
-            <?php endforeach; ?>
+        <?php foreach ($features as $f): ?>
+          <div class="feature-item">
+            <h3><?= e($f['title']) ?></h3>
+            <p><?= e($f['description']) ?></p>
           </div>
-        </div>
-        <?php if (count($features) > 1): ?>
-          <div class="features-nav">
-            <button class="features-arrow prev" id="featuresPrev" aria-label="Previous features">
-              <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="12,4 6,10 12,16"/></svg>
-            </button>
-            <button class="features-arrow next" id="featuresNext" aria-label="Next features">
-              <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="8,4 14,10 8,16"/></svg>
-            </button>
-          </div>
-        <?php endif; ?>
+        <?php endforeach; ?>
       </div>
     </div>
   </div>

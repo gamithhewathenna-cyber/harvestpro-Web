@@ -9,7 +9,7 @@ if (session_status() === PHP_SESSION_NONE) {
 require_once dirname(__DIR__) . '/includes/functions.php';
 
 /* Page keys that belong to the single "Home Page" tab (sidebar highlight + tab bar) */
-const HOMEPAGE_TABS = ['branding', 'hero_slides', 'ticker', 'why', 'features_head', 'features', 'how', 'cta', 'footer', 'home_seo'];
+const HOMEPAGE_TABS = ['branding', 'hero_slides', 'ticker', 'why', 'highlights_head', 'highlights', 'features_head', 'features', 'how', 'cta', 'footer', 'home_seo'];
 
 /* Page keys that belong to the single "About Page" tab (sidebar highlight + tab bar) */
 const ABOUT_TABS = ['about_banner', 'about_story', 'about_partners', 'about_why', 'about_cta', 'about_seo'];

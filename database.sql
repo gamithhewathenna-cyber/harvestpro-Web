@@ -66,6 +66,11 @@ INSERT INTO `settings` (`setting_key`, `setting_value`, `setting_group`) VALUES
 ('features_title_1', 'Powerful Tools for', 'features'),
 ('features_title_2', 'Modern Plantation Management', 'features'),
 
+-- Highlights section (homepage, right after Why Harvest Pro)
+('highlights_badge', 'Explore Features', 'highlights'),
+('highlights_title_1', 'Everything You Need,', 'highlights'),
+('highlights_title_2', 'At a Glance', 'highlights'),
+
 -- Features page: banner
 ('features_page_title', 'Everything You Need to Manage Your Tea Estate', 'features_page'),
 ('features_page_para_1', 'From workforce management and daily field operations to harvesting, payments, expenses, and reporting, the platform brings your essential tea estate operations together in one simple system.', 'features_page'),
@@ -221,7 +226,6 @@ CREATE TABLE IF NOT EXISTS `features` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(200) NOT NULL,
   `description` TEXT DEFAULT NULL,
-  `icon` VARCHAR(255) DEFAULT NULL,
   `sort_order` INT(11) NOT NULL DEFAULT 0,
   `is_active` TINYINT(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`)
@@ -234,6 +238,26 @@ INSERT INTO `features` (`title`, `description`, `sort_order`) VALUES
 ('Field Activity Monitoring', 'Track fertilizer applications, spraying schedules, maintenance work, and other estate activities.', 4),
 ('Performance Reporting', 'Generate detailed reports for management and operational analysis.', 5),
 ('Multi-Estate Management', 'Manage multiple estates from a single dashboard.', 6);
+
+-- -------------------------------------------------------------
+-- Table: feature_highlights  (repeatable icon + heading + intro cards,
+-- shown as a slider on the homepage, right after the Why Harvest Pro section)
+-- -------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `feature_highlights` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `icon` VARCHAR(255) DEFAULT NULL,
+  `title` VARCHAR(200) NOT NULL,
+  `description` TEXT DEFAULT NULL,
+  `sort_order` INT(11) NOT NULL DEFAULT 0,
+  `is_active` TINYINT(1) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `feature_highlights` (`title`, `description`, `sort_order`) VALUES
+('Workforce Management', 'Centralised worker profiles and simple daily task allocation for your whole team.', 1),
+('Payroll & Payments', 'Automatic pay calculations connected directly to daily recorded fieldwork.', 2),
+('Harvest Tracking', 'Accurate daily green leaf KG recording across every estate and section.', 3),
+('Reports & Insights', 'Dashboards and downloadable reports covering assignments, payments, and harvest.', 4);
 
 -- -------------------------------------------------------------
 -- Table: feature_sections  (repeatable alternating text/image sections
