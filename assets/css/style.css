@@ -37,49 +37,6 @@ body {
   overflow-wrap: break-word;
   -webkit-text-size-adjust: 100%;
 }
-body.preloading { overflow: hidden; }
-
-/* =========================== PRELOADER =========================== */
-.preloader {
-  position: fixed; inset: 0; z-index: 999;
-  background: var(--green-900);
-  display: flex; align-items: center; justify-content: center;
-  overflow: hidden;
-  transition: opacity .6s ease, visibility .6s ease;
-}
-.preloader.is-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-
-.preloader-layer {
-  position: absolute; border-radius: 50%; pointer-events: none;
-  background: radial-gradient(circle, rgba(255,255,255,.09), transparent 70%);
-  filter: blur(2px);
-}
-.preloader-layer-1 { width: 520px; height: 520px; top: -140px; left: -120px; animation: preloaderFloat1 6s ease-in-out infinite; }
-.preloader-layer-2 {
-  width: 380px; height: 380px; bottom: -150px; right: -90px;
-  background: radial-gradient(circle, rgba(245,180,24,.14), transparent 70%);
-  animation: preloaderFloat2 7.5s ease-in-out infinite;
-}
-.preloader-layer-3 {
-  width: 260px; height: 260px; top: 42%; left: 62%;
-  background: radial-gradient(circle, rgba(255,255,255,.07), transparent 70%);
-  animation: preloaderFloat3 5.5s ease-in-out infinite;
-}
-@keyframes preloaderFloat1 { 0%, 100% { transform: translate(0,0) scale(1); } 50% { transform: translate(30px, 20px) scale(1.08); } }
-@keyframes preloaderFloat2 { 0%, 100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-24px, -18px) scale(1.05); } }
-@keyframes preloaderFloat3 { 0%, 100% { transform: translate(0,0); } 50% { transform: translate(-40px, 26px); } }
-
-.preloader-inner { position: relative; z-index: 2; text-align: center; }
-.preloader-mark {
-  font-size: 30px; font-weight: 600; color: #fff; letter-spacing: .5px;
-  display: inline-block; animation: preloaderPulse 1.6s ease-in-out infinite;
-}
-@keyframes preloaderPulse { 0%, 100% { opacity: .7; transform: scale(1); } 50% { opacity: 1; transform: scale(1.04); } }
-
-.preloader-bar { width: 140px; height: 3px; background: rgba(255,255,255,.15); border-radius: 3px; margin: 22px auto 0; overflow: hidden; }
-.preloader-bar span { display: block; width: 40%; height: 100%; background: var(--gold); border-radius: 3px; animation: preloaderBar 1.2s ease-in-out infinite; }
-@keyframes preloaderBar { 0% { transform: translateX(-120%); } 100% { transform: translateX(350%); } }
-
 /* =========================== SCROLL-REVEAL ANIMATIONS =========================== */
 /* Applied by main.js (progressive enhancement — with JS disabled or failing,
    elements simply never get this class and stay visible as normal). */
@@ -643,8 +600,5 @@ ul { list-style: none; }
 @media (prefers-reduced-motion: reduce) {
   .ticker-track { animation: none; }
   * { transition: none !important; }
-  .preloader { display: none !important; }
-  body.preloading { overflow: auto !important; }
   .reveal { opacity: 1 !important; transform: none !important; }
-  .preloader-mark, .preloader-bar span, .preloader-layer { animation: none !important; }
 }

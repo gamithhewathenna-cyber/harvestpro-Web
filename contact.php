@@ -43,7 +43,7 @@ $pageImg   = absolute_url($cBannerBg);
 <?php endif; ?>
 <meta name="robots" content="<?= $seoNoindex ? 'noindex, nofollow' : 'index, follow' ?>">
 <?php seo_meta_tags('/contact', $pageTitle, $pageDesc, $pageImg, $brandName . ' Pro'); ?>
-<link rel="stylesheet" href="assets/css/style.css?v=1.1">
+<link rel="stylesheet" href="assets/css/style.css?v=1.2">
 <?php if ($themePrimary !== '' || $themeAccent !== ''): ?>
 <style>
 :root {
@@ -63,9 +63,8 @@ $pageImg   = absolute_url($cBannerBg);
 </style>
 <?php endif; ?>
 </head>
-<body class="preloading">
+<body>
 
-<?php require __DIR__ . '/includes/preloader.php'; ?>
 <?php $activeNav = 'contact'; require __DIR__ . '/includes/site-nav.php'; ?>
 
 <!-- ============================= PAGE BANNER ============================= -->
