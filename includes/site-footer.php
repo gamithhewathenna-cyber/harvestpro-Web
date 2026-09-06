@@ -59,6 +59,6 @@ $footerCredits = array_filter(array_map('trim', explode("\n", setting('footer_cr
   </div>
 </footer>
 
-<script src="assets/js/main.js?v=1.0"></script>
+<script src="assets/js/main.js?v=1.1"></script>
 </body>
 </html>

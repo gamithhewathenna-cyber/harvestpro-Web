@@ -59,7 +59,7 @@ $pageImg   = absolute_url(resolve_image_url($heroSlides[0]['image'] ?? '', 'asse
 <?php endif; ?>
 <meta name="robots" content="<?= $seoNoindex ? 'noindex, nofollow' : 'index, follow' ?>">
 <?php seo_meta_tags('/', $pageTitle, $pageDesc, $pageImg, $brandName . ' Pro'); ?>
-<link rel="stylesheet" href="assets/css/style.css?v=1.0">
+<link rel="stylesheet" href="assets/css/style.css?v=1.1">
 <?php if ($themePrimary !== '' || $themeAccent !== ''): ?>
 <style>
 :root {
@@ -79,8 +79,9 @@ $pageImg   = absolute_url(resolve_image_url($heroSlides[0]['image'] ?? '', 'asse
 </style>
 <?php endif; ?>
 </head>
-<body>
+<body class="preloading">
 
+<?php require __DIR__ . '/includes/preloader.php'; ?>
 <?php $activeNav = 'home'; require __DIR__ . '/includes/site-nav.php'; ?>
 
 <!-- ============================= HEADER / HERO ============================= -->

@@ -2,6 +2,37 @@
 (function () {
   'use strict';
 
+  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Preloader: shown from first paint (body.preloading), faded out once the
+  // page has fully loaded. A minimum display time keeps it from just
+  // flashing on fast/cached loads; a hard-coded upper bound (below) keeps a
+  // slow-loading page from ever getting stuck behind it.
+  var preloader = document.getElementById('preloader');
+  if (preloader) {
+    var startedAt = Date.now();
+    var minDisplay = prefersReducedMotion ? 0 : 500;
+    var hidden = false;
+    var hidePreloader = function () {
+      if (hidden) return;
+      hidden = true;
+      var wait = Math.max(0, minDisplay - (Date.now() - startedAt));
+      setTimeout(function () {
+        preloader.classList.add('is-hidden');
+        document.body.classList.remove('preloading');
+        var cleanup = function () { if (preloader.parentNode) preloader.parentNode.removeChild(preloader); };
+        preloader.addEventListener('transitionend', cleanup, { once: true });
+        setTimeout(cleanup, 800); // fallback if transitionend never fires
+      }, wait);
+    };
+    if (document.readyState === 'complete') {
+      hidePreloader();
+    } else {
+      window.addEventListener('load', hidePreloader);
+    }
+    setTimeout(hidePreloader, 4000); // safety net for slow/failed loads
+  }
+
   // Mobile navigation toggle
   var toggle = document.getElementById('navToggle');
   var links  = document.getElementById('navLinks');
@@ -92,6 +123,73 @@
     } else {
       // No IntersectionObserver support: just load them all up front.
       lazyBgEls.forEach(loadBg);
+    }
+  }
+
+  // Scroll-reveal animation: fade + rise content blocks into view as the
+  // user scrolls to them, staggering siblings slightly for a cascade effect.
+  // Purely additive — elements only get hidden once this JS actually adds
+  // the .reveal class, so a JS failure just leaves everything visible.
+  if (!prefersReducedMotion && 'IntersectionObserver' in window) {
+    var revealTargets = document.querySelectorAll([
+      '.hero-content', '.page-banner-inner',
+      '.why-media', '.why-text',
+      '.features-left', '.feature-item',
+      '.how-left', '.how-right',
+      '.cta-inner',
+      '.about-story-panel', '.about-story-photo',
+      '.partners-head', '.partner-card',
+      '.why-choose-title', '.why-choose-card',
+      '.feature-row-inner > *',
+      '.contact-info', '.contact-form-col',
+      '.footer-brand', '.footer-col'
+    ].join(', '));
+
+    var revealObserver = new IntersectionObserver(function (entries, observer) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+
+    // Stagger siblings that reveal together (e.g. the four feature cards).
+    var siblingIndex = new Map();
+    revealTargets.forEach(function (el) {
+      var parent = el.parentElement;
+      var idx = siblingIndex.get(parent) || 0;
+      siblingIndex.set(parent, idx + 1);
+      el.style.transitionDelay = Math.min(idx * 0.12, 0.48) + 's';
+      el.classList.add('reveal');
+      revealObserver.observe(el);
+    });
+  }
+
+  // Scroll parallax: shift hero/banner/CTA background images at a slightly
+  // different rate than the page scroll for a subtle sense of depth.
+  if (!prefersReducedMotion) {
+    var parallaxEls = document.querySelectorAll('.hero-slide, .page-banner, .cta');
+    if (parallaxEls.length) {
+      var parallaxTicking = false;
+      var updateParallax = function () {
+        var vh = window.innerHeight;
+        parallaxEls.forEach(function (el) {
+          var rect = el.getBoundingClientRect();
+          if (rect.bottom < -100 || rect.top > vh + 100) return;
+          var shift = Math.max(-60, Math.min(60, rect.top * -0.12));
+          el.style.backgroundPositionY = 'calc(50% + ' + shift + 'px)';
+        });
+        parallaxTicking = false;
+      };
+      window.addEventListener('scroll', function () {
+        if (!parallaxTicking) {
+          requestAnimationFrame(updateParallax);
+          parallaxTicking = true;
+        }
+      }, { passive: true });
+      window.addEventListener('resize', updateParallax);
+      updateParallax();
     }
   }
 })();
