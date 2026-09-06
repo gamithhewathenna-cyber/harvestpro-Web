@@ -169,7 +169,7 @@ INSERT INTO `settings` (`setting_key`, `setting_value`, `setting_group`) VALUES
 -- About page: why choose
 ('about_why_badge', 'Why Choose', 'about'),
 ('about_why_title', 'Why Choose Harvest Pro', 'about'),
-('about_why_items', 'Plantation-focused solution|Lorem ipsum dolor sit amet consectetur. Amet diam sapien duis tellus nisl eu.\nEasy-to-use interface|Lorem ipsum dolor sit amet consectetur. Amet diam sapien duis tellus nisl eu.\nReal-time operational insights|Lorem ipsum dolor sit amet consectetur. Amet diam sapien duis tellus nisl eu.\nScalable for small and large estates|Lorem ipsum dolor sit amet consectetur. Amet diam sapien duis tellus nisl eu.\nContinuous innovation and support|Lorem ipsum dolor sit amet consectetur. Amet diam sapien duis tellus nisl eu.', 'about'),
+('about_why_items', 'Plantation-Focused Solution|Built specifically for tea estates and plantations, helping you manage daily operations in one place.\nEasy-to-Use Interface|A simple, user-friendly system designed for owners, managers, supervisors, and estate teams.\nReal-Time Operational Insights|Track workforce, harvesting, expenses, tasks, and estate performance with up-to-date information.\nScalable for Small and Large Estates|Whether you manage a single estate or multiple plantations, Harvest Pro can grow with your operation.\nContinuous Innovation and Support|Regular improvements, new features, and ongoing support to keep your plantation management running smoothly.', 'about'),
 
 -- About page: CTA
 ('about_cta_kicker', 'Harvest Pro — Grow Smarter. Manage Better.', 'about'),
