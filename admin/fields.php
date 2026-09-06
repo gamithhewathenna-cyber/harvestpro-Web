@@ -46,14 +46,6 @@ function field_groups(): array
                 'features_title_2' => ['Main Heading', 'textarea'],
             ],
         ],
-        'highlights_head' => [
-            'title'  => 'Highlights Heading',
-            'fields' => [
-                'highlights_badge'   => ['Badge Text', 'text'],
-                'highlights_title_1' => ['Heading (line 1)', 'text'],
-                'highlights_title_2' => ['Heading (line 2)', 'text'],
-            ],
-        ],
         'how' => [
             'title'  => 'How It Helps',
             'fields' => [

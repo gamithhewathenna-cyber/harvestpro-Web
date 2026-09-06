@@ -85,17 +85,6 @@ function get_features(): array
 }
 
 /**
- * Fetch active feature highlight cards (icon + heading + intro), ordered.
- */
-function get_feature_highlights(): array
-{
-    global $pdo;
-    return $pdo->query(
-        "SELECT * FROM feature_highlights WHERE is_active = 1 ORDER BY sort_order ASC, id ASC"
-    )->fetchAll();
-}
-
-/**
  * Fetch active hero slides, ordered.
  */
 function get_hero_slides(): array

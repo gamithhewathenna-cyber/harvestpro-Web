@@ -8,8 +8,6 @@ $homepageTabs = [
     ['key' => 'hero_slides',   'label' => 'Hero Slider',      'href' => 'hero-slides.php'],
     ['key' => 'ticker',        'label' => 'Ticker Strip',     'href' => 'section.php?g=ticker'],
     ['key' => 'why',           'label' => 'Why Section',      'href' => 'section.php?g=why'],
-    ['key' => 'highlights_head', 'label' => 'Highlights Heading', 'href' => 'section.php?g=highlights_head'],
-    ['key' => 'highlights',      'label' => 'Highlight Cards',    'href' => 'feature-highlights.php'],
     ['key' => 'features_head', 'label' => 'Features Heading', 'href' => 'section.php?g=features'],
     ['key' => 'features',      'label' => 'Feature Cards',    'href' => 'features.php'],
     ['key' => 'how',           'label' => 'How It Helps',     'href' => 'section.php?g=how'],
