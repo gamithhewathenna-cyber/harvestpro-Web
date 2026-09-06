@@ -263,18 +263,29 @@ ul { list-style: none; }
 }
 .pill-arrow.yellow { background: var(--gold); }
 
-.features-right {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
-  align-content: center;
-}
+.features-right { display: flex; flex-direction: column; gap: 14px; }
+.features-slider-wrap { overflow: hidden; }
+.features-track { display: flex; gap: 16px; transition: transform .4s ease; }
 .feature-item {
+  flex: 0 0 calc(50% - 8px);
   background: rgba(255,255,255,.08);
   border: 1px solid rgba(255,255,255,.12);
   border-radius: 14px; padding: 22px 20px;
   transition: background .25s ease, transform .25s ease;
 }
 .feature-item:hover { background: rgba(255,255,255,.14); transform: translateY(-3px); }
+.feature-icon { width: 34px; height: 34px; object-fit: contain; margin-bottom: 12px; }
 .feature-item h3 { font-size: 16px; margin-bottom: 10px; color: #fff; }
+
+.features-nav { display: flex; gap: 10px; align-self: flex-end; }
+.features-arrow {
+  width: 38px; height: 38px; border-radius: 10px; border: none;
+  background: rgba(255,255,255,.12); color: #fff;
+  display: grid; place-items: center; cursor: pointer; transition: background .2s;
+}
+.features-arrow:hover { background: rgba(255,255,255,.22); }
+.features-arrow:disabled { opacity: .35; cursor: default; }
+.features-arrow:disabled:hover { background: rgba(255,255,255,.12); }
 .feature-item p { font-size: 13.5px; opacity: .9; line-height: 1.55; }
 
 /* =========================== HOW IT HELPS =========================== */
@@ -517,7 +528,7 @@ ul { list-style: none; }
   .hero-title { font-size: 38px; }
   .hero-arrow { display: none; }
   .why-media { grid-template-columns: 1fr 1fr; }
-  .features-right { grid-template-columns: 1fr; }
+  .feature-item { flex-basis: 100%; }
   .features-title { font-size: 34px; }
   .why-heading, .how-title, .cta-title { font-size: 32px; }
   .demo-box { padding: 30px 22px; }

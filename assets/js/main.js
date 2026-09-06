@@ -70,6 +70,42 @@
     restart();
   }
 
+  // Key Features card slider: slides by one card width at a time, disabling
+  // the arrows at either end. Card-width and how many fit per view are
+  // measured live, so it adapts automatically at every breakpoint.
+  var featuresTrack = document.getElementById('featuresTrack');
+  if (featuresTrack) {
+    var fPrev = document.getElementById('featuresPrev');
+    var fNext = document.getElementById('featuresNext');
+    var fCards = featuresTrack.children;
+    var fIndex = 0;
+
+    var fCardStep = function () {
+      if (!fCards.length) return 0;
+      var style = window.getComputedStyle(featuresTrack);
+      var gap = parseFloat(style.columnGap || style.gap || '0') || 0;
+      return fCards[0].getBoundingClientRect().width + gap;
+    };
+    var fMaxIndex = function () {
+      var step = fCardStep();
+      if (!step) return 0;
+      var visible = Math.max(1, Math.round(featuresTrack.parentElement.getBoundingClientRect().width / step));
+      return Math.max(0, fCards.length - visible);
+    };
+    var fRender = function () {
+      var max = fMaxIndex();
+      fIndex = Math.min(fIndex, max);
+      featuresTrack.style.transform = 'translateX(-' + (fIndex * fCardStep()) + 'px)';
+      if (fPrev) fPrev.disabled = fIndex <= 0;
+      if (fNext) fNext.disabled = fIndex >= max;
+    };
+
+    if (fPrev) fPrev.addEventListener('click', function () { fIndex = Math.max(0, fIndex - 1); fRender(); });
+    if (fNext) fNext.addEventListener('click', function () { fIndex = Math.min(fMaxIndex(), fIndex + 1); fRender(); });
+    window.addEventListener('resize', fRender);
+    fRender();
+  }
+
   // Lazy-load below-the-fold CSS background images (why photos, feature media,
   // about story photo, CTA banners) — they're stashed in data-bg until the
   // element is about to scroll into view, instead of downloading on page load.

@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/auth.php';
 require_login();
+require_once __DIR__ . '/fields.php'; // handle_upload()
 
 $msg = '';
 $err = '';
@@ -12,22 +13,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $action = $_POST['action'] ?? '';
 
         if ($action === 'add') {
-            $stmt = $pdo->prepare("INSERT INTO features (title, description, sort_order, is_active) VALUES (?,?,?,1)");
+            $uploaded = handle_upload('icon') ?? '';
+            $stmt = $pdo->prepare("INSERT INTO features (title, description, icon, sort_order, is_active) VALUES (?,?,?,?,1)");
             $stmt->execute([
                 trim($_POST['title']),
                 trim($_POST['description']),
+                $uploaded,
                 (int)($_POST['sort_order'] ?? 0),
             ]);
             $msg = 'Feature added.';
         } elseif ($action === 'update') {
-            $stmt = $pdo->prepare("UPDATE features SET title=?, description=?, sort_order=?, is_active=? WHERE id=?");
-            $stmt->execute([
+            $id = (int)$_POST['id'];
+            $uploaded = handle_upload('icon_' . $id);
+            $iconSql = '';
+            $params = [
                 trim($_POST['title']),
                 trim($_POST['description']),
-                (int)($_POST['sort_order'] ?? 0),
-                isset($_POST['is_active']) ? 1 : 0,
-                (int)$_POST['id'],
-            ]);
+            ];
+            if ($uploaded !== null) {
+                $iconSql = 'icon=?, ';
+                $params[] = $uploaded;
+            } elseif (!empty($_POST['remove_icon_' . $id])) {
+                $iconSql = 'icon=?, ';
+                $params[] = '';
+            }
+            $params[] = (int)($_POST['sort_order'] ?? 0);
+            $params[] = isset($_POST['is_active']) ? 1 : 0;
+            $params[] = $id;
+
+            $stmt = $pdo->prepare("UPDATE features SET title=?, description=?, {$iconSql}sort_order=?, is_active=? WHERE id=?");
+            $stmt->execute($params);
             $msg = 'Feature updated.';
         } elseif ($action === 'delete') {
             $stmt = $pdo->prepare("DELETE FROM features WHERE id=?");
@@ -49,24 +64,46 @@ require __DIR__ . '/homepage-tabs.php';
 
 <div class="a-card">
   <h2 class="a-card-title">Add New Feature Card</h2>
-  <form method="post">
+  <form method="post" enctype="multipart/form-data">
     <input type="hidden" name="csrf" value="<?= e(csrf_token()) ?>">
     <input type="hidden" name="action" value="add">
     <div class="a-field"><label>Title</label><input type="text" name="title" required></div>
     <div class="a-field"><label>Description</label><textarea name="description" rows="2" required></textarea></div>
-    <div class="a-field"><label>Sort Order</label><input type="number" name="sort_order" value="<?= count($features)+1 ?>" style="max-width:120px"></div>
+    <div class="a-field">
+      <label>Icon</label>
+      <div class="a-image-field">
+        <input type="file" name="icon" accept="image/*">
+        <small class="a-help">JPG, PNG, WEBP, GIF or SVG. Max 8 MB. A small square icon works best.</small>
+      </div>
+    </div>
+    <div class="a-field" style="max-width:120px"><label>Sort Order</label><input type="number" name="sort_order" value="<?= count($features)+1 ?>"></div>
     <button class="a-btn a-btn-primary"><?= admin_icon('plus', 16) ?> Add Feature</button>
   </form>
 </div>
 
 <?php foreach ($features as $f): ?>
   <div class="a-card">
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
       <input type="hidden" name="csrf" value="<?= e(csrf_token()) ?>">
       <input type="hidden" name="action" value="update">
       <input type="hidden" name="id" value="<?= (int)$f['id'] ?>">
       <div class="a-field"><label>Title</label><input type="text" name="title" value="<?= e($f['title']) ?>" required></div>
       <div class="a-field"><label>Description</label><textarea name="description" rows="2" required><?= e($f['description']) ?></textarea></div>
+      <div class="a-field">
+        <label>Icon</label>
+        <div class="a-image-field">
+          <?php if (!empty($f['icon'])): ?>
+            <div class="a-thumb">
+              <img src="<?= e(resolve_image_url($f['icon'])) ?>" alt="">
+              <label class="a-remove"><input type="checkbox" name="remove_icon_<?= (int)$f['id'] ?>" value="1"> Remove</label>
+            </div>
+          <?php else: ?>
+            <span class="a-noimg">No icon uploaded yet.</span>
+          <?php endif; ?>
+          <input type="file" name="icon_<?= (int)$f['id'] ?>" accept="image/*">
+          <small class="a-help">JPG, PNG, WEBP, GIF or SVG. Max 8 MB. Leave empty to keep the current icon.</small>
+        </div>
+      </div>
       <div class="a-row">
         <div class="a-field" style="max-width:120px"><label>Sort Order</label><input type="number" name="sort_order" value="<?= (int)$f['sort_order'] ?>"></div>
         <label class="a-check"><input type="checkbox" name="is_active" <?= $f['is_active']?'checked':'' ?>> Active (visible)</label>

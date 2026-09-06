@@ -190,12 +190,29 @@ $pageImg   = absolute_url(resolve_image_url($heroSlides[0]['image'] ?? '', 'asse
       </div>
 
       <div class="features-right">
-        <?php foreach ($features as $f): ?>
-          <div class="feature-item">
-            <h3><?= e($f['title']) ?></h3>
-            <p><?= e($f['description']) ?></p>
+        <div class="features-slider-wrap">
+          <div class="features-track" id="featuresTrack">
+            <?php foreach ($features as $f):
+                $iconUrl = !empty($f['icon']) ? resolve_image_url($f['icon']) : '';
+            ?>
+              <div class="feature-item">
+                <?php if ($iconUrl): ?><img src="<?= e($iconUrl) ?>" alt="" class="feature-icon" loading="lazy"><?php endif; ?>
+                <h3><?= e($f['title']) ?></h3>
+                <p><?= e($f['description']) ?></p>
+              </div>
+            <?php endforeach; ?>
           </div>
-        <?php endforeach; ?>
+        </div>
+        <?php if (count($features) > 1): ?>
+          <div class="features-nav">
+            <button class="features-arrow prev" id="featuresPrev" aria-label="Previous features">
+              <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="12,4 6,10 12,16"/></svg>
+            </button>
+            <button class="features-arrow next" id="featuresNext" aria-label="Next features">
+              <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="8,4 14,10 8,16"/></svg>
+            </button>
+          </div>
+        <?php endif; ?>
       </div>
     </div>
   </div>
