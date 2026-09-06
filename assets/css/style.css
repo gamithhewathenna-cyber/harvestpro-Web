@@ -287,7 +287,7 @@ ul { list-style: none; }
 
 /* =========================== HOW IT HELPS =========================== */
 .how-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 60px; margin-top: 36px; }
-.how-title { font-size: 40px; max-width: 340px; }
+.how-title { font-size: 48px; max-width: 380px; }
 .how-right p { color: var(--muted); margin-bottom: 16px; font-size: 15px; }
 .how-tags { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 22px; }
 .tag {
