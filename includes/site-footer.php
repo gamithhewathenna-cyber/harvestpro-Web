@@ -10,7 +10,7 @@ $footerCredits = array_filter(array_map('trim', explode("\n", setting('footer_cr
   <div class="container footer-grid">
     <div class="footer-brand">
       <?php if ($brandLogoUrl): ?>
-        <img src="<?= e($brandLogoUrl) ?>" alt="<?= e($brandName) ?>" class="footer-logo">
+        <img src="<?= e($brandLogoUrl) ?>" alt="<?= e($brandName) ?>" class="footer-logo" loading="lazy">
       <?php else: ?>
         <span class="brand-mark dark"><?= e($brandName) ?></span>
       <?php endif; ?>

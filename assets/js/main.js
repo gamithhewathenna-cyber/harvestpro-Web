@@ -69,4 +69,29 @@
     render();
     restart();
   }
+
+  // Lazy-load below-the-fold CSS background images (why photos, feature media,
+  // about story photo, CTA banners) — they're stashed in data-bg until the
+  // element is about to scroll into view, instead of downloading on page load.
+  var lazyBgEls = document.querySelectorAll('[data-bg]');
+  if (lazyBgEls.length) {
+    var loadBg = function (el) {
+      el.style.backgroundImage = el.getAttribute('data-bg');
+      el.removeAttribute('data-bg');
+    };
+    if ('IntersectionObserver' in window) {
+      var bgObserver = new IntersectionObserver(function (entries, observer) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            loadBg(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin: '200px 0px' });
+      lazyBgEls.forEach(function (el) { bgObserver.observe(el); });
+    } else {
+      // No IntersectionObserver support: just load them all up front.
+      lazyBgEls.forEach(loadBg);
+    }
+  }
 })();

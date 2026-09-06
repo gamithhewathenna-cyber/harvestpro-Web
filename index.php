@@ -156,8 +156,8 @@ $pageImg   = absolute_url(resolve_image_url($heroSlides[0]['image'] ?? '', 'asse
           </ul>
         </div>
 
-        <div class="why-photo why-photo-top" style="background-image:url('<?= e($whyImg1) ?>');"></div>
-        <div class="why-photo why-photo-bottom" style="background-image:url('<?= e($whyImg2) ?>');"></div>
+        <div class="why-photo why-photo-top" data-bg="url('<?= e($whyImg1) ?>')"></div>
+        <div class="why-photo why-photo-bottom" data-bg="url('<?= e($whyImg2) ?>')"></div>
 
         <div class="why-stat">
           <span class="why-stat-badge"><?= e(setting('why_stat_number')) ?></span>
@@ -223,7 +223,7 @@ $pageImg   = absolute_url(resolve_image_url($heroSlides[0]['image'] ?? '', 'asse
 </section>
 
 <!-- ============================= CTA ============================= -->
-<section class="cta" id="contact" style="background-image:linear-gradient(rgba(15,30,18,.72),rgba(15,30,18,.55)),url('<?= e($ctaBg) ?>');">
+<section class="cta" id="contact" data-bg="linear-gradient(rgba(15,30,18,.72),rgba(15,30,18,.55)),url('<?= e($ctaBg) ?>')">
   <div class="container">
     <div class="cta-inner">
       <p class="cta-kicker"><?= e(setting('cta_kicker')) ?></p>

@@ -104,7 +104,7 @@ $pageImg   = absolute_url($aBannerBg);
         </div>
       </div>
 
-      <div class="about-story-photo" style="background-image:url('<?= e($aStoryImg) ?>');"></div>
+      <div class="about-story-photo" data-bg="url('<?= e($aStoryImg) ?>')"></div>
     </div>
   </div>
 </section>
@@ -120,7 +120,7 @@ $pageImg   = absolute_url($aBannerBg);
     <div class="partners-grid">
       <div class="partner-card">
         <?php if ($partner1Logo): ?>
-          <img src="<?= e($partner1Logo) ?>" alt="<?= e(setting('about_partner1_name')) ?>" class="partner-logo">
+          <img src="<?= e($partner1Logo) ?>" alt="<?= e(setting('about_partner1_name')) ?>" class="partner-logo" loading="lazy">
         <?php else: ?>
           <span class="partner-logo-fallback"><?= e(initials(setting('about_partner1_name', 'CE'))) ?></span>
         <?php endif; ?>
@@ -133,7 +133,7 @@ $pageImg   = absolute_url($aBannerBg);
 
       <div class="partner-card">
         <?php if ($partner2Logo): ?>
-          <img src="<?= e($partner2Logo) ?>" alt="<?= e(setting('about_partner2_name')) ?>" class="partner-logo">
+          <img src="<?= e($partner2Logo) ?>" alt="<?= e(setting('about_partner2_name')) ?>" class="partner-logo" loading="lazy">
         <?php else: ?>
           <span class="partner-logo-fallback"><?= e(initials(setting('about_partner2_name', 'K'))) ?></span>
         <?php endif; ?>
@@ -171,7 +171,7 @@ $pageImg   = absolute_url($aBannerBg);
 </section>
 
 <!-- ============================= CTA ============================= -->
-<section class="cta" style="background-image:linear-gradient(rgba(15,30,18,.72),rgba(15,30,18,.55)),url('<?= e($aCtaBg) ?>');">
+<section class="cta" data-bg="linear-gradient(rgba(15,30,18,.72),rgba(15,30,18,.55)),url('<?= e($aCtaBg) ?>')">
   <div class="container">
     <div class="cta-inner">
       <p class="cta-kicker"><?= e(setting('about_cta_kicker')) ?></p>

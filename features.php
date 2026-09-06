@@ -117,7 +117,7 @@ $pageImg   = absolute_url($fpBanner);
           <?php endif; ?>
         </div>
 
-        <div class="feature-media" style="background-image:url('<?= e($img) ?>');"></div>
+        <div class="feature-media" data-bg="url('<?= e($img) ?>')"></div>
       </div>
     </section>
   <?php endforeach; ?>
