@@ -23,6 +23,16 @@ $fpBanner = image_url('features_page_bg_image', 'assets/images/hero-bg.jpg');
 
 $sections = get_feature_sections();
 
+// CTA
+$fCtaKicker   = setting('features_cta_kicker', 'Harvest Pro — Grow Smarter. Manage Better.');
+$fCtaTitle    = setting('features_cta_title', 'Ready to Transform Your Plantation Operations?');
+$fCtaPara     = setting('features_cta_para', 'Take control of your plantation with a smarter management solution built for modern estates. Harvest Pro provides the tools, insights, and automation needed to improve productivity and streamline daily operations.');
+$fCtaBtn1Text = setting('features_cta_btn1_text', 'Request a Demo');
+$fCtaBtn1Link = setting('features_cta_btn1_link', '/contact');
+$fCtaBtn2Text = setting('features_cta_btn2_text', 'Contact Us');
+$fCtaBtn2Link = setting('features_cta_btn2_link', '/contact');
+$fCtaBg       = image_url('features_cta_bg_image', 'assets/images/cta-bg.jpg');
+
 $pageTitle = $seoTitle !== '' ? $seoTitle : 'Features — ' . $brandName . ' Pro';
 $pageDesc  = $seoDescription !== '' ? $seoDescription : $fpPara1;
 $pageImg   = absolute_url($fpBanner);
@@ -126,5 +136,20 @@ $pageImg   = absolute_url($fpBanner);
     <section class="section"><div class="container"><p>Feature sections will appear here once added from the admin panel.</p></div></section>
   <?php endif; ?>
 </div>
+
+<!-- ============================= CTA ============================= -->
+<section class="cta" data-bg="linear-gradient(rgba(15,30,18,.72),rgba(15,30,18,.55)),url('<?= e($fCtaBg) ?>')">
+  <div class="container">
+    <div class="cta-inner">
+      <p class="cta-kicker"><?= e($fCtaKicker) ?></p>
+      <h2 class="cta-title"><?= e($fCtaTitle) ?></h2>
+      <p class="cta-para"><?= e($fCtaPara) ?></p>
+      <div class="cta-btns">
+        <a href="<?= e($fCtaBtn1Link) ?>" class="btn btn-primary"><?= e($fCtaBtn1Text) ?></a>
+        <a href="<?= e($fCtaBtn2Link) ?>" class="btn btn-text light"><?= e($fCtaBtn2Text) ?> <span>&rarr;</span></a>
+      </div>
+    </div>
+  </div>
+</section>
 
 <?php require __DIR__ . '/includes/site-footer.php'; ?>

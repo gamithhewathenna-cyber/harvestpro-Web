@@ -17,7 +17,7 @@ $pageMap = [
   'about_seo' => 'about_seo',
   'contact_banner' => 'contact_banner', 'contact_form' => 'contact_form', 'contact_map' => 'contact_map',
   'contact_seo' => 'contact_seo',
-  'features_banner' => 'features_banner', 'features_seo' => 'features_seo',
+  'features_banner' => 'features_banner', 'features_cta' => 'features_cta', 'features_seo' => 'features_seo',
 ];
 
 $g = $_GET['g'] ?? 'hero';

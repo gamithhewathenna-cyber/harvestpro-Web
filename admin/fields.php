@@ -129,6 +129,19 @@ function field_groups(): array
                 'features_page_bg_image' => ['Background Image', 'image'],
             ],
         ],
+        'features_cta' => [
+            'title'  => 'Call To Action',
+            'fields' => [
+                'features_cta_kicker'    => ['Kicker Text', 'text'],
+                'features_cta_title'     => ['Heading', 'textarea'],
+                'features_cta_para'      => ['Paragraph', 'textarea'],
+                'features_cta_btn1_text' => ['Primary Button Text', 'text'],
+                'features_cta_btn1_link' => ['Primary Button Link', 'text'],
+                'features_cta_btn2_text' => ['Secondary Button Text', 'text'],
+                'features_cta_btn2_link' => ['Secondary Button Link', 'text'],
+                'features_cta_bg_image'  => ['Background Image', 'image'],
+            ],
+        ],
         'about_banner' => [
             'title'  => 'Page Banner',
             'fields' => [

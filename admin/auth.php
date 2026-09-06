@@ -18,7 +18,7 @@ const ABOUT_TABS = ['about_banner', 'about_story', 'about_partners', 'about_why'
 const CONTACT_TABS = ['contact_banner', 'contact_form', 'contact_map', 'contact_seo'];
 
 /* Page keys that belong to the single "Features Page" tab (sidebar highlight + tab bar) */
-const FEATURES_PAGE_TABS = ['features_banner', 'feature_sections', 'features_seo'];
+const FEATURES_PAGE_TABS = ['features_banner', 'feature_sections', 'features_cta', 'features_seo'];
 
 function require_login(): void
 {

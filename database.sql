@@ -72,6 +72,16 @@ INSERT INTO `settings` (`setting_key`, `setting_value`, `setting_group`) VALUES
 ('features_page_para_2', 'Manage multiple estates and sections, track daily activities, monitor costs, and get a clearer view of your estate''s performance from anywhere.', 'features_page'),
 ('features_page_bg_image', '', 'features_page'),
 
+-- Features page: CTA
+('features_cta_kicker', 'Harvest Pro — Grow Smarter. Manage Better.', 'features_page'),
+('features_cta_title', 'Ready to Transform Your Plantation Operations?', 'features_page'),
+('features_cta_para', 'Take control of your plantation with a smarter management solution built for modern estates. Harvest Pro provides the tools, insights, and automation needed to improve productivity and streamline daily operations.', 'features_page'),
+('features_cta_btn1_text', 'Request a Demo', 'features_page'),
+('features_cta_btn1_link', '/contact', 'features_page'),
+('features_cta_btn2_text', 'Contact Us', 'features_page'),
+('features_cta_btn2_link', '/contact', 'features_page'),
+('features_cta_bg_image', '', 'features_page'),
+
 -- How It Helps section
 ('how_badge', 'How It Helps', 'how'),
 ('how_title', 'Improve Efficiency Across Every Department', 'how'),
