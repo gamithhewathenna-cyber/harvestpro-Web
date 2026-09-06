@@ -89,15 +89,15 @@ $pageImg   = absolute_url($cBannerBg);
           <ul class="contact-list" style="margin-top:20px;">
             <li>
               <span class="contact-icon"><svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="8" height="16" rx="2"/><line x1="8.5" y1="15" x2="11.5" y2="15"/></svg></span>
-              <?= e(setting('footer_phone')) ?>
+              <span><?= e(setting('footer_phone')) ?></span>
             </li>
             <li>
               <span class="contact-icon"><svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4.5" width="16" height="11" rx="1.5"/><polyline points="2.5,5.5 10,11.5 17.5,5.5"/></svg></span>
-              <?= e(setting('footer_email')) ?>
+              <span><?= e(setting('footer_email')) ?></span>
             </li>
             <li>
               <span class="contact-icon"><svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="6"/><circle cx="10" cy="10" r="1.6" fill="currentColor" stroke="none"/><line x1="10" y1="1.5" x2="10" y2="3.8"/><line x1="10" y1="16.2" x2="10" y2="18.5"/><line x1="1.5" y1="10" x2="3.8" y2="10"/><line x1="16.2" y1="10" x2="18.5" y2="10"/></svg></span>
-              <?= nl2br_e(setting('footer_address')) ?>
+              <span><?= nl2br_e(setting('footer_address')) ?></span>
             </li>
           </ul>
         </div>
