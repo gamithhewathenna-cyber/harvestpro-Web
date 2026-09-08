@@ -97,9 +97,9 @@ INSERT INTO `settings` (`setting_key`, `setting_value`, `setting_group`) VALUES
 ('cta_title', 'Ready to Transform Your Plantation Operations?', 'cta'),
 ('cta_para', 'Take control of your plantation with a smarter management solution built for modern estates. Harvest Pro provides the tools, insights, and automation needed to improve productivity and streamline daily operations.', 'cta'),
 ('cta_btn1_text', 'Request a Demo', 'cta'),
-('cta_btn1_link', '#contact', 'cta'),
+('cta_btn1_link', '/contact', 'cta'),
 ('cta_btn2_text', 'Contact Us', 'cta'),
-('cta_btn2_link', '#contact', 'cta'),
+('cta_btn2_link', '/contact', 'cta'),
 ('cta_bg_image', '', 'cta'),
 
 -- Maintenance mode
