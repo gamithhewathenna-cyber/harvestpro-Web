@@ -89,6 +89,7 @@ $pageImg   = absolute_url(resolve_image_url($heroSlides[0]['image'] ?? '', 'asse
     <?php foreach ($heroSlides as $i => $slide):
         $slideBg = resolve_image_url($slide['image'] ?? '', 'assets/images/hero-bg.jpg');
     ?>
+      <!-- DEBUG id=<?= (int)($slide['id'] ?? -1) ?> lang=<?= e(current_lang()) ?> headline_si=[<?= e($slide['headline_si'] ?? 'COLUMN-MISSING') ?>] subtext_si=[<?= e($slide['subtext_si'] ?? 'COLUMN-MISSING') ?>] -->
       <div class="hero-slide<?= $i === 0 ? ' active' : '' ?>" style="background-image:linear-gradient(rgba(10,30,15,.4),rgba(10,30,15,.55)),url('<?= e($slideBg) ?>');">
         <div class="hero-inner">
           <div class="hero-content">
