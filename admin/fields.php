@@ -121,6 +121,7 @@ function field_groups(): array
             'title'  => 'Search Engine Visibility',
             'fields' => [
                 'google_site_verification' => ['Google Search Console Verification Code', 'text'],
+                'google_analytics_id'      => ['Google Analytics / tag ID (e.g. G-XXXXXXXXXX)', 'text'],
             ],
         ],
         'contact_banner' => [

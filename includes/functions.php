@@ -313,7 +313,18 @@ function seo_meta_tags(string $path, string $title, string $description, string 
 {
     $url = rtrim(BASE_URL, '/') . $path;
     $googleVerify = setting('google_site_verification', '');
+    $gaId = setting('google_analytics_id', '');
     ?>
+<?php if ($gaId !== ''): ?>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=<?= e($gaId) ?>"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', <?= json_encode($gaId, JSON_UNESCAPED_SLASHES) ?>);
+</script>
+<?php endif; ?>
 <?php if ($googleVerify !== ''): ?>
 <meta name="google-site-verification" content="<?= e($googleVerify) ?>">
 <?php endif; ?>

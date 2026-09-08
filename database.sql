@@ -133,6 +133,7 @@ INSERT INTO `settings` (`setting_key`, `setting_value`, `setting_group`) VALUES
 
 -- Settings: Search Engine Visibility (site-wide)
 ('google_site_verification', 'vaXiRQKZpTwzak12Ic9yvE5Gjfj3in1QjWKJyAqmtOg', 'settings'),
+('google_analytics_id', 'G-FE0XM4D01M', 'settings'),
 
 -- Per-page SEO
 ('home_seo_title', '', 'seo'),

@@ -46,6 +46,12 @@ require __DIR__ . '/header.php';
       <h2 class="a-card-title"><?= e($group['title']) ?></h2>
       <?php foreach ($group['fields'] as $key => [$label, $type]): ?>
         <?php render_field($key, $label, $type, $fresh[$key] ?? ''); ?>
+        <?php if ($key === 'google_site_verification'): ?>
+          <p class="a-help" style="margin-top:-10px;margin-bottom:18px;">From Google Search Console's HTML tag verification method, paste only the code — the value of the <code>content="..."</code> attribute, not the whole <code>&lt;meta&gt;</code> tag.</p>
+        <?php endif; ?>
+        <?php if ($key === 'google_analytics_id'): ?>
+          <p class="a-help" style="margin-top:-10px;margin-bottom:18px;">From Google Analytics (Admin &rarr; Data Streams &rarr; your stream), paste just the Measurement ID — it looks like <code>G-XXXXXXXXXX</code>. Once set, the tracking tag loads on every page automatically, and Search Console can also verify ownership through it.</p>
+        <?php endif; ?>
       <?php endforeach; ?>
     </div>
   <?php endforeach; ?>
