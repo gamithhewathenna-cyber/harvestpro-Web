@@ -44,6 +44,9 @@ INSERT INTO `settings` (`setting_key`, `setting_value`, `setting_group`) VALUES
 ('brand_tagline', 'Managing Every Leaf, Every Day', 'branding'),
 ('brand_logo', '', 'branding'),
 
+-- Price nav button
+('price_link', '#', 'price'),
+
 -- Ticker strip
 ('ticker_items', 'Worker Management|Tea Production Tracking|Automated Payroll|Field Activity Monitoring|Multi-Estate Support|Real-Time Analytics', 'ticker'),
 

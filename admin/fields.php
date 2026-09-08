@@ -69,6 +69,12 @@ function field_groups(): array
                 'cta_bg_image'  => ['Background Image', 'image'],
             ],
         ],
+        'price' => [
+            'title'  => 'Price',
+            'fields' => [
+                'price_link' => ['Price Link (URL — internal path or full external link)', 'text'],
+            ],
+        ],
         'maintenance' => [
             'title'  => 'Maintenance Mode',
             'fields' => [

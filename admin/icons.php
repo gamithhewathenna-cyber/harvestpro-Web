@@ -21,6 +21,7 @@ function admin_icon(string $name, int $size = 18): string
         'settings'  => '<circle cx="10" cy="10" r="2.6"/><path d="M10 2.5v2.3M10 15.2v2.3M17.5 10h-2.3M4.8 10H2.5M15.1 4.9l-1.6 1.6M6.5 13.5l-1.6 1.6M15.1 15.1l-1.6-1.6M6.5 6.5 4.9 4.9"/>',
         'pin'       => '<circle cx="10" cy="10" r="6"/><circle cx="10" cy="10" r="1.6" fill="currentColor" stroke="none"/><line x1="10" y1="1.5" x2="10" y2="3.8"/><line x1="10" y1="16.2" x2="10" y2="18.5"/><line x1="1.5" y1="10" x2="3.8" y2="10"/><line x1="16.2" y1="10" x2="18.5" y2="10"/>',
         'info'      => '<circle cx="10" cy="10" r="7"/><line x1="10" y1="9" x2="10" y2="14"/><circle cx="10" cy="6.3" r="1" fill="currentColor" stroke="none"/>',
+        'tag'       => '<path d="M17.5 11.4 11.4 17.5a1.5 1.5 0 0 1-2.1 0L3 11.2V4.5A1.5 1.5 0 0 1 4.5 3h6.7Z"/><circle cx="7.3" cy="7.3" r="1.1" fill="currentColor" stroke="none"/>',
     ];
     if (!isset($shapes[$name])) {
         return '';
