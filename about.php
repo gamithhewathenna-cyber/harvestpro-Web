@@ -14,7 +14,6 @@ $themeAccent  = setting('theme_accent_color', '');
 $seoTitle       = setting('about_seo_title', '');
 $seoDescription = setting('about_seo_description', '');
 $seoKeywords    = setting('about_seo_keywords', '');
-$seoNoindex     = setting('about_seo_noindex') === '1';
 
 // Page banner
 $aTitle    = setting('about_title', "Built for Plantations,\nby **Industry** & Technology Experts.");
@@ -76,7 +75,6 @@ $pageImg   = absolute_url($aBannerBg);
 <?php if ($seoKeywords !== ''): ?>
 <meta name="keywords" content="<?= e($seoKeywords) ?>">
 <?php endif; ?>
-<meta name="robots" content="<?= $seoNoindex ? 'noindex, nofollow' : 'index, follow' ?>">
 <?php seo_meta_tags('/about', $pageTitle, $pageDesc, $pageImg, $brandName . ' Pro'); ?>
 <link rel="stylesheet" href="assets/css/style.css?v=1.3">
 <?php if ($themePrimary !== '' || $themeAccent !== ''): ?>

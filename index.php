@@ -16,7 +16,6 @@ $themeAccent  = setting('theme_accent_color', '');
 $seoTitle       = setting('home_seo_title', '');
 $seoDescription = setting('home_seo_description', '');
 $seoKeywords    = setting('home_seo_keywords', '');
-$seoNoindex     = setting('home_seo_noindex') === '1';
 
 // Ticker items
 $tickerItems = array_filter(array_map('trim', explode('|', setting('ticker_items'))));
@@ -57,7 +56,6 @@ $pageImg   = absolute_url(resolve_image_url($heroSlides[0]['image'] ?? '', 'asse
 <?php if ($seoKeywords !== ''): ?>
 <meta name="keywords" content="<?= e($seoKeywords) ?>">
 <?php endif; ?>
-<meta name="robots" content="<?= $seoNoindex ? 'noindex, nofollow' : 'index, follow' ?>">
 <?php seo_meta_tags('/', $pageTitle, $pageDesc, $pageImg, $brandName . ' Pro'); ?>
 <link rel="stylesheet" href="assets/css/style.css?v=1.3">
 <?php if ($themePrimary !== '' || $themeAccent !== ''): ?>

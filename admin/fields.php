@@ -230,7 +230,6 @@ function field_groups(): array
                 'home_seo_title'       => ['Meta Title', 'text'],
                 'home_seo_description' => ['Meta Description', 'textarea'],
                 'home_seo_keywords'    => ['Meta Keywords (comma separated)', 'text'],
-                'home_seo_noindex'     => ['Discourage search engines from indexing this page', 'checkbox'],
             ],
         ],
         'about_seo' => [
@@ -239,7 +238,6 @@ function field_groups(): array
                 'about_seo_title'       => ['Meta Title', 'text'],
                 'about_seo_description' => ['Meta Description', 'textarea'],
                 'about_seo_keywords'    => ['Meta Keywords (comma separated)', 'text'],
-                'about_seo_noindex'     => ['Discourage search engines from indexing this page', 'checkbox'],
             ],
         ],
         'features_seo' => [
@@ -248,7 +246,6 @@ function field_groups(): array
                 'features_seo_title'       => ['Meta Title', 'text'],
                 'features_seo_description' => ['Meta Description', 'textarea'],
                 'features_seo_keywords'    => ['Meta Keywords (comma separated)', 'text'],
-                'features_seo_noindex'     => ['Discourage search engines from indexing this page', 'checkbox'],
             ],
         ],
         'contact_seo' => [
@@ -257,7 +254,6 @@ function field_groups(): array
                 'contact_seo_title'       => ['Meta Title', 'text'],
                 'contact_seo_description' => ['Meta Description', 'textarea'],
                 'contact_seo_keywords'    => ['Meta Keywords (comma separated)', 'text'],
-                'contact_seo_noindex'     => ['Discourage search engines from indexing this page', 'checkbox'],
             ],
         ],
     ];

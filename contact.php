@@ -14,7 +14,6 @@ $themeAccent  = setting('theme_accent_color', '');
 $seoTitle       = setting('contact_seo_title', '');
 $seoDescription = setting('contact_seo_description', '');
 $seoKeywords    = setting('contact_seo_keywords', '');
-$seoNoindex     = setting('contact_seo_noindex') === '1';
 
 $cTitle1    = setting('contact_title_1', 'Ready to Modernize');
 $cTitle2    = setting('contact_title_2', 'your plantation operations?');
@@ -41,7 +40,6 @@ $pageImg   = absolute_url($cBannerBg);
 <?php if ($seoKeywords !== ''): ?>
 <meta name="keywords" content="<?= e($seoKeywords) ?>">
 <?php endif; ?>
-<meta name="robots" content="<?= $seoNoindex ? 'noindex, nofollow' : 'index, follow' ?>">
 <?php seo_meta_tags('/contact', $pageTitle, $pageDesc, $pageImg, $brandName . ' Pro'); ?>
 <link rel="stylesheet" href="assets/css/style.css?v=1.3">
 <?php if ($themePrimary !== '' || $themeAccent !== ''): ?>
