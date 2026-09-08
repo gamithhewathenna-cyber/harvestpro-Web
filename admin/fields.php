@@ -56,6 +56,25 @@ function field_groups(): array
                 'how_tags'   => ['Tags (separate each with a | )', 'list'],
             ],
         ],
+        'trust' => [
+            'title'  => 'Trust Section',
+            'fields' => [
+                'trust_kicker'  => ['Small Heading (above the bar)', 'text'],
+                'trust_title'   => ['Main Heading (bar)', 'text'],
+                'trust1_icon'   => ['Card 1 — Icon (Google Material Symbols name, e.g. shield)', 'text'],
+                'trust1_title'  => ['Card 1 — Title', 'text'],
+                'trust1_desc'   => ['Card 1 — Description', 'textarea'],
+                'trust2_icon'   => ['Card 2 — Icon (Google Material Symbols name, e.g. public)', 'text'],
+                'trust2_title'  => ['Card 2 — Title', 'text'],
+                'trust2_desc'   => ['Card 2 — Description', 'textarea'],
+                'trust3_icon'   => ['Card 3 — Icon (Google Material Symbols name, e.g. cloud_done)', 'text'],
+                'trust3_title'  => ['Card 3 — Title', 'text'],
+                'trust3_desc'   => ['Card 3 — Description', 'textarea'],
+                'trust4_icon'   => ['Card 4 — Icon (Google Material Symbols name, e.g. admin_panel_settings)', 'text'],
+                'trust4_title'  => ['Card 4 — Title', 'text'],
+                'trust4_desc'   => ['Card 4 — Description', 'textarea'],
+            ],
+        ],
         'cta' => [
             'title'  => 'Call To Action',
             'fields' => [

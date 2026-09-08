@@ -27,6 +27,27 @@ $whyChecklist = array_filter(array_map('trim', explode("\n", setting('why_checkl
 // How-it-helps tags
 $howTags = array_filter(array_map('trim', explode('|', setting('how_tags'))));
 
+// Trust section (fixed set of 4 icon cards)
+$trustDefaults = [
+    1 => ['shield',               'Secure by Design',       'Your estate data is protected with modern security practices.'],
+    2 => ['public',                'Always Within Reach',     'Access your plantation operations securely, wherever you are.'],
+    3 => ['cloud_done',            'Backed Up & Protected',   'Regular backups help keep your important records safe.'],
+    4 => ['admin_panel_settings',  'Access You Control',      'Give the right people access to the right information.'],
+];
+$trustItems = [];
+foreach ($trustDefaults as $n => [$defIcon, $defTitle, $defDesc]) {
+    $icon = setting("trust{$n}_icon", $defIcon);
+    $ttl  = setting("trust{$n}_title", $defTitle);
+    if ($icon === '' && $ttl === '') {
+        continue;
+    }
+    $trustItems[] = [
+        'icon'  => $icon,
+        'title' => $ttl,
+        'desc'  => setting("trust{$n}_desc", $defDesc),
+    ];
+}
+
 // Hero slider
 $heroSlides = get_hero_slides();
 if (!$heroSlides) {
@@ -59,7 +80,12 @@ $pageImg   = absolute_url(resolve_image_url($heroSlides[0]['image'] ?? '', 'asse
 <meta name="keywords" content="<?= e($seoKeywords) ?>">
 <?php endif; ?>
 <?php seo_meta_tags('/', $pageTitle, $pageDesc, $pageImg, $brandName . ' Pro'); ?>
-<link rel="stylesheet" href="assets/css/style.css?v=1.3">
+<?php if ($trustItems): ?>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+<?php endif; ?>
+<link rel="stylesheet" href="assets/css/style.css?v=1.4">
 <?php if ($themePrimary !== '' || $themeAccent !== ''): ?>
 <style>
 :root {
@@ -222,6 +248,27 @@ $pageImg   = absolute_url(resolve_image_url($heroSlides[0]['image'] ?? '', 'asse
     </div>
   </div>
 </section>
+
+<?php if ($trustItems): ?>
+<!-- ============================= TRUST ============================= -->
+<section class="trust section">
+  <div class="container">
+    <p class="trust-kicker"><?= e(setting('trust_kicker', 'Your Estate. Your Data. Protected.')) ?></p>
+    <h2 class="trust-title"><?= e(setting('trust_title', 'Trusted to Keep Your Estate Moving')) ?></h2>
+    <div class="trust-grid">
+      <?php foreach ($trustItems as $item): ?>
+        <div class="trust-card">
+          <?php if ($item['icon'] !== ''): ?>
+            <span class="trust-icon material-symbols-outlined" aria-hidden="true"><?= e($item['icon']) ?></span>
+          <?php endif; ?>
+          <h3><?= e($item['title']) ?></h3>
+          <p><?= e($item['desc']) ?></p>
+        </div>
+      <?php endforeach; ?>
+    </div>
+  </div>
+</section>
+<?php endif; ?>
 
 <!-- ============================= CTA ============================= -->
 <section class="cta" id="contact" data-bg="linear-gradient(rgba(15,30,18,.72),rgba(15,30,18,.55)),url('<?= e($ctaBg) ?>')">

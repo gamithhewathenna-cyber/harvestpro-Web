@@ -92,6 +92,22 @@ INSERT INTO `settings` (`setting_key`, `setting_value`, `setting_group`) VALUES
 ('how_para_2', 'With real-time reporting and streamlined workflows, managers can identify opportunities, solve issues quickly, and focus on continuous growth.', 'how'),
 ('how_tags', 'Increased productivity|Better workforce management|Improved reporting accuracy|Reduced administrative workload|Better operational control', 'how'),
 
+-- Trust section (fixed set of 4 icon cards; icon values are Google Material Symbols names)
+('trust_kicker', 'Your Estate. Your Data. Protected.', 'trust'),
+('trust_title', 'Trusted to Keep Your Estate Moving', 'trust'),
+('trust1_icon', 'shield', 'trust'),
+('trust1_title', 'Secure by Design', 'trust'),
+('trust1_desc', 'Your estate data is protected with modern security practices.', 'trust'),
+('trust2_icon', 'public', 'trust'),
+('trust2_title', 'Always Within Reach', 'trust'),
+('trust2_desc', 'Access your plantation operations securely, wherever you are.', 'trust'),
+('trust3_icon', 'cloud_done', 'trust'),
+('trust3_title', 'Backed Up & Protected', 'trust'),
+('trust3_desc', 'Regular backups help keep your important records safe.', 'trust'),
+('trust4_icon', 'admin_panel_settings', 'trust'),
+('trust4_title', 'Access You Control', 'trust'),
+('trust4_desc', 'Give the right people access to the right information.', 'trust'),
+
 -- CTA section
 ('cta_kicker', 'Harvest Pro — Grow Smarter. Manage Better.', 'cta'),
 ('cta_title', 'Ready to Transform Your Plantation Operations?', 'cta'),

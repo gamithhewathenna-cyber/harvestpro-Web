@@ -136,6 +136,22 @@ Faster|decision-making' =>
     'Increased productivity|Better workforce management|Improved reporting accuracy|Reduced administrative workload|Better operational control' =>
         'වැඩි ඵලදායිතාව|වඩා හොඳ කම්කරු කළමනාකරණය|වැඩිදියුණු කළ වාර්තා නිරවද්‍යතාව|අඩු කළ පරිපාලන කාර්යභාරය|වඩා හොඳ මෙහෙයුම් පාලනය',
 
+    // ---- Trust section ------------------------------------------------------------
+    'Your Estate. Your Data. Protected.' => 'ඔබේ වතුයාය. ඔබේ දත්ත. ආරක්ෂිතයි.',
+    'Trusted to Keep Your Estate Moving' => 'ඔබේ වතුයාය ඉදිරියට ගෙන යාමට විශ්වාසනීයයි',
+    'Secure by Design' => 'නිර්මාණයෙන්ම ආරක්ෂිතයි',
+    'Your estate data is protected with modern security practices.' =>
+        'නවීන ආරක්ෂක ක්‍රම මගින් ඔබේ වතුයායේ දත්ත ආරක්ෂා කර ඇත.',
+    'Always Within Reach' => 'සැමවිටම ළඟාවිය හැකි',
+    'Access your plantation operations securely, wherever you are.' =>
+        'ඔබ කොහේ සිටියත්, ඔබේ වතු මෙහෙයුම් ආරක්ෂිතව ප්‍රවේශ වන්න.',
+    'Backed Up & Protected' => 'උපස්ථ කර ආරක්ෂා කර ඇත',
+    'Regular backups help keep your important records safe.' =>
+        'නිතිපතා උපස්ථ කිරීම ඔබේ වැදගත් වාර්තා ආරක්ෂිතව තබා ගැනීමට උපකාර වේ.',
+    'Access You Control' => 'ඔබ පාලනය කරන ප්‍රවේශය',
+    'Give the right people access to the right information.' =>
+        'නිවැරදි තොරතුරු වෙත නිවැරදි පුද්ගලයින්ට ප්‍රවේශය ලබා දෙන්න.',
+
     // ---- Maintenance mode -----------------------------------------------------------
     "We'll be right back" => 'අපි ඉක්මනින්ම නැවත එන්නම්',
     "We're currently performing scheduled maintenance. Please check back shortly." =>

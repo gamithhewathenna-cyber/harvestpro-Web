@@ -107,6 +107,7 @@
       '.why-media', '.why-text',
       '.features-left', '.feature-item',
       '.how-left', '.how-right',
+      '.trust-kicker', '.trust-title', '.trust-card',
       '.cta-inner',
       '.about-story-panel', '.about-story-photo',
       '.partners-head', '.partner-card',

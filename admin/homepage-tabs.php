@@ -11,6 +11,7 @@ $homepageTabs = [
     ['key' => 'features_head', 'label' => 'Features Heading', 'href' => 'section.php?g=features'],
     ['key' => 'features',      'label' => 'Feature Cards',    'href' => 'features.php'],
     ['key' => 'how',           'label' => 'How It Helps',     'href' => 'section.php?g=how'],
+    ['key' => 'trust',         'label' => 'Trust Section',    'href' => 'section.php?g=trust'],
     ['key' => 'cta',           'label' => 'Call To Action',   'href' => 'section.php?g=cta'],
     ['key' => 'footer',        'label' => 'Footer',           'href' => 'section.php?g=footer'],
 ];

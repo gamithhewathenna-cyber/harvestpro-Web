@@ -11,7 +11,7 @@ $groups = field_groups();
 $pageMap = [
   'branding' => 'branding', 'ticker' => 'ticker',
   'why' => 'why', 'features' => 'features_head', 'how' => 'how',
-  'cta' => 'cta', 'footer' => 'footer',
+  'trust' => 'trust', 'cta' => 'cta', 'footer' => 'footer',
   'about_banner' => 'about_banner', 'about_story' => 'about_story',
   'about_partners' => 'about_partners', 'about_why' => 'about_why', 'about_cta' => 'about_cta',
   'contact_banner' => 'contact_banner', 'contact_form' => 'contact_form', 'contact_map' => 'contact_map',
@@ -73,6 +73,9 @@ if (in_array($page, HOMEPAGE_TABS, true)) {
     <?php endif; ?>
     <?php if ($key === 'google_site_verification'): ?>
       <p class="a-help" style="margin-top:-10px;margin-bottom:18px;">From Google Search Console's HTML tag verification method, paste only the code — the value of the <code>content="..."</code> attribute, not the whole <code>&lt;meta&gt;</code> tag.</p>
+    <?php endif; ?>
+    <?php if ($key === 'trust1_icon'): ?>
+      <p class="a-help" style="margin-top:-10px;margin-bottom:18px;">Browse icon names at <a href="https://fonts.google.com/icons" target="_blank" rel="noopener">fonts.google.com/icons</a> — click any icon and copy its name exactly (lowercase, underscores instead of spaces).</p>
     <?php endif; ?>
   <?php endforeach; ?>
 
