@@ -198,9 +198,7 @@ INSERT INTO `settings` (`setting_key`, `setting_value`, `setting_group`) VALUES
 ('footer_phone', '0777130597', 'footer'),
 ('footer_email', 'hello@harvestpro.lk', 'footer'),
 ('footer_facebook', '#', 'footer'),
-('footer_youtube', '#', 'footer'),
 ('footer_instagram', '#', 'footer'),
-('footer_linkedin', '#', 'footer'),
 ('footer_copyright', '© 2025 Harvest Pro. Grow Smarter. Manage Better.', 'footer'),
 ('footer_credit', 'Creative Elements (Pvt) Ltd\nKode Tech (Pvt) Ltd', 'footer');
 
