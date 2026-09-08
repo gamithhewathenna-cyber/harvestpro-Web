@@ -229,7 +229,7 @@ function field_groups(): array
             'fields' => [
                 'home_seo_title'       => ['Meta Title', 'text'],
                 'home_seo_description' => ['Meta Description', 'textarea'],
-                'home_seo_keywords'    => ['Meta Keywords (comma separated)', 'text'],
+                'home_seo_keywords'    => ['Keyphrase', 'text'],
             ],
         ],
         'about_seo' => [
@@ -237,7 +237,7 @@ function field_groups(): array
             'fields' => [
                 'about_seo_title'       => ['Meta Title', 'text'],
                 'about_seo_description' => ['Meta Description', 'textarea'],
-                'about_seo_keywords'    => ['Meta Keywords (comma separated)', 'text'],
+                'about_seo_keywords'    => ['Keyphrase', 'text'],
             ],
         ],
         'features_seo' => [
@@ -245,7 +245,7 @@ function field_groups(): array
             'fields' => [
                 'features_seo_title'       => ['Meta Title', 'text'],
                 'features_seo_description' => ['Meta Description', 'textarea'],
-                'features_seo_keywords'    => ['Meta Keywords (comma separated)', 'text'],
+                'features_seo_keywords'    => ['Keyphrase', 'text'],
             ],
         ],
         'contact_seo' => [
@@ -253,7 +253,7 @@ function field_groups(): array
             'fields' => [
                 'contact_seo_title'       => ['Meta Title', 'text'],
                 'contact_seo_description' => ['Meta Description', 'textarea'],
-                'contact_seo_keywords'    => ['Meta Keywords (comma separated)', 'text'],
+                'contact_seo_keywords'    => ['Keyphrase', 'text'],
             ],
         ],
     ];
