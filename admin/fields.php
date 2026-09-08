@@ -88,6 +88,7 @@ function field_groups(): array
             'fields' => [
                 'brand_logo'       => ['Colour Logo', 'image'],
                 'brand_logo_white' => ['White Logo (used on dark backgrounds, e.g. the hero navbar)', 'image'],
+                'favicon'          => ['Favicon (browser tab icon)', 'image'],
             ],
         ],
         'theme' => [
@@ -267,7 +268,7 @@ function handle_upload(string $inputName): ?string
     if (empty($_FILES[$inputName]['name']) || $_FILES[$inputName]['error'] !== UPLOAD_ERR_OK) {
         return null;
     }
-    $allowed = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'];
+    $allowed = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg', 'ico'];
     $ext = strtolower(pathinfo($_FILES[$inputName]['name'], PATHINFO_EXTENSION));
     if (!in_array($ext, $allowed, true)) {
         return null;

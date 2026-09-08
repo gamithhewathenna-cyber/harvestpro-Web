@@ -109,6 +109,7 @@ INSERT INTO `settings` (`setting_key`, `setting_value`, `setting_group`) VALUES
 
 -- Settings: Logo
 ('brand_logo_white', '', 'settings'),
+('favicon', '', 'settings'),
 
 -- Settings: Colour Theme
 ('theme_primary_color', '', 'settings'),

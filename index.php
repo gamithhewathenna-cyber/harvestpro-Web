@@ -6,6 +6,7 @@ $features    = get_features();
 $brandName   = setting('brand_name', 'Harvest');
 $brandLogo   = setting('brand_logo', '');
 $brandLogoUrl= $brandLogo ? image_url('brand_logo') : '';
+$faviconUrl  = image_url('favicon');
 $brandLogoWhite   = setting('brand_logo_white', '');
 // Navbar sits on the dark hero background — prefer the white logo there, falling back to the regular logo.
 $brandLogoNavUrl  = $brandLogoWhite ? image_url('brand_logo_white') : $brandLogoUrl;
@@ -51,6 +52,7 @@ $pageImg   = absolute_url(resolve_image_url($heroSlides[0]['image'] ?? '', 'asse
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<?php if ($faviconUrl !== ''): ?><link rel="icon" href="<?= e($faviconUrl) ?>"><?php endif; ?>
 <title><?= e($pageTitle) ?></title>
 <meta name="description" content="<?= e($pageDesc) ?>">
 <?php if ($seoKeywords !== ''): ?>

@@ -13,12 +13,14 @@ if (setting('maintenance_mode') === '1' && empty($_SESSION['admin_id'])) {
     $mTitle = setting('maintenance_title', 'We\'ll be right back');
     $mMsg   = setting('maintenance_message', 'We\'re currently performing scheduled maintenance. Please check back shortly.');
     $mBrand = setting('brand_name', 'Harvest');
+    $mFavicon = image_url('favicon');
     ?>
 <!DOCTYPE html>
 <html lang="<?= e(current_lang()) ?>">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<?php if ($mFavicon !== ''): ?><link rel="icon" href="<?= e($mFavicon) ?>"><?php endif; ?>
 <title><?= e($mTitle) ?> — <?= e($mBrand) ?></title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
