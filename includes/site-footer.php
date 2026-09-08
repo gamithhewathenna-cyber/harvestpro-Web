@@ -22,6 +22,7 @@ $footerCredits = array_filter(array_map('trim', explode("\n", setting('footer_cr
       <ul>
         <li><a href="/"><?= e(t('Home')) ?></a></li>
         <li><a href="/about"><?= e(t('About Us')) ?></a></li>
+        <li><a href="<?= e($priceLink ?? setting('price_link', '#')) ?>"><?= e(t('Pricing')) ?></a></li>
         <li><a href="/features"><?= e(t('Features')) ?></a></li>
         <li><a href="/contact"><?= e(t('Contact Us')) ?></a></li>
       </ul>
