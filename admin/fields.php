@@ -70,9 +70,9 @@ function field_groups(): array
             ],
         ],
         'price' => [
-            'title'  => 'Price',
+            'title'  => 'Pricing',
             'fields' => [
-                'price_link' => ['Price Link (URL — internal path or full external link)', 'text'],
+                'price_link' => ['Pricing Link (URL — internal path or full external link)', 'text'],
             ],
         ],
         'maintenance' => [

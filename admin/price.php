@@ -40,7 +40,7 @@ require __DIR__ . '/header.php';
   <?php foreach ($fields as $key => [$label, $type]): ?>
     <?php render_field($key, $label, $type, $fresh[$key] ?? ''); ?>
   <?php endforeach; ?>
-  <p class="a-help" style="margin-top:-10px;margin-bottom:18px;">This controls where the "Price" button in the main navigation goes — paste a site-relative path (e.g. <code>/pricing</code>) or a full external URL.</p>
+  <p class="a-help" style="margin-top:-10px;margin-bottom:18px;">This controls where the "Pricing" button in the main navigation goes — paste a site-relative path (e.g. <code>/pricing</code>) or a full external URL.</p>
 
   <button type="submit" class="a-btn a-btn-primary">Save Changes</button>
 </form>

@@ -44,7 +44,7 @@ INSERT INTO `settings` (`setting_key`, `setting_value`, `setting_group`) VALUES
 ('brand_tagline', 'Managing Every Leaf, Every Day', 'branding'),
 ('brand_logo', '', 'branding'),
 
--- Price nav button
+-- Pricing nav button
 ('price_link', '#', 'price'),
 
 -- Ticker strip

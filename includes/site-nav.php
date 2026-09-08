@@ -32,7 +32,7 @@ $langAria  = current_lang() === 'si' ? 'Switch to English' : 'Switch to Sinhala'
     <ul class="nav-links" id="navLinks">
       <li><a href="/" class="<?= $activeNav === 'home' ? 'active' : '' ?>"><?= e(t('Home')) ?></a></li>
       <li><a href="/about" class="<?= $activeNav === 'about' ? 'active' : '' ?>"><?= e(t('About Us')) ?></a></li>
-      <li><a href="<?= e($priceLink) ?>"><?= e(t('Price')) ?></a></li>
+      <li><a href="<?= e($priceLink) ?>"><?= e(t('Pricing')) ?></a></li>
       <li><a href="/features" class="<?= $activeNav === 'features' ? 'active' : '' ?>"><?= e(t('Features')) ?></a></li>
       <li><a href="/contact" class="<?= $activeNav === 'contact' ? 'active' : '' ?>"><?= e(t('Contact Us')) ?></a></li>
     </ul>
