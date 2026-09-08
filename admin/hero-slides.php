@@ -2,6 +2,7 @@
 require_once __DIR__ . '/auth.php';
 require_login();
 require_once __DIR__ . '/fields.php'; // handle_upload()
+ensure_hero_slide_si_columns();
 
 $msg = '';
 $err = '';
@@ -15,8 +16,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($action === 'add') {
             $uploaded = handle_upload('image') ?? '';
             $stmt = $pdo->prepare(
-                "INSERT INTO hero_slides (headline, subtext, btn1_text, btn1_link, btn2_text, btn2_link, image, sort_order, is_active)
-                 VALUES (?,?,?,?,?,?,?,?,1)"
+                "INSERT INTO hero_slides (headline, subtext, btn1_text, btn1_link, btn2_text, btn2_link, image, sort_order, is_active, headline_si, subtext_si, btn1_text_si, btn2_text_si)
+                 VALUES (?,?,?,?,?,?,?,?,1,?,?,?,?)"
             );
             $stmt->execute([
                 trim($_POST['headline'] ?? ''),
@@ -27,6 +28,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 trim($_POST['btn2_link'] ?? ''),
                 $uploaded,
                 (int)($_POST['sort_order'] ?? 0),
+                trim($_POST['headline_si'] ?? ''),
+                trim($_POST['subtext_si'] ?? ''),
+                trim($_POST['btn1_text_si'] ?? ''),
+                trim($_POST['btn2_text_si'] ?? ''),
             ]);
             $msg = 'Slide added.';
         } elseif ($action === 'update') {
@@ -40,6 +45,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 trim($_POST['btn1_link'] ?? ''),
                 trim($_POST['btn2_text'] ?? ''),
                 trim($_POST['btn2_link'] ?? ''),
+                trim($_POST['headline_si'] ?? ''),
+                trim($_POST['subtext_si'] ?? ''),
+                trim($_POST['btn1_text_si'] ?? ''),
+                trim($_POST['btn2_text_si'] ?? ''),
             ];
             if ($uploaded !== null) {
                 $imageSql = 'image=?, ';
@@ -53,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $params[] = $id;
 
             $stmt = $pdo->prepare(
-                "UPDATE hero_slides SET headline=?, subtext=?, btn1_text=?, btn1_link=?, btn2_text=?, btn2_link=?, {$imageSql}sort_order=?, is_active=? WHERE id=?"
+                "UPDATE hero_slides SET headline=?, subtext=?, btn1_text=?, btn1_link=?, btn2_text=?, btn2_link=?, headline_si=?, subtext_si=?, btn1_text_si=?, btn2_text_si=?, {$imageSql}sort_order=?, is_active=? WHERE id=?"
             );
             $stmt->execute($params);
             $msg = 'Slide updated.';
@@ -81,15 +90,20 @@ require __DIR__ . '/homepage-tabs.php';
     <input type="hidden" name="csrf" value="<?= e(csrf_token()) ?>">
     <input type="hidden" name="action" value="add">
     <div class="a-field"><label>Headline</label><textarea name="headline" rows="2" required></textarea></div>
+    <div class="a-field"><label>Headline (Sinhala)</label><textarea name="headline_si" rows="2"></textarea></div>
     <div class="a-field"><label>Sub-text</label><textarea name="subtext" rows="3"></textarea></div>
+    <div class="a-field"><label>Sub-text (Sinhala)</label><textarea name="subtext_si" rows="3"></textarea></div>
     <div class="a-row">
       <div class="a-field" style="flex:1"><label>Primary Button Text</label><input type="text" name="btn1_text" value="Request a Demo"></div>
+      <div class="a-field" style="flex:1"><label>Primary Button Text (Sinhala)</label><input type="text" name="btn1_text_si"></div>
       <div class="a-field" style="flex:1"><label>Primary Button Link</label><input type="text" name="btn1_link" value="#contact"></div>
     </div>
     <div class="a-row">
       <div class="a-field" style="flex:1"><label>Secondary Button Text</label><input type="text" name="btn2_text" value="Explore Features"></div>
+      <div class="a-field" style="flex:1"><label>Secondary Button Text (Sinhala)</label><input type="text" name="btn2_text_si"></div>
       <div class="a-field" style="flex:1"><label>Secondary Button Link</label><input type="text" name="btn2_link" value="#features"></div>
     </div>
+    <p class="a-help" style="margin-top:-8px;margin-bottom:18px;">The Sinhala fields are optional — leave them empty and the site falls back to an automatic translation of the English text where one exists.</p>
     <div class="a-field">
       <label>Slider Image (full background)</label>
       <div class="a-image-field">
@@ -109,13 +123,17 @@ require __DIR__ . '/homepage-tabs.php';
       <input type="hidden" name="action" value="update">
       <input type="hidden" name="id" value="<?= (int)$s['id'] ?>">
       <div class="a-field"><label>Headline</label><textarea name="headline" rows="2" required><?= e($s['headline']) ?></textarea></div>
+      <div class="a-field"><label>Headline (Sinhala)</label><textarea name="headline_si" rows="2"><?= e($s['headline_si'] ?? '') ?></textarea></div>
       <div class="a-field"><label>Sub-text</label><textarea name="subtext" rows="3"><?= e($s['subtext']) ?></textarea></div>
+      <div class="a-field"><label>Sub-text (Sinhala)</label><textarea name="subtext_si" rows="3"><?= e($s['subtext_si'] ?? '') ?></textarea></div>
       <div class="a-row">
         <div class="a-field" style="flex:1"><label>Primary Button Text</label><input type="text" name="btn1_text" value="<?= e($s['btn1_text']) ?>"></div>
+        <div class="a-field" style="flex:1"><label>Primary Button Text (Sinhala)</label><input type="text" name="btn1_text_si" value="<?= e($s['btn1_text_si'] ?? '') ?>"></div>
         <div class="a-field" style="flex:1"><label>Primary Button Link</label><input type="text" name="btn1_link" value="<?= e($s['btn1_link']) ?>"></div>
       </div>
       <div class="a-row">
         <div class="a-field" style="flex:1"><label>Secondary Button Text</label><input type="text" name="btn2_text" value="<?= e($s['btn2_text']) ?>"></div>
+        <div class="a-field" style="flex:1"><label>Secondary Button Text (Sinhala)</label><input type="text" name="btn2_text_si" value="<?= e($s['btn2_text_si'] ?? '') ?>"></div>
         <div class="a-field" style="flex:1"><label>Secondary Button Link</label><input type="text" name="btn2_link" value="<?= e($s['btn2_link']) ?>"></div>
       </div>
       <div class="a-field">

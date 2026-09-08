@@ -57,6 +57,65 @@ function t(?string $text): string
 }
 
 /**
+ * Resolve a piece of admin-authored content that has its own manually
+ * entered Sinhala field (e.g. a hero slide's headline_si) — used for
+ * per-row database content that the exact-match dictionary in
+ * translate() can never cover, since an admin can add new rows with
+ * arbitrary text at any time. Falls back to the dictionary (for content
+ * that matches an old default) and then to the English original.
+ */
+function localized(string $english, ?string $sinhalaOverride): string
+{
+    if (current_lang() === 'si' && $sinhalaOverride !== null && $sinhalaOverride !== '') {
+        return $sinhalaOverride;
+    }
+    return translate($english);
+}
+
+/**
+ * One-time schema migration: adds per-slide Sinhala columns to hero_slides
+ * if they aren't there yet, so existing installs don't need a manual SQL
+ * step. Tracked via a settings flag so the check only runs once ever.
+ */
+function ensure_hero_slide_si_columns(): void
+{
+    global $pdo;
+    static $checked = false;
+    if ($checked) {
+        return;
+    }
+    $checked = true;
+    if (setting('schema_hero_si_migrated') === '1') {
+        return;
+    }
+    // Best-effort: if the DB user lacks ALTER privileges or anything else
+    // goes wrong, fail silently rather than taking the whole site down —
+    // slides simply keep falling back to the dictionary/English until this
+    // succeeds (e.g. on a later request, or after a manual DDL grant).
+    try {
+        $existing = array_column($pdo->query("SHOW COLUMNS FROM hero_slides")->fetchAll(), 'Field');
+        $columns = [
+            'headline_si'  => 'VARCHAR(255) NULL',
+            'subtext_si'   => 'TEXT NULL',
+            'btn1_text_si' => 'VARCHAR(100) NULL',
+            'btn2_text_si' => 'VARCHAR(100) NULL',
+        ];
+        foreach ($columns as $name => $definition) {
+            if (!in_array($name, $existing, true)) {
+                $pdo->exec("ALTER TABLE hero_slides ADD COLUMN `$name` $definition");
+            }
+        }
+        $stmt = $pdo->prepare(
+            "INSERT INTO settings (setting_key, setting_value) VALUES ('schema_hero_si_migrated', '1')
+             ON DUPLICATE KEY UPDATE setting_value = '1'"
+        );
+        $stmt->execute();
+    } catch (PDOException $e) {
+        // Swallow — see comment above.
+    }
+}
+
+/**
  * Load every row from `settings` into an associative array (cached).
  */
 function get_settings(): array
@@ -146,14 +205,15 @@ function get_features(): array
 function get_hero_slides(): array
 {
     global $pdo;
+    ensure_hero_slide_si_columns();
     $rows = $pdo->query(
         "SELECT * FROM hero_slides WHERE is_active = 1 ORDER BY sort_order ASC, id ASC"
     )->fetchAll();
     foreach ($rows as &$row) {
-        $row['headline']  = translate($row['headline'] ?? '');
-        $row['subtext']   = translate($row['subtext'] ?? '');
-        $row['btn1_text'] = translate($row['btn1_text'] ?? '');
-        $row['btn2_text'] = translate($row['btn2_text'] ?? '');
+        $row['headline']  = localized($row['headline'] ?? '', $row['headline_si'] ?? null);
+        $row['subtext']   = localized($row['subtext'] ?? '', $row['subtext_si'] ?? null);
+        $row['btn1_text'] = localized($row['btn1_text'] ?? '', $row['btn1_text_si'] ?? null);
+        $row['btn2_text'] = localized($row['btn2_text'] ?? '', $row['btn2_text_si'] ?? null);
     }
     unset($row);
     return $rows;

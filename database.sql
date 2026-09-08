@@ -216,11 +216,18 @@ CREATE TABLE IF NOT EXISTS `hero_slides` (
   `image` VARCHAR(255) DEFAULT NULL,
   `sort_order` INT(11) NOT NULL DEFAULT 0,
   `is_active` TINYINT(1) NOT NULL DEFAULT 1,
+  -- Manually entered Sinhala text per slide (optional — falls back to the
+  -- English column, translated via the dictionary, when left empty).
+  `headline_si` VARCHAR(255) DEFAULT NULL,
+  `subtext_si` TEXT DEFAULT NULL,
+  `btn1_text_si` VARCHAR(100) DEFAULT NULL,
+  `btn2_text_si` VARCHAR(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `hero_slides` (`headline`, `subtext`, `btn1_text`, `btn1_link`, `btn2_text`, `btn2_link`, `image`, `sort_order`) VALUES
-('Smarter Plantation Management. Better Productivity.', 'A modern platform built for the unique demands of tea estates and plantations — from worker management to real-time production tracking, all from one unified system.', 'Request a Demo', '#contact', 'Explore Features', '#features', '', 1);
+INSERT INTO `hero_slides` (`headline`, `subtext`, `btn1_text`, `btn1_link`, `btn2_text`, `btn2_link`, `image`, `sort_order`, `headline_si`, `subtext_si`, `btn1_text_si`, `btn2_text_si`) VALUES
+('Smarter Plantation Management. Better Productivity.', 'A modern platform built for the unique demands of tea estates and plantations — from worker management to real-time production tracking, all from one unified system.', 'Request a Demo', '#contact', 'Explore Features', '#features', '', 1,
+ 'වඩා දක්ෂ වතු කළමනාකරණය. වඩා හොඳ ඵලදායිතාව.', 'තේ වතුයායන් සහ වතුයායන්ගේ අනන්‍ය අවශ්‍යතා සඳහා නිර්මාණය කළ නවීන වේදිකාවකි — කම්කරු කළමනාකරණයේ සිට තථ්‍ය කාලීන නිෂ්පාදන නිරීක්ෂණය දක්වා, සියල්ල එක් ඒකාබද්ධ පද්ධතියකින්.', 'ආදර්ශනයක් ඉල්ලන්න', 'විශේෂාංග ගවේෂණය කරන්න');
 
 -- -------------------------------------------------------------
 -- Table: features  (repeatable Key-Feature cards)
