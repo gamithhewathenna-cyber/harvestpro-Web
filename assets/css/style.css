@@ -262,7 +262,7 @@ ul { list-style: none; }
 }
 .why-stat-label { font-size: 15px; font-weight: 500; color: var(--ink); }
 
-.why-heading { font-size: 40px; margin-bottom: 22px; }
+.why-heading { font-size: 46px; margin-bottom: 22px; }
 .why-heading .accent { color: var(--gold); }
 .why-text p { color: var(--muted); margin-bottom: 18px; font-size: 15px; }
 .why-text .btn-outline { margin-top: 6px; }
@@ -581,7 +581,8 @@ ul { list-style: none; }
   .why-media { grid-template-columns: 1fr 1fr; }
   .features-right { grid-template-columns: 1fr; }
   .features-title { font-size: 34px; }
-  .why-heading, .how-title, .cta-title { font-size: 32px; }
+  .why-heading { font-size: 36px; }
+  .how-title, .cta-title { font-size: 32px; }
   .trust-title { font-size: 26px; }
   .trust-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
   .demo-box { padding: 30px 22px; }
