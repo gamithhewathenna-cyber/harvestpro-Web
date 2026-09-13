@@ -11,6 +11,7 @@ $pages = [
     ['path' => '/features', 'file' => 'features.php', 'priority' => '0.9', 'changefreq' => 'monthly'],
     ['path' => '/about',    'file' => 'about.php',    'priority' => '0.7', 'changefreq' => 'monthly'],
     ['path' => '/contact',  'file' => 'contact.php',  'priority' => '0.8', 'changefreq' => 'monthly'],
+    ['path' => '/refund-policy', 'file' => 'refund-policy.php', 'priority' => '0.3', 'changefreq' => 'yearly'],
 ];
 
 echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";

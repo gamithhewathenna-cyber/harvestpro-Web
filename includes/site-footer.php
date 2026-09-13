@@ -50,7 +50,7 @@ $footerCredits = array_filter(array_map('trim', explode("\n", setting('footer_cr
 
   <div class="footer-bottom">
     <div class="container footer-bottom-inner">
-      <span><?= e(setting('footer_copyright')) ?></span>
+      <span><?= e(setting('footer_copyright')) ?> &middot; <a href="/refund-policy" class="footer-legal">Refund &amp; Cancellation Policy</a></span>
       <span class="footer-credit">
         <?php foreach ($footerCredits as $c): ?><span><?= e($c) ?></span><?php endforeach; ?>
       </span>
