@@ -497,6 +497,7 @@ ul { list-style: none; }
 .policy-updated { color: var(--muted); font-size: 14px; margin-bottom: 26px; }
 .policy-content > p { color: var(--muted); font-size: 15px; line-height: 1.75; margin-bottom: 20px; }
 .policy-content h2 { font-size: 22px; font-weight: 600; color: var(--ink); margin: 42px 0 14px; }
+.policy-content h3 { font-size: 16px; font-weight: 600; color: var(--green-800); margin: 26px 0 10px; }
 .policy-content a { color: var(--green-700); font-weight: 500; }
 .policy-content a:hover { text-decoration: underline; }
 .policy-content ul { margin: 0 0 20px; }
