@@ -201,7 +201,7 @@
       if (nowMin < m.startMin) {
         text = fmtValue(m.startVal, m.unit);
         var row = table.querySelector('tr[data-key="' + metricKey + '"]');
-        var startLabel = row ? row.children[1].textContent : '';
+        var startLabel = row ? row.getAttribute('data-start') : '';
         title = cfg.i18n.startsAt.replace('%s', startLabel);
       } else if (nowMin >= m.endMin) {
         text = fmtValue(target, m.unit);

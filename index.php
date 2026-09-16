@@ -27,11 +27,11 @@ $tickerItems = array_filter(array_map('trim', explode('|', setting('ticker_items
 // keep ticking without a page reload); PHP only renders the static row
 // skeleton, the config the script runs on, and every translatable string.
 $liveFeedRows = [
-    ['key' => 'greenleaf',  'icon' => 'leaf',    'activity' => t('Green Leaf Recorded'),      'start' => '2:00 PM', 'end' => '11:00 PM'],
-    ['key' => 'attendance', 'icon' => 'people',  'activity' => t('Attendance Completed'),     'start' => '8:00 AM', 'end' => '10:00 AM'],
-    ['key' => 'payroll',    'icon' => 'coins',   'activity' => t('Payroll Processed'),        'start' => '4:30 PM', 'end' => '8:00 PM'],
-    ['key' => 'expenses',   'icon' => 'receipt', 'activity' => t('Field Expenses Recorded'),  'start' => t('Morning'), 'end' => t('Evening')],
-    ['key' => 'factory',    'icon' => 'factory', 'activity' => t('Factory Collection Recorded'), 'start' => '8:00 PM', 'end' => '11:00 PM'],
+    ['key' => 'greenleaf',  'icon' => 'leaf',    'activity' => t('Green Leaf Recorded'),      'start' => '2:00 PM'],
+    ['key' => 'attendance', 'icon' => 'people',  'activity' => t('Attendance Completed'),     'start' => '8:00 AM'],
+    ['key' => 'payroll',    'icon' => 'coins',   'activity' => t('Payroll Processed'),        'start' => '4:30 PM'],
+    ['key' => 'expenses',   'icon' => 'receipt', 'activity' => t('Field Expenses Recorded'),  'start' => t('Morning')],
+    ['key' => 'factory',    'icon' => 'factory', 'activity' => t('Factory Collection Recorded'), 'start' => '8:00 PM'],
 ];
 $liveFeedIcons = [
     'leaf'    => '<svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16c0-7 4-11 11-12 1 7-3 11-11 12Z"/><path d="M6 14c2-3 4-5 8-7"/></svg>',
@@ -279,20 +279,16 @@ $pageImg   = absolute_url(resolve_image_url($heroSlides[0]['image'] ?? '', 'asse
               <thead>
                 <tr>
                   <th><?= e(t('Activity')) ?></th>
-                  <th><?= e(t('Start')) ?></th>
-                  <th><?= e(t('End')) ?></th>
                   <th><?= e(t('Daily progression')) ?></th>
                 </tr>
               </thead>
               <tbody>
                 <?php foreach ($liveFeedRows as $row): ?>
-                  <tr data-key="<?= e($row['key']) ?>">
+                  <tr data-key="<?= e($row['key']) ?>" data-start="<?= e($row['start']) ?>">
                     <td class="live-feed-activity">
                       <span class="live-feed-icon"><?= $liveFeedIcons[$row['icon']] ?? '' ?></span>
                       <span><?= e($row['activity']) ?></span>
                     </td>
-                    <td><?= e($row['start']) ?></td>
-                    <td><?= e($row['end']) ?></td>
                     <td class="live-feed-progress" data-progress="<?= e($row['key']) ?>">&hellip;</td>
                   </tr>
                 <?php endforeach; ?>
@@ -308,7 +304,7 @@ $pageImg   = absolute_url(resolve_image_url($heroSlides[0]['image'] ?? '', 'asse
       </div>
 
       <script type="application/json" id="liveFeedConfig"><?= json_encode($liveFeedConfig, JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP) ?></script>
-      <script src="assets/js/live-feed.js?v=1.1" defer></script>
+      <script src="assets/js/live-feed.js?v=1.2" defer></script>
 
       <div class="why-text">
         <h2 class="why-heading">
