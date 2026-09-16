@@ -87,7 +87,7 @@ return [
     'Start' => 'ආරම්භය',
     'End' => 'අවසානය',
     'Daily progression' => 'දෛනික ප්‍රගතිය',
-    'Green Leaf Recorded' => 'කොළ පත් වාර්තා විය',
+    'Green Leaf Recorded' => 'අමු දලු වාර්තා විය',
     'Attendance Completed' => 'පැමිණීම සම්පූර්ණයි',
     'Payroll Processed' => 'වැටුප් සකසන ලදී',
     'Field Expenses Recorded' => 'ක්ෂේත්‍ර වියදම් වාර්තා විය',
