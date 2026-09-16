@@ -41,11 +41,6 @@ $paymentLogos = get_payment_logos();
     </div>
 
     <div class="footer-col footer-social-col">
-      <form class="newsletter" action="submit.php" method="post">
-        <input type="hidden" name="newsletter" value="1">
-        <input type="email" name="email" placeholder="<?= e(t('Email Address')) ?>" required>
-        <button type="submit" aria-label="<?= e(t('Subscribe')) ?>">&rarr;</button>
-      </form>
       <?php if ($paymentLogos): ?>
         <div class="footer-payment">
           <h4><?= e(t('Safe & Secure Payments')) ?></h4>

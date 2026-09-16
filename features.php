@@ -50,7 +50,7 @@ $pageImg   = absolute_url($fpBanner);
 <?php endif; ?>
 <?php seo_meta_tags('/features', $pageTitle, $pageDesc, $pageImg, $brandName . ' Pro'); ?>
 <?php sinhala_font_tags(); ?>
-<link rel="stylesheet" href="assets/css/style.css?v=2.6">
+<link rel="stylesheet" href="assets/css/style.css?v=2.7">
 <?php if ($themePrimary !== '' || $themeAccent !== ''): ?>
 <style>
 :root {
