@@ -25,7 +25,8 @@ $pageImg   = absolute_url('assets/images/hero-bg.jpg');
 <title><?= e($pageTitle) ?></title>
 <meta name="description" content="<?= e($pageDesc) ?>">
 <?php seo_meta_tags('/terms-and-conditions', $pageTitle, $pageDesc, $pageImg, $brandName . ' Pro'); ?>
-<link rel="stylesheet" href="assets/css/style.css?v=2.2">
+<?php sinhala_font_tags(); ?>
+<link rel="stylesheet" href="assets/css/style.css?v=2.3">
 <?php if ($themePrimary !== '' || $themeAccent !== ''): ?>
 <style>
 :root {

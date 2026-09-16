@@ -356,6 +356,25 @@ function absolute_url(string $path): string
 }
 
 /**
+ * Print the Google Fonts <link> tags for Noto Sans Sinhala — only on
+ * Sinhala-language pages, so English visitors never pay for the font
+ * request. The site's CSS font stacks already list Noto Sans Sinhala
+ * as a fallback, so once it's loaded the browser picks it up
+ * automatically for any Sinhala glyphs, with no per-element markup.
+ */
+function sinhala_font_tags(): void
+{
+    if (current_lang() !== 'si') {
+        return;
+    }
+    ?>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;500;600;700&display=swap">
+    <?php
+}
+
+/**
  * Print the canonical link + Open Graph / Twitter Card meta tags shared by
  * every public page. $path is the site-root-relative URL (e.g. '/', '/about.php').
  */

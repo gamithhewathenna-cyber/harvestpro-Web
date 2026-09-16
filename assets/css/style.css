@@ -1,7 +1,11 @@
 /* =====================================================================
    Harvest Pro — Front-end styles
    Palette:  deep plantation green, gold/amber accent, off-white
-   Fonts:    Helvetica Neue (system font — no web-font request needed)
+   Fonts:    Helvetica Neue (system font) for Latin text; Google's
+             Noto Sans Sinhala loads only on Sinhala-language pages
+             and covers Sinhala script wherever it appears (browsers
+             fall through to it automatically for glyphs Helvetica
+             doesn't have, so no extra markup is needed per-element)
    ===================================================================== */
 
 :root {
@@ -29,7 +33,7 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, "Noto Sans Sinhala", sans-serif;
   color: var(--ink);
   background: var(--white);
   line-height: 1.6;
@@ -48,7 +52,7 @@ body {
 .reveal.in-view { opacity: 1; transform: translateY(0); }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, "Noto Sans Sinhala", sans-serif;
   font-weight: 300;
 }
 
@@ -110,7 +114,7 @@ ul { list-style: none; }
   padding: 22px 40px; max-width: 1320px; margin: 0 auto; width: 100%;
 }
 .brand-mark {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 26px; font-weight: 600;
+  font-family: "Helvetica Neue", Helvetica, Arial, "Noto Sans Sinhala", sans-serif; font-size: 26px; font-weight: 600;
   color: #fff; letter-spacing: .5px;
 }
 .brand-mark.dark { color: var(--green-800); }
@@ -281,7 +285,7 @@ ul { list-style: none; }
 .features-title { font-size: 44px; margin-top: 6px; max-width: 380px; }
 .features-watermark {
   position: absolute; bottom: -10px; left: -4px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 90px; font-weight: 600;
+  font-family: "Helvetica Neue", Helvetica, Arial, "Noto Sans Sinhala", sans-serif; font-size: 90px; font-weight: 600;
   color: rgba(255,255,255,.06); pointer-events: none;
 }
 .pill-arrow.yellow { background: var(--gold); }
