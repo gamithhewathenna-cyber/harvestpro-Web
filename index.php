@@ -90,7 +90,7 @@ $pricingDefaults = [
     2 => [
         'label' => 'Mid Tier', 'name' => 'Harvest Pro Automated Payroll & Estate Plan', 'price' => '5,000',
         'note' => $trialNote, 'included' => 'Everything in Basic Tier, plus:', 'badge' => 'Recommended',
-        'features' => "Automated Payroll Processing\nWorker & Plantation Payroll Views\nDaily Payroll Summary\nPayment Tracking & History\nBulk Payment Actions\nEPF / ETF contributions, Form C & R4",
+        'features' => "Automated Payroll Processing\nWorker & Plantation Payroll Views\nDaily Payroll Summary\nPayment Tracking & History\nBulk Payment Actions\nEmployee Loan Recoveries\nEPF / ETF contributions, Form C & R4",
     ],
     3 => [
         'label' => 'Top Tier', 'name' => 'Harvest Pro Complete Tea Factory & Operations Suite', 'price' => '10,000',

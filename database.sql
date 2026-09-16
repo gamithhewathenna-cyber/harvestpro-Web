@@ -84,7 +84,7 @@ INSERT INTO `settings` (`setting_key`, `setting_value`, `setting_group`) VALUES
 ('pricing2_note', '14-day free trial on online signup. No charge until you subscribe.', 'pricing_section'),
 ('pricing2_badge', 'Recommended', 'pricing_section'),
 ('pricing2_included_label', 'Everything in Basic Tier, plus:', 'pricing_section'),
-('pricing2_features', 'Automated Payroll Processing\nWorker & Plantation Payroll Views\nDaily Payroll Summary\nPayment Tracking & History\nBulk Payment Actions\nEPF / ETF contributions, Form C & R4', 'pricing_section'),
+('pricing2_features', 'Automated Payroll Processing\nWorker & Plantation Payroll Views\nDaily Payroll Summary\nPayment Tracking & History\nBulk Payment Actions\nEmployee Loan Recoveries\nEPF / ETF contributions, Form C & R4', 'pricing_section'),
 ('pricing3_label', 'Top Tier', 'pricing_section'),
 ('pricing3_name', 'Harvest Pro Complete Tea Factory & Operations Suite', 'pricing_section'),
 ('pricing3_price', '10,000', 'pricing_section'),

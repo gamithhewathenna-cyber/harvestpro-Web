@@ -170,13 +170,15 @@ Worker & Plantation Payroll Views
 Daily Payroll Summary
 Payment Tracking & History
 Bulk Payment Actions
+Employee Loan Recoveries
 EPF / ETF contributions, Form C & R4' =>
-        'ස්වයංක්‍රීය වැටුප් සැකසුම
-කම්කරු සහ වතු වැටුප් දර්ශන
+        'ස්වයංක්‍රීය වැටුප් සැකසීම
+සේවක හා වතු වැටුප් දසුන්
 දෛනික වැටුප් සාරාංශය
-ගෙවීම් නිරීක්ෂණය සහ ඉතිහාසය
-තොග ගෙවීම් ක්‍රියා
-EPF / ETF දායකත්ව, Form C සහ R4',
+ගෙවීම් නිරීක්ෂණය හා ඉතිහාසය
+සමූහ ගෙවීම් ක්‍රියාමාර්ග
+සේවක ණය අයකර ගැනීම්
+EPF / ETF දායක මුදල්, Form C සහ R4',
 
     'Top Tier' => 'ඉහළම මට්ටම',
     'Harvest Pro Complete Tea Factory & Operations Suite' => 'Harvest Pro සම්පූර්ණ තේ කර්මාන්ත ශාලා හා මෙහෙයුම් පැකේජය',
