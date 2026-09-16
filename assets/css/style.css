@@ -170,6 +170,7 @@ ul { list-style: none; }
 }
 .hero-content { max-width: 560px; }
 .hero-title { font-size: 58px; margin-bottom: 22px; }
+html[lang="si"] .hero-title { font-size: 44px; }
 .hero-sub { font-size: 16px; opacity: .92; max-width: 500px; margin-bottom: 30px; }
 .hero-btns { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
 
@@ -610,6 +611,7 @@ ul { list-style: none; }
 @media (max-width: 992px) {
   .hero { min-height: 560px; }
   .hero-title { font-size: 46px; }
+  html[lang="si"] .hero-title { font-size: 36px; }
   .hero-inner { padding-bottom: 50px; }
   .why-grid, .how-grid { grid-template-columns: 1fr; gap: 40px; }
   .trust-grid { grid-template-columns: 1fr 1fr; }
@@ -654,6 +656,7 @@ ul { list-style: none; }
   .nav-actions .nav-icon:not(.nav-lang) { display: none; }
 
   .hero-title { font-size: 38px; }
+  html[lang="si"] .hero-title { font-size: 30px; }
   .hero-arrow { display: none; }
   .why-media { grid-template-columns: 1fr 1fr; }
   .features-right { grid-template-columns: 1fr; }
@@ -687,6 +690,7 @@ ul { list-style: none; }
   .brand-mark { font-size: 20px; }
   .hero { min-height: 460px; }
   .hero-title { font-size: 30px; }
+  html[lang="si"] .hero-title { font-size: 25px; }
   .hero-btns { gap: 12px; }
   .btn { font-size: 14px; }
   .btn-primary { padding: 12px 22px; }
