@@ -23,27 +23,21 @@ $tickerItems = array_filter(array_map('trim', explode('|', setting('ticker_items
 
 // "Live Estate Activity" demo card (left side of the Why section) — fixed
 // dummy data for visual showcase, not tied to real estate records.
-$liveFeedAgo = function (int $mins): string {
-    return current_lang() === 'si' ? $mins . ' මිනි. පෙර' : $mins . 'm ago';
-};
 $liveFeedItems = [
-    ['icon' => 'leaf',    'value' => '128.5 KG', 'label' => t('Green Leaf Recorded'), 'time' => $liveFeedAgo(2)],
-    ['icon' => 'people',  'value' => '24 ' . t('Workers'), 'label' => t('Attendance Completed'), 'time' => $liveFeedAgo(5)],
-    ['icon' => 'coins',   'value' => 'Rs. 18,450', 'label' => t('Payroll Processed'), 'time' => $liveFeedAgo(12)],
-    ['icon' => 'bag',     'value' => t('Fertilizer Applied'), 'label' => 'Section C', 'time' => $liveFeedAgo(18)],
-    ['icon' => 'leaf',    'value' => '86.2 KG', 'label' => t('Green Leaf Recorded'), 'time' => $liveFeedAgo(27)],
-    ['icon' => 'check',   'value' => t('Assignment Completed'), 'label' => t('Tea Plucking'), 'time' => $liveFeedAgo(34)],
-    ['icon' => 'coins',   'value' => 'Rs. 6,800', 'label' => t('Field Expense Recorded'), 'time' => $liveFeedAgo(41)],
-    ['icon' => 'factory', 'value' => '145.7 KG', 'label' => t('Factory Collection Recorded'), 'time' => $liveFeedAgo(58)],
+    ['icon' => 'leaf',    'activity' => t('Green Leaf Recorded'),           'start' => '2:00 PM',  'end' => '11:00 PM', 'progress' => t('0 → ~8,000 kg')],
+    ['icon' => 'people',  'activity' => t('Attendance Completed'),          'start' => '8:00 AM',  'end' => '10:00 AM', 'progress' => t('1 → 223 workers')],
+    ['icon' => 'coins',   'activity' => t('Payroll Processed'),             'start' => '4:30 PM',  'end' => '8:00 PM',  'progress' => t('Rs. 18,450 → ~Rs. 1.5M')],
+    ['icon' => 'receipt', 'activity' => t('Field Expenses Recorded'),       'start' => t('Morning'), 'end' => t('Evening'), 'progress' => t('Multiple realistic expense entries')],
+    ['icon' => 'factory', 'activity' => t('Factory Collection Recorded'),  'start' => '8:00 PM',  'end' => '11:00 PM', 'progress' => t('100 → ~7,500 kg')],
 ];
 $liveFeedIcons = [
-    'leaf'    => '<svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16c0-7 4-11 11-12 1 7-3 11-11 12Z"/><path d="M6 14c2-3 4-5 8-7"/></svg>',
-    'people'  => '<svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="6.5" r="2.3"/><path d="M2.5 16c0-3 2-5 4.5-5s4.5 2 4.5 5"/><circle cx="14" cy="7.5" r="1.9"/><path d="M11.8 11c2-.3 3.7 1.1 4.2 3.4"/></svg>',
-    'coins'   => '<svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="10" cy="5.5" rx="6" ry="2.3"/><path d="M4 5.5v4c0 1.3 2.7 2.3 6 2.3s6-1 6-2.3v-4"/><path d="M4 9.5v4c0 1.3 2.7 2.3 6 2.3s6-1 6-2.3v-4"/></svg>',
-    'bag'     => '<svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h6l1.5 3H5.5L7 4Z"/><path d="M5 7h10l-1 9a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 7Z"/><path d="M10 10v5"/></svg>',
-    'check'   => '<svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7.5"/><path d="M6.8 10.2l2.1 2.1 4.3-4.6"/></svg>',
-    'factory' => '<svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17V9l4 2.5V9l4 2.5V7l6 2v8H2.5Z"/><path d="M15 9V6"/></svg>',
+    'leaf'    => '<svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16c0-7 4-11 11-12 1 7-3 11-11 12Z"/><path d="M6 14c2-3 4-5 8-7"/></svg>',
+    'people'  => '<svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="6.5" r="2.3"/><path d="M2.5 16c0-3 2-5 4.5-5s4.5 2 4.5 5"/><circle cx="14" cy="7.5" r="1.9"/><path d="M11.8 11c2-.3 3.7 1.1 4.2 3.4"/></svg>',
+    'coins'   => '<svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="10" cy="5.5" rx="6" ry="2.3"/><path d="M4 5.5v4c0 1.3 2.7 2.3 6 2.3s6-1 6-2.3v-4"/><path d="M4 9.5v4c0 1.3 2.7 2.3 6 2.3s6-1 6-2.3v-4"/></svg>',
+    'receipt' => '<svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 2.5h10v15l-2-1.3-1.5 1.3-1.5-1.3-1.5 1.3-1.5-1.3-2 1.3v-15Z"/><line x1="7.3" y1="6.5" x2="12.7" y2="6.5"/><line x1="7.3" y1="9.5" x2="12.7" y2="9.5"/><line x1="7.3" y1="12.5" x2="11" y2="12.5"/></svg>',
+    'factory' => '<svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17V9l4 2.5V9l4 2.5V7l6 2v8H2.5Z"/><path d="M15 9V6"/></svg>',
 ];
+$liveVisitorCount = mt_rand(95, 165);
 
 // How-it-helps tags
 $howTags = array_filter(array_map('trim', explode('|', setting('how_tags'))));
@@ -140,7 +134,7 @@ $pageImg   = absolute_url(resolve_image_url($heroSlides[0]['image'] ?? '', 'asse
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
 <?php endif; ?>
-<link rel="stylesheet" href="assets/css/style.css?v=3.3">
+<link rel="stylesheet" href="assets/css/style.css?v=3.4">
 <?php if ($themePrimary !== '' || $themeAccent !== ''): ?>
 <style>
 :root {
@@ -230,34 +224,36 @@ $pageImg   = absolute_url(resolve_image_url($heroSlides[0]['image'] ?? '', 'asse
               <span class="live-feed-sep"></span>
               <span class="live-feed-sub"><?= e(t('Estate activity now')) ?></span>
             </div>
-            <span class="live-feed-badge">
-              <?= e(t('Demo Data')) ?>
-              <svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10" cy="10" r="7.3"/><line x1="10" y1="9.3" x2="10" y2="14.2"/><circle cx="10" cy="6.6" r="0.9" fill="currentColor" stroke="none"/></svg>
+            <span class="live-feed-badge live-visitors">
+              <span class="live-visitors-dot"></span>
+              <span id="liveVisitorCount"><?= (int)$liveVisitorCount ?></span> <?= e(t('people viewing now')) ?>
             </span>
           </div>
 
-          <ul class="live-feed-list">
-            <?php foreach ($liveFeedItems as $item): ?>
-              <li>
-                <span class="live-feed-icon"><?= $liveFeedIcons[$item['icon']] ?? '' ?></span>
-                <span class="live-feed-text">
-                  <strong><?= e($item['value']) ?></strong>
-                  <span><?= e($item['label']) ?></span>
-                </span>
-                <span class="live-feed-time"><?= e($item['time']) ?></span>
-              </li>
-            <?php endforeach; ?>
-          </ul>
-
-          <div class="live-feed-stats">
-            <div>
-              <span class="live-feed-stat-label"><?= e(t('Activities Today')) ?></span>
-              <span class="live-feed-stat-value">184</span>
-            </div>
-            <div>
-              <span class="live-feed-stat-label"><?= e(t('Green Leaf Today')) ?></span>
-              <span class="live-feed-stat-value">2,840 KG</span>
-            </div>
+          <div class="live-feed-table-wrap">
+            <table class="live-feed-table">
+              <thead>
+                <tr>
+                  <th><?= e(t('Activity')) ?></th>
+                  <th><?= e(t('Start')) ?></th>
+                  <th><?= e(t('End')) ?></th>
+                  <th><?= e(t('Daily progression')) ?></th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php foreach ($liveFeedItems as $item): ?>
+                  <tr>
+                    <td class="live-feed-activity">
+                      <span class="live-feed-icon"><?= $liveFeedIcons[$item['icon']] ?? '' ?></span>
+                      <span><?= e($item['activity']) ?></span>
+                    </td>
+                    <td><?= e($item['start']) ?></td>
+                    <td><?= e($item['end']) ?></td>
+                    <td class="live-feed-progress"><?= e($item['progress']) ?></td>
+                  </tr>
+                <?php endforeach; ?>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
