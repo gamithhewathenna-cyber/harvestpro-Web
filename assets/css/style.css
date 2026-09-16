@@ -577,7 +577,9 @@ ul { list-style: none; }
 
 .footer-social-col { display: flex; flex-direction: column; gap: 20px; }
 .socials { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; max-width: 220px; }
-.footer-payment-logo { height: 28px; width: auto; align-self: flex-start; object-fit: contain; }
+.footer-payment-logos { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; align-self: flex-start; }
+.footer-payment-logo { height: 28px; width: auto; display: block; object-fit: contain; transition: opacity .2s ease; }
+.footer-payment-logos a:hover .footer-payment-logo { opacity: .8; }
 .social {
   background: #eef0ee; color: var(--ink); border-radius: 40px;
   height: 42px; display: grid; place-items: center; transition: all .2s;

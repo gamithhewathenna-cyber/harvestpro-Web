@@ -15,6 +15,7 @@ $homepageTabs = [
     ['key' => 'trust',         'label' => 'Trust Section',    'href' => 'section.php?g=trust'],
     ['key' => 'cta',           'label' => 'Call To Action',   'href' => 'section.php?g=cta'],
     ['key' => 'footer',        'label' => 'Footer',           'href' => 'section.php?g=footer'],
+    ['key' => 'payment_logos', 'label' => 'Payment Logos',    'href' => 'payment-logos.php'],
 ];
 ?>
 <nav class="a-hometabs">

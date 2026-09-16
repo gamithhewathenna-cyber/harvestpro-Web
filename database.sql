@@ -292,6 +292,20 @@ INSERT INTO `features` (`title`, `description`, `sort_order`) VALUES
 ('Multi-Estate Management', 'Manage multiple estates from a single dashboard.', 6);
 
 -- -------------------------------------------------------------
+-- Table: payment_logos  (repeatable footer payment-method logos,
+-- e.g. PayHere, Visa, Mastercard)
+-- -------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `payment_logos` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `image` VARCHAR(255) NOT NULL,
+  `alt_text` VARCHAR(150) DEFAULT NULL,
+  `link` VARCHAR(255) DEFAULT NULL,
+  `sort_order` INT(11) NOT NULL DEFAULT 0,
+  `is_active` TINYINT(1) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- -------------------------------------------------------------
 -- Table: feature_sections  (repeatable alternating text/image sections
 -- on the dedicated Features page)
 -- -------------------------------------------------------------

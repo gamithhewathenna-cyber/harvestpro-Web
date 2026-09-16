@@ -4,7 +4,7 @@
  * Expects $brandName, $brandLogoUrl already set by the caller.
  */
 $footerCredits = array_filter(array_map('trim', explode("\n", setting('footer_credit'))));
-$footerPaymentLogo = image_url('footer_payment_logo');
+$paymentLogos = get_payment_logos();
 ?>
 <!-- ============================= FOOTER ============================= -->
 <footer class="footer">
@@ -46,8 +46,20 @@ $footerPaymentLogo = image_url('footer_payment_logo');
         <input type="email" name="email" placeholder="<?= e(t('Email Address')) ?>" required>
         <button type="submit" aria-label="<?= e(t('Subscribe')) ?>">&rarr;</button>
       </form>
-      <?php if ($footerPaymentLogo !== ''): ?>
-        <img src="<?= e($footerPaymentLogo) ?>" alt="PayHere" class="footer-payment-logo" loading="lazy">
+      <?php if ($paymentLogos): ?>
+        <div class="footer-payment-logos">
+          <?php foreach ($paymentLogos as $logo):
+              $logoImg = resolve_image_url($logo['image']);
+              $logoAlt = $logo['alt_text'] ?: '';
+              $logoLink = $logo['link'] ?? '';
+          ?>
+            <?php if ($logoLink !== ''): ?>
+              <a href="<?= e($logoLink) ?>" target="_blank" rel="noopener"><img src="<?= e($logoImg) ?>" alt="<?= e($logoAlt) ?>" class="footer-payment-logo" loading="lazy"></a>
+            <?php else: ?>
+              <img src="<?= e($logoImg) ?>" alt="<?= e($logoAlt) ?>" class="footer-payment-logo" loading="lazy">
+            <?php endif; ?>
+          <?php endforeach; ?>
+        </div>
       <?php endif; ?>
     </div>
   </div>

@@ -43,7 +43,7 @@ $pageImg   = absolute_url($cBannerBg);
 <meta name="keywords" content="<?= e($seoKeywords) ?>">
 <?php endif; ?>
 <?php seo_meta_tags('/contact', $pageTitle, $pageDesc, $pageImg, $brandName . ' Pro'); ?>
-<link rel="stylesheet" href="assets/css/style.css?v=2.1">
+<link rel="stylesheet" href="assets/css/style.css?v=2.2">
 <?php if ($themePrimary !== '' || $themeAccent !== ''): ?>
 <style>
 :root {

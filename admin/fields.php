@@ -271,7 +271,6 @@ function field_groups(): array
                 'footer_email'     => ['Email', 'text'],
                 'footer_facebook'  => ['Facebook URL', 'text'],
                 'footer_instagram' => ['Instagram URL', 'text'],
-                'footer_payment_logo' => ['Payment Logo (e.g. PayHere — shown below the social icons)', 'image'],
                 'footer_copyright' => ['Copyright Line', 'text'],
                 'footer_credit'    => ['Credit Lines (one per line)', 'credit'],
             ],

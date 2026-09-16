@@ -185,6 +185,56 @@ function image_url(string $key, string $fallback = ''): string
 /**
  * Fetch active feature cards, ordered.
  */
+/**
+ * One-time schema migration: creates the payment_logos table if it
+ * doesn't exist yet, so existing installs don't need a manual SQL step.
+ * Tracked via a settings flag so the check only runs once ever.
+ */
+function ensure_payment_logos_table(): void
+{
+    global $pdo;
+    static $checked = false;
+    if ($checked) {
+        return;
+    }
+    $checked = true;
+    if (setting('schema_payment_logos_migrated') === '1') {
+        return;
+    }
+    try {
+        $pdo->exec(
+            "CREATE TABLE IF NOT EXISTS payment_logos (
+                id INT(11) NOT NULL AUTO_INCREMENT,
+                image VARCHAR(255) NOT NULL,
+                alt_text VARCHAR(150) DEFAULT NULL,
+                link VARCHAR(255) DEFAULT NULL,
+                sort_order INT(11) NOT NULL DEFAULT 0,
+                is_active TINYINT(1) NOT NULL DEFAULT 1,
+                PRIMARY KEY (id)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4"
+        );
+        $stmt = $pdo->prepare(
+            "INSERT INTO settings (setting_key, setting_value) VALUES ('schema_payment_logos_migrated', '1')
+             ON DUPLICATE KEY UPDATE setting_value = '1'"
+        );
+        $stmt->execute();
+    } catch (PDOException $e) {
+        // Best-effort — see ensure_hero_slide_si_columns() for rationale.
+    }
+}
+
+/**
+ * Fetch active footer payment-method logos, ordered.
+ */
+function get_payment_logos(): array
+{
+    global $pdo;
+    ensure_payment_logos_table();
+    return $pdo->query(
+        "SELECT * FROM payment_logos WHERE is_active = 1 ORDER BY sort_order ASC, id ASC"
+    )->fetchAll();
+}
+
 function get_features(): array
 {
     global $pdo;
