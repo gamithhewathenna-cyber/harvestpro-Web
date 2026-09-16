@@ -598,6 +598,18 @@ html[lang="si"] .hero-title { font-size: 44px; }
 .footer-legal { color: rgba(255,255,255,.85); text-decoration: underline; text-underline-offset: 2px; }
 .footer-legal:hover { color: #fff; }
 
+/* =========================== WHATSAPP CHAT BUTTON =========================== */
+.whatsapp-fab {
+  position: fixed; right: 22px; bottom: 22px; z-index: 90;
+  display: flex; align-items: center; gap: 10px;
+  background: #25d366; color: #fff; padding: 13px 20px 13px 14px;
+  border-radius: 40px; box-shadow: 0 10px 26px -8px rgba(0,0,0,.4);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.whatsapp-fab:hover { transform: translateY(-3px); box-shadow: 0 14px 30px -8px rgba(0,0,0,.45); }
+.whatsapp-fab-icon { width: 30px; height: 30px; display: grid; place-items: center; flex-shrink: 0; }
+.whatsapp-fab-text { font-size: 14.5px; font-weight: 600; white-space: nowrap; }
+
 /* =========================== RESPONSIVE =========================== */
 @media (max-width: 992px) {
   .hero { min-height: 560px; }
@@ -675,6 +687,8 @@ html[lang="si"] .hero-title { font-size: 44px; }
 }
 
 @media (max-width: 480px) {
+  .whatsapp-fab { right: 16px; bottom: 16px; padding: 14px; border-radius: 50%; }
+  .whatsapp-fab-text { display: none; }
   .container { padding: 0 18px; }
   .navbar { padding: 14px 18px; }
   .brand img { height: 38px; }

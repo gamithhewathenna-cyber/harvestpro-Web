@@ -6,7 +6,7 @@ require_once __DIR__ . '/fields.php';
 $groups = field_groups();
 
 /* Every settings section lives on this one scrolling page — no sub-tabs. */
-$sectionKeys = ['settings_logo', 'theme', 'seo', 'maintenance'];
+$sectionKeys = ['settings_logo', 'theme', 'seo', 'whatsapp', 'maintenance'];
 
 $saved  = false;
 $errors = [];
@@ -51,6 +51,9 @@ require __DIR__ . '/header.php';
         <?php endif; ?>
         <?php if ($key === 'google_analytics_id'): ?>
           <p class="a-help" style="margin-top:-10px;margin-bottom:18px;">From Google Analytics (Admin &rarr; Data Streams &rarr; your stream), paste just the Measurement ID — it looks like <code>G-XXXXXXXXXX</code>. Once set, the tracking tag loads on every page automatically, and Search Console can also verify ownership through it.</p>
+        <?php endif; ?>
+        <?php if ($key === 'whatsapp_number'): ?>
+          <p class="a-help" style="margin-top:-10px;margin-bottom:18px;">Country code + number only — no <code>+</code>, spaces, or leading <code>0</code>. E.g. a Sri Lankan number <code>077 713 0597</code> becomes <code>94777130597</code>.</p>
         <?php endif; ?>
       <?php endforeach; ?>
     </div>

@@ -156,6 +156,15 @@ function field_groups(): array
                 'google_analytics_id'      => ['Google Analytics / tag ID (e.g. G-XXXXXXXXXX)', 'text'],
             ],
         ],
+        'whatsapp' => [
+            'title'  => 'WhatsApp Chat Button',
+            'fields' => [
+                'whatsapp_enabled'     => ['Show the floating WhatsApp button', 'checkbox'],
+                'whatsapp_number'      => ['WhatsApp Number (international format, no + or spaces — e.g. 94777130597)', 'text'],
+                'whatsapp_message'     => ['Pre-filled Message', 'text'],
+                'whatsapp_button_text' => ['Button Text', 'text'],
+            ],
+        ],
         'contact_banner' => [
             'title'  => 'Page Banner',
             'fields' => [

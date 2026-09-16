@@ -160,6 +160,12 @@ INSERT INTO `settings` (`setting_key`, `setting_value`, `setting_group`) VALUES
 ('google_site_verification', 'vaXiRQKZpTwzak12Ic9yvE5Gjfj3in1QjWKJyAqmtOg', 'settings'),
 ('google_analytics_id', 'G-FE0XM4D01M', 'settings'),
 
+-- Settings: WhatsApp chat button
+('whatsapp_enabled', '0', 'settings'),
+('whatsapp_number', '', 'settings'),
+('whatsapp_message', 'Hi! I''m interested in Harvest Pro.', 'settings'),
+('whatsapp_button_text', 'Let''s Talk', 'settings'),
+
 -- Per-page SEO
 ('home_seo_title', '', 'seo'),
 ('home_seo_description', '', 'seo'),

@@ -73,6 +73,18 @@ $paymentLogos = get_payment_logos();
   </div>
 </footer>
 
+<?php
+$whatsappNumber = preg_replace('/[^0-9]/', '', setting('whatsapp_number', ''));
+if (setting('whatsapp_enabled') === '1' && $whatsappNumber !== ''):
+    $whatsappMessage = setting('whatsapp_message', '');
+    $whatsappUrl = 'https://wa.me/' . $whatsappNumber . ($whatsappMessage !== '' ? '?text=' . rawurlencode($whatsappMessage) : '');
+?>
+<a href="<?= e($whatsappUrl) ?>" class="whatsapp-fab" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <span class="whatsapp-fab-icon"><svg viewBox="0 0 32 32" width="22" height="22" fill="#fff"><path d="M16.02 3C9.4 3 4 8.4 4 15.02c0 2.35.65 4.55 1.78 6.43L4 29l7.73-1.75a11.96 11.96 0 0 0 4.29.79h.01c6.62 0 12.02-5.4 12.02-12.02C28.05 8.4 22.65 3 16.02 3Zm0 21.9h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-4.59 1.04 1.06-4.47-.24-.37a9.85 9.85 0 0 1-1.52-5.29c0-5.46 4.44-9.9 9.9-9.9 5.45 0 9.89 4.44 9.89 9.9 0 5.46-4.44 9.68-9.09 9.68Zm5.42-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.6-.91-2.2-.24-.57-.49-.5-.67-.5-.17 0-.37-.02-.57-.02-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.42.25-.7.25-1.29.17-1.42-.07-.12-.27-.2-.57-.35Z"/></svg></span>
+  <span class="whatsapp-fab-text"><?= e(setting('whatsapp_button_text', "Let's Talk")) ?></span>
+</a>
+<?php endif; ?>
+
 <script src="assets/js/main.js?v=1.4"></script>
 </body>
 </html>
