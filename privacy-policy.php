@@ -25,7 +25,7 @@ $pageImg   = absolute_url('assets/images/hero-bg.jpg');
 <title><?= e($pageTitle) ?></title>
 <meta name="description" content="<?= e($pageDesc) ?>">
 <?php seo_meta_tags('/privacy-policy', $pageTitle, $pageDesc, $pageImg, $brandName . ' Pro'); ?>
-<link rel="stylesheet" href="assets/css/style.css?v=1.9">
+<link rel="stylesheet" href="assets/css/style.css?v=2.0">
 <?php if ($themePrimary !== '' || $themeAccent !== ''): ?>
 <style>
 :root {

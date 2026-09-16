@@ -120,7 +120,7 @@ $pageImg   = absolute_url(resolve_image_url($heroSlides[0]['image'] ?? '', 'asse
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
 <?php endif; ?>
-<link rel="stylesheet" href="assets/css/style.css?v=1.9">
+<link rel="stylesheet" href="assets/css/style.css?v=2.0">
 <?php if ($themePrimary !== '' || $themeAccent !== ''): ?>
 <style>
 :root {
@@ -150,7 +150,6 @@ $pageImg   = absolute_url(resolve_image_url($heroSlides[0]['image'] ?? '', 'asse
     <?php foreach ($heroSlides as $i => $slide):
         $slideBg = resolve_image_url($slide['image'] ?? '', 'assets/images/hero-bg.jpg');
     ?>
-      <!-- DEBUG id=<?= (int)($slide['id'] ?? -1) ?> lang=<?= e(current_lang()) ?> headline_si=[<?= e($slide['headline_si'] ?? 'COLUMN-MISSING') ?>] subtext_si=[<?= e($slide['subtext_si'] ?? 'COLUMN-MISSING') ?>] -->
       <div class="hero-slide<?= $i === 0 ? ' active' : '' ?>" style="background-image:linear-gradient(rgba(10,30,15,.4),rgba(10,30,15,.55)),url('<?= e($slideBg) ?>');">
         <div class="hero-inner">
           <div class="hero-content">
