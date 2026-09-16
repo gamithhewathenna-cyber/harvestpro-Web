@@ -31,6 +31,8 @@ return [
     'Link' => 'සබැඳි',
     'Contact' => 'සම්බන්ධතා',
     'Subscribe' => 'දායක වන්න',
+    'Safe & Secure Payments' => 'ආරක්ෂිත හා සුරක්ෂිත ගෙවීම්',
+    'Secure payments through trusted payment providers.' => 'විශ්වාසනීය ගෙවීම් සපයන්නන් හරහා ආරක්ෂිත ගෙවීම්.',
     '© 2025 Harvest Pro. Grow Smarter. Manage Better.' => '© 2025 Harvest Pro. වඩා දක්ෂ ලෙස වර්ධනය වන්න. වඩා හොඳින් කළමනාකරණය කරන්න.',
     'Harvest Pro is a smart plantation management platform that simplifies workforce management, production tracking, payroll, field operations, and reporting – all in one place.' =>
         'Harvest Pro යනු කම්කරු කළමනාකරණය, නිෂ්පාදන නිරීක්ෂණය, වැටුප්, ක්ෂේත්‍ර මෙහෙයුම් සහ වාර්තාකරණය – සියල්ල එක් තැනකින් සරල කරන ස්මාර්ට් වතු කළමනාකරණ වේදිකාවකි.',

@@ -581,7 +581,7 @@ html[lang="si"] .hero-title { font-size: 44px; }
 .footer-col a { color: var(--muted); }
 
 .footer-social-col { display: flex; flex-direction: column; gap: 20px; }
-.socials { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; max-width: 220px; }
+.socials { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; max-width: 220px; margin-top: 18px; }
 .footer-payment-logos { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; align-self: flex-start; margin-top: 14px; }
 .footer-payment-logo { height: 28px; width: auto; display: block; object-fit: contain; transition: opacity .2s ease; }
 .footer-payment-logos a:hover .footer-payment-logo { opacity: .8; }
