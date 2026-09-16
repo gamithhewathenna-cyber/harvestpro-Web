@@ -21,14 +21,17 @@ $seoKeywords    = setting('home_seo_keywords', '');
 // Ticker items
 $tickerItems = array_filter(array_map('trim', explode('|', setting('ticker_items'))));
 
-// "Live Estate Activity" demo card (left side of the Why section) — fixed
-// dummy data for visual showcase, not tied to real estate records.
-$liveFeedItems = [
-    ['icon' => 'leaf',    'activity' => t('Green Leaf Recorded'),           'start' => '2:00 PM',  'end' => '11:00 PM', 'progress' => t('0 → ~8,000 kg')],
-    ['icon' => 'people',  'activity' => t('Attendance Completed'),          'start' => '8:00 AM',  'end' => '10:00 AM', 'progress' => t('1 → 223 workers')],
-    ['icon' => 'coins',   'activity' => t('Payroll Processed'),             'start' => '4:30 PM',  'end' => '8:00 PM',  'progress' => t('Rs. 18,450 → ~Rs. 1.5M')],
-    ['icon' => 'receipt', 'activity' => t('Field Expenses Recorded'),       'start' => t('Morning'), 'end' => t('Evening'), 'progress' => t('Multiple realistic expense entries')],
-    ['icon' => 'factory', 'activity' => t('Factory Collection Recorded'),  'start' => '8:00 PM',  'end' => '11:00 PM', 'progress' => t('100 → ~7,500 kg')],
+// "Live Estate Activity" demo card (left side of the Why section) — a
+// deterministic, Sri-Lanka-time-driven simulation. All the actual number
+// crunching happens client-side in assets/js/live-feed.js (it needs to
+// keep ticking without a page reload); PHP only renders the static row
+// skeleton, the config the script runs on, and every translatable string.
+$liveFeedRows = [
+    ['key' => 'greenleaf',  'icon' => 'leaf',    'activity' => t('Green Leaf Recorded'),      'start' => '2:00 PM', 'end' => '11:00 PM'],
+    ['key' => 'attendance', 'icon' => 'people',  'activity' => t('Attendance Completed'),     'start' => '8:00 AM', 'end' => '10:00 AM'],
+    ['key' => 'payroll',    'icon' => 'coins',   'activity' => t('Payroll Processed'),        'start' => '4:30 PM', 'end' => '8:00 PM'],
+    ['key' => 'expenses',   'icon' => 'receipt', 'activity' => t('Field Expenses Recorded'),  'start' => t('Morning'), 'end' => t('Evening')],
+    ['key' => 'factory',    'icon' => 'factory', 'activity' => t('Factory Collection Recorded'), 'start' => '8:00 PM', 'end' => '11:00 PM'],
 ];
 $liveFeedIcons = [
     'leaf'    => '<svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16c0-7 4-11 11-12 1 7-3 11-11 12Z"/><path d="M6 14c2-3 4-5 8-7"/></svg>',
@@ -38,6 +41,47 @@ $liveFeedIcons = [
     'factory' => '<svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17V9l4 2.5V9l4 2.5V7l6 2v8H2.5Z"/><path d="M15 9V6"/></svg>',
 ];
 $liveVisitorCount = mt_rand(95, 165);
+
+// Simulation config consumed by live-feed.js. Times are minutes-since-
+// midnight in Sri Lanka time (Asia/Colombo, fixed UTC+5:30, no DST).
+$liveFeedConfig = [
+    'labourRatePerKg' => 50,
+    'factoryRateMin'  => 168,
+    'factoryRateMax'  => 230,
+    'metrics'   => [
+        'greenleaf'  => ['startMin' => 14 * 60,       'endMin' => 23 * 60,       'startVal' => 0,     'targetBase' => 8000,    'targetVariance' => 400,    'unit' => 'kg'],
+        'attendance' => ['startMin' => 8 * 60,        'endMin' => 10 * 60,       'startVal' => 1,     'targetBase' => 223,     'targetVariance' => 0,      'unit' => 'workers'],
+        'payroll'    => ['startMin' => 16 * 60 + 30,  'endMin' => 20 * 60,       'startVal' => 18450, 'targetBase' => 1500000, 'targetVariance' => 100000, 'unit' => 'currency'],
+        'factory'    => ['startMin' => 20 * 60,       'endMin' => 23 * 60,       'startVal' => 100,   'targetBase' => 7500,    'targetVariance' => 300,    'unit' => 'kg'],
+    ],
+    'expenses'  => [
+        'startMin'    => 6 * 60,
+        'endMin'      => 20 * 60,
+        'categories'  => ['fertilizer', 'transport', 'fuel', 'fieldMaintenance', 'clearing', 'equipment'],
+        'categoryLabels' => [
+            'fertilizer'       => t('Fertilizer'),
+            'transport'        => t('Transport'),
+            'fuel'             => t('Fuel'),
+            'fieldMaintenance' => t('Field Maintenance'),
+            'clearing'         => t('Clearing'),
+            'equipment'        => t('Equipment'),
+            'casualLabour'     => t('Casual Labour'),
+        ],
+    ],
+    'i18n' => [
+        'workers'        => t('workers'),
+        'entries'        => t('entries'),
+        'noEntries'      => t('No entries yet'),
+        'demoData'       => t('Demo data'),
+        'rate'           => t('Rate'),
+        'startsAt'       => t('Starts at %s'),
+        'updatedJustNow' => t('Updated just now'),
+        'updatedMinAgo'  => t('Updated %d min ago'),
+        'updatedMinsAgo' => t('Updated %d mins ago'),
+        'updatedHrAgo'   => t('Updated %d hr ago'),
+        'updatedHrsAgo'  => t('Updated %d hrs ago'),
+    ],
+];
 
 // How-it-helps tags
 $howTags = array_filter(array_map('trim', explode('|', setting('how_tags'))));
@@ -134,7 +178,7 @@ $pageImg   = absolute_url(resolve_image_url($heroSlides[0]['image'] ?? '', 'asse
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
 <?php endif; ?>
-<link rel="stylesheet" href="assets/css/style.css?v=3.4">
+<link rel="stylesheet" href="assets/css/style.css?v=3.5">
 <?php if ($themePrimary !== '' || $themeAccent !== ''): ?>
 <style>
 :root {
@@ -231,7 +275,7 @@ $pageImg   = absolute_url(resolve_image_url($heroSlides[0]['image'] ?? '', 'asse
           </div>
 
           <div class="live-feed-table-wrap">
-            <table class="live-feed-table">
+            <table class="live-feed-table" id="liveFeedTable">
               <thead>
                 <tr>
                   <th><?= e(t('Activity')) ?></th>
@@ -241,22 +285,30 @@ $pageImg   = absolute_url(resolve_image_url($heroSlides[0]['image'] ?? '', 'asse
                 </tr>
               </thead>
               <tbody>
-                <?php foreach ($liveFeedItems as $item): ?>
-                  <tr>
+                <?php foreach ($liveFeedRows as $row): ?>
+                  <tr data-key="<?= e($row['key']) ?>">
                     <td class="live-feed-activity">
-                      <span class="live-feed-icon"><?= $liveFeedIcons[$item['icon']] ?? '' ?></span>
-                      <span><?= e($item['activity']) ?></span>
+                      <span class="live-feed-icon"><?= $liveFeedIcons[$row['icon']] ?? '' ?></span>
+                      <span><?= e($row['activity']) ?></span>
                     </td>
-                    <td><?= e($item['start']) ?></td>
-                    <td><?= e($item['end']) ?></td>
-                    <td class="live-feed-progress"><?= e($item['progress']) ?></td>
+                    <td><?= e($row['start']) ?></td>
+                    <td><?= e($row['end']) ?></td>
+                    <td class="live-feed-progress" data-progress="<?= e($row['key']) ?>">&hellip;</td>
                   </tr>
                 <?php endforeach; ?>
               </tbody>
             </table>
           </div>
+
+          <div class="live-feed-footer">
+            <span class="live-feed-updated" id="liveFeedUpdated"></span>
+            <span class="live-feed-demo"><?= e(t('Demo data')) ?></span>
+          </div>
         </div>
       </div>
+
+      <script type="application/json" id="liveFeedConfig"><?= json_encode($liveFeedConfig, JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP) ?></script>
+      <script src="assets/js/live-feed.js?v=1.1" defer></script>
 
       <div class="why-text">
         <h2 class="why-heading">
