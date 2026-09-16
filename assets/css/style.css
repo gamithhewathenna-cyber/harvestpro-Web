@@ -276,9 +276,9 @@ html[lang="si"] .hero-title { font-size: 44px; }
 }
 .live-feed-card {
   display: flex; align-items: flex-start; gap: 12px;
-  padding: 14px 14px 14px 0; border-bottom: 1px solid var(--line);
+  padding: 14px 14px 14px 0; border-bottom: 1px solid rgba(10,20,12,.06);
 }
-.live-feed-card:nth-child(odd) { padding-right: 14px; border-right: 1px solid var(--line); }
+.live-feed-card:nth-child(odd) { padding-right: 14px; border-right: 1px solid rgba(10,20,12,.06); }
 .live-feed-card:nth-child(even) { padding-left: 14px; }
 .live-feed-card:last-child { border-bottom: none; }
 .live-feed-card:last-child:nth-child(odd) { grid-column: 1 / -1; border-right: none; }
