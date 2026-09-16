@@ -270,25 +270,23 @@ html[lang="si"] .hero-title { font-size: 44px; }
 #liveVisitorCount { transition: color .3s ease, transform .3s ease; display: inline-block; }
 #liveVisitorCount.bump { color: var(--green-800); transform: scale(1.18); }
 
-.live-feed-table-wrap { overflow-x: auto; }
-.live-feed-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
-.live-feed-table th {
-  text-align: left; font-size: 12px; font-weight: 600; color: var(--muted);
-  text-transform: uppercase; letter-spacing: .03em;
-  padding: 14px 20px; border-bottom: 1px solid var(--line); white-space: nowrap;
+.live-feed-cards {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+  padding: 18px 20px;
 }
-.live-feed-table td {
-  padding: 14px 20px; border-bottom: 1px solid var(--line);
-  color: var(--ink); white-space: nowrap; vertical-align: middle;
+.live-feed-card:last-child:nth-child(odd) { grid-column: 1 / -1; }
+.live-feed-card {
+  display: flex; align-items: flex-start; gap: 12px;
+  background: var(--green-050); border-radius: 14px; padding: 16px;
 }
-.live-feed-table tr:last-child td { border-bottom: none; }
-.live-feed-activity { display: flex; align-items: center; gap: 10px; font-weight: 600; white-space: normal; }
 .live-feed-icon {
-  width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
-  background: var(--green-050); color: var(--green-700);
+  width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
+  background: #fff; color: var(--green-700);
   display: grid; place-items: center;
 }
-.live-feed-progress { color: var(--green-700); font-weight: 600; transition: color .4s ease; }
+.live-feed-card-body { min-width: 0; }
+.live-feed-card-label { font-size: 13px; color: var(--muted); margin-top: 2px; }
+.live-feed-progress { color: var(--green-700); font-weight: 700; font-size: 19px; line-height: 1.25; transition: color .4s ease; }
 .live-feed-progress.lf-updated { animation: lfFlash 900ms ease; }
 @keyframes lfFlash {
   0% { color: var(--gold); }
@@ -673,7 +671,9 @@ html[lang="si"] .hero-title { font-size: 44px; }
   .navbar { padding: 18px 24px; }
   .hero { min-height: 520px; }
   .live-feed-header { padding-left: 16px; padding-right: 16px; }
-  .live-feed-table th, .live-feed-table td { padding: 12px 14px; }
+  .live-feed-cards { padding: 14px; gap: 10px; }
+  .live-feed-card { padding: 12px; }
+  .live-feed-progress { font-size: 17px; }
   .hero-inner { padding-top: 104px; }
   .page-banner { padding-top: 120px; }
   .contact-info { padding: 40px 28px; }

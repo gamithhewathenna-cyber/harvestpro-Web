@@ -12,8 +12,8 @@
   'use strict';
 
   var configEl = document.getElementById('liveFeedConfig');
-  var table = document.getElementById('liveFeedTable');
-  if (!configEl || !table) return;
+  var wrap = document.getElementById('liveFeedCards');
+  if (!configEl || !wrap) return;
 
   var cfg;
   try {
@@ -131,7 +131,7 @@
   // digit tweening, since the text mixes units/arrows/counts per row) ----
   var lastText = {};
   function setCellText(key, text, title) {
-    var cell = table.querySelector('[data-progress="' + key + '"]');
+    var cell = wrap.querySelector('[data-progress="' + key + '"]');
     if (!cell) return;
     if (lastText[key] === text) return;
     var changed = lastText[key] !== undefined;
@@ -200,8 +200,8 @@
       var text, title;
       if (nowMin < m.startMin) {
         text = fmtValue(m.startVal, m.unit);
-        var row = table.querySelector('tr[data-key="' + metricKey + '"]');
-        var startLabel = row ? row.getAttribute('data-start') : '';
+        var card = wrap.querySelector('[data-key="' + metricKey + '"]');
+        var startLabel = card ? card.getAttribute('data-start') : '';
         title = cfg.i18n.startsAt.replace('%s', startLabel);
       } else if (nowMin >= m.endMin) {
         text = fmtValue(target, m.unit);

@@ -178,7 +178,7 @@ $pageImg   = absolute_url(resolve_image_url($heroSlides[0]['image'] ?? '', 'asse
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
 <?php endif; ?>
-<link rel="stylesheet" href="assets/css/style.css?v=3.5">
+<link rel="stylesheet" href="assets/css/style.css?v=3.6">
 <?php if ($themePrimary !== '' || $themeAccent !== ''): ?>
 <style>
 :root {
@@ -274,26 +274,16 @@ $pageImg   = absolute_url(resolve_image_url($heroSlides[0]['image'] ?? '', 'asse
             </span>
           </div>
 
-          <div class="live-feed-table-wrap">
-            <table class="live-feed-table" id="liveFeedTable">
-              <thead>
-                <tr>
-                  <th><?= e(t('Activity')) ?></th>
-                  <th><?= e(t('Daily progression')) ?></th>
-                </tr>
-              </thead>
-              <tbody>
-                <?php foreach ($liveFeedRows as $row): ?>
-                  <tr data-key="<?= e($row['key']) ?>" data-start="<?= e($row['start']) ?>">
-                    <td class="live-feed-activity">
-                      <span class="live-feed-icon"><?= $liveFeedIcons[$row['icon']] ?? '' ?></span>
-                      <span><?= e($row['activity']) ?></span>
-                    </td>
-                    <td class="live-feed-progress" data-progress="<?= e($row['key']) ?>">&hellip;</td>
-                  </tr>
-                <?php endforeach; ?>
-              </tbody>
-            </table>
+          <div class="live-feed-cards" id="liveFeedCards">
+            <?php foreach ($liveFeedRows as $row): ?>
+              <div class="live-feed-card" data-key="<?= e($row['key']) ?>" data-start="<?= e($row['start']) ?>">
+                <span class="live-feed-icon"><?= $liveFeedIcons[$row['icon']] ?? '' ?></span>
+                <div class="live-feed-card-body">
+                  <div class="live-feed-progress" data-progress="<?= e($row['key']) ?>">&hellip;</div>
+                  <div class="live-feed-card-label"><?= e($row['activity']) ?></div>
+                </div>
+              </div>
+            <?php endforeach; ?>
           </div>
 
           <div class="live-feed-footer">
@@ -304,7 +294,7 @@ $pageImg   = absolute_url(resolve_image_url($heroSlides[0]['image'] ?? '', 'asse
       </div>
 
       <script type="application/json" id="liveFeedConfig"><?= json_encode($liveFeedConfig, JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP) ?></script>
-      <script src="assets/js/live-feed.js?v=1.3" defer></script>
+      <script src="assets/js/live-feed.js?v=1.4" defer></script>
 
       <div class="why-text">
         <h2 class="why-heading">
