@@ -69,17 +69,11 @@ $liveFeedConfig = [
         ],
     ],
     'i18n' => [
-        'workers'        => t('workers'),
-        'entries'        => t('entries'),
-        'noEntries'      => t('No entries yet'),
-        'demoData'       => t('Demo data'),
-        'rate'           => t('Rate'),
-        'startsAt'       => t('Starts at %s'),
-        'updatedJustNow' => t('Updated just now'),
-        'updatedMinAgo'  => t('Updated %d min ago'),
-        'updatedMinsAgo' => t('Updated %d mins ago'),
-        'updatedHrAgo'   => t('Updated %d hr ago'),
-        'updatedHrsAgo'  => t('Updated %d hrs ago'),
+        'workers'   => t('workers'),
+        'entries'   => t('entries'),
+        'noEntries' => t('No entries yet'),
+        'rate'      => t('Rate'),
+        'startsAt'  => t('Starts at %s'),
     ],
 ];
 
@@ -178,7 +172,7 @@ $pageImg   = absolute_url(resolve_image_url($heroSlides[0]['image'] ?? '', 'asse
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
 <?php endif; ?>
-<link rel="stylesheet" href="assets/css/style.css?v=3.9">
+<link rel="stylesheet" href="assets/css/style.css?v=4.0">
 <?php if ($themePrimary !== '' || $themeAccent !== ''): ?>
 <style>
 :root {
@@ -285,16 +279,11 @@ $pageImg   = absolute_url(resolve_image_url($heroSlides[0]['image'] ?? '', 'asse
               </div>
             <?php endforeach; ?>
           </div>
-
-          <div class="live-feed-footer">
-            <span class="live-feed-updated" id="liveFeedUpdated"></span>
-            <span class="live-feed-demo"><?= e(t('Demo data')) ?></span>
-          </div>
         </div>
       </div>
 
       <script type="application/json" id="liveFeedConfig"><?= json_encode($liveFeedConfig, JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP) ?></script>
-      <script src="assets/js/live-feed.js?v=1.4" defer></script>
+      <script src="assets/js/live-feed.js?v=1.5" defer></script>
 
       <div class="why-text">
         <h2 class="why-heading">

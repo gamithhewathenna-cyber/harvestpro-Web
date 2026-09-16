@@ -147,25 +147,6 @@
     return changed;
   }
 
-  // ---- "Updated X ago" footer ----
-  var lastUpdateTs = Date.now();
-  function refreshUpdatedText() {
-    var el = document.getElementById('liveFeedUpdated');
-    if (!el) return;
-    var seconds = Math.floor((Date.now() - lastUpdateTs) / 1000);
-    var text;
-    if (seconds < 60) {
-      text = cfg.i18n.updatedJustNow;
-    } else if (seconds < 3600) {
-      var mins = Math.floor(seconds / 60);
-      text = (mins === 1 ? cfg.i18n.updatedMinAgo : cfg.i18n.updatedMinsAgo).replace('%d', mins);
-    } else {
-      var hrs = Math.floor(seconds / 3600);
-      text = (hrs === 1 ? cfg.i18n.updatedHrAgo : cfg.i18n.updatedHrsAgo).replace('%d', hrs);
-    }
-    el.textContent = text;
-  }
-
   // ---- Main render pass ----
   var lastValues = {}; // floor so nothing ever visibly drops *within a day*
   var lastExpenseTotal = 0;
@@ -186,8 +167,6 @@
       lastExpenseTotal = 0;
     }
     lastRenderedDayKey = dayKey;
-
-    var anyChanged = false;
 
     Object.keys(cfg.metrics).forEach(function (metricKey) {
       var m = cfg.metrics[metricKey];
@@ -210,7 +189,7 @@
         text = fmtValue(value, m.unit);
         title = metricKey === 'factory' ? cfg.i18n.rate + ': Rs. ' + day.factoryRate + '/kg' : null;
       }
-      if (setCellText(metricKey, text, title)) anyChanged = true;
+      setCellText(metricKey, text, title);
     });
 
     // Field expenses: sum of every entry "revealed" by now, one entry
@@ -229,16 +208,9 @@
     total = Math.max(total, lastExpenseTotal);
     lastExpenseTotal = total;
     var expensesText = count === 0 ? cfg.i18n.noEntries : ('Rs. ' + fmtNum(total) + ' (' + count + ' ' + cfg.i18n.entries + ')');
-    if (setCellText('expenses', expensesText, breakdown.join('\n'))) anyChanged = true;
-
-    if (anyChanged) {
-      lastUpdateTs = Date.now();
-      refreshUpdatedText();
-    }
+    setCellText('expenses', expensesText, breakdown.join('\n'));
   }
 
   render();
-  refreshUpdatedText();
   setInterval(render, 4000);
-  setInterval(refreshUpdatedText, 15000);
 })();
