@@ -25,17 +25,12 @@ function field_groups(): array
             'title'  => 'Why Section',
             'fields' => [
                 'why_badge'        => ['Badge Text', 'text'],
-                'why_checklist'    => ['Checklist (one per line, use bold|rest )', 'checklist'],
                 'why_title_1'      => ['Heading (line 1)', 'text'],
                 'why_title_2'      => ['Heading Accent (gold)', 'text'],
                 'why_para_1'       => ['Paragraph 1', 'textarea'],
                 'why_para_2'       => ['Paragraph 2', 'textarea'],
-                'why_stat_number'  => ['Stat Number (e.g. 40%)', 'text'],
-                'why_stat_label'   => ['Stat Label', 'text'],
                 'why_btn_text'     => ['Button Text', 'text'],
                 'why_btn_link'     => ['Button Link', 'text'],
-                'why_image_1'      => ['Image 1 (top-right photo)', 'image'],
-                'why_image_2'      => ['Image 2 (bottom-left photo)', 'image'],
             ],
         ],
         'features' => [

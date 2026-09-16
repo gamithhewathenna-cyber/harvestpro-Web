@@ -78,16 +78,24 @@ return [
 
     // ---- Why Harvest Pro ------------------------------------------------------
     'Why Harvest Pro' => 'Harvest Pro තෝරාගත යුත්තේ ඇයි',
-    'Centralized|plantation management
-Real-time|operational insights
-Reduced|manual work
-Improved|workforce accountability
-Faster|decision-making' =>
-        'කේන්ද්‍රීයගත|වතු කළමනාකරණය
-තථ්‍ය කාලීන|මෙහෙයුම් තීක්ෂණතා
-අඩු කළ|අතින් කරන කටයුතු
-වැඩිදියුණු කළ|කම්කරු වගවීම
-වේගවත්|තීරණ ගැනීම',
+
+    // ---- Live Estate Activity demo card (left side of Why section) -----------
+    'Live' => 'සජීවී',
+    'Estate activity now' => 'දැන් වතුයායේ ක්‍රියාකාරකම්',
+    'Demo Data' => 'නිදර්ශන දත්ත',
+    'Activities Today' => 'අද ක්‍රියාකාරකම්',
+    'Green Leaf Today' => 'අද කොළ පත්',
+    'Green Leaf Recorded' => 'කොළ පත් වාර්තා විය',
+    'Attendance Completed' => 'පැමිණීම සම්පූර්ණයි',
+    'Payroll Processed' => 'වැටුප් සකසන ලදී',
+    'Fertilizer Applied' => 'පොහොර යෙදින',
+    'Assignment Completed' => 'පැවරුම සම්පූර්ණයි',
+    'Field Expense Recorded' => 'ක්ෂේත්‍ර වියදම වාර්තා විය',
+    'Factory Collection Recorded' => 'කර්මාන්ත ශාලා එකතුව වාර්තා විය',
+    'Tea Plucking' => 'තේ නෙළීම',
+    'Workers' => 'කම්කරුවන්',
+    'Acres' => 'අක්කර',
+
     'Everything Your Plantation Needs in' => 'ඔබේ වතුයායට අවශ්‍ය සියල්ල',
     'One System' => 'එක් පද්ධතියකින්',
     'Managing a plantation involves multiple moving parts. Harvest Pro brings them together into a single, easy-to-use platform that reduces paperwork, improves accuracy, and saves valuable time.' =>

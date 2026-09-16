@@ -21,8 +21,29 @@ $seoKeywords    = setting('home_seo_keywords', '');
 // Ticker items
 $tickerItems = array_filter(array_map('trim', explode('|', setting('ticker_items'))));
 
-// Why checklist ("bold|rest" per line)
-$whyChecklist = array_filter(array_map('trim', explode("\n", setting('why_checklist'))));
+// "Live Estate Activity" demo card (left side of the Why section) — fixed
+// dummy data for visual showcase, not tied to real estate records.
+$liveFeedAgo = function (int $mins): string {
+    return current_lang() === 'si' ? $mins . ' මිනි. පෙර' : $mins . 'm ago';
+};
+$liveFeedItems = [
+    ['icon' => 'leaf',    'value' => '128.5 KG', 'part1' => t('Green Leaf Recorded'), 'part2' => 'Section A', 'time' => $liveFeedAgo(2)],
+    ['icon' => 'people',  'value' => '24 ' . t('Workers'), 'part1' => t('Attendance Completed'), 'part2' => 'Estate 01', 'time' => $liveFeedAgo(5)],
+    ['icon' => 'coins',   'value' => 'Rs. 18,450', 'part1' => t('Payroll Processed'), 'part2' => 'Division B', 'time' => $liveFeedAgo(12)],
+    ['icon' => 'bag',     'value' => t('Fertilizer Applied'), 'part1' => 'Section C', 'part2' => '2.5 ' . t('Acres'), 'time' => $liveFeedAgo(18)],
+    ['icon' => 'leaf',    'value' => '86.2 KG', 'part1' => t('Green Leaf Recorded'), 'part2' => 'Section D', 'time' => $liveFeedAgo(27)],
+    ['icon' => 'check',   'value' => t('Assignment Completed'), 'part1' => t('Tea Plucking'), 'part2' => '12 ' . t('Workers'), 'time' => $liveFeedAgo(34)],
+    ['icon' => 'coins',   'value' => 'Rs. 6,800', 'part1' => t('Field Expense Recorded'), 'part2' => '', 'time' => $liveFeedAgo(41)],
+    ['icon' => 'factory', 'value' => '145.7 KG', 'part1' => t('Factory Collection Recorded'), 'part2' => '', 'time' => $liveFeedAgo(58)],
+];
+$liveFeedIcons = [
+    'leaf'    => '<svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16c0-7 4-11 11-12 1 7-3 11-11 12Z"/><path d="M6 14c2-3 4-5 8-7"/></svg>',
+    'people'  => '<svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="6.5" r="2.3"/><path d="M2.5 16c0-3 2-5 4.5-5s4.5 2 4.5 5"/><circle cx="14" cy="7.5" r="1.9"/><path d="M11.8 11c2-.3 3.7 1.1 4.2 3.4"/></svg>',
+    'coins'   => '<svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="10" cy="5.5" rx="6" ry="2.3"/><path d="M4 5.5v4c0 1.3 2.7 2.3 6 2.3s6-1 6-2.3v-4"/><path d="M4 9.5v4c0 1.3 2.7 2.3 6 2.3s6-1 6-2.3v-4"/></svg>',
+    'bag'     => '<svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h6l1.5 3H5.5L7 4Z"/><path d="M5 7h10l-1 9a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 7Z"/><path d="M10 10v5"/></svg>',
+    'check'   => '<svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7.5"/><path d="M6.8 10.2l2.1 2.1 4.3-4.6"/></svg>',
+    'factory' => '<svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17V9l4 2.5V9l4 2.5V7l6 2v8H2.5Z"/><path d="M15 9V6"/></svg>',
+];
 
 // How-it-helps tags
 $howTags = array_filter(array_map('trim', explode('|', setting('how_tags'))));
@@ -95,8 +116,6 @@ if (!$heroSlides) {
     ]];
 }
 
-$whyImg1       = image_url('why_image_1', 'assets/images/why-1.jpg');
-$whyImg2       = image_url('why_image_2', 'assets/images/why-2.jpg');
 $ctaBg         = image_url('cta_bg_image', 'assets/images/cta-bg.jpg');
 
 $pageTitle = $seoTitle !== '' ? $seoTitle : $brandName . ' Pro — Smarter Plantation Management';
@@ -121,7 +140,7 @@ $pageImg   = absolute_url(resolve_image_url($heroSlides[0]['image'] ?? '', 'asse
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
 <?php endif; ?>
-<link rel="stylesheet" href="assets/css/style.css?v=2.9">
+<link rel="stylesheet" href="assets/css/style.css?v=3.0">
 <?php if ($themePrimary !== '' || $themeAccent !== ''): ?>
 <style>
 :root {
@@ -203,27 +222,43 @@ $pageImg   = absolute_url(resolve_image_url($heroSlides[0]['image'] ?? '', 'asse
 
     <div class="why-grid">
       <div class="why-media">
-        <div class="why-checklist">
-          <ul>
-            <?php foreach ($whyChecklist as $line):
-              $parts = explode('|', $line, 2);
-              $bold  = trim($parts[0] ?? '');
-              $rest  = trim($parts[1] ?? '');
-            ?>
+        <div class="live-feed">
+          <div class="live-feed-header">
+            <div class="live-feed-status">
+              <span class="live-dot"></span>
+              <strong><?= e(t('Live')) ?></strong>
+              <span class="live-feed-sep"></span>
+              <span class="live-feed-sub"><?= e(t('Estate activity now')) ?></span>
+            </div>
+            <span class="live-feed-badge">
+              <?= e(t('Demo Data')) ?>
+              <svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10" cy="10" r="7.3"/><line x1="10" y1="9.3" x2="10" y2="14.2"/><circle cx="10" cy="6.6" r="0.9" fill="currentColor" stroke="none"/></svg>
+            </span>
+          </div>
+
+          <ul class="live-feed-list">
+            <?php foreach ($liveFeedItems as $item): ?>
               <li>
-                <span class="tick"><svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor"><ellipse cx="8" cy="8" rx="5" ry="3" transform="rotate(-30 8 8)"/><ellipse cx="13" cy="12" rx="5" ry="3" transform="rotate(-30 13 12)"/></svg></span>
-                <span><strong><?= e($bold) ?></strong> <?= e($rest) ?></span>
+                <span class="live-feed-icon"><?= $liveFeedIcons[$item['icon']] ?? '' ?></span>
+                <span class="live-feed-text">
+                  <strong><?= e($item['value']) ?></strong>
+                  <span><?= e($item['part1']) ?><?php if ($item['part2'] !== ''): ?> &middot; <?= e($item['part2']) ?><?php endif; ?></span>
+                </span>
+                <span class="live-feed-time"><?= e($item['time']) ?></span>
               </li>
             <?php endforeach; ?>
           </ul>
-        </div>
 
-        <div class="why-photo why-photo-top" data-bg="url('<?= e($whyImg1) ?>')"></div>
-        <div class="why-photo why-photo-bottom" data-bg="url('<?= e($whyImg2) ?>')"></div>
-
-        <div class="why-stat">
-          <span class="why-stat-badge"><?= e(setting('why_stat_number')) ?></span>
-          <span class="why-stat-label"><?= e(setting('why_stat_label')) ?></span>
+          <div class="live-feed-stats">
+            <div>
+              <span class="live-feed-stat-label"><?= e(t('Activities Today')) ?></span>
+              <span class="live-feed-stat-value">184</span>
+            </div>
+            <div>
+              <span class="live-feed-stat-label"><?= e(t('Green Leaf Today')) ?></span>
+              <span class="live-feed-stat-value">2,840 KG</span>
+            </div>
+          </div>
         </div>
       </div>
 
