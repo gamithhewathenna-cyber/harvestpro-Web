@@ -207,7 +207,7 @@
         text = fmtValue(target, m.unit);
         title = metricKey === 'factory' ? cfg.i18n.rate + ': Rs. ' + day.factoryRate + '/kg' : null;
       } else {
-        text = fmtValue(value, m.unit) + ' → ~' + fmtValue(target, m.unit);
+        text = fmtValue(value, m.unit);
         title = metricKey === 'factory' ? cfg.i18n.rate + ': Rs. ' + day.factoryRate + '/kg' : null;
       }
       if (setCellText(metricKey, text, title)) anyChanged = true;

@@ -304,7 +304,7 @@ $pageImg   = absolute_url(resolve_image_url($heroSlides[0]['image'] ?? '', 'asse
       </div>
 
       <script type="application/json" id="liveFeedConfig"><?= json_encode($liveFeedConfig, JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP) ?></script>
-      <script src="assets/js/live-feed.js?v=1.2" defer></script>
+      <script src="assets/js/live-feed.js?v=1.3" defer></script>
 
       <div class="why-text">
         <h2 class="why-heading">
