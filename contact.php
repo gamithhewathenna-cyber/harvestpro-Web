@@ -44,7 +44,7 @@ $pageImg   = absolute_url($cBannerBg);
 <?php endif; ?>
 <?php seo_meta_tags('/contact', $pageTitle, $pageDesc, $pageImg, $brandName . ' Pro'); ?>
 <?php sinhala_font_tags(); ?>
-<link rel="stylesheet" href="assets/css/style.css?v=3.8">
+<link rel="stylesheet" href="assets/css/style.css?v=3.9">
 <?php if ($themePrimary !== '' || $themeAccent !== ''): ?>
 <style>
 :root {
