@@ -95,7 +95,6 @@ return [
     'Morning' => 'උදෑසන',
     'Evening' => 'සවස',
     'workers' => 'කම්කරුවන්',
-    'entries' => 'ප්‍රවේශයන්',
     'No entries yet' => 'තවම ප්‍රවේශයන් නැත',
     'Rate' => 'ගාස්තුව',
     'Starts at %s' => '%s ට ආරම්භ වේ',

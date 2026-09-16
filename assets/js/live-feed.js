@@ -207,7 +207,7 @@
     });
     total = Math.max(total, lastExpenseTotal);
     lastExpenseTotal = total;
-    var expensesText = count === 0 ? cfg.i18n.noEntries : ('Rs. ' + fmtNum(total) + ' (' + count + ' ' + cfg.i18n.entries + ')');
+    var expensesText = count === 0 ? cfg.i18n.noEntries : ('Rs. ' + fmtNum(total));
     setCellText('expenses', expensesText, breakdown.join('\n'));
   }
 
