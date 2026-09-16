@@ -27,14 +27,14 @@ $liveFeedAgo = function (int $mins): string {
     return current_lang() === 'si' ? $mins . ' මිනි. පෙර' : $mins . 'm ago';
 };
 $liveFeedItems = [
-    ['icon' => 'leaf',    'value' => '128.5 KG', 'part1' => t('Green Leaf Recorded'), 'part2' => 'Section A', 'time' => $liveFeedAgo(2)],
-    ['icon' => 'people',  'value' => '24 ' . t('Workers'), 'part1' => t('Attendance Completed'), 'part2' => 'Estate 01', 'time' => $liveFeedAgo(5)],
-    ['icon' => 'coins',   'value' => 'Rs. 18,450', 'part1' => t('Payroll Processed'), 'part2' => 'Division B', 'time' => $liveFeedAgo(12)],
-    ['icon' => 'bag',     'value' => t('Fertilizer Applied'), 'part1' => 'Section C', 'part2' => '2.5 ' . t('Acres'), 'time' => $liveFeedAgo(18)],
-    ['icon' => 'leaf',    'value' => '86.2 KG', 'part1' => t('Green Leaf Recorded'), 'part2' => 'Section D', 'time' => $liveFeedAgo(27)],
-    ['icon' => 'check',   'value' => t('Assignment Completed'), 'part1' => t('Tea Plucking'), 'part2' => '12 ' . t('Workers'), 'time' => $liveFeedAgo(34)],
-    ['icon' => 'coins',   'value' => 'Rs. 6,800', 'part1' => t('Field Expense Recorded'), 'part2' => '', 'time' => $liveFeedAgo(41)],
-    ['icon' => 'factory', 'value' => '145.7 KG', 'part1' => t('Factory Collection Recorded'), 'part2' => '', 'time' => $liveFeedAgo(58)],
+    ['icon' => 'leaf',    'value' => '128.5 KG', 'label' => t('Green Leaf Recorded'), 'time' => $liveFeedAgo(2)],
+    ['icon' => 'people',  'value' => '24 ' . t('Workers'), 'label' => t('Attendance Completed'), 'time' => $liveFeedAgo(5)],
+    ['icon' => 'coins',   'value' => 'Rs. 18,450', 'label' => t('Payroll Processed'), 'time' => $liveFeedAgo(12)],
+    ['icon' => 'bag',     'value' => t('Fertilizer Applied'), 'label' => 'Section C', 'time' => $liveFeedAgo(18)],
+    ['icon' => 'leaf',    'value' => '86.2 KG', 'label' => t('Green Leaf Recorded'), 'time' => $liveFeedAgo(27)],
+    ['icon' => 'check',   'value' => t('Assignment Completed'), 'label' => t('Tea Plucking'), 'time' => $liveFeedAgo(34)],
+    ['icon' => 'coins',   'value' => 'Rs. 6,800', 'label' => t('Field Expense Recorded'), 'time' => $liveFeedAgo(41)],
+    ['icon' => 'factory', 'value' => '145.7 KG', 'label' => t('Factory Collection Recorded'), 'time' => $liveFeedAgo(58)],
 ];
 $liveFeedIcons = [
     'leaf'    => '<svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16c0-7 4-11 11-12 1 7-3 11-11 12Z"/><path d="M6 14c2-3 4-5 8-7"/></svg>',
@@ -242,7 +242,7 @@ $pageImg   = absolute_url(resolve_image_url($heroSlides[0]['image'] ?? '', 'asse
                 <span class="live-feed-icon"><?= $liveFeedIcons[$item['icon']] ?? '' ?></span>
                 <span class="live-feed-text">
                   <strong><?= e($item['value']) ?></strong>
-                  <span><?= e($item['part1']) ?><?php if ($item['part2'] !== ''): ?> &middot; <?= e($item['part2']) ?><?php endif; ?></span>
+                  <span><?= e($item['label']) ?></span>
                 </span>
                 <span class="live-feed-time"><?= e($item['time']) ?></span>
               </li>
