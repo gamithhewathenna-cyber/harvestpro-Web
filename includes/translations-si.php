@@ -113,6 +113,68 @@ Faster|decision-making' =>
     'Multi-Estate Management' => 'බහු-වතු කළමනාකරණය',
     'Manage multiple estates from a single dashboard.' => 'එක් උපකරණ පුවරුවකින් බහු වතු කළමනාකරණය කරන්න.',
 
+    // ---- Pricing section --------------------------------------------------------
+    'Simple, Transparent Plans' => 'සරල, විනිවිද පෙනෙන සැලසුම්',
+    'Choose Your Plan' => 'ඔබේ සැලැස්ම තෝරන්න',
+    'Scale from basic estate management to payroll and complete tea factory operations.' =>
+        'මූලික වතු කළමනාකරණයේ සිට වැටුප් සහ සම්පූර්ණ තේ කර්මාන්ත ශාලා මෙහෙයුම් දක්වා පරිමාණය කරන්න.',
+    '14-day free trial on online signup. No charge until you subscribe.' =>
+        'මාර්ගගත ලියාපදිංචියේදී දින 14ක නොමිලේ අත්හදා බැලීමක්. ඔබ දායක වන තෙක් ගාස්තුවක් නැත.',
+
+    'Basic Tier' => 'මූලික මට්ටම',
+    'Harvest Pro Base Estate Management Plan' => 'Harvest Pro මූලික වතු කළමනාකරණ සැලැස්ම',
+    'Dashboard & Estate Overview
+Employee & User Management
+Service & Daily Assignment
+Expense Tracking
+Reminders & Calendar
+Reports (Excel & PDF)
+Data Backups
+Multi-language Support' =>
+        'උපකරණ පුවරුව සහ වතු දළ විශ්ලේෂණය
+සේවක සහ පරිශීලක කළමනාකරණය
+සේවා සහ දෛනික පැවරීම
+වියදම් නිරීක්ෂණය
+මතක් කිරීම් සහ දින දර්ශනය
+වාර්තා (Excel සහ PDF)
+දත්ත උපස්ථ
+බහුභාෂා සහාය',
+
+    'Mid Tier' => 'මධ්‍යම මට්ටම',
+    'Harvest Pro Automated Payroll & Estate Plan' => 'Harvest Pro ස්වයංක්‍රීය වැටුප් සහ වතු සැලැස්ම',
+    'Recommended' => 'නිර්දේශිතයි',
+    'Everything in Basic Tier, plus:' => 'මූලික මට්ටමේ සියල්ල, තවද:',
+    'Automated Payroll Processing
+Worker & Plantation Payroll Views
+Daily Payroll Summary
+Payment Tracking & History
+Bulk Payment Actions
+EPF / ETF contributions, Form C & R4' =>
+        'ස්වයංක්‍රීය වැටුප් සැකසුම
+කම්කරු සහ වතු වැටුප් දර්ශන
+දෛනික වැටුප් සාරාංශය
+ගෙවීම් නිරීක්ෂණය සහ ඉතිහාසය
+තොග ගෙවීම් ක්‍රියා
+EPF / ETF දායකත්ව, Form C සහ R4',
+
+    'Top Tier' => 'ඉහළම මට්ටම',
+    'Harvest Pro Complete Tea Factory & Operations Suite' => 'Harvest Pro සම්පූර්ණ තේ කර්මාන්ත ශාලා හා මෙහෙයුම් පැකේජය',
+    'Everything in Mid Tier, plus:' => 'මධ්‍යම මට්ටමේ සියල්ල, තවද:',
+    'Tea Factory Operations
+Leaf Intake & Weighing
+Processing & Quality Grading
+Factory Inventory & Stock
+Buyer & Sales Management
+Factory Reports & Analytics' =>
+        'තේ කර්මාන්ත ශාලා මෙහෙයුම්
+කොළ පත් ලැබීම සහ බර කිරීම
+සැකසුම සහ ගුණාත්මක ශ්‍රේණිගත කිරීම
+කර්මාන්ත ශාලා තොග
+ගැනුම්කරු සහ විකුණුම් කළමනාකරණය
+කර්මාන්ත ශාලා වාර්තා සහ විශ්ලේෂණ',
+
+    'Request a Demo – 14-Day Free Trial' => 'ආදර්ශනයක් ඉල්ලන්න – දින 14ක නොමිලේ අත්හදා බැලීම',
+
     // ---- Features page banner --------------------------------------------------
     'Everything You Need to Manage Your Tea Estate' => 'ඔබේ තේ වතුයාය කළමනාකරණයට අවශ්‍ය සියල්ල',
     'From workforce management and daily field operations to harvesting, payments, expenses, and reporting, the platform brings your essential tea estate operations together in one simple system.' =>

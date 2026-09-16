@@ -27,6 +27,41 @@ $whyChecklist = array_filter(array_map('trim', explode("\n", setting('why_checkl
 // How-it-helps tags
 $howTags = array_filter(array_map('trim', explode('|', setting('how_tags'))));
 
+// Pricing section (fixed set of 3 plan tiers)
+$trialNote = '14-day free trial on online signup. No charge until you subscribe.';
+$pricingDefaults = [
+    1 => [
+        'label' => 'Basic Tier', 'name' => 'Harvest Pro Base Estate Management Plan', 'price' => '2,000',
+        'note' => $trialNote, 'included' => '', 'badge' => '',
+        'features' => "Dashboard & Estate Overview\nEmployee & User Management\nService & Daily Assignment\nExpense Tracking\nReminders & Calendar\nReports (Excel & PDF)\nData Backups\nMulti-language Support",
+    ],
+    2 => [
+        'label' => 'Mid Tier', 'name' => 'Harvest Pro Automated Payroll & Estate Plan', 'price' => '5,000',
+        'note' => $trialNote, 'included' => 'Everything in Basic Tier, plus:', 'badge' => 'Recommended',
+        'features' => "Automated Payroll Processing\nWorker & Plantation Payroll Views\nDaily Payroll Summary\nPayment Tracking & History\nBulk Payment Actions\nEPF / ETF contributions, Form C & R4",
+    ],
+    3 => [
+        'label' => 'Top Tier', 'name' => 'Harvest Pro Complete Tea Factory & Operations Suite', 'price' => '10,000',
+        'note' => $trialNote, 'included' => 'Everything in Mid Tier, plus:', 'badge' => '',
+        'features' => "Tea Factory Operations\nLeaf Intake & Weighing\nProcessing & Quality Grading\nFactory Inventory & Stock\nBuyer & Sales Management\nFactory Reports & Analytics",
+    ],
+];
+$pricingTiers = [];
+foreach ($pricingDefaults as $n => $def) {
+    $pricingTiers[] = [
+        'label'    => setting("pricing{$n}_label", $def['label']),
+        'name'     => setting("pricing{$n}_name", $def['name']),
+        'price'    => setting("pricing{$n}_price", $def['price']),
+        'note'     => setting("pricing{$n}_note", $def['note']),
+        'badge'    => $def['badge'] !== '' ? setting("pricing{$n}_badge", $def['badge']) : '',
+        'included' => $def['included'] !== '' ? setting("pricing{$n}_included_label", $def['included']) : '',
+        'features' => array_filter(array_map('trim', explode("\n", setting("pricing{$n}_features", $def['features'])))),
+        'featured' => $n === 2,
+    ];
+}
+$pricingBtnText = setting('pricing_btn_text', 'Request a Demo – 14-Day Free Trial');
+$pricingBtnLink = setting('pricing_btn_link', '#contact');
+
 // Trust section (fixed set of 4 icon cards)
 $trustDefaults = [
     1 => ['shield',               'Secure by Design',       'Your estate data is protected with modern security practices.'],
@@ -85,7 +120,7 @@ $pageImg   = absolute_url(resolve_image_url($heroSlides[0]['image'] ?? '', 'asse
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
 <?php endif; ?>
-<link rel="stylesheet" href="assets/css/style.css?v=1.8">
+<link rel="stylesheet" href="assets/css/style.css?v=1.9">
 <?php if ($themePrimary !== '' || $themeAccent !== ''): ?>
 <style>
 :root {
@@ -224,6 +259,45 @@ $pageImg   = absolute_url(resolve_image_url($heroSlides[0]['image'] ?? '', 'asse
           </div>
         <?php endforeach; ?>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= PRICING ============================= -->
+<section class="pricing section">
+  <div class="container">
+    <p class="pricing-kicker"><?= e(setting('pricing_kicker', 'Simple, Transparent Plans')) ?></p>
+    <h2 class="pricing-title"><?= e(setting('pricing_title', 'Choose Your Plan')) ?></h2>
+    <p class="pricing-subtitle"><?= e(setting('pricing_subtitle', 'Scale from basic estate management to payroll and complete tea factory operations.')) ?></p>
+
+    <div class="pricing-grid">
+      <?php foreach ($pricingTiers as $tier): ?>
+        <div class="pricing-card<?= $tier['featured'] ? ' featured' : '' ?>">
+          <?php if ($tier['badge'] !== ''): ?><span class="pricing-badge"><?= e($tier['badge']) ?></span><?php endif; ?>
+          <span class="pricing-label"><?= e($tier['label']) ?></span>
+          <p class="pricing-name"><?= e($tier['name']) ?></p>
+          <div class="pricing-price">
+            <span class="pricing-currency">LKR</span>
+            <span class="pricing-amount"><?= e($tier['price']) ?></span>
+            <span class="pricing-period">/month</span>
+          </div>
+          <?php if ($tier['note'] !== ''): ?><p class="pricing-note"><?= e($tier['note']) ?></p><?php endif; ?>
+          <div class="pricing-divider"></div>
+          <?php if ($tier['included'] !== ''): ?><p class="pricing-included"><?= e($tier['included']) ?></p><?php endif; ?>
+          <ul class="pricing-features">
+            <?php foreach ($tier['features'] as $feat): ?>
+              <li>
+                <span class="pricing-tick"><svg viewBox="0 0 20 20" width="12" height="12" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="5,10.5 8.5,14 15,6.5"/></svg></span>
+                <span><?= e($feat) ?></span>
+              </li>
+            <?php endforeach; ?>
+          </ul>
+        </div>
+      <?php endforeach; ?>
+    </div>
+
+    <div class="pricing-cta">
+      <a href="<?= e($pricingBtnLink) ?>" class="btn btn-primary"><?= e($pricingBtnText) ?></a>
     </div>
   </div>
 </section>

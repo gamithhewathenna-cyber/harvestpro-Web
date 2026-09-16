@@ -108,6 +108,7 @@
       '.features-left', '.feature-item',
       '.how-left', '.how-right',
       '.trust-kicker', '.trust-title', '.trust-card',
+      '.pricing-kicker', '.pricing-title', '.pricing-card',
       '.cta-inner',
       '.about-story-panel', '.about-story-photo',
       '.partners-head', '.partner-card',

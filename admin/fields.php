@@ -46,6 +46,38 @@ function field_groups(): array
                 'features_title_2' => ['Main Heading', 'textarea'],
             ],
         ],
+        'pricing_section' => [
+            'title'  => 'Pricing Section',
+            'fields' => [
+                'pricing_kicker'   => ['Small Heading', 'text'],
+                'pricing_title'    => ['Main Heading', 'text'],
+                'pricing_subtitle' => ['Sub-text', 'textarea'],
+
+                'pricing1_label'    => ['Tier 1 — Label (e.g. Basic Tier)', 'text'],
+                'pricing1_name'     => ['Tier 1 — Plan Name', 'text'],
+                'pricing1_price'    => ['Tier 1 — Price (LKR, e.g. 2,000)', 'text'],
+                'pricing1_note'     => ['Tier 1 — Trial Note', 'text'],
+                'pricing1_features' => ['Tier 1 — Features', 'lines'],
+
+                'pricing2_label'          => ['Tier 2 — Label (e.g. Mid Tier)', 'text'],
+                'pricing2_name'           => ['Tier 2 — Plan Name', 'text'],
+                'pricing2_price'          => ['Tier 2 — Price (LKR, e.g. 5,000)', 'text'],
+                'pricing2_note'           => ['Tier 2 — Trial Note', 'text'],
+                'pricing2_badge'          => ['Tier 2 — Badge (e.g. Recommended)', 'text'],
+                'pricing2_included_label' => ['Tier 2 — "Everything in..." Line', 'text'],
+                'pricing2_features'       => ['Tier 2 — Additional Features', 'lines'],
+
+                'pricing3_label'          => ['Tier 3 — Label (e.g. Top Tier)', 'text'],
+                'pricing3_name'           => ['Tier 3 — Plan Name', 'text'],
+                'pricing3_price'          => ['Tier 3 — Price (LKR, e.g. 10,000)', 'text'],
+                'pricing3_note'           => ['Tier 3 — Trial Note', 'text'],
+                'pricing3_included_label' => ['Tier 3 — "Everything in..." Line', 'text'],
+                'pricing3_features'       => ['Tier 3 — Additional Features', 'lines'],
+
+                'pricing_btn_text' => ['Button Text', 'text'],
+                'pricing_btn_link' => ['Button Link (your signup / demo-request system)', 'text'],
+            ],
+        ],
         'how' => [
             'title'  => 'How It Helps',
             'fields' => [
@@ -359,12 +391,14 @@ function render_field(string $key, string $label, string $type, string $value): 
       <?php if ($type === 'text'): ?>
         <input type="text" name="<?= e($key) ?>" value="<?= e($value) ?>">
 
-      <?php elseif ($type === 'textarea' || $type === 'credit' || $type === 'checklist'): ?>
-        <textarea name="<?= e($key) ?>" rows="<?= $type==='textarea'?5:4 ?>"><?= e($value) ?></textarea>
+      <?php elseif ($type === 'textarea' || $type === 'credit' || $type === 'checklist' || $type === 'lines'): ?>
+        <textarea name="<?= e($key) ?>" rows="<?= $type==='textarea'?5:6 ?>"><?= e($value) ?></textarea>
         <?php if ($type === 'checklist'): ?>
           <small class="a-help">One item per line. Text before the <code>|</code> shows in bold. Example: <code>Centralized|plantation management</code></small>
         <?php elseif ($type === 'credit'): ?>
           <small class="a-help">One credit line per line.</small>
+        <?php elseif ($type === 'lines'): ?>
+          <small class="a-help">One item per line.</small>
         <?php endif; ?>
 
       <?php elseif ($type === 'list'): ?>

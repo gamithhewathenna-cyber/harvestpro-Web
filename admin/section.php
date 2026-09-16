@@ -10,7 +10,7 @@ $groups = field_groups();
    own scrolling page. */
 $pageMap = [
   'branding' => 'branding', 'ticker' => 'ticker',
-  'why' => 'why', 'features' => 'features_head', 'how' => 'how',
+  'why' => 'why', 'features' => 'features_head', 'pricing_section' => 'pricing_section', 'how' => 'how',
   'trust' => 'trust', 'cta' => 'cta', 'footer' => 'footer',
   'about_banner' => 'about_banner', 'about_story' => 'about_story',
   'about_partners' => 'about_partners', 'about_why' => 'about_why', 'about_cta' => 'about_cta',
