@@ -79,7 +79,7 @@ $pageImg   = absolute_url($aBannerBg);
 <?php endif; ?>
 <?php seo_meta_tags('/about', $pageTitle, $pageDesc, $pageImg, $brandName . ' Pro'); ?>
 <?php sinhala_font_tags(); ?>
-<link rel="stylesheet" href="assets/css/style.css?v=4.2">
+<link rel="stylesheet" href="assets/css/style.css?v=4.3">
 <?php if ($themePrimary !== '' || $themeAccent !== ''): ?>
 <style>
 :root {
