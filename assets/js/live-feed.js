@@ -13,6 +13,7 @@
 
   var configEl = document.getElementById('liveFeedConfig');
   var wrap = document.getElementById('liveFeedCards');
+  var visitorEl = document.getElementById('liveVisitorCount');
   if (!configEl || !wrap) return;
 
   var cfg;
@@ -119,6 +120,26 @@
     return a + (b - a) * frac;
   }
 
+  // ---- "People viewing now": follows the shape of the day (quiet at dawn,
+  // busiest in the evening) via the same keyframes PHP used for the first
+  // paint, plus a small seeded wiggle so it still feels alive minute to
+  // minute without ever being pure Math.random(). ----
+  function computeVisitorCount(dayKey, nowMin) {
+    var kf = cfg.visitors.keyframes;
+    var base = kf[kf.length - 1][1];
+    for (var i = 0; i < kf.length - 1; i++) {
+      var a = kf[i], b = kf[i + 1];
+      if (nowMin >= a[0] && nowMin <= b[0]) {
+        var frac = b[0] > a[0] ? (nowMin - a[0]) / (b[0] - a[0]) : 0;
+        base = a[1] + (b[1] - a[1]) * frac;
+        break;
+      }
+    }
+    var bucket = Math.floor(nowMin / 2); // wiggle changes every 2 minutes
+    var jitter = seededSigned(dayKey + '|visitors|' + bucket) * 4;
+    return Math.max(4, Math.round(base + jitter));
+  }
+
   // ---- Formatting ----
   function fmtNum(n) { return Math.round(n).toLocaleString('en-US'); }
   function fmtValue(value, unit) {
@@ -167,6 +188,19 @@
       lastExpenseTotal = 0;
     }
     lastRenderedDayKey = dayKey;
+
+    if (visitorEl) {
+      var visitorCount = computeVisitorCount(dayKey, nowMin);
+      if (String(visitorCount) !== visitorEl.textContent) {
+        visitorEl.textContent = visitorCount;
+        if (!prefersReducedMotion) {
+          visitorEl.classList.remove('bump');
+          // eslint-disable-next-line no-unused-expressions
+          visitorEl.offsetWidth; // force reflow so the animation restarts
+          visitorEl.classList.add('bump');
+        }
+      }
+    }
 
     Object.keys(cfg.metrics).forEach(function (metricKey) {
       var m = cfg.metrics[metricKey];

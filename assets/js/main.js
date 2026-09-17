@@ -165,23 +165,4 @@
       updateParallax();
     }
   }
-
-  // "Live" visitor counter on the homepage demo card: slowly ticks up to
-  // suggest real people are on the site right now. Purely cosmetic — the
-  // starting number comes from the server, this just nudges it upward.
-  var liveVisitorEl = document.getElementById('liveVisitorCount');
-  if (liveVisitorEl) {
-    var visitorCount = parseInt(liveVisitorEl.textContent, 10) || 0;
-    var scheduleNextBump = function () {
-      var delay = 6000 + Math.random() * 7000; // ~6-13s apart, feels organic
-      setTimeout(function () {
-        visitorCount += Math.random() < 0.8 ? 1 : 2;
-        liveVisitorEl.textContent = visitorCount.toLocaleString();
-        liveVisitorEl.classList.add('bump');
-        setTimeout(function () { liveVisitorEl.classList.remove('bump'); }, 400);
-        scheduleNextBump();
-      }, delay);
-    };
-    scheduleNextBump();
-  }
 })();

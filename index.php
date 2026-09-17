@@ -40,7 +40,27 @@ $liveFeedIcons = [
     'receipt' => '<svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 2.5h10v15l-2-1.3-1.5 1.3-1.5-1.3-1.5 1.3-1.5-1.3-2 1.3v-15Z"/><line x1="7.3" y1="6.5" x2="12.7" y2="6.5"/><line x1="7.3" y1="9.5" x2="12.7" y2="9.5"/><line x1="7.3" y1="12.5" x2="11" y2="12.5"/></svg>',
     'factory' => '<svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17V9l4 2.5V9l4 2.5V7l6 2v8H2.5Z"/><path d="M15 9V6"/></svg>',
 ];
-$liveVisitorCount = mt_rand(95, 165);
+
+// "People viewing now" follows the shape of the day — quiet in the early
+// morning, busiest in the evening — rather than a flat random number.
+// [minute-of-day, visitor count] anchor points; both PHP (for the initial
+// server-rendered number) and live-feed.js (which keeps it live afterwards)
+// interpolate between these same points, so neither can drift out of sync.
+$visitorKeyframes = [
+    [0, 12], [360, 10], [540, 35], [720, 55], [900, 70], [1080, 90], [1200, 100], [1320, 75], [1440, 12],
+];
+$slNow = new DateTime('now', new DateTimeZone('Asia/Colombo'));
+$slMin = ((int) $slNow->format('H')) * 60 + (int) $slNow->format('i');
+$liveVisitorCount = $visitorKeyframes[count($visitorKeyframes) - 1][1];
+for ($i = 0; $i < count($visitorKeyframes) - 1; $i++) {
+    [$m1, $v1] = $visitorKeyframes[$i];
+    [$m2, $v2] = $visitorKeyframes[$i + 1];
+    if ($slMin >= $m1 && $slMin <= $m2) {
+        $frac = $m2 > $m1 ? ($slMin - $m1) / ($m2 - $m1) : 0;
+        $liveVisitorCount = (int) round($v1 + ($v2 - $v1) * $frac);
+        break;
+    }
+}
 
 // Simulation config consumed by live-feed.js. Times are minutes-since-
 // midnight in Sri Lanka time (Asia/Colombo, fixed UTC+5:30, no DST).
@@ -48,6 +68,7 @@ $liveFeedConfig = [
     'labourRatePerKg' => 50,
     'factoryRateMin'  => 168,
     'factoryRateMax'  => 230,
+    'visitors'  => ['keyframes' => $visitorKeyframes],
     'metrics'   => [
         'greenleaf'  => ['startMin' => 14 * 60,       'endMin' => 23 * 60,       'startVal' => 0,     'targetBase' => 8000,    'targetVariance' => 400,    'unit' => 'kg'],
         'attendance' => ['startMin' => 8 * 60,        'endMin' => 10 * 60,       'startVal' => 1,     'targetBase' => 223,     'targetVariance' => 0,      'unit' => 'workers'],
@@ -282,7 +303,7 @@ $pageImg   = absolute_url(resolve_image_url($heroSlides[0]['image'] ?? '', 'asse
       </div>
 
       <script type="application/json" id="liveFeedConfig"><?= json_encode($liveFeedConfig, JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP) ?></script>
-      <script src="assets/js/live-feed.js?v=1.6" defer></script>
+      <script src="assets/js/live-feed.js?v=1.7" defer></script>
 
       <div class="why-text">
         <h2 class="why-heading">
