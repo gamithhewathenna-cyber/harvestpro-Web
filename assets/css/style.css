@@ -468,13 +468,12 @@ html[lang="si"] .hero-title { font-size: 44px; }
 }
 .hiw-ribbon-wrap {
   margin-bottom: 28px; padding-bottom: 24px; border-bottom: 1px solid var(--line);
-  overflow-x: auto; -webkit-overflow-scrolling: touch;
 }
-.hiw-ribbon { display: grid; grid-template-columns: repeat(5, max-content); grid-auto-flow: row; gap: 14px 34px; }
+.hiw-ribbon { display: flex; flex-wrap: wrap; row-gap: 14px; column-gap: 34px; }
 .hiw-pill {
   display: flex; align-items: center; gap: 10px; background: none; border: none;
   cursor: pointer; font-family: inherit; padding: 6px 0; opacity: .55; transition: opacity .2s;
-  text-align: left; width: 100%;
+  text-align: left;
 }
 .hiw-pill:hover { opacity: .85; }
 .hiw-pill.active { opacity: 1; }
