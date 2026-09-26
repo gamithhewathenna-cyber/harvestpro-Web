@@ -47,3 +47,16 @@ $langAria  = current_lang() === 'si' ? 'Switch to English' : 'Switch to Sinhala'
     </div>
   </nav>
 </div>
+
+<?php if (should_show_lang_prompt()): ?>
+<div class="lang-prompt-overlay" id="langPromptOverlay">
+  <div class="lang-prompt-box">
+    <h2>Choose Your Preferred Language</h2>
+    <div class="lang-prompt-btns">
+      <a href="?lang=en" class="lang-prompt-btn">English</a>
+      <a href="?lang=si" class="lang-prompt-btn">සිංහල</a>
+    </div>
+    <button type="button" class="lang-prompt-skip" id="langPromptSkip">Skip — continue with English</button>
+  </div>
+</div>
+<?php endif; ?>

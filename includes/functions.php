@@ -11,8 +11,9 @@ require_once __DIR__ . '/config.php';
  * =====================================================================
  *  Language switching (English / Sinhala)
  * ---------------------------------------------------------------------
- *  ?lang=si|en sets the choice for this session; it then sticks until
- *  changed again. translate()/t() do an exact-string dictionary lookup
+ *  ?lang=si|en sets the choice for this session AND drops a 1-year cookie,
+ *  so it's remembered on future visits too, not just for the current
+ *  browser session. translate()/t() do an exact-string dictionary lookup
  *  and fall back to the original English when a string isn't in the
  *  dictionary (e.g. content an admin edited after it was written), so
  *  nothing ever renders blank.
@@ -21,10 +22,25 @@ require_once __DIR__ . '/config.php';
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+$LANG_COOKIE_YEAR = 60 * 60 * 24 * 365;
 if (isset($_GET['lang']) && in_array($_GET['lang'], ['en', 'si'], true)) {
     $_SESSION['lang'] = $_GET['lang'];
+    if (!headers_sent()) {
+        setcookie('hp_lang', $_GET['lang'], time() + $LANG_COOKIE_YEAR, '/');
+        setcookie('hp_lang_prompted', '1', time() + $LANG_COOKIE_YEAR, '/');
+    }
+    $_COOKIE['hp_lang_prompted'] = '1';
+} elseif (!isset($_SESSION['lang']) && isset($_COOKIE['hp_lang']) && in_array($_COOKIE['hp_lang'], ['en', 'si'], true)) {
+    // Returning visitor whose session expired but who has a saved preference.
+    $_SESSION['lang'] = $_COOKIE['hp_lang'];
 }
 define('CURRENT_LANG', $_SESSION['lang'] ?? 'en');
+
+/** Whether to show the first-visit "Choose Your Preferred Language" popup. */
+function should_show_lang_prompt(): bool
+{
+    return !isset($_COOKIE['hp_lang_prompted']);
+}
 
 $GLOBALS['TRANSLATIONS_SI'] = require __DIR__ . '/translations-si.php';
 

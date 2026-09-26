@@ -735,6 +735,30 @@ html[lang="si"] .hero-title { font-size: 44px; }
 .footer-legal { color: rgba(255,255,255,.85); text-decoration: underline; text-underline-offset: 2px; }
 .footer-legal:hover { color: #fff; }
 
+/* =========================== LANGUAGE PROMPT (first visit) =========================== */
+.lang-prompt-overlay {
+  position: fixed; inset: 0; z-index: 500;
+  background: rgba(10,20,12,.55); backdrop-filter: blur(2px);
+  display: flex; align-items: center; justify-content: center; padding: 20px;
+}
+.lang-prompt-box {
+  background: #fff; border-radius: var(--radius-lg); box-shadow: var(--shadow);
+  padding: 40px 36px; max-width: 400px; width: 100%; text-align: center;
+}
+.lang-prompt-box h2 { font-size: 21px; font-weight: 600; margin-bottom: 24px; line-height: 1.4; }
+.lang-prompt-btns { display: flex; flex-direction: column; gap: 12px; margin-bottom: 18px; }
+.lang-prompt-btn {
+  display: block; padding: 14px 20px; border-radius: 10px;
+  background: var(--green-600); color: #fff; font-size: 16px; font-weight: 600;
+  transition: background .2s ease, transform .2s ease;
+}
+.lang-prompt-btn:hover { background: var(--green-700); transform: translateY(-1px); }
+.lang-prompt-skip {
+  background: none; border: none; cursor: pointer; font-family: inherit;
+  color: var(--muted); font-size: 13.5px; text-decoration: underline;
+}
+.lang-prompt-skip:hover { color: var(--ink); }
+
 /* =========================== WHATSAPP CHAT BUTTON =========================== */
 .whatsapp-fab {
   position: fixed; right: 22px; bottom: 22px; z-index: 90;

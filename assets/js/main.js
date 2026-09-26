@@ -4,6 +4,19 @@
 
   var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // First-visit language prompt: "Skip" just dismisses it and remembers not
+  // to ask again — it doesn't change the language, so no page reload needed
+  // (English/Sinhala instead link to ?lang=.. and reload like normal).
+  var langPromptOverlay = document.getElementById('langPromptOverlay');
+  var langPromptSkip = document.getElementById('langPromptSkip');
+  if (langPromptOverlay && langPromptSkip) {
+    langPromptSkip.addEventListener('click', function () {
+      var oneYear = 60 * 60 * 24 * 365;
+      document.cookie = 'hp_lang_prompted=1; path=/; max-age=' + oneYear;
+      langPromptOverlay.remove();
+    });
+  }
+
   // Mobile navigation toggle
   var toggle = document.getElementById('navToggle');
   var links  = document.getElementById('navLinks');

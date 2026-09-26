@@ -86,6 +86,6 @@ if (setting('whatsapp_enabled') === '1' && $whatsappNumber !== ''):
 </a>
 <?php endif; ?>
 
-<script src="assets/js/main.js?v=1.6"></script>
+<script src="assets/js/main.js?v=1.7"></script>
 </body>
 </html>
