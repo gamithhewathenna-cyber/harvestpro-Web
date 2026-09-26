@@ -724,6 +724,38 @@ Supervisor' =>
     'The expense will now be recorded in Harvest Pro, helping you track estate expenses and costs accurately for each estate and section.' =>
         'වියදම දැන් Harvest Pro හි වාර්තා වනු ඇත, එය එක් එක් වතුයාය සහ අංශය සඳහා වියදම් සහ පිරිවැය නිවැරදිව නිරීක්ෂණය කිරීමට ඔබට උපකාර වේ.',
     'Fertilizer Management' => 'පොහොර කළමනාකරණය',
+    'Track fertilizer applications and cycles, and know exactly when each field is next due.' =>
+        'පොහොර යෙදීම් සහ චක්‍ර නිරීක්ෂණය කර, එක් එක් ක්ෂේත්‍රය ඊළඟට ලබාදිය යුත්තේ කවදාදැයි හරියටම දැනගන්න.',
+    'Track fertilizer applications and due dates.' => 'පොහොර යෙදීම් සහ නියමිත දින නිරීක්ෂණය කරන්න.',
+    'Go to Fertilizer Management' => 'Fertilizer Management වෙත යන්න',
+    'From the left-side menu, click Fertilizer Management. Here you can view the fertilizer calendar, applications, cycles, and upcoming due dates.' =>
+        'වම් පස මෙනුවෙන් Fertilizer Management ක්ලික් කරන්න. මෙහිදී ඔබට පොහොර දින දර්ශනය, යෙදීම්, චක්‍ර සහ ඉදිරි නියමිත දින බැලිය හැක.',
+    'Add a Fertilizer' => 'පොහොරක් එකතු කරන්න',
+    'Click Add Fertilizer at the top-right of the page and add the fertilizer types you use on your estate — for example, T200, T750, NPK 15-15-15, or Urea.' =>
+        'පිටුවේ ඉහළ දකුණේ ඇති Add Fertilizer ක්ලික් කර, ඔබේ වතුයායේ භාවිතා කරන පොහොර වර්ග එකතු කරන්න — උදාහරණයක් ලෙස, T200, T750, NPK 15-15-15, හෝ Urea.',
+    'Add a Fertilizer Cycle' => 'පොහොර චක්‍රයක් එකතු කරන්න',
+    'Click Add Fertilizer Cycle to record a new fertilizer application and set its next cycle.' =>
+        'නව පොහොර යෙදීමක් වාර්තා කර එහි ඊළඟ චක්‍රය සැකසීමට Add Fertilizer Cycle ක්ලික් කරන්න.',
+    'Select the Estate and Section' => 'වතුයාය සහ අංශය තෝරන්න',
+    'Select the estate where the fertilizer was applied, then select the relevant section or field — for example, Field 01, Field 02, Plantation A, or Plantation B.' =>
+        'පොහොර යෙදූ වතුයාය තෝරන්න, පසුව අදාළ අංශය හෝ කුඹුර තෝරන්න — උදාහරණයක් ලෙස, Field 01, Field 02, Plantation A, හෝ Plantation B.',
+    'Select the Fertilizer' => 'පොහොර තෝරන්න',
+    'Choose the fertilizer type you applied from your previously added fertilizer list — for example, T200.' =>
+        'ඔබ පෙර එකතු කළ පොහොර ලැයිස්තුවෙන් ඔබ යෙදූ පොහොර වර්ගය තෝරන්න — උදාහරණයක් ලෙස, T200.',
+    'Enter the Application Details' => 'යෙදීමේ විස්තර ඇතුළත් කරන්න',
+    'Select the application date and enter the amount of fertilizer used — for example, T200 at a quantity of 150 KG.' =>
+        'යෙදූ දිනය තෝරා භාවිතා කළ පොහොර ප්‍රමාණය ඇතුළත් කරන්න — උදාහරණයක් ලෙස, T200 KG 150ක ප්‍රමාණයකින්.',
+    'Set the Fertilizer Cycle' => 'පොහොර චක්‍රය සකසන්න',
+    'Enter the number of days before the next fertilizer application is required — for example, 50, 75, or 90 days. If you select a 90-day cycle, Harvest Pro will automatically calculate the next fertilizer due date.' =>
+        'ඊළඟ පොහොර යෙදීම අවශ්‍ය වන්නේ දින කීයකින්දැයි ඇතුළත් කරන්න — උදාහරණයක් ලෙස, දින 50, 75, හෝ 90. ඔබ දින 90ක චක්‍රයක් තෝරාගතහොත්, Harvest Pro ඊළඟ පොහොර නියමිත දිනය ස්වයංක්‍රීයව ගණනය කරයි.',
+    'Save the Fertilizer Application' => 'පොහොර යෙදීම සුරකින්න',
+    'Check all the details and save the application. The record will now appear on the Fertilizer Management calendar and under All Applications.' =>
+        'සියලුම විස්තර පරීක්ෂා කර යෙදීම සුරකින්න. වාර්තාව දැන් Fertilizer Management දින දර්ශනයේ සහ All Applications යටතේ දිස්වනු ඇත.',
+    'Track Next Due Dates & Reminders' => 'ඊළඟ නියමිත දින හා මතක් කිරීම් නිරීක්ෂණය කරන්න',
+    'Harvest Pro automatically tracks the fertilizer cycle and shows the last application date, next due date, cycle (e.g. 90 days), days remaining, estate, and section / field.' =>
+        'Harvest Pro පොහොර චක්‍රය ස්වයංක්‍රීයව නිරීක්ෂණය කර අවසන් යෙදූ දිනය, ඊළඟ නියමිත දිනය, චක්‍රය (උදා. දින 90), ඉතිරි දින ගණන, වතුයාය සහ අංශය / කුඹුර පෙන්වයි.',
+    'This helps you identify which field needs fertilizer next and when it is due, without manually calculating the dates.' =>
+        'මෙය ඊළඟට පොහොර අවශ්‍ය ක්ෂේත්‍රය සහ එය නියමිත වන්නේ කවදාදැයි, දින අතින් ගණනය නොකර හඳුනාගැනීමට උපකාර වේ.',
     'Factory Management' => 'කර්මාන්ත ශාලා කළමනාකරණය',
     'Reminders & Calendar' => 'මතක් කිරීම් සහ දින දර්ශනය',
     'A detailed walkthrough for this step is coming soon.' => 'මෙම පියවර සඳහා විස්තරාත්මක මාර්ගෝපදේශයක් ඉක්මනින් එකතු වේ.',
