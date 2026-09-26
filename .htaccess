@@ -7,12 +7,13 @@
   RewriteCond %{THE_REQUEST} \s/+index\.php[\s?] [NC]
   RewriteRule ^ /? [R=301,L]
 
-  RewriteCond %{THE_REQUEST} \s/+(about|features|contact|refund-policy|privacy-policy|terms-and-conditions)\.php[\s?] [NC]
+  RewriteCond %{THE_REQUEST} \s/+(about|features|how-it-works|contact|refund-policy|privacy-policy|terms-and-conditions)\.php[\s?] [NC]
   RewriteRule ^ /%1 [R=301,L]
 
   # 2) Internally serve the clean URL from its .php file (the address bar stays clean).
   RewriteRule ^about/?$ about.php [L]
   RewriteRule ^features/?$ features.php [L]
+  RewriteRule ^how-it-works/?$ how-it-works.php [L]
   RewriteRule ^contact/?$ contact.php [L]
   RewriteRule ^refund-policy/?$ refund-policy.php [L]
   RewriteRule ^privacy-policy/?$ privacy-policy.php [L]

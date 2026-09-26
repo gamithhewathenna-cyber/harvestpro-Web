@@ -25,6 +25,7 @@ $paymentLogos = get_payment_logos();
         <li><a href="/about"><?= e(t('About Us')) ?></a></li>
         <li><a href="<?= e($priceLink ?? setting('price_link', '#')) ?>"><?= e(t('Pricing')) ?></a></li>
         <li><a href="/features"><?= e(t('Features')) ?></a></li>
+        <li><a href="/how-it-works"><?= e(t('How It Works')) ?></a></li>
         <li><a href="/contact"><?= e(t('Contact Us')) ?></a></li>
       </ul>
     </div>

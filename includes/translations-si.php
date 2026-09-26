@@ -22,6 +22,7 @@ return [
     'About Us' => 'අප ගැන',
     'Pricing' => 'මිල ගණන්',
     'Features' => 'විශේෂාංග',
+    'How It Works' => 'එය ක්‍රියා කරන ආකාරය',
     'Contact Us' => 'අප අමතන්න',
     'Call' => 'අමතන්න',
     'System Login' => 'පද්ධතියට පිවිසෙන්න',
@@ -559,5 +560,67 @@ Supervisor' =>
 අධීක්ෂක',
     'This helps make the platform suitable for structured estate operations rather than functioning as a generic workforce application.' =>
         'මෙය සාමාන්‍ය කම්කරු යෙදුමක් ලෙස ක්‍රියා කරනවා වෙනුවට, ව්‍යූහගත වතු මෙහෙයුම් සඳහා වේදිකාව සුදුසු කිරීමට උපකාර වේ.',
+
+    // ---- How It Works page ---------------------------------------------
+    // Sinhala reorders "How {Brand} Works" as "{Brand} ක්‍රියා කරන ආකාරය"
+    // (literally "the way {Brand} works"), so the English "How" prefix has
+    // no separate word here — it's folded into the translated suffix below.
+    'How' => '',
+    'Works' => 'ක්‍රියා කරන ආකාරය',
+    'Set up your tea estate and start managing your daily operations in just a few simple steps.' =>
+        'ඔබේ තේ වතුයාය සකසා සරල පියවර කිහිපයකින් ඔබේ දෛනික මෙහෙයුම් කළමනාකරණය කිරීම ආරම්භ කරන්න.',
+    'Create an Account' => 'ගිණුමක් සාදන්න',
+    'Sign up for Harvest Pro and start your 14-day free trial. It only takes a few minutes to create your account.' =>
+        'Harvest Pro සඳහා ලියාපදිංචි වී ඔබේ දින 14 නොමිලේ අත්හදා බැලීම ආරම්භ කරන්න. ගිණුමක් සෑදීමට විනාඩි කිහිපයක් පමණක් ගතවේ.',
+    'Visit Harvest Pro' => 'Harvest Pro වෙබ් අඩවියට පිවිසෙන්න',
+    'Go to the Harvest Pro website and click Pricing from the main menu.' =>
+        'Harvest Pro වෙබ් අඩවියට ගොස් ප්‍රධාන මෙනුවෙන් Pricing ක්ලික් කරන්න.',
+    'Select the plan that best suits your estate: Basic Tier, Mid Tier, or Top Tier.' =>
+        'ඔබේ වතුයායට වඩාත් ගැලපෙන සැලැස්ම තෝරන්න: Basic Tier, Mid Tier, හෝ Top Tier.',
+    'Get Started' => 'ආරම්භ කරන්න',
+    'Once you have selected your plan, click "Get Started with Plan".' =>
+        'ඔබ සැලැස්ම තෝරාගත් පසු, "Get Started with Plan" ක්ලික් කරන්න.',
+    'Start Your Free Trial' => 'ඔබේ නොමිලේ අත්හදා බැලීම ආරම්භ කරන්න',
+    'Click "Start Your 14-Day Free Trial" to continue.' =>
+        'ඉදිරියට යාමට "Start Your 14-Day Free Trial" ක්ලික් කරන්න.',
+    'Fill in Your Details' => 'ඔබේ විස්තර පුරවන්න',
+    'Enter the required information, including your personal details, estate details, mobile number, and city.' =>
+        'ඔබේ පුද්ගලික විස්තර, වතුයාය විස්තර, ජංගම දුරකථන අංකය සහ නගරය ඇතුළුව අවශ්‍ය තොරතුරු ඇතුළත් කරන්න.',
+    'Activate Your Trial' => 'ඔබේ අත්හදා බැලීම සක්‍රිය කරන්න',
+    'Check that all your information is correct, then click "Start 14-Day Trial".' =>
+        'ඔබේ සියලුම තොරතුරු නිවැරදි දැයි පරීක්ෂා කර, පසුව "Start 14-Day Trial" ක්ලික් කරන්න.',
+    'Log In to Harvest Pro' => 'Harvest Pro වෙත පිවිසෙන්න',
+    'Your account is now ready. Log in to the Harvest Pro system and start managing your tea estate.' =>
+        'ඔබේ ගිණුම දැන් සූදානම්. Harvest Pro පද්ධතියට පිවිස ඔබේ තේ වතුයාය කළමනාකරණය කිරීම ආරම්භ කරන්න.',
+    'You can use Harvest Pro free for 14 days before choosing to continue with your selected plan.' =>
+        'ඔබ තෝරාගත් සැලැස්ම සමඟ ඉදිරියට යාමට තීරණය කිරීමට පෙර, ඔබට Harvest Pro දින 14ක් නොමිලේ භාවිත කළ හැක.',
+    'Estate Management' => 'වතුයාය කළමනාකරණය',
+    'Service Management' => 'සේවා කළමනාකරණය',
+    'Employee Management' => 'සේවක කළමනාකරණය',
+    'Daily Assignment' => 'දෛනික පැවරුම්',
+    'Expense' => 'වියදම්',
+    'Fertilizer Management' => 'පොහොර කළමනාකරණය',
+    'Factory Management' => 'කර්මාන්ත ශාලා කළමනාකරණය',
+    'Reminders & Calendar' => 'මතක් කිරීම් සහ දින දර්ශනය',
+    'A detailed walkthrough for this step is coming soon.' => 'මෙම පියවර සඳහා විස්තරාත්මක මාර්ගෝපදේශයක් ඉක්මනින් එකතු වේ.',
+    'Full step-by-step instructions, screenshots and tips for this section will be added shortly.' =>
+        'මෙම කොටස සඳහා පියවරෙන් පියවර උපදෙස්, තිර රූප සහ ඉඟි ඉක්මනින් එකතු කරනු ලැබේ.',
+    'STEP %02d' => 'පියවර %02d',
+    'Previous step' => 'පෙර පියවර',
+    'Next step' => 'ඊළඟ පියවර',
+    'Screenshot placeholder' => 'තිර රූපය මෙහි එකතු වේ',
+    'Coming soon' => 'ඉක්මනින් එයි',
+    'Previous' => 'පෙර',
+    'Next:' => 'ඊළඟට:',
+    'Back to Start' => 'ආරම්භයට ආපසු',
+    'Explore All Steps' => 'සියලුම පියවර ගවේෂණය කරන්න',
+    'From setup to daily operations, get familiar with everything Harvest Pro can do for your estate.' =>
+        'සැකසීමේ සිට දෛනික මෙහෙයුම් දක්වා, Harvest Pro ට ඔබේ වතුයාය සඳහා කළ හැකි සියල්ල ගැන හුරු වන්න.',
+    'Sign up and start your 14-day free trial.' => 'ලියාපදිංචි වී ඔබේ දින 14 නොමිලේ අත්හදා බැලීම ආරම්භ කරන්න.',
+    'Ready to Manage Your Estate Smarter?' => 'ඔබේ වතුයාය වඩාත් දක්ෂ ලෙස කළමනාකරණය කිරීමට සූදානම්ද?',
+    'Start your 14-day free trial and set up your estate today.' =>
+        'අද දින ඔබේ දින 14 නොමිලේ අත්හදා බැලීම ආරම්භ කර ඔබේ වතුයාය සකසන්න.',
+    'Start Free Trial' => 'නොමිලේ අත්හදා බැලීම ආරම්භ කරන්න',
+    'Contact Support' => 'සහාය අමතන්න',
 
 ];

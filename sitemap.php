@@ -9,6 +9,7 @@ header('Content-Type: application/xml; charset=utf-8');
 $pages = [
     ['path' => '/',         'file' => 'index.php',    'priority' => '1.0', 'changefreq' => 'weekly'],
     ['path' => '/features', 'file' => 'features.php', 'priority' => '0.9', 'changefreq' => 'monthly'],
+    ['path' => '/how-it-works', 'file' => 'how-it-works.php', 'priority' => '0.8', 'changefreq' => 'monthly'],
     ['path' => '/about',    'file' => 'about.php',    'priority' => '0.7', 'changefreq' => 'monthly'],
     ['path' => '/contact',  'file' => 'contact.php',  'priority' => '0.8', 'changefreq' => 'monthly'],
     ['path' => '/refund-policy',  'file' => 'refund-policy.php',  'priority' => '0.3', 'changefreq' => 'yearly'],

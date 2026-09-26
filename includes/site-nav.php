@@ -34,6 +34,7 @@ $langAria  = current_lang() === 'si' ? 'Switch to English' : 'Switch to Sinhala'
       <li><a href="/about" class="<?= $activeNav === 'about' ? 'active' : '' ?>"><?= e(t('About Us')) ?></a></li>
       <li><a href="<?= e($priceLink) ?>"><?= e(t('Pricing')) ?></a></li>
       <li><a href="/features" class="<?= $activeNav === 'features' ? 'active' : '' ?>"><?= e(t('Features')) ?></a></li>
+      <li><a href="/how-it-works" class="<?= $activeNav === 'how-it-works' ? 'active' : '' ?>"><?= e(t('How It Works')) ?></a></li>
       <li><a href="/contact" class="<?= $activeNav === 'contact' ? 'active' : '' ?>"><?= e(t('Contact Us')) ?></a></li>
     </ul>
 
