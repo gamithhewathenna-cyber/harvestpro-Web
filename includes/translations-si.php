@@ -642,6 +642,30 @@ Supervisor' =>
     'Your new service is now ready to use when assigning work to employees in Harvest Pro.' =>
         'Harvest Pro හි සේවකයන්ට වැඩ පැවරීමේදී භාවිතා කිරීමට ඔබේ නව සේවාව දැන් සූදානම්.',
     'Employee Management' => 'සේවක කළමනාකරණය',
+    'Add your workers to Harvest Pro and assign them to the right services and estates.' =>
+        'ඔබේ කම්කරුවන් Harvest Pro වෙත එකතු කර නිවැරදි සේවා සහ වතුයායන් වෙත පවරන්න.',
+    'Add employees and assign services and estates.' => 'සේවකයන් එකතු කර සේවා සහ වතුයායන් පවරන්න.',
+    'Go to Employee Management' => 'Employee Management වෙත යන්න',
+    'From the left-side menu, click Employee Management.' => 'වම් පස මෙනුවෙන් Employee Management ක්ලික් කරන්න.',
+    'Add a New Employee' => 'නව සේවකයෙකු එකතු කරන්න',
+    'Click the Add Employee button at the top-right of the page. The Add New Employee form will appear.' =>
+        'පිටුවේ ඉහළ දකුණේ ඇති Add Employee බොත්තම ක්ලික් කරන්න. Add New Employee පෝරමය දිස්වනු ඇත.',
+    'Enter Employee Details' => 'සේවක විස්තර ඇතුළත් කරන්න',
+    "Fill in the employee's information, including full name, phone number, gender, NIC, and status." =>
+        'සම්පූර්ණ නම, දුරකථන අංකය, ස්ත්‍රී පුරුෂ භාවය, ජාතික හැඳුනුම්පත් අංකය සහ තත්ත්වය ඇතුළුව සේවකයාගේ තොරතුරු පුරවන්න.',
+    'Add Employee ID' => 'සේවක හැඳුනුම්පත් අංකය එකතු කරන්න',
+    "The Employee ID can be automatically assigned by Harvest Pro if you leave the field blank. Alternatively, you can manually enter your own employee ID, such as the employee's ETF number." =>
+        'ක්ෂේත්‍රය හිස්ව තැබුවහොත් සේවක හැඳුනුම්පත් අංකය Harvest Pro මගින් ස්වයංක්‍රීයව පවරනු ලැබේ. විකල්පයක් ලෙස, සේවකයාගේ ETF අංකය වැනි ඔබේම හැඳුනුම්පත් අංකයක් ඔබට අතින් ඇතුළත් කළ හැක.',
+    'Select Service Categories' => 'සේවා කාණ්ඩ තෝරන්න',
+    'Under Service Categories, select the services the employee can perform — for example, Fertilizing, Leaf Plucking, Pruning, or Weeding. These categories are based on the services you previously created under Service Management.' =>
+        'Service Categories යටතේ, සේවකයාට කළ හැකි සේවා තෝරන්න — උදාහරණයක් ලෙස, Fertilizing, Leaf Plucking, Pruning, හෝ Weeding. මෙම කාණ්ඩ ඔබ පෙර Service Management යටතේ සාදන ලද සේවා මත පදනම් වේ.',
+    'Assign the Employee to an Estate' => 'සේවකයා වතුයායකට පවරන්න',
+    'Under Estates, tick the estate or estates where the employee works. You can assign an employee to one or multiple estates, depending on your requirements.' =>
+        'Estates යටතේ, සේවකයා වැඩ කරන වතුයාය හෝ වතුයායන් ලකුණු කරන්න. ඔබේ අවශ්‍යතාවය අනුව සේවකයෙකු එක් වතුයායකට හෝ කිහිපයකට පවරා ගත හැක.',
+    'Add Employee' => 'සේවකයා එකතු කරන්න',
+    'Check that all the information is correct, then click Add Employee.' => 'සියලුම තොරතුරු නිවැරදි දැයි පරීක්ෂා කර, පසුව Add Employee ක්ලික් කරන්න.',
+    'The employee will now be added to your Harvest Pro Employee Management system.' =>
+        'සේවකයා දැන් ඔබේ Harvest Pro Employee Management පද්ධතියට එකතු වනු ඇත.',
     'Daily Assignment' => 'දෛනික පැවරුම්',
     'Expense' => 'වියදම්',
     'Fertilizer Management' => 'පොහොර කළමනාකරණය',
