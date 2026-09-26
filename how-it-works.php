@@ -15,9 +15,9 @@ $priceLink    = setting('price_link', '#');
 $ctaBg        = image_url('cta_bg_image', 'assets/images/cta-bg.jpg');
 $bannerBg     = $ctaBg;
 
-// Placeholder copy shared by every step that doesn't have real content yet.
-$hiwComingSoonSummary = t('A detailed walkthrough for this step is coming soon.');
-$hiwComingSoonNote    = t('Full step-by-step instructions, screenshots and tips for this section will be added shortly.');
+// Fallback copy for any future step added without content yet (every step
+// below currently has its own real content, so this path isn't hit today).
+$hiwComingSoonNote = t('Full step-by-step instructions, screenshots and tips for this section will be added shortly.');
 
 $howSteps = [
     [
@@ -170,7 +170,26 @@ $howSteps = [
         ],
         'tip' => t('Once Factory Management is set up, your normal process will be: Record Daily Plucking → Assign Leaf to Factory → Enter Factory KG → Add Monthly Price → Check Delivery Value → Add Factory Expenses/Deductions → Check Overview & Net Profit.'),
     ],
-    ['key' => 'reminders-calendar', 'icon' => 'bell',     'title' => t('Reminders & Calendar'),      'summary' => $hiwComingSoonSummary, 'substeps' => null],
+    [
+        'key'      => 'reminders-calendar',
+        'icon'     => 'bell',
+        'title'    => t('Reminders & Calendar'),
+        'summary'  => t('Schedule and track important activities across your tea estate — from fertilizer applications and inspections to maintenance, purchasing, and meetings.'),
+        'teaser'   => t('Schedule and track important estate activities.'),
+        'substeps' => [
+            [t('Go to Reminders & Calendar'), t('From the left-side menu, click Reminders & Calendar. You will see a calendar where you can view your scheduled reminders and upcoming estate activities.')],
+            [t('Add a New Reminder'), t('Click the Add Reminder button at the top-right of the page. The Add Reminder form will appear.')],
+            [t('Enter the Event Title'), t('Enter a clear event title for the activity you want to remember — for example, Apply Fertilizer, Building Maintenance, Field Inspection, Purchase Estate Supplies, Equipment Service, or Worker Meeting.')],
+            [t('Add a Description'), t('Enter a short description with more information about the task — for example, "Building Maintenance: Check and repair the estate office roof." This helps you understand exactly what needs to be done when you see the reminder later.')],
+            [t('Select the Start Date'), t('Choose the start date for the reminder — the date when the activity should take place or when you want the reminder to begin.')],
+            [t('Select the Related Estate'), t('Choose the estate related to the reminder. If you manage multiple estates in Harvest Pro, make sure you select the correct estate.')],
+            [t('Select the Plantation / Section'), t('Choose the specific plantation or section where the task needs to be completed — for example, Plantation A, Plantation B, Field 01, or Field 02. This makes it easier to manage reminders separately for different areas of your estate.')],
+            [t('Select the Recurrence'), t('Choose how often the reminder should repeat: One-time, Daily, Weekly, Monthly, or Yearly. For example, if you need to carry out an estate inspection every month, select Monthly.')],
+            [t('Add the Event'), t('Once all the information is correct, click Add Event.')],
+            [t('View Your Reminders'), t('Your scheduled activities will appear on the calendar according to their dates. You can also check the All Reminders section to keep track of your scheduled tasks and upcoming activities.')],
+        ],
+        'tip' => t('Using Reminders & Calendar helps you keep important estate activities organized and reduces the chance of missing scheduled work or important dates.'),
+    ],
 ];
 
 $hiwIcons = [
