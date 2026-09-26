@@ -811,7 +811,6 @@ Supervisor' =>
     'Once Factory Management is set up, your normal process will be: Record Daily Plucking → Assign Leaf to Factory → Enter Factory KG → Add Monthly Price → Check Delivery Value → Add Factory Expenses/Deductions → Check Overview & Net Profit.' =>
         'Factory Management සකසා ගත් පසු, ඔබේ සාමාන්‍ය ක්‍රියාවලිය මෙසේ වේ: Record Daily Plucking → Assign Leaf to Factory → Enter Factory KG → Add Monthly Price → Check Delivery Value → Add Factory Expenses/Deductions → Check Overview & Net Profit.',
     'Reminders & Calendar' => 'මතක් කිරීම් සහ දින දර්ශනය',
-    'A detailed walkthrough for this step is coming soon.' => 'මෙම පියවර සඳහා විස්තරාත්මක මාර්ගෝපදේශයක් ඉක්මනින් එකතු වේ.',
     'Full step-by-step instructions, screenshots and tips for this section will be added shortly.' =>
         'මෙම කොටස සඳහා පියවරෙන් පියවර උපදෙස්, තිර රූප සහ ඉඟි ඉක්මනින් එකතු කරනු ලැබේ.',
     'STEP %02d' => 'පියවර %02d',
@@ -831,5 +830,40 @@ Supervisor' =>
         'අද දින ඔබේ දින 14 නොමිලේ අත්හදා බැලීම ආරම්භ කර ඔබේ වතුයාය සකසන්න.',
     'Start Free Trial' => 'නොමිලේ අත්හදා බැලීම ආරම්භ කරන්න',
     'Contact Support' => 'සහාය අමතන්න',
+
+    // ---- How It Works — Reminders & Calendar ---------------------------
+    'Schedule and track important activities across your tea estate — from fertilizer applications and inspections to maintenance, purchasing, and meetings.' =>
+        'ඔබේ තේ වතුයාය පුරා වැදගත් ක්‍රියාකාරකම් සැලසුම් කර නිරීක්ෂණය කරන්න — පොහොර යෙදීම් සහ පරීක්ෂණවල සිට නඩත්තු, මිලදී ගැනීම් සහ රැස්වීම් දක්වා.',
+    'Schedule and track important estate activities.' => 'වැදගත් වතුයාය ක්‍රියාකාරකම් සැලසුම් කර නිරීක්ෂණය කරන්න.',
+    'Go to Reminders & Calendar' => 'Reminders & Calendar වෙත යන්න',
+    'From the left-side menu, click Reminders & Calendar. You will see a calendar where you can view your scheduled reminders and upcoming estate activities.' =>
+        'වම් පස මෙනුවෙන් Reminders & Calendar ක්ලික් කරන්න. ඔබේ නියමිත මතක් කිරීම් සහ ඉදිරි වතුයාය ක්‍රියාකාරකම් බැලිය හැකි දින දර්ශනයක් ඔබට පෙනෙනු ඇත.',
+    'Add a New Reminder' => 'නව මතක් කිරීමක් එකතු කරන්න',
+    'Click the Add Reminder button at the top-right of the page. The Add Reminder form will appear.' =>
+        'පිටුවේ ඉහළ දකුණේ ඇති Add Reminder බොත්තම ක්ලික් කරන්න. Add Reminder පෝරමය දිස්වනු ඇත.',
+    'Enter the Event Title' => 'සිද්ධියේ මාතෘකාව ඇතුළත් කරන්න',
+    'Enter a clear event title for the activity you want to remember — for example, Apply Fertilizer, Building Maintenance, Field Inspection, Purchase Estate Supplies, Equipment Service, or Worker Meeting.' =>
+        'ඔබට මතක තබා ගැනීමට අවශ්‍ය ක්‍රියාකාරකම සඳහා පැහැදිලි මාතෘකාවක් ඇතුළත් කරන්න — උදාහරණයක් ලෙස, Apply Fertilizer, Building Maintenance, Field Inspection, Purchase Estate Supplies, Equipment Service, හෝ Worker Meeting.',
+    'Enter a short description with more information about the task — for example, "Building Maintenance: Check and repair the estate office roof." This helps you understand exactly what needs to be done when you see the reminder later.' =>
+        'කාර්යය පිළිබඳ වැඩිදුර තොරතුරු සහිත කෙටි විස්තරයක් ඇතුළත් කරන්න — උදාහරණයක් ලෙස, "Building Maintenance: Check and repair the estate office roof." මෙය පසුව ඔබ මතක් කිරීම දකින විට හරියටම කළ යුතු දේ තේරුම් ගැනීමට උපකාර වේ.',
+    'Select the Start Date' => 'ආරම්භක දිනය තෝරන්න',
+    'Choose the start date for the reminder — the date when the activity should take place or when you want the reminder to begin.' =>
+        'මතක් කිරීම සඳහා ආරම්භක දිනය තෝරන්න — ක්‍රියාකාරකම සිදුවිය යුතු දිනය හෝ මතක් කිරීම ආරම්භ විය යුතු දිනය.',
+    'Select the Related Estate' => 'අදාළ වතුයාය තෝරන්න',
+    'Choose the estate related to the reminder. If you manage multiple estates in Harvest Pro, make sure you select the correct estate.' =>
+        'මතක් කිරීම සම්බන්ධ වතුයාය තෝරන්න. ඔබ Harvest Pro හි වතුයායන් කිහිපයක් කළමනාකරණය කරන්නේ නම්, නිවැරදි වතුයාය තෝරාගෙන ඇති බව සහතික කරගන්න.',
+    'Select the Plantation / Section' => 'වගාව / අංශය තෝරන්න',
+    'Choose the specific plantation or section where the task needs to be completed — for example, Plantation A, Plantation B, Field 01, or Field 02. This makes it easier to manage reminders separately for different areas of your estate.' =>
+        'කාර්යය සම්පූර්ණ කළ යුතු නිශ්චිත වගාව හෝ අංශය තෝරන්න — උදාහරණයක් ලෙස, Plantation A, Plantation B, Field 01, හෝ Field 02. මෙය ඔබේ වතුයායේ විවිධ ප්‍රදේශ සඳහා මතක් කිරීම් වෙන වෙනම කළමනාකරණය කිරීම පහසු කරයි.',
+    'Select the Recurrence' => 'පුනරාවර්තනය තෝරන්න',
+    'Choose how often the reminder should repeat: One-time, Daily, Weekly, Monthly, or Yearly. For example, if you need to carry out an estate inspection every month, select Monthly.' =>
+        'මතක් කිරීම කොපමණ වාරයක් පුනරාවර්තනය විය යුතුදැයි තෝරන්න: One-time, Daily, Weekly, Monthly, හෝ Yearly. උදාහරණයක් ලෙස, ඔබට සෑම මසකම වතුයාය පරීක්ෂණයක් සිදු කිරීමට අවශ්‍ය නම්, Monthly තෝරන්න.',
+    'Add the Event' => 'සිද්ධිය එකතු කරන්න',
+    'Once all the information is correct, click Add Event.' => 'සියලුම තොරතුරු නිවැරදි වූ පසු, Add Event ක්ලික් කරන්න.',
+    'View Your Reminders' => 'ඔබේ මතක් කිරීම් බලන්න',
+    'Your scheduled activities will appear on the calendar according to their dates. You can also check the All Reminders section to keep track of your scheduled tasks and upcoming activities.' =>
+        'ඔබේ නියමිත ක්‍රියාකාරකම් ඒවායේ දිනයන්ට අනුව දින දර්ශනයේ දිස්වනු ඇත. ඔබේ නියමිත කාර්යයන් සහ ඉදිරි ක්‍රියාකාරකම් නිරීක්ෂණය කිරීමට ඔබට All Reminders කොටසද පරීක්ෂා කළ හැක.',
+    'Using Reminders & Calendar helps you keep important estate activities organized and reduces the chance of missing scheduled work or important dates.' =>
+        'Reminders & Calendar භාවිතය වැදගත් වතුයාය ක්‍රියාකාරකම් සංවිධානාත්මකව තබා ගැනීමට උපකාර වන අතර, නියමිත වැඩ හෝ වැදගත් දින මග හැරීමේ ඉඩකඩ අඩු කරයි.',
 
 ];
