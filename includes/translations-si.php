@@ -667,6 +667,37 @@ Supervisor' =>
     'The employee will now be added to your Harvest Pro Employee Management system.' =>
         'සේවකයා දැන් ඔබේ Harvest Pro Employee Management පද්ධතියට එකතු වනු ඇත.',
     'Daily Assignment' => 'දෛනික පැවරුම්',
+    'Record the daily work completed by your employees and let Harvest Pro calculate their payments automatically.' =>
+        'ඔබේ සේවකයන් විසින් සම්පූර්ණ කරන ලද දෛනික වැඩ වාර්තා කර, ඔවුන්ගේ ගෙවීම් ස්වයංක්‍රීයව ගණනය කිරීමට Harvest Pro ට ඉඩ දෙන්න.',
+    'Record daily work and auto-calculate payments.' => 'දෛනික වැඩ වාර්තා කර ගෙවීම් ස්වයංක්‍රීයව ගණනය කරන්න.',
+    'Go to Daily Assignment' => 'Daily Assignment වෙත යන්න',
+    'From the left-side menu, click Daily Assignment. This section allows you to record the daily work completed by your employees and automatically calculate their payments based on the service rate.' =>
+        'වම් පස මෙනුවෙන් Daily Assignment ක්ලික් කරන්න. මෙම කොටස ඔබට ඔබේ සේවකයන්ගේ දෛනික වැඩ වාර්තා කර, සේවා අනුපාතය මත පදනම්ව ඔවුන්ගේ ගෙවීම් ස්වයංක්‍රීයව ගණනය කිරීමට ඉඩ දෙයි.',
+    'Add a New Assignment' => 'නව පැවරුමක් එකතු කරන්න',
+    'Click the Add Assignment button at the top-right of the page. A New Assignment form will appear.' =>
+        'පිටුවේ ඉහළ දකුණේ ඇති Add Assignment බොත්තම ක්ලික් කරන්න. New Assignment පෝරමය දිස්වනු ඇත.',
+    'Select the Estate' => 'වතුයාය තෝරන්න',
+    'Choose the estate where the work was carried out.' => 'වැඩ සිදු කරන ලද වතුයාය තෝරන්න.',
+    'Select the Section' => 'අංශය තෝරන්න',
+    'Choose the relevant section of the estate — for example, Field 01, Field 02, or Plantation A.' =>
+        'වතුයායේ අදාළ අංශය තෝරන්න — උදාහරණයක් ලෙස, Field 01, Field 02, හෝ Plantation A.',
+    'Select the Service' => 'සේවාව තෝරන්න',
+    'Select the service completed by the workers — for example, Leaf Plucking. The system will automatically display the rate you previously set under Service Management, such as LKR 50 per KG.' =>
+        'කම්කරුවන් විසින් සම්පූර්ණ කරන ලද සේවාව තෝරන්න — උදාහරණයක් ලෙස, Leaf Plucking. ඔබ පෙර Service Management යටතේ සකසන ලද අනුපාතය, උදාහරණයක් ලෙස KG එකකට රු. 50, පද්ධතිය ස්වයංක්‍රීයව පෙන්වයි.',
+    'Add Workers' => 'කම්කරුවන් එකතු කරන්න',
+    'Click Add a Worker Below, then click the Search Workers field — your previously added employees will automatically appear. Select the worker you want to add. You can add multiple workers to the same daily assignment.' =>
+        'Add a Worker Below ක්ලික් කර, පසුව Search Workers ක්ෂේත්‍රය ක්ලික් කරන්න — ඔබ පෙර එකතු කළ සේවකයන් ස්වයංක්‍රීයව දිස්වනු ඇත. ඔබට එකතු කිරීමට අවශ්‍ය කම්කරුවා තෝරන්න. එකම දෛනික පැවරුමට ඔබට කම්කරුවන් කිහිප දෙනෙකු එකතු කළ හැක.',
+    'Enter the Work Quantity' => 'වැඩ ප්‍රමාණය ඇතුළත් කරන්න',
+    "Enter the quantity completed by each worker. For example, if a worker plucked 60 KG of green leaf, enter 60 KG. Harvest Pro will automatically calculate the worker's payment based on the rate: 60 KG × LKR 50 = LKR 3,000. This information will also be used for Payroll." =>
+        'එක් එක් කම්කරුවා විසින් සම්පූර්ණ කරන ලද ප්‍රමාණය ඇතුළත් කරන්න. උදාහරණයක් ලෙස, කම්කරුවෙකු අමු දලු KG 60ක් කැඩුවේ නම්, 60 KG ඇතුළත් කරන්න. Harvest Pro අනුපාතය මත පදනම්ව කම්කරුවාගේ ගෙවීම ස්වයංක්‍රීයව ගණනය කරයි: 60 KG × රු. 50 = රු. 3,000. මෙම තොරතුරු Payroll සඳහාද භාවිතා වේ.',
+    'Add a Temporary Worker' => 'තාවකාලික කම්කරුවෙකු එකතු කරන්න',
+    'If someone works only on a temporary or daily basis and is not registered as a regular employee, click Add a Temporary Worker Below to record their work for that day without adding them as a permanent employee.' =>
+        'යමෙක් තාවකාලික හෝ දෛනික පදනමින් පමණක් වැඩ කරන අතර නිත්‍ය සේවකයෙකු ලෙස ලියාපදිංචි වී නොමැති නම්, ඔහුව ස්ථිර සේවකයෙකු ලෙස එකතු නොකර එදින වැඩ වාර්තා කිරීමට Add a Temporary Worker Below ක්ලික් කරන්න.',
+    'Create the Assignment' => 'පැවරුම සාදන්න',
+    'Once all workers and quantities have been entered, check the details and click Create & Add Workers.' =>
+        'සියලුම කම්කරුවන් සහ ප්‍රමාණයන් ඇතුළත් කළ පසු, විස්තර පරීක්ෂා කර Create & Add Workers ක්ලික් කරන්න.',
+    'Your daily assignment is now recorded in Harvest Pro, including the workers, work quantities, and calculated payments.' =>
+        'ඔබේ දෛනික පැවරුම දැන්, කම්කරුවන්, වැඩ ප්‍රමාණයන් සහ ගණනය කළ ගෙවීම් ඇතුළුව Harvest Pro හි වාර්තා වී ඇත.',
     'Expense' => 'වියදම්',
     'Fertilizer Management' => 'පොහොර කළමනාකරණය',
     'Factory Management' => 'කර්මාන්ත ශාලා කළමනාකරණය',
