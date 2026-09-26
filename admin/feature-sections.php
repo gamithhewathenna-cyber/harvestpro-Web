@@ -97,7 +97,7 @@ require __DIR__ . '/features-tabs.php';
       <label>Image</label>
       <div class="a-image-field">
         <input type="file" name="image" accept="image/*">
-        <small class="a-help">JPG, PNG, WEBP, GIF or SVG. Max 8 MB.</small>
+        <small class="a-help">JPG, PNG, WEBP, GIF or SVG. Max 15 MB.</small>
       </div>
     </div>
     <div class="a-field" style="max-width:140px"><label>Sort Order</label><input type="number" name="sort_order" value="<?= count($sections)+1 ?>"></div>
@@ -140,7 +140,7 @@ require __DIR__ . '/features-tabs.php';
             <span class="a-noimg">No image uploaded yet.</span>
           <?php endif; ?>
           <input type="file" name="image_<?= (int)$s['id'] ?>" accept="image/*">
-          <small class="a-help">JPG, PNG, WEBP, GIF or SVG. Max 8 MB. Leave empty to keep the current image.</small>
+          <small class="a-help">JPG, PNG, WEBP, GIF or SVG. Max 15 MB. Leave empty to keep the current image.</small>
         </div>
       </div>
       <div class="a-row">

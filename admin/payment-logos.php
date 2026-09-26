@@ -79,7 +79,7 @@ require __DIR__ . '/homepage-tabs.php';
       <label>Logo Image</label>
       <div class="a-image-field">
         <input type="file" name="image" accept="image/*" required>
-        <small class="a-help">JPG, PNG, WEBP, GIF or SVG. Max 8 MB. A wide, short image (like a payment badge) works best.</small>
+        <small class="a-help">JPG, PNG, WEBP, GIF or SVG. Max 15 MB. A wide, short image (like a payment badge) works best.</small>
       </div>
     </div>
     <div class="a-row">

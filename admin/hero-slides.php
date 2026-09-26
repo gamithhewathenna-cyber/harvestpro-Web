@@ -108,7 +108,7 @@ require __DIR__ . '/homepage-tabs.php';
       <label>Slider Image (full background)</label>
       <div class="a-image-field">
         <input type="file" name="image" accept="image/*">
-        <small class="a-help">JPG, PNG, WEBP, GIF or SVG. Max 8 MB. Use a wide, high-resolution photo — it fills the entire hero section.</small>
+        <small class="a-help">JPG, PNG, WEBP, GIF or SVG. Max 15 MB. Use a wide, high-resolution photo — it fills the entire hero section.</small>
       </div>
     </div>
     <div class="a-field" style="max-width:140px"><label>Sort Order</label><input type="number" name="sort_order" value="<?= count($slides)+1 ?>"></div>
@@ -148,7 +148,7 @@ require __DIR__ . '/homepage-tabs.php';
             <span class="a-noimg">No image uploaded yet.</span>
           <?php endif; ?>
           <input type="file" name="image_<?= (int)$s['id'] ?>" accept="image/*">
-          <small class="a-help">JPG, PNG, WEBP, GIF or SVG. Max 8 MB. Leave empty to keep the current image.</small>
+          <small class="a-help">JPG, PNG, WEBP, GIF or SVG. Max 15 MB. Leave empty to keep the current image.</small>
         </div>
       </div>
       <div class="a-row">

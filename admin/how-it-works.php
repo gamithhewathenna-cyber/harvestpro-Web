@@ -106,7 +106,7 @@ require __DIR__ . '/how-it-works-tabs.php';
           <span class="a-noimg">No image uploaded yet — the public page shows a placeholder box instead.</span>
         <?php endif; ?>
         <input type="file" name="image_<?= e($currentStep) ?>" accept="image/*">
-        <small class="a-help">JPG, PNG, WEBP, GIF or SVG. Max 8 MB. Leave empty to keep the current image.</small>
+        <small class="a-help">JPG, PNG, WEBP, GIF or SVG. Max 15 MB. Leave empty to keep the current image.</small>
       </div>
     </div>
 

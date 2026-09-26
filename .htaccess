@@ -23,3 +23,19 @@
   RewriteRule ^sitemap\.xml$ sitemap.php [L]
   RewriteRule ^robots\.txt$ robots.php [L]
 </IfModule>
+
+# Raise PHP's own upload ceiling to match the 15 MB app-level limit in
+# admin/fields.php (only applies on mod_php hosting — PHP-FPM/CGI hosts use
+# the .user.ini file instead; this block is a no-op there).
+<IfModule mod_php.c>
+  php_value upload_max_filesize 20M
+  php_value post_max_size 20M
+</IfModule>
+<IfModule mod_php7.c>
+  php_value upload_max_filesize 20M
+  php_value post_max_size 20M
+</IfModule>
+<IfModule mod_php8.c>
+  php_value upload_max_filesize 20M
+  php_value post_max_size 20M
+</IfModule>

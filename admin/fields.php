@@ -327,7 +327,7 @@ function handle_upload(string $inputName): ?string
     if (!in_array($ext, $allowed, true)) {
         return null;
     }
-    if ($_FILES[$inputName]['size'] > 8 * 1024 * 1024) { // 8 MB cap
+    if ($_FILES[$inputName]['size'] > 15 * 1024 * 1024) { // 15 MB cap
         return null;
     }
     if (!is_dir(UPLOAD_DIR)) {
@@ -436,7 +436,7 @@ function render_field(string $key, string $label, string $type, string $value): 
             <span class="a-noimg">No image uploaded yet.</span>
           <?php endif; ?>
           <input type="file" name="<?= e($key) ?>" accept="image/*">
-          <small class="a-help">JPG, PNG, WEBP, GIF or SVG. Max 8 MB. Leave empty to keep the current image.</small>
+          <small class="a-help">JPG, PNG, WEBP, GIF or SVG. Max 15 MB. Leave empty to keep the current image.</small>
         </div>
       <?php endif; ?>
     </div>

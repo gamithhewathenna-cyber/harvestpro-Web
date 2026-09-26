@@ -153,7 +153,7 @@ Changes go live on the website immediately after you click **Save**.
 
 ### Uploading images
 On any section with an image field, choose a file and click **Save**. Images are
-stored in the `/uploads` folder. Supported: JPG, PNG, WEBP, GIF, SVG (max 8 MB).
+stored in the `/uploads` folder. Supported: JPG, PNG, WEBP, GIF, SVG (max 15 MB).
 Leave a file field empty to keep the current image. Tick **Remove** to clear it.
 
 ---
