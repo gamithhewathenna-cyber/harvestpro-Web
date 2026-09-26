@@ -133,6 +133,11 @@ ul { list-style: none; }
 .nav-links a:hover::after, .nav-links a.active::after { right: 0; }
 .nav-fixed.scrolled .nav-links a { color: var(--ink); opacity: 1; }
 .nav-fixed.scrolled .nav-links a:hover, .nav-fixed.scrolled .nav-links a.active { color: #FFC517; }
+/* Sinhala labels (e.g. "How It Works") run noticeably longer than their
+   English originals — shrink the type and tighten the gaps so the menu
+   doesn't crowd into the logo. */
+html[lang="si"] .nav-links { gap: 20px; }
+html[lang="si"] .nav-links a { font-size: 14.5px; }
 
 .nav-actions { display: flex; gap: 12px; margin-left: 32px; }
 .nav-icon {
