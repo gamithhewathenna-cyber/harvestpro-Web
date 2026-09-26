@@ -54,7 +54,7 @@ $pageImg   = absolute_url($bannerBg);
 <meta name="description" content="<?= e($pageDesc) ?>">
 <?php seo_meta_tags('/how-it-works', $pageTitle, $pageDesc, $pageImg, $brandName . ' Pro'); ?>
 <?php sinhala_font_tags(); ?>
-<link rel="stylesheet" href="assets/css/style.css?v=4.7">
+<link rel="stylesheet" href="assets/css/style.css?v=4.8">
 <?php if ($themePrimary !== '' || $themeAccent !== ''): ?>
 <style>
 :root {
@@ -92,6 +92,7 @@ $pageImg   = absolute_url($bannerBg);
 <section class="section" style="padding-bottom:70px;">
   <div class="container">
 
+    <div class="hiw-box">
     <div class="hiw-ribbon-wrap">
       <div class="hiw-ribbon" id="hiwRibbon">
         <?php foreach ($howSteps as $i => $s): ?>
@@ -169,6 +170,7 @@ $pageImg   = absolute_url($bannerBg);
           </div>
         </div>
       <?php endforeach; ?>
+    </div>
     </div>
   </div>
 </section>

@@ -462,7 +462,14 @@ html[lang="si"] .hero-title { font-size: 44px; }
 .page-banner p { opacity: .92; font-size: 16px; }
 
 /* =========================== HOW IT WORKS =========================== */
-.hiw-ribbon-wrap { margin-bottom: 40px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.hiw-box {
+  background: #fff; border-radius: var(--radius-lg);
+  box-shadow: var(--shadow); padding: 32px 40px 40px;
+}
+.hiw-ribbon-wrap {
+  margin-bottom: 28px; padding-bottom: 24px; border-bottom: 1px solid var(--line);
+  overflow-x: auto; -webkit-overflow-scrolling: touch;
+}
 .hiw-ribbon { display: grid; grid-template-rows: repeat(2, auto); grid-auto-flow: column; grid-auto-columns: max-content; gap: 14px 34px; }
 .hiw-pill {
   display: flex; align-items: center; gap: 10px; background: none; border: none;
@@ -480,10 +487,7 @@ html[lang="si"] .hero-title { font-size: 44px; }
 .hiw-pill.active .hiw-pill-num { background: var(--green-600); color: #fff; }
 .hiw-pill-label { font-size: 14.5px; font-weight: 600; color: var(--ink); }
 
-.hiw-panel {
-  display: none; background: #fff; border-radius: var(--radius-lg);
-  box-shadow: var(--shadow); padding: 40px;
-}
+.hiw-panel { display: none; }
 .hiw-panel.active { display: block; }
 .hiw-panel-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; flex-wrap: wrap; margin-bottom: 18px; }
 .hiw-eyebrow { color: var(--green-600); font-weight: 700; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; }
@@ -749,7 +753,7 @@ html[lang="si"] .hero-title { font-size: 44px; }
   .trust-grid { grid-template-columns: 1fr 1fr; }
   .pricing-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
   .hiw-grid { grid-template-columns: repeat(3, 1fr); }
-  .hiw-panel { padding: 32px; }
+  .hiw-box { padding: 28px 32px 32px; }
   .features-card { grid-template-columns: 1fr; padding: 40px 30px; }
   .features-watermark { display: none; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
@@ -779,7 +783,7 @@ html[lang="si"] .hero-title { font-size: 44px; }
   .contact-info { padding: 40px 28px; }
   .map-embed iframe { height: 320px; }
   .hiw-grid { grid-template-columns: 1fr 1fr; }
-  .hiw-panel { padding: 26px 20px; }
+  .hiw-box { padding: 22px 20px 26px; }
   .hiw-panel-head h2 { font-size: 24px; }
   .hiw-panel-foot { flex-direction: column-reverse; }
   .hiw-panel-foot .btn { width: 100%; justify-content: center; }
