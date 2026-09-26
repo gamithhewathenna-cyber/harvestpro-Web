@@ -62,12 +62,30 @@ for ($i = 0; $i < count($visitorKeyframes) - 1; $i++) {
     }
 }
 
+// Sri Lanka public holidays — on these dates the estate is mostly not
+// working, so the live feed shows a skeleton-crew's worth of activity
+// instead of a normal full day. Only fixed-date holidays are listed here;
+// Poya (full-moon) days and other lunar-calendar holidays shift every year
+// and aren't included since they'd need confirming against each year's
+// official almanac — add them to this array (YYYY-MM-DD) if you want them
+// reflected too.
+$estateHolidays = [];
+foreach ([(int) date('Y'), (int) date('Y') + 1] as $yr) {
+    $estateHolidays[] = "{$yr}-01-01"; // New Year's Day
+    $estateHolidays[] = "{$yr}-02-04"; // Independence Day
+    $estateHolidays[] = "{$yr}-04-13"; // Sinhala & Tamil New Year Eve
+    $estateHolidays[] = "{$yr}-04-14"; // Sinhala & Tamil New Year Day
+    $estateHolidays[] = "{$yr}-05-01"; // May Day
+    $estateHolidays[] = "{$yr}-12-25"; // Christmas Day
+}
+
 // Simulation config consumed by live-feed.js. Times are minutes-since-
 // midnight in Sri Lanka time (Asia/Colombo, fixed UTC+5:30, no DST).
 $liveFeedConfig = [
     'labourRatePerKg' => 50,
     'factoryRateMin'  => 168,
     'factoryRateMax'  => 230,
+    'holidays'  => $estateHolidays,
     'visitors'  => ['keyframes' => $visitorKeyframes],
     'metrics'   => [
         'greenleaf'  => ['startMin' => 14 * 60,       'endMin' => 23 * 60,       'startVal' => 0,     'targetBase' => 8000,    'targetVariance' => 400,    'unit' => 'kg'],
@@ -303,7 +321,7 @@ $pageImg   = absolute_url(resolve_image_url($heroSlides[0]['image'] ?? '', 'asse
       </div>
 
       <script type="application/json" id="liveFeedConfig"><?= json_encode($liveFeedConfig, JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP) ?></script>
-      <script src="assets/js/live-feed.js?v=1.7" defer></script>
+      <script src="assets/js/live-feed.js?v=1.8" defer></script>
 
       <div class="why-text">
         <h2 class="why-heading">

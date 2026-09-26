@@ -54,15 +54,22 @@
   }
 
   // ---- Per-day cached values (targets, expense plan, factory rate) ----
+  var holidays = cfg.holidays || [];
   var dayCache = { key: null };
   function ensureDayCache(dayKey) {
     if (dayCache.key === dayKey) return dayCache;
-    dayCache = { key: dayKey, targets: {}, expensePlan: null, factoryRate: null };
+    var isHoliday = holidays.indexOf(dayKey) !== -1;
+    dayCache = { key: dayKey, isHoliday: isHoliday, targets: {}, expensePlan: null, factoryRate: null };
+
+    // On a public holiday the estate mostly isn't working — scale every
+    // target down to a small skeleton-crew fraction (3%-10%, seeded so it
+    // stays put for the rest of the day) instead of a normal full day.
+    var holidayFrac = isHoliday ? 0.03 + seededFloat(dayKey + '|holidayfrac') * 0.07 : 1;
 
     Object.keys(cfg.metrics).forEach(function (metricKey) {
       var m = cfg.metrics[metricKey];
       var variance = m.targetVariance ? seededSigned(dayKey + '|' + metricKey + '|target') * m.targetVariance : 0;
-      dayCache.targets[metricKey] = Math.round(m.targetBase + variance);
+      dayCache.targets[metricKey] = Math.round((m.targetBase + variance) * holidayFrac);
     });
 
     dayCache.factoryRate = Math.round(cfg.factoryRateMin + seededFloat(dayKey + '|factoryrate') * (cfg.factoryRateMax - cfg.factoryRateMin));
@@ -72,11 +79,12 @@
       fieldMaintenance: [1000, 5000], clearing: [1500, 7000], equipment: [2000, 10000]
     };
     var win = cfg.expenses, span = win.endMin - win.startMin, entries = [];
+    var expenseSkipBelow = isHoliday ? 0.85 : 0.12; // most categories skip entirely on a holiday
     win.categories.forEach(function (catKey) {
       var includeRoll = seededFloat(dayKey + '|expense|include|' + catKey);
-      if (includeRoll < 0.12) return; // most days include every category; occasionally skip one
+      if (includeRoll < expenseSkipBelow) return; // most days include every category; occasionally skip one
       var range = ranges[catKey] || [1000, 5000];
-      var amount = Math.round(range[0] + seededFloat(dayKey + '|expense|amount|' + catKey) * (range[1] - range[0]));
+      var amount = Math.round((range[0] + seededFloat(dayKey + '|expense|amount|' + catKey) * (range[1] - range[0])) * holidayFrac);
       var revealMin = win.startMin + seededFloat(dayKey + '|expense|time|' + catKey) * span;
       entries.push({ key: catKey, amount: amount, revealMin: revealMin, dynamic: false });
     });
