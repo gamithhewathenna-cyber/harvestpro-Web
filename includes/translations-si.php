@@ -612,6 +612,35 @@ Supervisor' =>
     'Once your sections are added, you can use them throughout Harvest Pro to organize and track your estate operations more accurately.' =>
         'ඔබේ අංශ එකතු කළ පසු, ඔබේ වතුයාය මෙහෙයුම් වඩාත් නිවැරදිව සංවිධානය කර නිරීක්ෂණය කිරීමට Harvest Pro පුරාම ඒවා භාවිත කළ හැක.',
     'Service Management' => 'සේවා කළමනාකරණය',
+    'Set up the labour services your estate offers, along with how each one is measured and paid.' =>
+        'ඔබේ වතුයාය ලබාදෙන කම්කරු සේවා සහ ඒ එක් එක් මනින හා ගෙවන ආකාරය සකසන්න.',
+    'Add labour services, units, and pay rates.' => 'කම්කරු සේවා, ඒකක සහ ගෙවීම් අනුපාත එකතු කරන්න.',
+    'Go to Service Management' => 'Service Management වෙත යන්න',
+    'From the left-side menu, click Service Management.' => 'වම් පස මෙනුවෙන් Service Management ක්ලික් කරන්න.',
+    'Add a New Service' => 'නව සේවාවක් එකතු කරන්න',
+    'Click the Add Labour Service button at the top-right of the page. The Add New Service form will appear.' =>
+        'පිටුවේ ඉහළ දකුණේ ඇති Add Labour Service බොත්තම ක්ලික් කරන්න. Add New Service පෝරමය දිස්වනු ඇත.',
+    'Enter the Service Name' => 'සේවා නම ඇතුළත් කරන්න',
+    'Enter the type of work or service you want to add — for example, Leaf Plucking, Fertilizing, Pruning, or Weeding.' =>
+        'ඔබට එකතු කිරීමට අවශ්‍ය කාර්යයේ හෝ සේවාවේ වර්ගය ඇතුළත් කරන්න — උදාහරණයක් ලෙස, Leaf Plucking, Fertilizing, Pruning, හෝ Weeding.',
+    'Add a Description' => 'විස්තරයක් එකතු කරන්න',
+    'Enter a short description of the service if required.' => 'අවශ්‍ය නම් සේවාවේ කෙටි විස්තරයක් ඇතුළත් කරන්න.',
+    'Select the Status' => 'තත්ත්වය තෝරන්න',
+    'Set the service status to Active if you want to start using it immediately.' =>
+        'වහාම භාවිතා කිරීමට අවශ්‍ය නම් සේවා තත්ත්වය Active ලෙස සකසන්න.',
+    'Enter the Unit Type' => 'ඒකක වර්ගය ඇතුළත් කරන්න',
+    'Enter how the service will be measured — for example, KG for leaf plucking, Unit for an individual task, Tank for spraying, or Day for daily work.' =>
+        'සේවාව මනින ආකාරය ඇතුළත් කරන්න — උදාහරණයක් ලෙස, දලු කැඩීම සඳහා KG, තනි කාර්යයක් සඳහා Unit, ඉසීම සඳහා Tank, හෝ දෛනික වැඩ සඳහා Day.',
+    'Set the Rate per Unit' => 'ඒකකයකට අනුපාතය සකසන්න',
+    'Enter the amount you pay for each unit. For example, if leaf plucking is paid at LKR 50 per KG, set Unit Type to KG and Rate per Unit to LKR 50. Or, if a worker is paid LKR 2,000 per day, set Unit Type to Day and Rate per Unit to LKR 2,000.' =>
+        'එක් ඒකකයකට ඔබ ගෙවන මුදල ඇතුළත් කරන්න. උදාහරණයක් ලෙස, දලු කැඩීම KG එකකට රු. 50ක් ගෙවනවා නම්, Unit Type ලෙස KG සහ Rate per Unit ලෙස රු. 50 සකසන්න. නැතහොත් කම්කරුවෙකුට දිනකට රු. 2,000ක් ගෙවනවා නම්, Unit Type ලෙස Day සහ Rate per Unit ලෙස රු. 2,000 සකසන්න.',
+    'Single Quantity Service' => 'තනි ප්‍රමාණ සේවාව',
+    'Tick Single Quantity Service when the service should always be counted as 1 unit — for example, if you pay LKR 2,000 for one full day of work. The quantity field will then be disabled when assigning this service. Leave it unticked for services where the quantity can change, such as 10 KG, 25 KG, or 50 KG of leaf plucking.' =>
+        'සේවාව සැමවිටම ඒකකයක් 1ක් ලෙස ගණන් කළ යුතු විට Single Quantity Service ලකුණු කරන්න — උදාහරණයක් ලෙස, සම්පූර්ණ දිනක වැඩකට රු. 2,000ක් ගෙවනවා නම්. එවිට මෙම සේවාව පවරන විට ප්‍රමාණය ක්ෂේත්‍රය අක්‍රිය වේ. දලු කැඩීමේ KG 10, 25, හෝ 50 වැනි ප්‍රමාණය වෙනස් විය හැකි සේවා සඳහා එය ලකුණු නොකර තබන්න.',
+    'Add the Service' => 'සේවාව එකතු කරන්න',
+    'Check the details and click Add Service.' => 'විස්තර පරීක්ෂා කර Add Service ක්ලික් කරන්න.',
+    'Your new service is now ready to use when assigning work to employees in Harvest Pro.' =>
+        'Harvest Pro හි සේවකයන්ට වැඩ පැවරීමේදී භාවිතා කිරීමට ඔබේ නව සේවාව දැන් සූදානම්.',
     'Employee Management' => 'සේවක කළමනාකරණය',
     'Daily Assignment' => 'දෛනික පැවරුම්',
     'Expense' => 'වියදම්',
