@@ -699,6 +699,30 @@ Supervisor' =>
     'Your daily assignment is now recorded in Harvest Pro, including the workers, work quantities, and calculated payments.' =>
         'ඔබේ දෛනික පැවරුම දැන්, කම්කරුවන්, වැඩ ප්‍රමාණයන් සහ ගණනය කළ ගෙවීම් ඇතුළුව Harvest Pro හි වාර්තා වී ඇත.',
     'Expense' => 'වියදම්',
+    'Record and track all the expenses related to your tea estates.' => 'ඔබේ තේ වතුයායන් සම්බන්ධ සියලුම වියදම් වාර්තා කර නිරීක්ෂණය කරන්න.',
+    'Record and track estate expenses.' => 'වතුයාය වියදම් වාර්තා කර නිරීක්ෂණය කරන්න.',
+    'Go to Expenses' => 'Expenses වෙත යන්න',
+    'From the left-side menu, click Expenses. This section allows you to record and track all expenses related to your tea estates.' =>
+        'වම් පස මෙනුවෙන් Expenses ක්ලික් කරන්න. මෙම කොටස ඔබට ඔබේ තේ වතුයායන් සම්බන්ධ සියලුම වියදම් වාර්තා කර නිරීක්ෂණය කිරීමට ඉඩ දෙයි.',
+    'Add a New Expense' => 'නව වියදමක් එකතු කරන්න',
+    'Click the Add Expense button. The Add New Expense form will appear.' =>
+        'Add Expense බොත්තම ක්ලික් කරන්න. Add New Expense පෝරමය දිස්වනු ඇත.',
+    'Select the Date' => 'දිනය තෝරන්න',
+    'Choose the date when the expense occurred.' => 'වියදම සිදුවූ දිනය තෝරන්න.',
+    'Select the Expense Category' => 'වියදම් කාණ්ඩය තෝරන්න',
+    'Choose the appropriate category for the expense — for example, Equipment, Food, Tools, Transport, Utilities, or Other.' =>
+        'වියදම සඳහා සුදුසු කාණ්ඩය තෝරන්න — උදාහරණයක් ලෙස, Equipment, Food, Tools, Transport, Utilities, හෝ Other.',
+    'Enter a short description explaining what the expense was for.' => 'වියදම කුමක් සඳහාදැයි පැහැදිලි කරන කෙටි විස්තරයක් ඇතුළත් කරන්න.',
+    'Enter the Amount' => 'මුදල ඇතුළත් කරන්න',
+    'Enter the total expense amount in LKR.' => 'මුළු වියදම් මුදල LKR වලින් ඇතුළත් කරන්න.',
+    'Select the estate related to the expense. If you manage multiple estates, you can record and track expenses separately for each estate.' =>
+        'වියදම සම්බන්ධ වතුයාය තෝරන්න. ඔබ වතුයායන් කිහිපයක් කළමනාකරණය කරන්නේ නම්, එක් එක් වතුයාය සඳහා වෙන වෙනම වියදම් වාර්තා කර නිරීක්ෂණය කළ හැක.',
+    'If the expense belongs to a specific section or field, select it under Section. If it is a general estate expense, select All / General.' =>
+        'වියදම නිශ්චිත අංශයකට හෝ කුඹුරකට අයත් නම්, එය Section යටතේ තෝරන්න. එය සාමාන්‍ය වතුයාය වියදමක් නම්, All / General තෝරන්න.',
+    'Add the Expense' => 'වියදම එකතු කරන්න',
+    'Check all the information and click Add Expense.' => 'සියලුම තොරතුරු පරීක්ෂා කර Add Expense ක්ලික් කරන්න.',
+    'The expense will now be recorded in Harvest Pro, helping you track estate expenses and costs accurately for each estate and section.' =>
+        'වියදම දැන් Harvest Pro හි වාර්තා වනු ඇත, එය එක් එක් වතුයාය සහ අංශය සඳහා වියදම් සහ පිරිවැය නිවැරදිව නිරීක්ෂණය කිරීමට ඔබට උපකාර වේ.',
     'Fertilizer Management' => 'පොහොර කළමනාකරණය',
     'Factory Management' => 'කර්මාන්ත ශාලා කළමනාකරණය',
     'Reminders & Calendar' => 'මතක් කිරීම් සහ දින දර්ශනය',
