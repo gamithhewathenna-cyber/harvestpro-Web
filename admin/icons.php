@@ -23,6 +23,7 @@ function admin_icon(string $name, int $size = 18): string
         'info'      => '<circle cx="10" cy="10" r="7"/><line x1="10" y1="9" x2="10" y2="14"/><circle cx="10" cy="6.3" r="1" fill="currentColor" stroke="none"/>',
         'tag'       => '<path d="M17.5 11.4 11.4 17.5a1.5 1.5 0 0 1-2.1 0L3 11.2V4.5A1.5 1.5 0 0 1 4.5 3h6.7Z"/><circle cx="7.3" cy="7.3" r="1.1" fill="currentColor" stroke="none"/>',
         'search'    => '<circle cx="8.8" cy="8.8" r="5.8"/><line x1="13" y1="13" x2="17.5" y2="17.5"/>',
+        'route'     => '<circle cx="4.5" cy="15.5" r="1.9"/><circle cx="15.5" cy="4.5" r="1.9"/><path d="M6.3 14.3 13.7 5.7"/>',
     ];
     if (!isset($shapes[$name])) {
         return '';

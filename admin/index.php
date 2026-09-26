@@ -41,7 +41,8 @@ require __DIR__ . '/header.php';
     <a href="section.php?g=about_banner">About Page</a> ·
     <a href="feature-sections.php">Feature Sections</a> ·
     <a href="section.php?g=contact_banner">Contact Page</a> ·
-    <a href="section.php?g=footer">Footer</a>
+    <a href="section.php?g=footer">Footer</a> ·
+    <a href="how-it-works.php">How It Works</a>
   </p>
 </div>
 
