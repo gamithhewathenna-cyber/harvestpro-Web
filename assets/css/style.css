@@ -464,13 +464,13 @@ html[lang="si"] .hero-title { font-size: 44px; }
 /* =========================== HOW IT WORKS =========================== */
 .hiw-box {
   background: #fff; border-radius: var(--radius-lg);
-  box-shadow: var(--shadow); padding: 32px 40px 40px;
+  box-shadow: 0 2px 12px rgba(10,20,12,.08); padding: 32px 40px 40px;
 }
 .hiw-ribbon-wrap {
   margin-bottom: 28px; padding-bottom: 24px; border-bottom: 1px solid var(--line);
   overflow-x: auto; -webkit-overflow-scrolling: touch;
 }
-.hiw-ribbon { display: grid; grid-template-rows: repeat(2, auto); grid-auto-flow: column; grid-auto-columns: max-content; gap: 14px 34px; }
+.hiw-ribbon { display: grid; grid-template-columns: repeat(5, max-content); grid-auto-flow: row; gap: 14px 34px; }
 .hiw-pill {
   display: flex; align-items: center; gap: 10px; background: none; border: none;
   cursor: pointer; font-family: inherit; padding: 6px 0; opacity: .55; transition: opacity .2s;
