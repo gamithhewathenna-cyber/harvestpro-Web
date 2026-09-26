@@ -757,6 +757,59 @@ Supervisor' =>
     'This helps you identify which field needs fertilizer next and when it is due, without manually calculating the dates.' =>
         'මෙය ඊළඟට පොහොර අවශ්‍ය ක්ෂේත්‍රය සහ එය නියමිත වන්නේ කවදාදැයි, දින අතින් ගණනය නොකර හඳුනාගැනීමට උපකාර වේ.',
     'Factory Management' => 'කර්මාන්ත ශාලා කළමනාකරණය',
+    'Track green leaf deliveries, factory weights, monthly prices, and profit — from plucking to final payment.' =>
+        'අමු දලු බෙදාහැරීම්, කර්මාන්ත ශාලා බර, මාසික මිල ගණන් සහ ලාභය — කැඩීමේ සිට අවසාන ගෙවීම දක්වා නිරීක්ෂණය කරන්න.',
+    'Track deliveries, weights, prices, and profit.' => 'බෙදාහැරීම්, බර, මිල ගණන් සහ ලාභය නිරීක්ෂණය කරන්න.',
+    'Go to Factory Management' => 'Factory Management වෙත යන්න',
+    'From the left-side menu, click Factory Management. You will see five tabs: Overview, Deliveries, Expenses, Monthly Prices, and Factories. When using Factory Management for the first time, start with the Factories tab.' =>
+        'වම් පස මෙනුවෙන් Factory Management ක්ලික් කරන්න. ඔබට tab පහක් පෙනෙනු ඇත: Overview, Deliveries, Expenses, Monthly Prices, සහ Factories. Factory Management පළමු වරට භාවිතා කරන විට, Factories tab එකෙන් ආරම්භ කරන්න.',
+    'Add Your Tea Factory' => 'ඔබේ තේ කර්මාන්ත ශාලාව එකතු කරන්න',
+    'Click the Factories tab and enter the factory details: factory name, location, and status (select Active) — notes are optional. Click Save Factory. If you supply green leaf to more than one factory, you can add each factory separately.' =>
+        'Factories tab එක ක්ලික් කර කර්මාන්ත ශාලා විස්තර ඇතුළත් කරන්න: කර්මාන්ත ශාලා නම, ස්ථානය, තත්ත්වය (Active තෝරන්න) — සටහන් අත්‍යවශ්‍ය නොවේ. Save Factory ක්ලික් කරන්න. ඔබ කර්මාන්ත ශාලා කිහිපයකට අමු දලු සපයනවා නම්, එක් එක් කර්මාන්ත ශාලාව වෙන වෙනම එකතු කළ හැක.',
+    'Go to Deliveries' => 'Deliveries වෙත යන්න',
+    'Click the Deliveries tab. The green leaf KG recorded from your daily plucking will automatically appear here. For example, if your workers plucked 150 KG today, the 150 KG will appear under Deliveries, ready to be assigned to a factory.' =>
+        'Deliveries tab එක ක්ලික් කරන්න. ඔබේ දෛනික දලු කැඩීමෙන් වාර්තා වන අමු දලු KG ප්‍රමාණය මෙහි ස්වයංක්‍රීයව දිස්වනු ඇත. උදාහරණයක් ලෙස, ඔබේ කම්කරුවන් අද KG 150ක් කැඩුවේ නම්, එම KG 150 කර්මාන්ත ශාලාවකට පැවරීමට සූදානම්ව Deliveries යටතේ දිස්වනු ඇත.',
+    'Assign the Green Leaf to a Factory' => 'අමු දලු කර්මාන්ත ශාලාවකට පවරන්න',
+    'Select the factory where you delivered the green leaf. If all 150 KG went to one factory, assign the full 150 KG to that factory. If you delivered the leaf to multiple factories, click Split Across Factories — for example, 100 KG to Factory A and 50 KG to Factory B. This allows you to track exactly how much leaf was sent to each factory.' =>
+        'ඔබ අමු දලු බෙදාහළ කර්මාන්ත ශාලාව තෝරන්න. KG 150ම එක් කර්මාන්ත ශාලාවකට ගියේ නම්, එම KG 150ම එම කර්මාන්ත ශාලාවට පවරන්න. ඔබ දලු කර්මාන්ත ශාලා කිහිපයකට බෙදාහළේ නම්, Split Across Factories ක්ලික් කරන්න — උදාහරණයක් ලෙස, Factory A ට KG 100ක් සහ Factory B ට KG 50ක්. මෙය එක් එක් කර්මාන්ත ශාලාවට යවන ලද දලු ප්‍රමාණය හරියටම නිරීක්ෂණය කිරීමට ඉඩ දෙයි.',
+    'Check the Field KG' => 'Field KG පරීක්ෂා කරන්න',
+    'After assigning the delivery, you will see the Field KG — the weight recorded by your estate before the green leaf is weighed at the factory. For example, Field KG: 73 KG.' =>
+        'බෙදාහැරීම පැවරූ පසු, ඔබට Field KG පෙනෙනු ඇත — කර්මාන්ත ශාලාවේදී අමු දලු කිරන්නට පෙර ඔබේ වතුයාය මගින් වාර්තා කරන ලද බර. උදාහරණයක් ලෙස, Field KG: 73 KG.',
+    'Enter the Factory KG' => 'Factory KG ඇතුළත් කරන්න',
+    'Once the tea factory provides its official weight, enter it under Factory KG — for example, Field KG: 73 KG, Factory KG: 60 KG. Save the factory weight after entering it.' =>
+        'තේ කර්මාන්ත ශාලාව එහි නිල බර ලබා දුන් පසු, එය Factory KG යටතේ ඇතුළත් කරන්න — උදාහරණයක් ලෙස, Field KG: 73 KG, Factory KG: 60 KG. ඇතුළත් කිරීමෙන් පසු කර්මාන්ත ශාලා බර සුරකින්න.',
+    'Check the Weight Difference' => 'බර වෙනස පරීක්ෂා කරන්න',
+    'Harvest Pro will automatically show the difference between the Field KG and Factory KG — for example, Field KG: 73 KG, Factory KG: 60 KG, Difference: 13 KG. This makes it easy to identify any weight difference between the estate and factory records.' =>
+        'Harvest Pro Field KG සහ Factory KG අතර වෙනස ස්වයංක්‍රීයව පෙන්වයි — උදාහරණයක් ලෙස, Field KG: 73 KG, Factory KG: 60 KG, Difference: 13 KG. මෙය වතුයාය සහ කර්මාන්ත ශාලා වාර්තා අතර ඕනෑම බර වෙනසක් හඳුනාගැනීම පහසු කරයි.',
+    'Add the Monthly Price' => 'මාසික මිල එකතු කරන්න',
+    "Once the factory provides the green leaf price for the month, click the Monthly Prices tab. Select the relevant factory, month, and year, then enter the factory's price per KG and save it — for example, September: Rs. 271 per KG." =>
+        'කර්මාන්ත ශාලාව එම මාසයේ අමු දලු මිල ලබා දුන් පසු, Monthly Prices tab එක ක්ලික් කරන්න. අදාළ කර්මාන්ත ශාලාව, මාසය සහ වර්ෂය තෝරා, කර්මාන්ත ශාලාවේ KG එකකට මිල ඇතුළත් කර සුරකින්න — උදාහරණයක් ලෙස, September: රු. 271 KG එකකට.',
+    'Check the Delivery Value' => 'බෙදාහැරීමේ අගය පරීක්ෂා කරන්න',
+    'Go back to the Deliveries tab. Harvest Pro will use the Factory KG and the applicable Monthly Price to calculate the value of the delivery — for example, Factory KG: 60 KG, Price: Rs. 271 per KG, Value: Rs. 16,260.' =>
+        'Deliveries tab එකට ආපසු යන්න. Harvest Pro Factory KG සහ අදාළ Monthly Price භාවිතා කර බෙදාහැරීමේ අගය ගණනය කරයි — උදාහරණයක් ලෙස, Factory KG: 60 KG, Price: රු. 271 KG එකකට, Value: රු. 16,260.',
+    'Add Factory Expenses' => 'කර්මාන්ත ශාලා වියදම් එකතු කරන්න',
+    'Click the Expenses tab. Here you can record expenses or deductions related to the factory — enter the factory, date, category, amount (LKR), and an optional description or notes, then click Save Expense.' =>
+        'Expenses tab එක ක්ලික් කරන්න. මෙහිදී ඔබට කර්මාන්ත ශාලාව සම්බන්ධ වියදම් හෝ අඩුකිරීම් වාර්තා කළ හැක — කර්මාන්ත ශාලාව, දිනය, කාණ්ඩය, මුදල (LKR), සහ අත්‍යවශ්‍ය නොවන විස්තරයක්/සටහනක් ඇතුළත් කර, Save Expense ක්ලික් කරන්න.',
+    'Record Fertilizer or Other Deductions' => 'පොහොර හෝ වෙනත් අඩුකිරීම් වාර්තා කරන්න',
+    'Sometimes the tea factory may provide fertilizer or other items/advances to your estate. For example, if you receive fertilizer from the factory and its cost will be deducted from your month-end payment, record that amount under Factory Expenses. This helps you keep track of the deductions that will affect your final factory payment.' =>
+        'සමහර විට තේ කර්මාන්ත ශාලාව ඔබේ වතුයායට පොහොර හෝ වෙනත් උපකරණ/අත්තිකාරම් ලබා දිය හැක. උදාහරණයක් ලෙස, ඔබ කර්මාන්ත ශාලාවෙන් පොහොර ලබාගෙන එහි වියදම ඔබේ මාසාන්ත ගෙවීමෙන් අඩු කරන්නේ නම්, එම මුදල Factory Expenses යටතේ වාර්තා කරන්න. මෙය ඔබේ අවසාන කර්මාන්ත ශාලා ගෙවීමට බලපාන අඩුකිරීම් නිරීක්ෂණය කිරීමට උපකාර වේ.',
+    'Go to Overview' => 'Overview වෙත යන්න',
+    'Click the Overview tab to see a complete summary of your factory activity. You can filter the information by estate, factory, year, and month.' =>
+        'ඔබේ කර්මාන්ත ශාලා ක්‍රියාකාරකම් පිළිබඳ සම්පූර්ණ සාරාංශයක් බැලීමට Overview tab එක ක්ලික් කරන්න. ඔබට වතුයාය, කර්මාන්ත ශාලාව, වර්ෂය සහ මාසය අනුව තොරතුරු පෙරහන් කළ හැක.',
+    'Check Your Factory Summary' => 'ඔබේ කර්මාන්ත ශාලා සාරාංශය පරීක්ෂා කරන්න',
+    'At the top of the Overview, you can see the Field Weight (total KG recorded by your estate), Factory Weight (total KG recorded by the factory), Unassigned KG (leaf that still needs to be assigned to a factory), Leaf Value (value calculated using the factory KG and monthly price), and Net (final value after applicable recorded deductions).' =>
+        'Overview එකේ ඉහළින්, ඔබට Field Weight (ඔබේ වතුයාය මගින් වාර්තා කළ මුළු KG), Factory Weight (කර්මාන්ත ශාලාව මගින් වාර්තා කළ මුළු KG), Unassigned KG (තවම කර්මාන්ත ශාලාවකට පැවරිය යුතු දලු), Leaf Value (කර්මාන්ත ශාලා KG සහ මාසික මිල භාවිතයෙන් ගණනය කළ අගය), සහ Net (අදාළ අඩුකිරීම් වලින් පසු අවසාන අගය) දැක ගත හැක.',
+    'Check the Profit Summary' => 'ලාභ සාරාංශය පරීක්ෂා කරන්න',
+    'Under Profit Summary, you can see the Value, Expenses, Advances, and Net Profit — giving you a clear picture of the income generated from your green leaf and the deductions recorded against it.' =>
+        'Profit Summary යටතේ, ඔබට Value, Expenses, Advances, සහ Net Profit දැක ගත හැක — මෙය ඔබේ අමු දලුවෙන් ලැබෙන ආදායම සහ ඊට එරෙහිව වාර්තා කළ අඩුකිරීම් පිළිබඳ පැහැදිලි චිත්‍රයක් ලබා දෙයි.',
+    'Check Factory Performance' => 'කර්මාන්ත ශාලා කාර්යසාධනය පරීක්ෂා කරන්න',
+    'The Factory Performance section helps you monitor the performance of each factory. You can see the KG supplied, number of deliveries, leaf type, and value for the selected period. This is especially useful if your estate supplies green leaf to multiple factories.' =>
+        'Factory Performance කොටස එක් එක් කර්මාන්ත ශාලාවේ කාර්යසාධනය නිරීක්ෂණය කිරීමට උපකාර වේ. තෝරාගත් කාල සීමාව සඳහා සපයන ලද KG, බෙදාහැරීම් ගණන, දලු වර්ගය සහ අගය ඔබට දැක ගත හැක. ඔබේ වතුයාය කර්මාන්ත ශාලා කිහිපයකට අමු දලු සපයනවා නම් මෙය විශේෂයෙන් ප්‍රයෝජනවත් වේ.',
+    'Check Recent Deliveries' => 'මෑත බෙදාහැරීම් පරීක්ෂා කරන්න',
+    'Under Recent Deliveries, you can see the date, factory, leaf type, plucking KG, factory KG, difference, value, and status — helping you quickly review your latest factory deliveries and confirm that the information has been recorded correctly.' =>
+        'Recent Deliveries යටතේ, ඔබට දිනය, කර්මාන්ත ශාලාව, දලු වර්ගය, plucking KG, factory KG, වෙනස, අගය සහ තත්ත්වය දැක ගත හැක — මෙය ඔබේ නවතම කර්මාන්ත ශාලා බෙදාහැරීම් ඉක්මනින් සමාලෝචනය කර තොරතුරු නිවැරදිව වාර්තා වී ඇති බව තහවුරු කර ගැනීමට උපකාර වේ.',
+    'Once Factory Management is set up, your normal process will be: Record Daily Plucking → Assign Leaf to Factory → Enter Factory KG → Add Monthly Price → Check Delivery Value → Add Factory Expenses/Deductions → Check Overview & Net Profit.' =>
+        'Factory Management සකසා ගත් පසු, ඔබේ සාමාන්‍ය ක්‍රියාවලිය මෙසේ වේ: Record Daily Plucking → Assign Leaf to Factory → Enter Factory KG → Add Monthly Price → Check Delivery Value → Add Factory Expenses/Deductions → Check Overview & Net Profit.',
     'Reminders & Calendar' => 'මතක් කිරීම් සහ දින දර්ශනය',
     'A detailed walkthrough for this step is coming soon.' => 'මෙම පියවර සඳහා විස්තරාත්මක මාර්ගෝපදේශයක් ඉක්මනින් එකතු වේ.',
     'Full step-by-step instructions, screenshots and tips for this section will be added shortly.' =>
