@@ -25,6 +25,7 @@ $howSteps = [
         'icon'     => 'user',
         'title'    => t('Create an Account'),
         'summary'  => t('Sign up for Harvest Pro and start your 14-day free trial. It only takes a few minutes to create your account.'),
+        'teaser'   => t('Sign up and start your 14-day free trial.'),
         'substeps' => [
             [t('Visit Harvest Pro'), t('Go to the Harvest Pro website and click Pricing from the main menu.')],
             [t('Choose Your Plan'), t('Select the plan that best suits your estate: Basic Tier, Mid Tier, or Top Tier.')],
@@ -36,7 +37,20 @@ $howSteps = [
         ],
         'tip' => t('You can use Harvest Pro free for 14 days before choosing to continue with your selected plan.'),
     ],
-    ['key' => 'estate-management',  'icon' => 'home',     'title' => t('Estate Management'),         'summary' => $hiwComingSoonSummary, 'substeps' => null],
+    [
+        'key'      => 'estate-management',
+        'icon'     => 'home',
+        'title'    => t('Estate Management'),
+        'summary'  => t('After logging in to Harvest Pro, the first thing you need to do is set up your estate.'),
+        'teaser'   => t('Add your estate details and sections.'),
+        'substeps' => [
+            [t('Go to Estate Management'), t('Click Estate Management from the system menu.')],
+            [t('Select Your Estate'), t('You will see the tea estate you added when creating your Harvest Pro account. Click on the estate name to open and manage your estate.')],
+            [t('Add Another Estate'), t('If you manage more than one tea estate, you can click Add New Estate. To add an additional estate, you will need to select and purchase a new subscription for that estate.')],
+            [t('Add Sections to Your Estate'), t('After selecting your estate, you can create the different sections or fields within your estate — for example, Field 01, Field 02, Field 03, New Tea Section, or Old Tea Section. Enter the section name based on how your estate is divided.')],
+        ],
+        'tip' => t('Once your sections are added, you can use them throughout Harvest Pro to organize and track your estate operations more accurately.'),
+    ],
     ['key' => 'service-management', 'icon' => 'settings', 'title' => t('Service Management'),        'summary' => $hiwComingSoonSummary, 'substeps' => null],
     ['key' => 'employee-management','icon' => 'people',   'title' => t('Employee Management'),       'summary' => $hiwComingSoonSummary, 'substeps' => null],
     ['key' => 'daily-assignment',   'icon' => 'calendar', 'title' => t('Daily Assignment'),          'summary' => $hiwComingSoonSummary, 'substeps' => null],
@@ -202,11 +216,7 @@ $pageImg   = absolute_url($bannerBg);
           <span class="hiw-card-icon"><?= $hiwIcons[$s['icon']] ?? '' ?></span>
           <span class="hiw-card-num"><?= e(sprintf('%02d', $i + 1)) ?></span>
           <span class="hiw-card-title"><?= e($s['title']) ?></span>
-          <?php if ($s['substeps']): ?>
-            <span class="hiw-card-desc"><?= e(t('Sign up and start your 14-day free trial.')) ?></span>
-          <?php else: ?>
-            <span class="hiw-card-desc"><?= e(t('Coming soon')) ?></span>
-          <?php endif; ?>
+          <span class="hiw-card-desc"><?= e($s['teaser'] ?? t('Coming soon')) ?></span>
         </button>
       <?php endforeach; ?>
     </div>

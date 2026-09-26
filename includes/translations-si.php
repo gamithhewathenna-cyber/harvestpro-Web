@@ -595,6 +595,22 @@ Supervisor' =>
     'You can use Harvest Pro free for 14 days before choosing to continue with your selected plan.' =>
         'ඔබ තෝරාගත් සැලැස්ම සමඟ ඉදිරියට යාමට තීරණය කිරීමට පෙර, ඔබට Harvest Pro දින 14ක් නොමිලේ භාවිත කළ හැක.',
     'Estate Management' => 'වතුයාය කළමනාකරණය',
+    'After logging in to Harvest Pro, the first thing you need to do is set up your estate.' =>
+        'Harvest Pro වෙත පිවිසීමෙන් පසු, ඔබ මුලින්ම කළ යුතු දේ නම් ඔබේ වතුයාය සැකසීමයි.',
+    'Add your estate details and sections.' => 'ඔබේ වතුයාය විස්තර සහ අංශ එකතු කරන්න.',
+    'Go to Estate Management' => 'Estate Management වෙත යන්න',
+    'Click Estate Management from the system menu.' => 'පද්ධති මෙනුවෙන් Estate Management ක්ලික් කරන්න.',
+    'Select Your Estate' => 'ඔබේ වතුයාය තෝරන්න',
+    'You will see the tea estate you added when creating your Harvest Pro account. Click on the estate name to open and manage your estate.' =>
+        'ඔබේ Harvest Pro ගිණුම සෑදූ විට ඔබ එකතු කළ තේ වතුයාය ඔබට පෙනෙනු ඇත. ඔබේ වතුයාය විවෘත කර කළමනාකරණය කිරීමට වතුයාය නම ක්ලික් කරන්න.',
+    'Add Another Estate' => 'තවත් වතුයායක් එකතු කරන්න',
+    'If you manage more than one tea estate, you can click Add New Estate. To add an additional estate, you will need to select and purchase a new subscription for that estate.' =>
+        'ඔබ තේ වතුයායක් කිහිපයක් කළමනාකරණය කරන්නේ නම්, ඔබට Add New Estate ක්ලික් කළ හැක. අමතර වතුයායක් එකතු කිරීමට, එම වතුයාය සඳහා නව දායකත්වයක් තෝරාගෙන මිලදී ගත යුතුය.',
+    'Add Sections to Your Estate' => 'ඔබේ වතුයායට අංශ එකතු කරන්න',
+    'After selecting your estate, you can create the different sections or fields within your estate — for example, Field 01, Field 02, Field 03, New Tea Section, or Old Tea Section. Enter the section name based on how your estate is divided.' =>
+        'ඔබේ වතුයාය තෝරාගත් පසු, ඔබට එහි විවිධ අංශ හෝ කුඹුරු නිර්මාණය කළ හැක — උදාහරණයක් ලෙස, Field 01, Field 02, Field 03, New Tea Section, හෝ Old Tea Section. ඔබේ වතුයාය බෙදී ඇති ආකාරයට අනුව අංශයේ නම ඇතුළත් කරන්න.',
+    'Once your sections are added, you can use them throughout Harvest Pro to organize and track your estate operations more accurately.' =>
+        'ඔබේ අංශ එකතු කළ පසු, ඔබේ වතුයාය මෙහෙයුම් වඩාත් නිවැරදිව සංවිධානය කර නිරීක්ෂණය කිරීමට Harvest Pro පුරාම ඒවා භාවිත කළ හැක.',
     'Service Management' => 'සේවා කළමනාකරණය',
     'Employee Management' => 'සේවක කළමනාකරණය',
     'Daily Assignment' => 'දෛනික පැවරුම්',
