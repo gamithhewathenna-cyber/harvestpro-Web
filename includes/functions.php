@@ -490,25 +490,26 @@ function hiw_substeps_to_lines(array $pairs): string
 /**
  * Assemble the "How It Works" steps for the public page: admin-entered
  * Settings values where present, otherwise the English defaults — each
- * translated for Sinhala visitors. Sub-steps are the one exception: since
- * they're a multi-line blob rather than a single phrase, an admin override
- * is shown exactly as typed (like every other free-text setting on this
- * site), while the untouched default still translates line-by-line using
- * the individually-curated dictionary entries already written for it.
+ * translated for Sinhala visitors. Sub-steps go through the same per-line
+ * translate() pass whether they came from an admin override or the built-in
+ * default: translate() is a safe no-op for text it doesn't recognise (it
+ * just returns the English unchanged), so a genuine custom sub-step still
+ * shows in English while one that happens to match the dictionary — e.g.
+ * the built-in wording re-saved verbatim via a settings seed script — still
+ * gets translated correctly.
  */
 function get_hiw_steps(): array
 {
     $raw = get_settings();
     $steps = [];
     foreach (hiw_step_defs() as $key => $def) {
-        $substepsOverride = trim($raw["hiw_{$key}_substeps"] ?? '');
-        if ($substepsOverride !== '') {
-            $substeps = hiw_parse_substeps($substepsOverride);
-        } else {
-            $substeps = [];
-            foreach ($def['substeps'] as [$heading, $body]) {
-                $substeps[] = [t($heading), t($body)];
-            }
+        $substepsRaw = trim($raw["hiw_{$key}_substeps"] ?? '');
+        if ($substepsRaw === '') {
+            $substepsRaw = hiw_substeps_to_lines($def['substeps']);
+        }
+        $substeps = [];
+        foreach (hiw_parse_substeps($substepsRaw) as [$heading, $body]) {
+            $substeps[] = [t($heading), t($body)];
         }
         $steps[] = [
             'key'      => $key,
