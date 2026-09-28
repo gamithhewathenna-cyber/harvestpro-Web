@@ -90,7 +90,7 @@ INSERT INTO `settings` (`setting_key`, `setting_value`, `setting_group`) VALUES
 ('pricing3_price', '10,000', 'pricing_section'),
 ('pricing3_note', '14-day free trial on online signup. No charge until you subscribe.', 'pricing_section'),
 ('pricing3_included_label', 'Everything in Mid Tier, plus:', 'pricing_section'),
-('pricing3_features', 'Tea Factory Operations\nLeaf Intake & Weighing\nProcessing & Quality Grading\nFactory Inventory & Stock\nBuyer & Sales Management\nFactory Reports & Analytics', 'pricing_section'),
+('pricing3_features', 'Automated Payroll Processing\nWorker & Plantation Payroll Views\nDaily Payroll Summary\nPayment Tracking & History\nBulk Payment Actions\nEPF / ETF contributions, Form C & R4\nEmployee loan recoveries', 'pricing_section'),
 ('pricing_btn_text', 'Request a Demo – 14-Day Free Trial', 'pricing_section'),
 ('pricing_btn_link', '#contact', 'pricing_section'),
 

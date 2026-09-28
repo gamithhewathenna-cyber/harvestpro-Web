@@ -183,6 +183,21 @@ Factory Reports & Analytics' =>
 ගැනුම්කරු සහ විකුණුම් කළමනාකරණය
 කර්මාන්ත ශාලා වාර්තා සහ විශ්ලේෂණ',
 
+    'Automated Payroll Processing
+Worker & Plantation Payroll Views
+Daily Payroll Summary
+Payment Tracking & History
+Bulk Payment Actions
+EPF / ETF contributions, Form C & R4
+Employee loan recoveries' =>
+        'ස්වයංක්‍රීය වැටුප් සැකසීම
+සේවක හා වතු වැටුප් දසුන්
+දෛනික වැටුප් සාරාංශය
+ගෙවීම් නිරීක්ෂණය හා ඉතිහාසය
+සමූහ ගෙවීම් ක්‍රියාමාර්ග
+EPF / ETF දායක මුදල්, Form C සහ R4
+සේවක ණය අයකර ගැනීම්',
+
     'Request a Demo – 14-Day Free Trial' => 'ආදර්ශනයක් ඉල්ලන්න – දින 14ක නොමිලේ අත්හදා බැලීම',
 
     // ---- Features page banner --------------------------------------------------

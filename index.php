@@ -134,7 +134,7 @@ $pricingDefaults = [
     3 => [
         'label' => 'Top Tier', 'name' => 'Harvest Pro Complete Tea Factory & Operations Suite', 'price' => '10,000',
         'note' => $trialNote, 'included' => 'Everything in Mid Tier, plus:', 'badge' => '',
-        'features' => "Tea Factory Operations\nLeaf Intake & Weighing\nProcessing & Quality Grading\nFactory Inventory & Stock\nBuyer & Sales Management\nFactory Reports & Analytics",
+        'features' => "Automated Payroll Processing\nWorker & Plantation Payroll Views\nDaily Payroll Summary\nPayment Tracking & History\nBulk Payment Actions\nEPF / ETF contributions, Form C & R4\nEmployee loan recoveries",
     ],
 ];
 $pricingTiers = [];
