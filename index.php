@@ -3,6 +3,7 @@ require_once __DIR__ . '/includes/functions.php';
 require_once __DIR__ . '/includes/maintenance-gate.php';
 
 $features    = get_features();
+$latestNewsPosts = get_news_posts(['published_only' => true, 'limit' => 3]);
 $brandName   = setting('brand_name', 'Harvest');
 $brandLogo   = setting('brand_logo', '');
 $brandLogoUrl= $brandLogo ? image_url('brand_logo') : '';
@@ -210,7 +211,7 @@ $pageImg   = absolute_url(resolve_image_url($heroSlides[0]['image'] ?? '', 'asse
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
 <?php endif; ?>
-<link rel="stylesheet" href="assets/css/style.css?v=5.7">
+<link rel="stylesheet" href="assets/css/style.css?v=5.8">
 <?php if ($themePrimary !== '' || $themeAccent !== ''): ?>
 <style>
 :root {
@@ -434,6 +435,39 @@ $pageImg   = absolute_url(resolve_image_url($heroSlides[0]['image'] ?? '', 'asse
           <h3><?= e($item['title']) ?></h3>
           <p><?= e($item['desc']) ?></p>
         </div>
+      <?php endforeach; ?>
+    </div>
+  </div>
+</section>
+<?php endif; ?>
+
+<?php if ($latestNewsPosts): ?>
+<!-- ============================= LATEST NEWS ============================= -->
+<section class="section" style="padding-bottom:20px;">
+  <div class="container">
+    <div class="news-home-head">
+      <div>
+        <h2 class="news-home-title"><?= e(t('Latest News & Updates')) ?></h2>
+        <p class="news-home-sub"><?= e(t('Product announcements, feature releases and tips from the Harvest Pro team.')) ?></p>
+      </div>
+      <a href="/news" class="btn btn-outline"><?= e(t('View All Posts')) ?></a>
+    </div>
+    <div class="news-grid">
+      <?php foreach ($latestNewsPosts as $p):
+        $npImg = $p['featured_image'] ? resolve_image_url($p['featured_image']) : '';
+        $npDate = $p['published_at'] ? date('j M Y', strtotime($p['published_at'])) : '';
+      ?>
+        <a href="/news/<?= e($p['slug']) ?>" class="news-card">
+          <div class="news-card-media"<?= $npImg ? " style=\"background-image:url('" . e($npImg) . "')\"" : '' ?>>
+            <?php if (!$npImg): ?><span class="news-card-media-fallback"><?= e($brandName) ?></span><?php endif; ?>
+          </div>
+          <div class="news-card-body">
+            <?php if ($p['category_name']): ?><span class="news-card-cat"><?= e($p['category_name']) ?></span><?php endif; ?>
+            <h3><?= e($p['title']) ?></h3>
+            <p><?= e(news_excerpt($p['content'])) ?></p>
+            <?php if ($npDate): ?><span class="news-card-date"><?= e($npDate) ?></span><?php endif; ?>
+          </div>
+        </a>
       <?php endforeach; ?>
     </div>
   </div>

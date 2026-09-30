@@ -566,6 +566,13 @@ html[lang="si"] .hero-title { font-size: 44px; }
 .hiw-card-desc { display: block; font-size: 13.5px; color: var(--muted); line-height: 1.6; }
 
 /* =========================== NEWS & UPDATES =========================== */
+.news-home-head {
+  display: flex; align-items: flex-end; justify-content: space-between; gap: 20px;
+  flex-wrap: wrap; margin-bottom: 40px;
+}
+.news-home-title { font-size: 34px; font-weight: 600; margin-bottom: 10px; }
+.news-home-sub { color: var(--muted); font-size: 15px; max-width: 560px; }
+
 .news-filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 40px; }
 .news-filter-pill {
   padding: 8px 18px; border-radius: 30px; border: 1px solid var(--line);

@@ -54,7 +54,7 @@ $pageImg   = absolute_url($bannerBg);
 <meta name="description" content="<?= e($pageDesc) ?>">
 <?php seo_meta_tags('/how-it-works', $pageTitle, $pageDesc, $pageImg, $brandName . ' Pro'); ?>
 <?php sinhala_font_tags(); ?>
-<link rel="stylesheet" href="assets/css/style.css?v=5.7">
+<link rel="stylesheet" href="assets/css/style.css?v=5.8">
 <?php if ($themePrimary !== '' || $themeAccent !== ''): ?>
 <style>
 :root {

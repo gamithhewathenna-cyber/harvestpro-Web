@@ -24,6 +24,10 @@ return [
     'Features' => 'විශේෂාංග',
     'How It Works' => 'එය ක්‍රියා කරන ආකාරය',
     'News & Updates' => 'පුවත් සහ යාවත්කාලීන කිරීම්',
+    'Latest News & Updates' => 'නවතම පුවත් සහ යාවත්කාලීන කිරීම්',
+    'Product announcements, feature releases and tips from the Harvest Pro team.' =>
+        'Harvest Pro කණ්ඩායමෙන් නිෂ්පාදන නිවේදන, විශේෂාංග නිකුතුම් සහ උපදෙස්.',
+    'View All Posts' => 'සියලුම සටහන් බලන්න',
     'Contact Us' => 'අප අමතන්න',
     'Call' => 'අමතන්න',
     'System Login' => 'පද්ධතියට පිවිසෙන්න',
