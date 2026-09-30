@@ -40,7 +40,7 @@ $pageKeywords = $post ? trim(($post['seo_keyword'] ?? '') . (!empty($post['seo_k
 <?php endif; ?>
 <?php if ($post): seo_meta_tags('/news/' . $post['slug'], $pageTitle, $pageDesc, $pageImg, $brandName . ' Pro'); endif; ?>
 <?php sinhala_font_tags(); ?>
-<link rel="stylesheet" href="assets/css/style.css?v=5.4">
+<link rel="stylesheet" href="/assets/css/style.css?v=5.4">
 <?php if ($themePrimary !== '' || $themeAccent !== ''): ?>
 <style>
 :root {
