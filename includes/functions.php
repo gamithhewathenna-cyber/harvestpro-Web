@@ -400,7 +400,7 @@ function get_news_categories(): array
 
 /**
  * Published (or, for the admin list, all) news posts, newest first.
- * Options: published_only (bool, default true), category (slug), limit, offset.
+ * Options: published_only (bool, default true), category (slug), exclude_id, limit, offset.
  */
 function get_news_posts(array $opts = []): array
 {
@@ -408,6 +408,7 @@ function get_news_posts(array $opts = []): array
     ensure_news_tables();
     $publishedOnly = $opts['published_only'] ?? true;
     $categorySlug  = $opts['category'] ?? null;
+    $excludeId     = $opts['exclude_id'] ?? null;
 
     $sql = "SELECT p.*, c.name AS category_name, c.slug AS category_slug
             FROM news_posts p LEFT JOIN news_categories c ON c.id = p.category_id";
@@ -419,6 +420,10 @@ function get_news_posts(array $opts = []): array
     if ($categorySlug) {
         $where[] = 'c.slug = ?';
         $params[] = $categorySlug;
+    }
+    if ($excludeId) {
+        $where[] = 'p.id != ?';
+        $params[] = $excludeId;
     }
     if ($where) {
         $sql .= ' WHERE ' . implode(' AND ', $where);
