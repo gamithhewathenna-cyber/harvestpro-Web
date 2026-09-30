@@ -504,11 +504,32 @@ function get_news_post_by_slug(string $slug): ?array
 }
 
 /**
+ * Turn [link text](https://example.com) markers inside an already
+ * HTML-escaped string into real <a> tags — the admin can type this
+ * directly in the Content box, and docx_to_text() writes the same marker
+ * for a Word document's own hyperlinks. Operates on already-escaped text
+ * (the brackets/parens survive htmlspecialchars() unchanged, so this never
+ * double-escapes anything). Only http(s)/mailto/site-relative links are
+ * turned into clickable links — anything else (e.g. a javascript: URI) is
+ * left as the plain, harmless text it matched.
+ */
+function news_linkify(string $escapedText): string
+{
+    return preg_replace_callback('/\[([^\]]+)\]\(([^)\s]+)\)/', function ($m) {
+        $url = $m[2];
+        if (!preg_match('#^(https?://|mailto:|/)#i', $url)) {
+            return $m[0];
+        }
+        return '<a href="' . $url . '" target="_blank" rel="noopener noreferrer">' . $m[1] . '</a>';
+    }, $escapedText);
+}
+
+/**
  * Render admin-entered plain-text post content as paragraphs (blank line =
  * new paragraph). A paragraph starting with ##, ###, or #### is rendered as
- * a heading instead of a plain paragraph — either typed directly, or
- * carried over automatically from Word's Heading 1/2/3 styles when the
- * content was imported via docx_to_text().
+ * a heading instead of a plain paragraph, and [text](url) becomes a real
+ * link — both either typed directly, or carried over automatically from a
+ * Word document's Heading 1/2/3 styles and hyperlinks via docx_to_text().
  */
 function news_render_content(string $raw): string
 {
@@ -524,10 +545,10 @@ function news_render_content(string $raw): string
         }
         if (preg_match('/^(#{2,4})\s+(.+)$/s', $para, $m)) {
             $level = strlen($m[1]);
-            $headingText = e(trim($m[2]));
+            $headingText = news_linkify(e(trim($m[2])));
             $html .= "<h{$level}>{$headingText}</h{$level}>";
         } else {
-            $html .= '<p>' . nl2br(e($para)) . '</p>';
+            $html .= '<p>' . nl2br(news_linkify(e($para))) . '</p>';
         }
     }
     return $html;
@@ -537,6 +558,7 @@ function news_render_content(string $raw): string
 function news_excerpt(string $raw, int $maxLen = 150): string
 {
     $raw = preg_replace('/^#{2,4}\s+/m', '', $raw); // drop heading markers, keep the text
+    $raw = preg_replace('/\[([^\]]+)\]\([^)\s]+\)/', '$1', $raw); // drop link markers, keep the link text
     $text = trim(preg_replace('/\s+/', ' ', $raw));
     if (mb_strlen($text) <= $maxLen) {
         return $text;
@@ -548,11 +570,15 @@ function news_excerpt(string $raw, int $maxLen = 150): string
  * Extract plain text from an uploaded .docx file for the "Post Content"
  * field. A .docx is a ZIP archive containing word/document.xml — no
  * external library needed, just PHP's built-in ZipArchive + DOMDocument.
- * Formatting like bold, tables and images isn't preserved, but a
- * paragraph styled as Word's "Heading 1/2/3" comes through as a ##/###/####
- * marker so news_render_content() renders it as a real heading rather than
- * a plain paragraph. Returns null if the file can't be read (not a valid
- * .docx, or the zip/DOM extensions aren't available on this host).
+ * Formatting like bold, tables and images isn't preserved, but:
+ *  - a paragraph styled as Word's "Heading 1/2/3" comes through as a
+ *    ##/###/#### marker so news_render_content() renders it as a real
+ *    heading, and
+ *  - a Word hyperlink comes through as the same [text](url) marker an
+ *    admin can type by hand in the Content box, so news_render_content()
+ *    turns both into a real clickable link on the published post.
+ * Returns null if the file can't be read (not a valid .docx, or the
+ * zip/DOM extensions aren't available on this host).
  */
 function docx_to_text(string $filePath): ?string
 {
@@ -563,10 +589,28 @@ function docx_to_text(string $filePath): ?string
     if ($zip->open($filePath) !== true) {
         return null;
     }
-    $xml = $zip->getFromName('word/document.xml');
+    $xml     = $zip->getFromName('word/document.xml');
+    $relsXml = $zip->getFromName('word/_rels/document.xml.rels');
     $zip->close();
     if ($xml === false || trim($xml) === '') {
         return null;
+    }
+
+    // Word stores a hyperlink's actual URL separately from the paragraph
+    // that uses it: the run references a relationship id, and this file
+    // maps that id to the real target.
+    $relMap = [];
+    if ($relsXml !== false) {
+        $relsDom = new DOMDocument();
+        $prev = libxml_use_internal_errors(true);
+        if ($relsDom->loadXML($relsXml, LIBXML_NONET | LIBXML_NOENT)) {
+            foreach ($relsDom->getElementsByTagName('Relationship') as $rel) {
+                if (strpos($rel->getAttribute('Type'), '/hyperlink') !== false) {
+                    $relMap[$rel->getAttribute('Id')] = $rel->getAttribute('Target');
+                }
+            }
+        }
+        libxml_use_internal_errors($prev);
     }
 
     $dom = new DOMDocument();
@@ -579,20 +623,39 @@ function docx_to_text(string $filePath): ?string
 
     $xpath = new DOMXPath($dom);
     $xpath->registerNamespace('w', 'http://schemas.openxmlformats.org/wordprocessingml/2006/main');
+    $relNs = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships';
+
+    $runText = function (DOMNode $context) use ($xpath): string {
+        $parts = [];
+        foreach ($xpath->query('.//w:t | .//w:tab | .//w:br', $context) as $node) {
+            if ($node->localName === 'tab') {
+                $parts[] = "\t";
+            } elseif ($node->localName === 'br') {
+                $parts[] = "\n";
+            } else {
+                $parts[] = $node->textContent;
+            }
+        }
+        return implode('', $parts);
+    };
 
     $lines = [];
     foreach ($xpath->query('//w:p') as $paragraph) {
-        $textParts = [];
-        foreach ($xpath->query('.//w:t | .//w:tab | .//w:br', $paragraph) as $node) {
-            if ($node->localName === 'tab') {
-                $textParts[] = "\t";
-            } elseif ($node->localName === 'br') {
-                $textParts[] = "\n";
+        $segments = [];
+        foreach ($xpath->query('./w:r | ./w:hyperlink', $paragraph) as $child) {
+            if ($child->localName === 'hyperlink') {
+                $linkText = trim($runText($child));
+                if ($linkText === '') {
+                    continue;
+                }
+                $relId = $child->getAttributeNS($relNs, 'id');
+                $url = $relId !== '' ? ($relMap[$relId] ?? '') : '';
+                $segments[] = $url !== '' ? "[{$linkText}]({$url})" : $linkText;
             } else {
-                $textParts[] = $node->textContent;
+                $segments[] = $runText($child);
             }
         }
-        $text = trim(implode('', $textParts));
+        $text = trim(implode('', $segments));
         if ($text === '') {
             continue;
         }

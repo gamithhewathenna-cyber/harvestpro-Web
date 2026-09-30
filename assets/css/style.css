@@ -613,6 +613,8 @@ html[lang="si"] .hero-title { font-size: 44px; }
 .news-post-content h2 { font-size: 26px; font-weight: 600; margin: 40px 0 18px; line-height: 1.35; }
 .news-post-content h3 { font-size: 21px; font-weight: 600; margin: 32px 0 14px; line-height: 1.4; }
 .news-post-content h4 { font-size: 17px; font-weight: 600; margin: 26px 0 12px; line-height: 1.4; }
+.news-post-content a { color: var(--green-700); text-decoration: underline; text-underline-offset: 2px; }
+.news-post-content a:hover { color: var(--green-600); }
 
 .news-post-layout { display: grid; grid-template-columns: 1fr 320px; gap: 56px; align-items: start; max-width: 1180px; margin: 0 auto; }
 .news-post-main { max-width: 720px; }
