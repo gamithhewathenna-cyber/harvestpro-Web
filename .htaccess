@@ -7,7 +7,7 @@
   RewriteCond %{THE_REQUEST} \s/+index\.php[\s?] [NC]
   RewriteRule ^ /? [R=301,L]
 
-  RewriteCond %{THE_REQUEST} \s/+(about|features|how-it-works|contact|refund-policy|privacy-policy|terms-and-conditions)\.php[\s?] [NC]
+  RewriteCond %{THE_REQUEST} \s/+(about|features|how-it-works|contact|refund-policy|privacy-policy|terms-and-conditions|news)\.php[\s?] [NC]
   RewriteRule ^ /%1 [R=301,L]
 
   # 2) Internally serve the clean URL from its .php file (the address bar stays clean).
@@ -18,6 +18,8 @@
   RewriteRule ^refund-policy/?$ refund-policy.php [L]
   RewriteRule ^privacy-policy/?$ privacy-policy.php [L]
   RewriteRule ^terms-and-conditions/?$ terms-and-conditions.php [L]
+  RewriteRule ^news/?$ news.php [L]
+  RewriteRule ^news/([a-zA-Z0-9-]+)/?$ news-post.php?slug=$1 [L]
 
   # sitemap.xml / robots.txt
   RewriteRule ^sitemap\.xml$ sitemap.php [L]

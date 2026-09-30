@@ -15,7 +15,10 @@ $pages = [
     ['path' => '/refund-policy',  'file' => 'refund-policy.php',  'priority' => '0.3', 'changefreq' => 'yearly'],
     ['path' => '/privacy-policy', 'file' => 'privacy-policy.php', 'priority' => '0.3', 'changefreq' => 'yearly'],
     ['path' => '/terms-and-conditions', 'file' => 'terms-and-conditions.php', 'priority' => '0.3', 'changefreq' => 'yearly'],
+    ['path' => '/news', 'file' => 'news.php', 'priority' => '0.6', 'changefreq' => 'weekly'],
 ];
+
+$newsPosts = get_news_posts(['published_only' => true]);
 
 echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
 ?>
@@ -29,6 +32,14 @@ echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
     <lastmod><?= e($lastmod) ?></lastmod>
     <changefreq><?= e($p['changefreq']) ?></changefreq>
     <priority><?= e($p['priority']) ?></priority>
+  </url>
+<?php endforeach; ?>
+<?php foreach ($newsPosts as $post): ?>
+  <url>
+    <loc><?= e(rtrim(BASE_URL, '/') . '/news/' . $post['slug']) ?></loc>
+    <lastmod><?= e(date('Y-m-d', strtotime($post['updated_at'] ?? $post['published_at']))) ?></lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
 <?php endforeach; ?>
 </urlset>

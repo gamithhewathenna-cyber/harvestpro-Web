@@ -23,6 +23,7 @@ return [
     'Pricing' => 'මිල ගණන්',
     'Features' => 'විශේෂාංග',
     'How It Works' => 'එය ක්‍රියා කරන ආකාරය',
+    'News & Updates' => 'පුවත් සහ යාවත්කාලීන කිරීම්',
     'Contact Us' => 'අප අමතන්න',
     'Call' => 'අමතන්න',
     'System Login' => 'පද්ධතියට පිවිසෙන්න',

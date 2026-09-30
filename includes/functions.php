@@ -251,6 +251,221 @@ function get_payment_logos(): array
     )->fetchAll();
 }
 
+/**
+ * One-time schema migration: creates the news_categories/news_posts tables
+ * if they don't exist yet, so existing installs don't need a manual SQL
+ * step. Tracked via a settings flag so the check only runs once ever.
+ */
+function ensure_news_tables(): void
+{
+    global $pdo;
+    static $checked = false;
+    if ($checked) {
+        return;
+    }
+    $checked = true;
+    if (setting('schema_news_migrated') === '1') {
+        return;
+    }
+    try {
+        $pdo->exec(
+            "CREATE TABLE IF NOT EXISTS news_categories (
+                id INT(11) NOT NULL AUTO_INCREMENT,
+                name VARCHAR(100) NOT NULL,
+                slug VARCHAR(120) NOT NULL,
+                PRIMARY KEY (id),
+                UNIQUE KEY slug (slug)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4"
+        );
+        $pdo->exec(
+            "CREATE TABLE IF NOT EXISTS news_posts (
+                id INT(11) NOT NULL AUTO_INCREMENT,
+                title VARCHAR(255) NOT NULL,
+                slug VARCHAR(255) NOT NULL,
+                content LONGTEXT,
+                featured_image VARCHAR(255) DEFAULT '',
+                category_id INT(11) DEFAULT NULL,
+                seo_title VARCHAR(255) DEFAULT '',
+                seo_description VARCHAR(500) DEFAULT '',
+                is_published TINYINT(1) NOT NULL DEFAULT 0,
+                published_at DATETIME DEFAULT NULL,
+                created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                PRIMARY KEY (id),
+                UNIQUE KEY slug (slug),
+                KEY category_id (category_id),
+                KEY is_published (is_published)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4"
+        );
+        $stmt = $pdo->prepare(
+            "INSERT INTO settings (setting_key, setting_value) VALUES ('schema_news_migrated', '1')
+             ON DUPLICATE KEY UPDATE setting_value = '1'"
+        );
+        $stmt->execute();
+    } catch (PDOException $e) {
+        // Best-effort — see ensure_hero_slide_si_columns() for rationale.
+    }
+}
+
+/** Turn a title into a URL-safe slug ("New Payroll Feature!" -> "new-payroll-feature"). */
+function news_slugify(string $text): string
+{
+    $slug = strtolower(trim($text));
+    $slug = preg_replace('/[^a-z0-9]+/', '-', $slug);
+    $slug = trim($slug, '-');
+    if ($slug === '') {
+        $slug = 'post-' . substr(bin2hex(random_bytes(4)), 0, 8);
+    }
+    return $slug;
+}
+
+/** Append -2, -3, … to a slug until it no longer collides with another row. */
+function news_unique_slug(string $table, string $base, ?int $excludeId = null): string
+{
+    global $pdo;
+    $slug = $base;
+    $i = 2;
+    while (true) {
+        $sql = "SELECT id FROM `$table` WHERE slug = ?";
+        $params = [$slug];
+        if ($excludeId !== null) {
+            $sql .= " AND id != ?";
+            $params[] = $excludeId;
+        }
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute($params);
+        if (!$stmt->fetch()) {
+            return $slug;
+        }
+        $slug = $base . '-' . $i;
+        $i++;
+    }
+}
+
+/** All categories, alphabetical. */
+function get_news_categories(): array
+{
+    global $pdo;
+    ensure_news_tables();
+    return $pdo->query("SELECT * FROM news_categories ORDER BY name ASC")->fetchAll();
+}
+
+/**
+ * Published (or, for the admin list, all) news posts, newest first.
+ * Options: published_only (bool, default true), category (slug), limit, offset.
+ */
+function get_news_posts(array $opts = []): array
+{
+    global $pdo;
+    ensure_news_tables();
+    $publishedOnly = $opts['published_only'] ?? true;
+    $categorySlug  = $opts['category'] ?? null;
+
+    $sql = "SELECT p.*, c.name AS category_name, c.slug AS category_slug
+            FROM news_posts p LEFT JOIN news_categories c ON c.id = p.category_id";
+    $where = [];
+    $params = [];
+    if ($publishedOnly) {
+        $where[] = 'p.is_published = 1';
+    }
+    if ($categorySlug) {
+        $where[] = 'c.slug = ?';
+        $params[] = $categorySlug;
+    }
+    if ($where) {
+        $sql .= ' WHERE ' . implode(' AND ', $where);
+    }
+    $sql .= $publishedOnly ? ' ORDER BY p.published_at DESC, p.id DESC' : ' ORDER BY p.created_at DESC, p.id DESC';
+    if (!empty($opts['limit'])) {
+        $sql .= ' LIMIT ' . (int)$opts['limit'] . ' OFFSET ' . (int)($opts['offset'] ?? 0);
+    }
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute($params);
+    $rows = $stmt->fetchAll();
+    foreach ($rows as &$row) {
+        $row['title']         = translate($row['title'] ?? '');
+        $row['content']       = translate($row['content'] ?? '');
+        $row['category_name'] = translate($row['category_name'] ?? '');
+    }
+    unset($row);
+    return $rows;
+}
+
+/** Count of posts matching the same filters as get_news_posts(), for pagination. */
+function count_news_posts(array $opts = []): int
+{
+    global $pdo;
+    ensure_news_tables();
+    $publishedOnly = $opts['published_only'] ?? true;
+    $categorySlug  = $opts['category'] ?? null;
+
+    $sql = "SELECT COUNT(*) FROM news_posts p LEFT JOIN news_categories c ON c.id = p.category_id";
+    $where = [];
+    $params = [];
+    if ($publishedOnly) {
+        $where[] = 'p.is_published = 1';
+    }
+    if ($categorySlug) {
+        $where[] = 'c.slug = ?';
+        $params[] = $categorySlug;
+    }
+    if ($where) {
+        $sql .= ' WHERE ' . implode(' AND ', $where);
+    }
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute($params);
+    return (int)$stmt->fetchColumn();
+}
+
+/** A single published post by slug, or null if it doesn't exist / isn't published. */
+function get_news_post_by_slug(string $slug): ?array
+{
+    global $pdo;
+    ensure_news_tables();
+    $stmt = $pdo->prepare(
+        "SELECT p.*, c.name AS category_name, c.slug AS category_slug
+         FROM news_posts p LEFT JOIN news_categories c ON c.id = p.category_id
+         WHERE p.slug = ? AND p.is_published = 1 LIMIT 1"
+    );
+    $stmt->execute([$slug]);
+    $row = $stmt->fetch();
+    if (!$row) {
+        return null;
+    }
+    $row['title']         = translate($row['title'] ?? '');
+    $row['content']       = translate($row['content'] ?? '');
+    $row['category_name'] = translate($row['category_name'] ?? '');
+    return $row;
+}
+
+/** Render admin-entered plain-text post content as paragraphs (blank line = new paragraph). */
+function news_render_content(string $raw): string
+{
+    $raw = str_replace("\r\n", "\n", trim($raw));
+    if ($raw === '') {
+        return '';
+    }
+    $html = '';
+    foreach (preg_split('/\n{2,}/', $raw) as $para) {
+        $para = trim($para);
+        if ($para === '') {
+            continue;
+        }
+        $html .= '<p>' . nl2br(e($para)) . '</p>';
+    }
+    return $html;
+}
+
+/** A short plain-text teaser for listing cards, derived from the post content. */
+function news_excerpt(string $raw, int $maxLen = 150): string
+{
+    $text = trim(preg_replace('/\s+/', ' ', $raw));
+    if (mb_strlen($text) <= $maxLen) {
+        return $text;
+    }
+    return rtrim(mb_substr($text, 0, $maxLen)) . '…';
+}
+
 function get_features(): array
 {
     global $pdo;
