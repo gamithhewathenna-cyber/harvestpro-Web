@@ -507,6 +507,46 @@ function news_excerpt(string $raw, int $maxLen = 150): string
     return rtrim(mb_substr($text, 0, $maxLen)) . '…';
 }
 
+/**
+ * Extract plain text from an uploaded .docx file for the "Post Content"
+ * field. A .docx is a ZIP archive containing word/document.xml — no
+ * external library needed, just PHP's built-in ZipArchive. Formatting
+ * (bold, tables, images, etc.) isn't preserved, only the text and
+ * paragraph breaks, matching the plain-paragraph content model the rest
+ * of News & Updates already uses. Returns null if the file can't be read
+ * (not a valid .docx, or the zip extension isn't available on this host).
+ */
+function docx_to_text(string $filePath): ?string
+{
+    if (!class_exists('ZipArchive')) {
+        return null;
+    }
+    $zip = new ZipArchive();
+    if ($zip->open($filePath) !== true) {
+        return null;
+    }
+    $xml = $zip->getFromName('word/document.xml');
+    $zip->close();
+    if ($xml === false || trim($xml) === '') {
+        return null;
+    }
+
+    // Turn Word's paragraph/line-break/tab markup into plain-text
+    // equivalents before stripping tags, so structure survives the
+    // conversion instead of every paragraph running together.
+    $xml = preg_replace('/<\/w:p>/', "\n\n", $xml);
+    $xml = preg_replace('/<w:br\s*\/?>/', "\n", $xml);
+    $xml = preg_replace('/<w:tab\s*\/?>/', "\t", $xml);
+    $text = strip_tags($xml);
+    $text = html_entity_decode($text, ENT_QUOTES | ENT_XML1, 'UTF-8');
+
+    $lines = array_map('trim', explode("\n", $text));
+    $lines = array_values(array_filter($lines, function ($line) {
+        return $line !== '';
+    }));
+    return implode("\n\n", $lines);
+}
+
 function get_features(): array
 {
     global $pdo;

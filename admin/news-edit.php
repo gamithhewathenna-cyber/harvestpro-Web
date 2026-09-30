@@ -16,7 +16,8 @@ if ($id > 0) {
     }
 }
 
-$err = '';
+$err  = '';
+$warn = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!csrf_check()) {
@@ -31,6 +32,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $seoKeywordsSecond = trim($_POST['seo_keywords_secondary'] ?? '');
         $slugInput         = trim($_POST['slug'] ?? '');
         $isPublished       = isset($_POST['is_published']) ? 1 : 0;
+
+        // Uploading a Word doc replaces whatever's in the Content box with
+        // its extracted text. Non-blocking on failure — the post still
+        // saves with whatever was already typed, just with a warning.
+        if (!empty($_FILES['content_docx']['name']) && $_FILES['content_docx']['error'] === UPLOAD_ERR_OK) {
+            $docxExt = strtolower(pathinfo($_FILES['content_docx']['name'], PATHINFO_EXTENSION));
+            if ($docxExt !== 'docx') {
+                $warn = 'The content file must be a .docx Word document — it was not imported.';
+            } elseif ($_FILES['content_docx']['size'] > 15 * 1024 * 1024) {
+                $warn = 'That Word document is over the 15 MB limit — it was not imported.';
+            } else {
+                $extracted = docx_to_text($_FILES['content_docx']['tmp_name']);
+                if ($extracted === null || $extracted === '') {
+                    $warn = 'Could not read that Word document — it was not imported.';
+                } else {
+                    $content = $extracted;
+                }
+            }
+        }
 
         if ($title === '') {
             $err = 'Post title is required.';
@@ -59,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     "UPDATE news_posts SET title=?, slug=?, content=?, category_id=?, seo_title=?, seo_description=?, seo_keyword=?, seo_keywords_secondary=?, is_published=?, published_at=?, {$imageSql}updated_at=NOW() WHERE id=?"
                 );
                 $stmt->execute($params);
-                header('Location: news-edit.php?id=' . $post['id'] . '&saved=1');
+                header('Location: news-edit.php?id=' . $post['id'] . '&saved=1' . ($warn !== '' ? '&warn=' . urlencode($warn) : ''));
                 exit;
             } else {
                 $slug = news_unique_slug('news_posts', $baseSlug);
@@ -70,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 );
                 $stmt->execute([$title, $slug, $content, $uploaded ?? '', $categoryId, $seoTitle, $seoDescription, $seoKeyword, $seoKeywordsSecond, $isPublished, $publishedAt]);
                 $newId = (int)$pdo->lastInsertId();
-                header('Location: news-edit.php?id=' . $newId . '&saved=1');
+                header('Location: news-edit.php?id=' . $newId . '&saved=1' . ($warn !== '' ? '&warn=' . urlencode($warn) : ''));
                 exit;
             }
         }
@@ -85,6 +105,7 @@ require __DIR__ . '/header.php';
 ?>
 <?php if (!empty($_GET['saved'])): ?><div class="a-alert a-alert-ok">Post saved.</div><?php endif; ?>
 <?php if ($err): ?><div class="a-alert a-alert-error"><?= e($err) ?></div><?php endif; ?>
+<?php if ($warn !== '' || !empty($_GET['warn'])): ?><div class="a-alert a-alert-error"><?= e($warn !== '' ? $warn : $_GET['warn']) ?></div><?php endif; ?>
 
 <p class="a-help" style="margin-bottom:18px;"><a href="news.php">&larr; Back to all posts</a></p>
 
@@ -108,6 +129,12 @@ require __DIR__ . '/header.php';
       <label>Post Content / Description</label>
       <textarea name="content" rows="14"><?= e($post['content'] ?? '') ?></textarea>
       <small class="a-help">Leave a blank line between paragraphs.</small>
+    </div>
+
+    <div class="a-field">
+      <label>Or Upload a Word Document (.docx)</label>
+      <input type="file" name="content_docx" accept=".docx">
+      <small class="a-help">Its text will replace whatever's in the Content box above when you click Save — only the text and paragraph breaks are imported, not formatting like bold, tables or images. Max 15 MB.</small>
     </div>
 
     <div class="a-field">
