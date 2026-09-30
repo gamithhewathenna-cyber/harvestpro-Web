@@ -23,6 +23,7 @@
 
   # sitemap.xml / robots.txt
   RewriteRule ^sitemap\.xml$ sitemap.php [L]
+  RewriteRule ^sitemap-news\.xml$ sitemap-news.php [L]
   RewriteRule ^robots\.txt$ robots.php [L]
 </IfModule>
 

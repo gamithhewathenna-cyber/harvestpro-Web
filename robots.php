@@ -16,3 +16,4 @@ Disallow: /submit.php
 Allow: /
 
 Sitemap: <?= rtrim(BASE_URL, '/') ?>/sitemap.xml
+Sitemap: <?= rtrim(BASE_URL, '/') ?>/sitemap-news.xml

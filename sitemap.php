@@ -1,6 +1,9 @@
 <?php
 /**
  * XML sitemap — served at /sitemap.xml via the root .htaccess rewrite.
+ * Covers the site's static pages plus the News & Updates listing page
+ * itself. Individual blog posts have their own dedicated sitemap so it can
+ * be submitted to Search Console separately — see sitemap-news.php.
  */
 require_once __DIR__ . '/includes/functions.php';
 
@@ -18,8 +21,6 @@ $pages = [
     ['path' => '/news', 'file' => 'news.php', 'priority' => '0.6', 'changefreq' => 'weekly'],
 ];
 
-$newsPosts = get_news_posts(['published_only' => true]);
-
 echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
 ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -32,14 +33,6 @@ echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
     <lastmod><?= e($lastmod) ?></lastmod>
     <changefreq><?= e($p['changefreq']) ?></changefreq>
     <priority><?= e($p['priority']) ?></priority>
-  </url>
-<?php endforeach; ?>
-<?php foreach ($newsPosts as $post): ?>
-  <url>
-    <loc><?= e(rtrim(BASE_URL, '/') . '/news/' . $post['slug']) ?></loc>
-    <lastmod><?= e(date('Y-m-d', strtotime($post['updated_at'] ?? $post['published_at']))) ?></lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url>
 <?php endforeach; ?>
 </urlset>
