@@ -498,7 +498,13 @@ function get_news_post_by_slug(string $slug): ?array
     return $row;
 }
 
-/** Render admin-entered plain-text post content as paragraphs (blank line = new paragraph). */
+/**
+ * Render admin-entered plain-text post content as paragraphs (blank line =
+ * new paragraph). A paragraph starting with ##, ###, or #### is rendered as
+ * a heading instead of a plain paragraph — either typed directly, or
+ * carried over automatically from Word's Heading 1/2/3 styles when the
+ * content was imported via docx_to_text().
+ */
 function news_render_content(string $raw): string
 {
     $raw = str_replace("\r\n", "\n", trim($raw));
@@ -511,7 +517,13 @@ function news_render_content(string $raw): string
         if ($para === '') {
             continue;
         }
-        $html .= '<p>' . nl2br(e($para)) . '</p>';
+        if (preg_match('/^(#{2,4})\s+(.+)$/s', $para, $m)) {
+            $level = strlen($m[1]);
+            $headingText = e(trim($m[2]));
+            $html .= "<h{$level}>{$headingText}</h{$level}>";
+        } else {
+            $html .= '<p>' . nl2br(e($para)) . '</p>';
+        }
     }
     return $html;
 }
@@ -519,6 +531,7 @@ function news_render_content(string $raw): string
 /** A short plain-text teaser for listing cards, derived from the post content. */
 function news_excerpt(string $raw, int $maxLen = 150): string
 {
+    $raw = preg_replace('/^#{2,4}\s+/m', '', $raw); // drop heading markers, keep the text
     $text = trim(preg_replace('/\s+/', ' ', $raw));
     if (mb_strlen($text) <= $maxLen) {
         return $text;
@@ -529,15 +542,16 @@ function news_excerpt(string $raw, int $maxLen = 150): string
 /**
  * Extract plain text from an uploaded .docx file for the "Post Content"
  * field. A .docx is a ZIP archive containing word/document.xml — no
- * external library needed, just PHP's built-in ZipArchive. Formatting
- * (bold, tables, images, etc.) isn't preserved, only the text and
- * paragraph breaks, matching the plain-paragraph content model the rest
- * of News & Updates already uses. Returns null if the file can't be read
- * (not a valid .docx, or the zip extension isn't available on this host).
+ * external library needed, just PHP's built-in ZipArchive + DOMDocument.
+ * Formatting like bold, tables and images isn't preserved, but a
+ * paragraph styled as Word's "Heading 1/2/3" comes through as a ##/###/####
+ * marker so news_render_content() renders it as a real heading rather than
+ * a plain paragraph. Returns null if the file can't be read (not a valid
+ * .docx, or the zip/DOM extensions aren't available on this host).
  */
 function docx_to_text(string $filePath): ?string
 {
-    if (!class_exists('ZipArchive')) {
+    if (!class_exists('ZipArchive') || !class_exists('DOMDocument')) {
         return null;
     }
     $zip = new ZipArchive();
@@ -550,19 +564,51 @@ function docx_to_text(string $filePath): ?string
         return null;
     }
 
-    // Turn Word's paragraph/line-break/tab markup into plain-text
-    // equivalents before stripping tags, so structure survives the
-    // conversion instead of every paragraph running together.
-    $xml = preg_replace('/<\/w:p>/', "\n\n", $xml);
-    $xml = preg_replace('/<w:br\s*\/?>/', "\n", $xml);
-    $xml = preg_replace('/<w:tab\s*\/?>/', "\t", $xml);
-    $text = strip_tags($xml);
-    $text = html_entity_decode($text, ENT_QUOTES | ENT_XML1, 'UTF-8');
+    $dom = new DOMDocument();
+    $prevErrorSetting = libxml_use_internal_errors(true);
+    $loaded = $dom->loadXML($xml, LIBXML_NONET | LIBXML_NOENT);
+    libxml_use_internal_errors($prevErrorSetting);
+    if (!$loaded) {
+        return null;
+    }
 
-    $lines = array_map('trim', explode("\n", $text));
-    $lines = array_values(array_filter($lines, function ($line) {
-        return $line !== '';
-    }));
+    $xpath = new DOMXPath($dom);
+    $xpath->registerNamespace('w', 'http://schemas.openxmlformats.org/wordprocessingml/2006/main');
+
+    $lines = [];
+    foreach ($xpath->query('//w:p') as $paragraph) {
+        $textParts = [];
+        foreach ($xpath->query('.//w:t | .//w:tab | .//w:br', $paragraph) as $node) {
+            if ($node->localName === 'tab') {
+                $textParts[] = "\t";
+            } elseif ($node->localName === 'br') {
+                $textParts[] = "\n";
+            } else {
+                $textParts[] = $node->textContent;
+            }
+        }
+        $text = trim(implode('', $textParts));
+        if ($text === '') {
+            continue;
+        }
+
+        // Word marks a paragraph's style — including Heading 1/2/3 — via
+        // <w:pPr><w:pStyle w:val="Heading1"/></w:pPr> at the top of the
+        // paragraph. The post's own title already acts as the page's <h1>,
+        // so Word's Heading 1 maps one level down to ## (<h2>), Heading 2
+        // to ### (<h3>), and Heading 3+ to #### (<h4>).
+        $styleAttr = $xpath->query('.//w:pStyle/@w:val', $paragraph);
+        $style = $styleAttr->length ? $styleAttr->item(0)->nodeValue : '';
+        if (preg_match('/heading\s*([1-9])/i', $style, $m)) {
+            $level = min(3, (int)$m[1]);
+            $text = str_repeat('#', $level + 1) . ' ' . $text;
+        }
+        $lines[] = $text;
+    }
+
+    if (!$lines) {
+        return null;
+    }
     return implode("\n\n", $lines);
 }
 
