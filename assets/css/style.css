@@ -610,6 +610,9 @@ html[lang="si"] .hero-title { font-size: 44px; }
   padding: 5px 13px; border-radius: 20px; margin-bottom: 14px;
 }
 .news-post-content p { margin-bottom: 20px; }
+.news-post-content h2 { font-size: 26px; font-weight: 600; margin: 40px 0 18px; line-height: 1.35; }
+.news-post-content h3 { font-size: 21px; font-weight: 600; margin: 32px 0 14px; line-height: 1.4; }
+.news-post-content h4 { font-size: 17px; font-weight: 600; margin: 26px 0 12px; line-height: 1.4; }
 
 /* =========================== CONTACT PAGE =========================== */
 .contact-section { padding: 70px 0 90px; }

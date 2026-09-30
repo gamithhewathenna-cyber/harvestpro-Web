@@ -128,13 +128,13 @@ require __DIR__ . '/header.php';
     <div class="a-field">
       <label>Post Content / Description</label>
       <textarea name="content" rows="14"><?= e($post['content'] ?? '') ?></textarea>
-      <small class="a-help">Leave a blank line between paragraphs.</small>
+      <small class="a-help">Leave a blank line between paragraphs. Start a line with <code>## </code> for a heading or <code>### </code> for a sub-heading.</small>
     </div>
 
     <div class="a-field">
       <label>Or Upload a Word Document (.docx)</label>
       <input type="file" name="content_docx" accept=".docx">
-      <small class="a-help">Its text will replace whatever's in the Content box above when you click Save — only the text and paragraph breaks are imported, not formatting like bold, tables or images. Max 15 MB.</small>
+      <small class="a-help">Its text will replace whatever's in the Content box above when you click Save. Paragraphs styled as Word's <strong>Heading 1</strong>/<strong>Heading 2</strong>/<strong>Heading 3</strong> come through as matching headings/sub-headings on the published post — other formatting (bold, tables, images) isn't imported. Max 15 MB.</small>
     </div>
 
     <div class="a-field">
