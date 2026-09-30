@@ -401,6 +401,7 @@ html[lang="si"] .hero-title { font-size: 44px; }
   font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
   line-height: 1;
 }
+.trust { background: var(--cream); }
 .trust-kicker {
   color: var(--green-600); font-weight: 600; font-size: 14px;
   letter-spacing: .04em; text-transform: uppercase; margin-bottom: 10px;
@@ -411,7 +412,7 @@ html[lang="si"] .hero-title { font-size: 44px; }
 }
 .trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
 .trust-card {
-  background: var(--cream); border: 1px solid var(--line); border-radius: var(--radius);
+  background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
   padding: 30px 26px; transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
 }
 .trust-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: transparent; }
