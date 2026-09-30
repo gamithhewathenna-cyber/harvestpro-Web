@@ -22,26 +22,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!csrf_check()) {
         $err = 'Security token mismatch.';
     } else {
-        $title           = trim($_POST['title'] ?? '');
-        $content         = str_replace("\r\n", "\n", trim($_POST['content'] ?? ''));
-        $categoryId      = !empty($_POST['category_id']) ? (int)$_POST['category_id'] : null;
-        $seoTitle        = trim($_POST['seo_title'] ?? '');
-        $seoDescription  = trim($_POST['seo_description'] ?? '');
-        $isPublished     = isset($_POST['is_published']) ? 1 : 0;
+        $title             = trim($_POST['title'] ?? '');
+        $content           = str_replace("\r\n", "\n", trim($_POST['content'] ?? ''));
+        $categoryId        = !empty($_POST['category_id']) ? (int)$_POST['category_id'] : null;
+        $seoTitle          = trim($_POST['seo_title'] ?? '');
+        $seoDescription    = trim($_POST['seo_description'] ?? '');
+        $seoKeyword        = trim($_POST['seo_keyword'] ?? '');
+        $seoKeywordsSecond = trim($_POST['seo_keywords_secondary'] ?? '');
+        $slugInput         = trim($_POST['slug'] ?? '');
+        $isPublished       = isset($_POST['is_published']) ? 1 : 0;
 
         if ($title === '') {
             $err = 'Post title is required.';
         } else {
             $uploaded = handle_upload('featured_image');
+            $baseSlug = news_slugify($slugInput !== '' ? $slugInput : $title);
 
             if ($post) {
+                $slug = news_unique_slug('news_posts', $baseSlug, $post['id']);
                 // Existing post: only touch published_at the moment it first goes live.
                 $publishedAt = $post['published_at'];
                 if ($isPublished && !$publishedAt) {
                     $publishedAt = date('Y-m-d H:i:s');
                 }
                 $imageSql = '';
-                $params = [$title, $content, $categoryId, $seoTitle, $seoDescription, $isPublished, $publishedAt];
+                $params = [$title, $slug, $content, $categoryId, $seoTitle, $seoDescription, $seoKeyword, $seoKeywordsSecond, $isPublished, $publishedAt];
                 if ($uploaded !== null) {
                     $imageSql = 'featured_image = ?, ';
                     $params[] = $uploaded;
@@ -51,19 +56,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
                 $params[] = $post['id'];
                 $stmt = $pdo->prepare(
-                    "UPDATE news_posts SET title=?, content=?, category_id=?, seo_title=?, seo_description=?, is_published=?, published_at=?, {$imageSql}updated_at=NOW() WHERE id=?"
+                    "UPDATE news_posts SET title=?, slug=?, content=?, category_id=?, seo_title=?, seo_description=?, seo_keyword=?, seo_keywords_secondary=?, is_published=?, published_at=?, {$imageSql}updated_at=NOW() WHERE id=?"
                 );
                 $stmt->execute($params);
                 header('Location: news-edit.php?id=' . $post['id'] . '&saved=1');
                 exit;
             } else {
-                $slug = news_unique_slug('news_posts', news_slugify($title));
+                $slug = news_unique_slug('news_posts', $baseSlug);
                 $publishedAt = $isPublished ? date('Y-m-d H:i:s') : null;
                 $stmt = $pdo->prepare(
-                    "INSERT INTO news_posts (title, slug, content, featured_image, category_id, seo_title, seo_description, is_published, published_at)
-                     VALUES (?,?,?,?,?,?,?,?,?)"
+                    "INSERT INTO news_posts (title, slug, content, featured_image, category_id, seo_title, seo_description, seo_keyword, seo_keywords_secondary, is_published, published_at)
+                     VALUES (?,?,?,?,?,?,?,?,?,?,?)"
                 );
-                $stmt->execute([$title, $slug, $content, $uploaded ?? '', $categoryId, $seoTitle, $seoDescription, $isPublished, $publishedAt]);
+                $stmt->execute([$title, $slug, $content, $uploaded ?? '', $categoryId, $seoTitle, $seoDescription, $seoKeyword, $seoKeywordsSecond, $isPublished, $publishedAt]);
                 $newId = (int)$pdo->lastInsertId();
                 header('Location: news-edit.php?id=' . $newId . '&saved=1');
                 exit;
@@ -91,6 +96,12 @@ require __DIR__ . '/header.php';
     <div class="a-field">
       <label>Post Title</label>
       <input type="text" name="title" value="<?= e($post['title'] ?? '') ?>" required>
+    </div>
+
+    <div class="a-field">
+      <label>URL Slug</label>
+      <input type="text" name="slug" value="<?= e($post['slug'] ?? '') ?>" placeholder="auto-generated from the title if left blank">
+      <small class="a-help">Shown in the address bar as <code>/news/<?= e($post['slug'] ?? 'your-slug-here') ?></code>. Leave blank to auto-generate from the title.</small>
     </div>
 
     <div class="a-field">
@@ -133,6 +144,14 @@ require __DIR__ . '/header.php';
     <div class="a-field">
       <label>SEO Meta Description</label>
       <textarea name="seo_description" rows="2"><?= e($post['seo_description'] ?? '') ?></textarea>
+    </div>
+    <div class="a-field">
+      <label>Primary Keyword</label>
+      <input type="text" name="seo_keyword" value="<?= e($post['seo_keyword'] ?? '') ?>">
+    </div>
+    <div class="a-field">
+      <label>Secondary Keywords</label>
+      <input type="text" name="seo_keywords_secondary" value="<?= e($post['seo_keywords_secondary'] ?? '') ?>" placeholder="separate each with a comma">
     </div>
 
     <div class="a-field">

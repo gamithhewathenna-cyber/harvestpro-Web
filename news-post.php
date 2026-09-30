@@ -25,6 +25,7 @@ $postImg = $post && $post['featured_image'] ? resolve_image_url($post['featured_
 $pageTitle = $post ? (($post['seo_title'] ?: $post['title']) . ' — ' . $brandName . ' Pro') : ('Post Not Found — ' . $brandName . ' Pro');
 $pageDesc  = $post ? ($post['seo_description'] ?: news_excerpt($post['content'], 160)) : 'This post could not be found.';
 $pageImg   = absolute_url($postImg);
+$pageKeywords = $post ? trim(($post['seo_keyword'] ?? '') . (!empty($post['seo_keyword']) && !empty($post['seo_keywords_secondary']) ? ', ' : '') . ($post['seo_keywords_secondary'] ?? ''), ', ') : '';
 ?>
 <!DOCTYPE html>
 <html lang="<?= e(current_lang()) ?>">
@@ -34,6 +35,9 @@ $pageImg   = absolute_url($postImg);
 <?php if ($faviconUrl !== ''): ?><link rel="icon" href="<?= e($faviconUrl) ?>"><?php endif; ?>
 <title><?= e($pageTitle) ?></title>
 <meta name="description" content="<?= e($pageDesc) ?>">
+<?php if ($pageKeywords !== ''): ?>
+<meta name="keywords" content="<?= e($pageKeywords) ?>">
+<?php endif; ?>
 <?php if ($post): seo_meta_tags('/news/' . $post['slug'], $pageTitle, $pageDesc, $pageImg, $brandName . ' Pro'); endif; ?>
 <?php sinhala_font_tags(); ?>
 <link rel="stylesheet" href="assets/css/style.css?v=5.4">

@@ -264,41 +264,82 @@ function ensure_news_tables(): void
         return;
     }
     $checked = true;
-    if (setting('schema_news_migrated') === '1') {
+    if (setting('schema_news_migrated') !== '1') {
+        try {
+            $pdo->exec(
+                "CREATE TABLE IF NOT EXISTS news_categories (
+                    id INT(11) NOT NULL AUTO_INCREMENT,
+                    name VARCHAR(100) NOT NULL,
+                    slug VARCHAR(120) NOT NULL,
+                    PRIMARY KEY (id),
+                    UNIQUE KEY slug (slug)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4"
+            );
+            $pdo->exec(
+                "CREATE TABLE IF NOT EXISTS news_posts (
+                    id INT(11) NOT NULL AUTO_INCREMENT,
+                    title VARCHAR(255) NOT NULL,
+                    slug VARCHAR(255) NOT NULL,
+                    content LONGTEXT,
+                    featured_image VARCHAR(255) DEFAULT '',
+                    category_id INT(11) DEFAULT NULL,
+                    seo_title VARCHAR(255) DEFAULT '',
+                    seo_description VARCHAR(500) DEFAULT '',
+                    seo_keyword VARCHAR(150) NOT NULL DEFAULT '',
+                    seo_keywords_secondary VARCHAR(500) NOT NULL DEFAULT '',
+                    is_published TINYINT(1) NOT NULL DEFAULT 0,
+                    published_at DATETIME DEFAULT NULL,
+                    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                    PRIMARY KEY (id),
+                    UNIQUE KEY slug (slug),
+                    KEY category_id (category_id),
+                    KEY is_published (is_published)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4"
+            );
+            $stmt = $pdo->prepare(
+                "INSERT INTO settings (setting_key, setting_value) VALUES ('schema_news_migrated', '1')
+                 ON DUPLICATE KEY UPDATE setting_value = '1'"
+            );
+            $stmt->execute();
+        } catch (PDOException $e) {
+            // Best-effort — see ensure_hero_slide_si_columns() for rationale.
+        }
+    }
+    ensure_news_seo_columns();
+}
+
+/**
+ * One-time schema migration: adds the Primary/Secondary keyword columns to
+ * news_posts for installs whose news_posts table already existed before
+ * these fields were introduced. Tracked via its own settings flag (separate
+ * from schema_news_migrated) so it still runs for those installs even
+ * though the table-creation step above short-circuits for them.
+ */
+function ensure_news_seo_columns(): void
+{
+    global $pdo;
+    static $checked = false;
+    if ($checked) {
+        return;
+    }
+    $checked = true;
+    if (setting('schema_news_seo_migrated') === '1') {
         return;
     }
     try {
-        $pdo->exec(
-            "CREATE TABLE IF NOT EXISTS news_categories (
-                id INT(11) NOT NULL AUTO_INCREMENT,
-                name VARCHAR(100) NOT NULL,
-                slug VARCHAR(120) NOT NULL,
-                PRIMARY KEY (id),
-                UNIQUE KEY slug (slug)
-            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4"
-        );
-        $pdo->exec(
-            "CREATE TABLE IF NOT EXISTS news_posts (
-                id INT(11) NOT NULL AUTO_INCREMENT,
-                title VARCHAR(255) NOT NULL,
-                slug VARCHAR(255) NOT NULL,
-                content LONGTEXT,
-                featured_image VARCHAR(255) DEFAULT '',
-                category_id INT(11) DEFAULT NULL,
-                seo_title VARCHAR(255) DEFAULT '',
-                seo_description VARCHAR(500) DEFAULT '',
-                is_published TINYINT(1) NOT NULL DEFAULT 0,
-                published_at DATETIME DEFAULT NULL,
-                created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-                PRIMARY KEY (id),
-                UNIQUE KEY slug (slug),
-                KEY category_id (category_id),
-                KEY is_published (is_published)
-            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4"
-        );
+        $existing = array_column($pdo->query("SHOW COLUMNS FROM news_posts")->fetchAll(), 'Field');
+        $columns = [
+            'seo_keyword'            => "VARCHAR(150) NOT NULL DEFAULT ''",
+            'seo_keywords_secondary' => "VARCHAR(500) NOT NULL DEFAULT ''",
+        ];
+        foreach ($columns as $name => $definition) {
+            if (!in_array($name, $existing, true)) {
+                $pdo->exec("ALTER TABLE news_posts ADD COLUMN `$name` $definition");
+            }
+        }
         $stmt = $pdo->prepare(
-            "INSERT INTO settings (setting_key, setting_value) VALUES ('schema_news_migrated', '1')
+            "INSERT INTO settings (setting_key, setting_value) VALUES ('schema_news_seo_migrated', '1')
              ON DUPLICATE KEY UPDATE setting_value = '1'"
         );
         $stmt->execute();

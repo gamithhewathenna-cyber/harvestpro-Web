@@ -328,6 +328,8 @@ CREATE TABLE IF NOT EXISTS `news_posts` (
   `category_id` INT(11) DEFAULT NULL,
   `seo_title` VARCHAR(255) DEFAULT '',
   `seo_description` VARCHAR(500) DEFAULT '',
+  `seo_keyword` VARCHAR(150) NOT NULL DEFAULT '',
+  `seo_keywords_secondary` VARCHAR(500) NOT NULL DEFAULT '',
   `is_published` TINYINT(1) NOT NULL DEFAULT 0,
   `published_at` DATETIME DEFAULT NULL,
   `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
