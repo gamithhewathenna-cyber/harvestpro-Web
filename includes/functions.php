@@ -388,7 +388,14 @@ function get_news_categories(): array
 {
     global $pdo;
     ensure_news_tables();
-    return $pdo->query("SELECT * FROM news_categories ORDER BY name ASC")->fetchAll();
+    try {
+        return $pdo->query("SELECT * FROM news_categories ORDER BY name ASC")->fetchAll();
+    } catch (PDOException $e) {
+        // Table missing/unreachable (e.g. the DB user lacks CREATE TABLE
+        // privileges and the self-healing migration above couldn't run) —
+        // degrade to "no categories" instead of a fatal error.
+        return [];
+    }
 }
 
 /**
@@ -420,9 +427,13 @@ function get_news_posts(array $opts = []): array
     if (!empty($opts['limit'])) {
         $sql .= ' LIMIT ' . (int)$opts['limit'] . ' OFFSET ' . (int)($opts['offset'] ?? 0);
     }
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute($params);
-    $rows = $stmt->fetchAll();
+    try {
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute($params);
+        $rows = $stmt->fetchAll();
+    } catch (PDOException $e) {
+        return [];
+    }
     foreach ($rows as &$row) {
         $row['title']         = translate($row['title'] ?? '');
         $row['content']       = translate($row['content'] ?? '');
@@ -453,9 +464,13 @@ function count_news_posts(array $opts = []): int
     if ($where) {
         $sql .= ' WHERE ' . implode(' AND ', $where);
     }
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute($params);
-    return (int)$stmt->fetchColumn();
+    try {
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute($params);
+        return (int)$stmt->fetchColumn();
+    } catch (PDOException $e) {
+        return 0;
+    }
 }
 
 /** A single published post by slug, or null if it doesn't exist / isn't published. */
@@ -463,13 +478,17 @@ function get_news_post_by_slug(string $slug): ?array
 {
     global $pdo;
     ensure_news_tables();
-    $stmt = $pdo->prepare(
-        "SELECT p.*, c.name AS category_name, c.slug AS category_slug
-         FROM news_posts p LEFT JOIN news_categories c ON c.id = p.category_id
-         WHERE p.slug = ? AND p.is_published = 1 LIMIT 1"
-    );
-    $stmt->execute([$slug]);
-    $row = $stmt->fetch();
+    try {
+        $stmt = $pdo->prepare(
+            "SELECT p.*, c.name AS category_name, c.slug AS category_slug
+             FROM news_posts p LEFT JOIN news_categories c ON c.id = p.category_id
+             WHERE p.slug = ? AND p.is_published = 1 LIMIT 1"
+        );
+        $stmt->execute([$slug]);
+        $row = $stmt->fetch();
+    } catch (PDOException $e) {
+        return null;
+    }
     if (!$row) {
         return null;
     }
