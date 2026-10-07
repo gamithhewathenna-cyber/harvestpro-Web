@@ -1044,8 +1044,10 @@ html[lang="si"] .hero-title { font-size: 44px; }
 @media (max-width: 480px) {
   .whatsapp-fab { right: 16px; bottom: 16px; padding: 14px; border-radius: 50%; }
   .whatsapp-fab-text { display: none; }
-  .yt-fab { left: 16px; bottom: 16px; padding: 8px; border-radius: 50%; }
-  .yt-fab-text { display: none; }
+  .yt-fab { left: 16px; bottom: 16px; padding: 7px 16px 7px 7px; gap: 9px; max-width: calc(100vw - 32px); }
+  .yt-fab-icon { width: 36px; height: 36px; }
+  .yt-fab-text strong { font-size: 12.5px; }
+  .yt-fab-text span { font-size: 10px; }
   .yt-modal-box { padding: 22px; }
   .yt-modal-welcome { font-size: 19px; }
   .container { padding: 0 18px; }
