@@ -137,7 +137,7 @@ if ($ytTutorials):
     </div>
   </div>
 </div>
-<script src="/assets/js/youtube-tutorials.js?v=1.0" defer></script>
+<script src="/assets/js/youtube-tutorials.js?v=1.1" defer></script>
 <?php endif; ?>
 
 <script src="/assets/js/main.js?v=1.7"></script>

@@ -12,6 +12,8 @@
   if (!fab || !overlay || !iframe) return;
 
   var items = Array.prototype.slice.call(overlay.querySelectorAll('.yt-tutorial-item'));
+  var hasLoadedVideo = false; // not "!iframe.src" — an empty src="" actually
+  // resolves to the page's own URL, so that check never trips.
 
   function embedUrl(videoId) {
     return 'https://www.youtube-nocookie.com/embed/' + videoId + '?rel=0&autoplay=1';
@@ -19,13 +21,14 @@
 
   function playVideo(videoId, activeBtn) {
     iframe.src = embedUrl(videoId);
+    hasLoadedVideo = true;
     items.forEach(function (btn) { btn.classList.toggle('active', btn === activeBtn); });
   }
 
   function openModal() {
     overlay.hidden = false;
     document.body.style.overflow = 'hidden';
-    if (!iframe.src && items.length) {
+    if (!hasLoadedVideo && items.length) {
       playVideo(items[0].getAttribute('data-video-id'), items[0]);
     }
   }
@@ -34,6 +37,7 @@
     overlay.hidden = true;
     document.body.style.overflow = '';
     iframe.src = ''; // stop playback so audio doesn't keep running in the background
+    hasLoadedVideo = false; // next open starts fresh from the first tutorial again
   }
 
   fab.addEventListener('click', openModal);
