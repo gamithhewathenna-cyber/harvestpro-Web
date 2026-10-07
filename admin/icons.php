@@ -25,6 +25,7 @@ function admin_icon(string $name, int $size = 18): string
         'search'    => '<circle cx="8.8" cy="8.8" r="5.8"/><line x1="13" y1="13" x2="17.5" y2="17.5"/>',
         'route'     => '<circle cx="4.5" cy="15.5" r="1.9"/><circle cx="15.5" cy="4.5" r="1.9"/><path d="M6.3 14.3 13.7 5.7"/>',
         'news'      => '<rect x="2.5" y="3.5" width="15" height="13" rx="1.5"/><line x1="5.5" y1="7" x2="14.5" y2="7"/><line x1="5.5" y1="10" x2="14.5" y2="10"/><line x1="5.5" y1="13" x2="11" y2="13"/>',
+        'play'      => '<circle cx="10" cy="10" r="7.2"/><path d="M8.2 7.2 13 10l-4.8 2.8Z" fill="currentColor" stroke="none"/>',
     ];
     if (!isset($shapes[$name])) {
         return '';

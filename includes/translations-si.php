@@ -837,6 +837,17 @@ Supervisor' =>
     'Start Free Trial' => 'නොමිලේ අත්හදා බැලීම ආරම්භ කරන්න',
     'Contact Support' => 'සහාය අමතන්න',
 
+    // ---- YouTube tutorials popup ----------------------------------------
+    'Close' => 'වසන්න',
+    'Harvest Pro Tutorials' => 'Harvest Pro මාර්ගෝපදේශ',
+    'Step-by-step guides for new users' => 'නව පරිශීලකයින් සඳහා පියවරෙන් පියවර මාර්ගෝපදේශ',
+    'View All Tutorials on YouTube' => 'YouTube හි සියලුම මාර්ගෝපදේශ බලන්න',
+    'How to Use Harvest Pro' => 'Harvest Pro භාවිතා කරන ආකාරය',
+    'Step-by-step video tutorials' => 'පියවරෙන් පියවර වීඩියෝ මාර්ගෝපදේශ',
+    'Welcome to Harvest Pro' => 'Harvest Pro වෙත සාදරයෙන් පිළිගනිමු',
+    'Learn how to get started easily with our step-by-step video tutorials.' =>
+        'අපගේ පියවරෙන් පියවර වීඩියෝ මාර්ගෝපදේශ සමඟ පහසුවෙන් ආරම්භ කරන්නේ කෙසේදැයි ඉගෙන ගන්න.',
+
     // ---- How It Works — Reminders & Calendar ---------------------------
     'Schedule and track important activities across your tea estate — from fertilizer applications and inspections to maintenance, purchasing, and meetings.' =>
         'ඔබේ තේ වතුයාය පුරා වැදගත් ක්‍රියාකාරකම් සැලසුම් කර නිරීක්ෂණය කරන්න — පොහොර යෙදීම් සහ පරීක්ෂණවල සිට නඩත්තු, මිලදී ගැනීම් සහ රැස්වීම් දක්වා.',

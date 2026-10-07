@@ -340,6 +340,16 @@ CREATE TABLE IF NOT EXISTS `news_posts` (
   KEY `is_published` (`is_published`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+CREATE TABLE IF NOT EXISTS `youtube_tutorials` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(255) NOT NULL,
+  `youtube_url` VARCHAR(500) NOT NULL,
+  `sort_order` INT(11) NOT NULL DEFAULT 0,
+  `is_published` TINYINT(1) NOT NULL DEFAULT 1,
+  `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 -- -------------------------------------------------------------
 -- Table: feature_sections  (repeatable alternating text/image sections
 -- on the dedicated Features page)

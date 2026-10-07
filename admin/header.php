@@ -29,6 +29,7 @@ $page  = $page ?? '';
       <a href="section.php?g=contact_banner" class="<?= in_array($page, CONTACT_TABS, true)?'active':'' ?>"><?= admin_icon('pin') ?> Contact Page</a>
       <a href="how-it-works.php" class="<?= $page==='how_it_works'?'active':'' ?>"><?= admin_icon('route') ?> How It Works</a>
       <a href="news.php" class="<?= in_array($page, ['news', 'news_edit', 'news_categories'], true)?'active':'' ?>"><?= admin_icon('news') ?> News &amp; Updates</a>
+      <a href="youtube-tutorials.php" class="<?= $page==='youtube_tutorials'?'active':'' ?>"><?= admin_icon('play') ?> YouTube Tutorials</a>
       <a href="price.php" class="<?= $page==='price'?'active':'' ?>"><?= admin_icon('tag') ?> Pricing</a>
       <a href="seo.php" class="<?= $page==='seo'?'active':'' ?>"><?= admin_icon('search') ?> SEO</a>
       <p class="a-nav-label">Manage</p>

@@ -252,6 +252,92 @@ function get_payment_logos(): array
 }
 
 /**
+ * One-time schema migration: creates the youtube_tutorials table if it
+ * doesn't exist yet, so existing installs don't need a manual SQL step.
+ * Tracked via a settings flag so the check only runs once ever.
+ */
+function ensure_youtube_tutorials_table(): void
+{
+    global $pdo;
+    static $checked = false;
+    if ($checked) {
+        return;
+    }
+    $checked = true;
+    if (setting('schema_youtube_tutorials_migrated') === '1') {
+        return;
+    }
+    try {
+        $pdo->exec(
+            "CREATE TABLE IF NOT EXISTS youtube_tutorials (
+                id INT(11) NOT NULL AUTO_INCREMENT,
+                title VARCHAR(255) NOT NULL,
+                youtube_url VARCHAR(500) NOT NULL,
+                sort_order INT(11) NOT NULL DEFAULT 0,
+                is_published TINYINT(1) NOT NULL DEFAULT 1,
+                created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                PRIMARY KEY (id)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4"
+        );
+        $stmt = $pdo->prepare(
+            "INSERT INTO settings (setting_key, setting_value) VALUES ('schema_youtube_tutorials_migrated', '1')
+             ON DUPLICATE KEY UPDATE setting_value = '1'"
+        );
+        $stmt->execute();
+    } catch (PDOException $e) {
+        // Best-effort — see ensure_hero_slide_si_columns() for rationale.
+    }
+}
+
+/**
+ * Published YouTube tutorials, in admin-chosen order, each with its raw
+ * youtube_url resolved to a bare video id for building an embed URL.
+ */
+function get_youtube_tutorials(bool $publishedOnly = true): array
+{
+    global $pdo;
+    ensure_youtube_tutorials_table();
+    $sql = "SELECT * FROM youtube_tutorials";
+    if ($publishedOnly) {
+        $sql .= " WHERE is_published = 1";
+    }
+    $sql .= " ORDER BY sort_order ASC, id ASC";
+    try {
+        $rows = $pdo->query($sql)->fetchAll();
+    } catch (PDOException $e) {
+        return [];
+    }
+    foreach ($rows as &$row) {
+        $row['title']    = translate($row['title'] ?? '');
+        $row['video_id'] = youtube_video_id($row['youtube_url'] ?? '');
+    }
+    unset($row);
+    return $rows;
+}
+
+/**
+ * Pull the bare video id out of any common YouTube URL shape
+ * (watch?v=, youtu.be/, embed/, shorts/) — returns null if the string
+ * doesn't look like a YouTube URL at all, so a stale/typo'd link just
+ * silently fails to embed rather than breaking the page.
+ */
+function youtube_video_id(string $url): ?string
+{
+    $url = trim($url);
+    if ($url === '') {
+        return null;
+    }
+    if (preg_match('#(?:youtube\.com/(?:watch\?v=|embed/|shorts/)|youtu\.be/)([A-Za-z0-9_-]{6,})#i', $url, $m)) {
+        return $m[1];
+    }
+    // Already a bare video id, pasted without the surrounding URL.
+    if (preg_match('/^[A-Za-z0-9_-]{6,}$/', $url)) {
+        return $url;
+    }
+    return null;
+}
+
+/**
  * One-time schema migration: creates the news_categories/news_posts tables
  * if they don't exist yet, so existing installs don't need a manual SQL
  * step. Tracked via a settings flag so the check only runs once ever.

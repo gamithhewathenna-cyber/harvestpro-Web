@@ -87,6 +87,59 @@ if (setting('whatsapp_enabled') === '1' && $whatsappNumber !== ''):
 </a>
 <?php endif; ?>
 
+<?php
+$ytTutorials = array_values(array_filter(get_youtube_tutorials(true), function ($t) { return $t['video_id'] !== null; }));
+if ($ytTutorials):
+?>
+<button type="button" class="yt-fab" id="ytTutorialFab">
+  <span class="yt-fab-icon"><svg viewBox="0 0 20 20" width="18" height="18" fill="none"><path d="M7.2 6.2 13 10l-5.8 3.8Z" fill="#fff"/></svg></span>
+  <span class="yt-fab-text">
+    <strong><?= e(setting('youtube_fab_text', 'How to Use Harvest Pro')) ?></strong>
+    <span><?= e(setting('youtube_fab_subtext', 'Step-by-step video tutorials')) ?></span>
+  </span>
+</button>
+
+<div class="yt-modal-overlay" id="ytModalOverlay" hidden>
+  <div class="yt-modal-box">
+    <button type="button" class="yt-modal-close" id="ytModalClose" aria-label="<?= e(t('Close')) ?>">&times;</button>
+    <div class="yt-modal-head">
+      <span class="yt-modal-badge">
+        <svg viewBox="0 0 20 20" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16c0-7 4-11 11-12 1 7-3 11-11 12Z"/><path d="M6 14c2-3 4-5 8-7"/></svg>
+      </span>
+      <div>
+        <p class="yt-modal-welcome"><?= e(setting('youtube_popup_title', 'Welcome to Harvest Pro')) ?></p>
+        <p class="yt-modal-tagline"><?= e(setting('youtube_popup_tagline', 'Learn how to get started easily with our step-by-step video tutorials.')) ?></p>
+      </div>
+    </div>
+    <div class="yt-modal-body">
+      <div class="yt-modal-video">
+        <iframe id="ytModalIframe" src="" title="Harvest Pro Tutorial" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="yt-modal-list">
+        <h4><?= e(t('Harvest Pro Tutorials')) ?></h4>
+        <p class="yt-modal-list-sub"><?= e(t('Step-by-step guides for new users')) ?></p>
+        <ol class="yt-tutorial-list" id="ytTutorialList">
+          <?php foreach ($ytTutorials as $i => $t): ?>
+            <li>
+              <button type="button" class="yt-tutorial-item<?= $i === 0 ? ' active' : '' ?>" data-video-id="<?= e($t['video_id']) ?>">
+                <span class="yt-tutorial-num"><?= e(sprintf('%02d', $i + 1)) ?></span>
+                <span class="yt-tutorial-title"><?= e($t['title']) ?></span>
+              </button>
+            </li>
+          <?php endforeach; ?>
+        </ol>
+        <?php $ytChannelUrl = setting('youtube_channel_url', ''); if ($ytChannelUrl !== ''): ?>
+          <a href="<?= e($ytChannelUrl) ?>" target="_blank" rel="noopener" class="yt-modal-viewall">
+            <?= e(t('View All Tutorials on YouTube')) ?>
+          </a>
+        <?php endif; ?>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/assets/js/youtube-tutorials.js?v=1.0" defer></script>
+<?php endif; ?>
+
 <script src="/assets/js/main.js?v=1.7"></script>
 </body>
 </html>

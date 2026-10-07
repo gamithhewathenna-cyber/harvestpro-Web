@@ -43,7 +43,8 @@ require __DIR__ . '/header.php';
     <a href="section.php?g=contact_banner">Contact Page</a> ·
     <a href="section.php?g=footer">Footer</a> ·
     <a href="how-it-works.php">How It Works</a> ·
-    <a href="news.php">News &amp; Updates</a>
+    <a href="news.php">News &amp; Updates</a> ·
+    <a href="youtube-tutorials.php">YouTube Tutorials</a>
   </p>
 </div>
 
