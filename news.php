@@ -44,7 +44,7 @@ $pageImg   = absolute_url($bannerBg);
 <meta name="description" content="<?= e($pageDesc) ?>">
 <?php seo_meta_tags('/news', $pageTitle, $pageDesc, $pageImg, $brandName . ' Pro'); ?>
 <?php sinhala_font_tags(); ?>
-<link rel="stylesheet" href="/assets/css/style.css?v=6.0">
+<link rel="stylesheet" href="/assets/css/style.css?v=6.1">
 <?php if ($themePrimary !== '' || $themeAccent !== ''): ?>
 <style>
 :root {

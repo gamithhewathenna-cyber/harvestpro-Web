@@ -44,7 +44,7 @@ $shareTitle = $post ? rawurlencode($post['title']) : '';
 <?php endif; ?>
 <?php if ($post): seo_meta_tags('/news/' . $post['slug'], $pageTitle, $pageDesc, $pageImg, $brandName . ' Pro'); endif; ?>
 <?php sinhala_font_tags(); ?>
-<link rel="stylesheet" href="/assets/css/style.css?v=6.0">
+<link rel="stylesheet" href="/assets/css/style.css?v=6.1">
 <?php if ($themePrimary !== '' || $themeAccent !== ''): ?>
 <style>
 :root {
