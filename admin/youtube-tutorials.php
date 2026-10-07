@@ -106,33 +106,41 @@ require __DIR__ . '/header.php';
   </form>
 </div>
 
-<?php foreach ($tutorials as $t): ?>
-  <div class="a-card">
-    <form method="post">
-      <input type="hidden" name="csrf" value="<?= e(csrf_token()) ?>">
-      <input type="hidden" name="action" value="update">
-      <input type="hidden" name="id" value="<?= (int)$t['id'] ?>">
-      <div class="a-field"><label>Title</label><input type="text" name="title" value="<?= e($t['title']) ?>" required></div>
-      <div class="a-field"><label>YouTube Link</label><input type="text" name="youtube_url" value="<?= e($t['youtube_url']) ?>" required></div>
-      <?php if ($t['video_id']): ?>
-        <div class="a-field">
-          <label>Preview</label>
-          <img src="https://img.youtube.com/vi/<?= e($t['video_id']) ?>/mqdefault.jpg" alt="" style="width:200px; border-radius:8px; display:block;">
+<?php foreach ($tutorials as $i => $t): ?>
+  <details class="a-card yt-accordion">
+    <summary class="yt-accordion-summary">
+      <span class="yt-accordion-num"><?= e(sprintf('%02d', $i + 1)) ?></span>
+      <span class="yt-accordion-title"><?= e($t['title']) ?></span>
+      <span class="a-badge <?= $t['is_published'] ? 'a-badge-ok' : '' ?>"><?= $t['is_published'] ? 'Published' : 'Draft' ?></span>
+      <span class="yt-accordion-chevron"><svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="5,7.5 10,12.5 15,7.5"/></svg></span>
+    </summary>
+    <div class="yt-accordion-body">
+      <form method="post">
+        <input type="hidden" name="csrf" value="<?= e(csrf_token()) ?>">
+        <input type="hidden" name="action" value="update">
+        <input type="hidden" name="id" value="<?= (int)$t['id'] ?>">
+        <div class="a-field"><label>Title</label><input type="text" name="title" value="<?= e($t['title']) ?>" required></div>
+        <div class="a-field"><label>YouTube Link</label><input type="text" name="youtube_url" value="<?= e($t['youtube_url']) ?>" required></div>
+        <?php if ($t['video_id']): ?>
+          <div class="a-field">
+            <label>Preview</label>
+            <img src="https://img.youtube.com/vi/<?= e($t['video_id']) ?>/mqdefault.jpg" alt="" style="width:200px; border-radius:8px; display:block;">
+          </div>
+        <?php endif; ?>
+        <div class="a-row">
+          <div class="a-field" style="max-width:140px"><label>Sort Order</label><input type="number" name="sort_order" value="<?= (int)$t['sort_order'] ?>"></div>
+          <label class="a-check"><input type="checkbox" name="is_published" <?= $t['is_published'] ? 'checked' : '' ?>> Published (visible in the popup)</label>
         </div>
-      <?php endif; ?>
-      <div class="a-row">
-        <div class="a-field" style="max-width:140px"><label>Sort Order</label><input type="number" name="sort_order" value="<?= (int)$t['sort_order'] ?>"></div>
-        <label class="a-check"><input type="checkbox" name="is_published" <?= $t['is_published'] ? 'checked' : '' ?>> Published (visible in the popup)</label>
-      </div>
-      <div class="a-actions"><button class="a-btn a-btn-primary" type="submit">Save</button></div>
-    </form>
-    <form method="post" onsubmit="return confirm('Delete this tutorial?');" style="margin-top:10px">
-      <input type="hidden" name="csrf" value="<?= e(csrf_token()) ?>">
-      <input type="hidden" name="action" value="delete">
-      <input type="hidden" name="id" value="<?= (int)$t['id'] ?>">
-      <button class="a-btn a-btn-danger" type="submit"><?= admin_icon('trash', 16) ?> Delete</button>
-    </form>
-  </div>
+        <div class="a-actions"><button class="a-btn a-btn-primary" type="submit">Save</button></div>
+      </form>
+      <form method="post" onsubmit="return confirm('Delete this tutorial?');" style="margin-top:10px">
+        <input type="hidden" name="csrf" value="<?= e(csrf_token()) ?>">
+        <input type="hidden" name="action" value="delete">
+        <input type="hidden" name="id" value="<?= (int)$t['id'] ?>">
+        <button class="a-btn a-btn-danger" type="submit"><?= admin_icon('trash', 16) ?> Delete</button>
+      </form>
+    </div>
+  </details>
 <?php endforeach; ?>
 
 <?php if (!$tutorials): ?>

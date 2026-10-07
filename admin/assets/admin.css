@@ -168,6 +168,25 @@ a { color: var(--green); text-decoration: none; }
 }
 .a-badge-ok { background: var(--green-tint); color: var(--green); }
 
+/* ---------- Expanding accordion cards (e.g. YouTube Tutorials list) ---------- */
+.yt-accordion { padding: 0; overflow: hidden; }
+.yt-accordion-summary {
+  display: flex; align-items: center; gap: 14px; padding: 18px 22px;
+  cursor: pointer; list-style: none; user-select: none;
+}
+.yt-accordion-summary::-webkit-details-marker { display: none; }
+.yt-accordion-summary:hover { background: var(--bg); }
+.yt-accordion-num {
+  width: 26px; height: 26px; border-radius: 50%; flex-shrink: 0;
+  background: var(--bg); color: var(--muted); font-size: 11px; font-weight: 700;
+  display: grid; place-items: center;
+}
+.yt-accordion-title { flex: 1; font-size: 14.5px; font-weight: 600; color: var(--ink); }
+.yt-accordion-chevron { display: grid; place-items: center; color: var(--muted); transition: transform .2s ease; flex-shrink: 0; }
+.yt-accordion[open] .yt-accordion-chevron { transform: rotate(180deg); }
+.yt-accordion-body { padding: 4px 22px 22px; border-top: 1px solid var(--line); }
+.yt-accordion-body form:first-child { padding-top: 18px; }
+
 /* responsive */
 @media (max-width: 860px) {
   .a-sidebar { position: fixed; left: -260px; z-index: 50; transition: left .25s; box-shadow: 0 0 40px rgba(0,0,0,.3); }
