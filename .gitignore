@@ -1,1 +1,32 @@
+# ---------------------------------------------------------------------
+# Credentials & environment — never commit real values. Copy
+# includes/config.sample.php to includes/config.php on each environment
+# and fill in that copy's own DB details; config.sample.php (the
+# template, with placeholder values) is the only one that should be
+# tracked in git.
+# ---------------------------------------------------------------------
 includes/config.php
+.env
+.env.*
+*.pem
+*.key
+
+# ---------------------------------------------------------------------
+# Database exports / backups — the live DB is managed by hand through
+# phpMyAdmin, not synced through git. database.sql / manual-db-update.sql
+# stay on disk locally as reference, just not pushed to GitHub.
+# ---------------------------------------------------------------------
+*.sql
+*.sql.gz
+*.sql.zip
+*.bak
+*.backup
+*_backup.*
+*.dump
+
+# ---------------------------------------------------------------------
+# OS / editor / log cruft
+# ---------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+*.log

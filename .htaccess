@@ -1,6 +1,30 @@
 # Harvest Pro — clean URLs (no .php extension) + sitemap/robots at their conventional URLs
+
+# ---------------------------------------------------------------------
+# Security hardening: never serve git metadata, SQL/backup/env files, or
+# the live config file over the web, even if they end up inside the
+# public web root by accident (e.g. a careless deploy/upload). This is
+# defense-in-depth on top of keeping these out of git entirely.
+# ---------------------------------------------------------------------
+Options -Indexes
+
+<FilesMatch "(\.sql|\.sql\.gz|\.bak|\.backup|\.env|\.env\..*|\.gitignore|\.gitattributes)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
+
+  # 0) Block git metadata and the live config file from ever being served,
+  #    even if they end up inside the public web root by accident.
+  RewriteRule ^\.git/ - [F,L]
+  RewriteRule ^includes/config\.php$ - [F,L]
 
   # 1) Canonicalize: a direct request that still shows .php gets a permanent
   #    redirect to the clean URL, so search engines only ever see one version.
@@ -35,12 +59,18 @@
 <IfModule mod_php.c>
   php_value upload_max_filesize 20M
   php_value post_max_size 40M
+  php_flag display_errors Off
+  php_flag log_errors On
 </IfModule>
 <IfModule mod_php7.c>
   php_value upload_max_filesize 20M
   php_value post_max_size 40M
+  php_flag display_errors Off
+  php_flag log_errors On
 </IfModule>
 <IfModule mod_php8.c>
   php_value upload_max_filesize 20M
   php_value post_max_size 40M
+  php_flag display_errors Off
+  php_flag log_errors On
 </IfModule>
